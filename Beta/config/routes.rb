@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :messages, only: [:new, :create, :edit, :update, :destroy]
+
   resources :projects
   devise_for :users
 
