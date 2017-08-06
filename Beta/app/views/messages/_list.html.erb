@@ -1,0 +1,8 @@
+<div>
+	<% @messages.each do |msg| %>
+	<div>
+		<%= msg.created_at %><br/>
+		<%= msg.content %>
+		<% end %>
+	</div>
+</div>

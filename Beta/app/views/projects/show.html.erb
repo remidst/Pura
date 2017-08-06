@@ -6,17 +6,12 @@
 </p>
 
 
-<p>
-	Add a message:
-</p>
-<% render 'messages/form' %>
+<p>Add a message:</p>
+<%= render 'messages/form' %>
 
-<div>
-	<% @messages.each do |msg| %>
-	<%= msg.created_at %>
-	<%= msg.content %>
-	<% end %>
-</div>
+
+<p>See previous messages</p>
+<%= render 'messages/list' %>
 
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
