@@ -2,7 +2,7 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @project.name %>
+  <%= @project.project_name %>
 </p>
 
 
@@ -12,9 +12,9 @@
 <% render 'messages/form' %>
 
 <div>
-	<% @message.each do |msg| %>
-	<%= @message.created_at %>
-	<%= @message.content %>
+	<% @messages.each do |msg| %>
+	<%= msg.created_at %>
+	<%= msg.content %>
 	<% end %>
 </div>
 
