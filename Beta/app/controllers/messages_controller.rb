@@ -3,6 +3,9 @@ class MessagesController < ApplicationController
   end
 
   def create
+    @project = Project.find(params[:project_id])
+    @message = @project.messages.create(message_params)
+    redirect_to project_path(@project)
   end
 
   def edit
@@ -13,4 +16,10 @@ class MessagesController < ApplicationController
 
   def destroy
   end
+
+  private
+  def message_params
+    params.require(:message).permit(:content)
+  end
+
 end
