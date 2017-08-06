@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
   def show
     @project=Project.find(params[:id])
     @messages=@project.messages
+    @documents=@proect.documents
   end
 
   # GET /projects/new
