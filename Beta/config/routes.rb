@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :messages, only: [:new, :create, :edit, :update, :destroy]
+  resources :projects do
+  	resources :messages
+  end
 
-  resources :projects
   devise_for :users
 
   root 'projects#index'
