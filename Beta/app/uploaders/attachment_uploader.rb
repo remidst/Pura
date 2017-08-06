@@ -38,7 +38,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # For images you might use something like this:
    def extension_whitelist
      %w(jpg jpeg gif png pdf doc docx odt txt csv htm html xls xlsx)
-  # end
+   end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
