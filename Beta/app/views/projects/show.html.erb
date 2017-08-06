@@ -13,6 +13,12 @@
 <p>See previous messages</p>
 <%= render 'messages/list' %>
 
+<p>Add a file:</p>
+<%= render 'documents/form' %>
+
+<p>See all files:</p>
+<%= render 'documents/list' %>
+
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
