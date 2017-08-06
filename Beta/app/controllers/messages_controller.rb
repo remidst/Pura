@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @message = @project.messages.create(message_params)
-    redirect_to project_path(@project)
+    redirect_to project_path(@project), notice: "The message has been sent."
   end
 
   def edit
