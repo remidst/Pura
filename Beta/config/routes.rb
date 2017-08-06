@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :projects do
   	resources :messages
+  	resources :documents
   end
 
   devise_for :users
