@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'documents/create'
+
+  get 'documents/destroy'
+
   resources :projects do
   	resources :messages
   end
