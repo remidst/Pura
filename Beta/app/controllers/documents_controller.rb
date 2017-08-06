@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
   def create
       @project = Project.find(params[:project_id])
-      @document = @project.document.create(document_params)
+      @document = @project.documents.create(document_params)
       redirect_to project_path(@project), notice: "The document has been uploaded."
   end
 

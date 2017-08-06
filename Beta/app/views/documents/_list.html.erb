@@ -3,6 +3,7 @@
 	<tr>
 		<td><%= document.attachment %></td>
 		<td><%= link_to "Download", document.attachment_url %></td>
-		<td><%= button_to "Delete",  document, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete this file?" %></td>
+		<td><%= button_to "Delete",  [document.project, document], method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete this file?" %></td>
 	</tr> 
-  </div>     
+  </div>
+<% end %>     
