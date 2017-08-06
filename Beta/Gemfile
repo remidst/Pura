@@ -51,5 +51,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap-sass'
 
+#Creates easy user authentication
 gem 'devise'
+
+#Helps manage the various authorizations accross the app
 gem 'pundit'
+
+#Carrierwave handles file upload
+gem 'carrierwave', '~> 1.1.0'
