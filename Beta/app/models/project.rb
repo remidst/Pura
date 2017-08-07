@@ -9,9 +9,5 @@ class Project < ApplicationRecord
     self.memberships.where(type: 'leader').first
   end
 
-  def has_one_leader
-  	unless self.memberships.where(type: leader).count == 1
-  		errors.add (:memberships, "need to have exactly one leader")
-  	end
-  end
+  
 end
