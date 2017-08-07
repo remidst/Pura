@@ -7,4 +7,9 @@ class User < ApplicationRecord
   has_many :documents
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def project
+    self.projects.first
+  end
+
 end
