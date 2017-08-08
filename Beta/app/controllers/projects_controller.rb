@@ -29,8 +29,6 @@ class ProjectsController < ApplicationController
   def create
     @project =Project.new(project_params)
     @project.users << User.find(current_user.id)
-    @membership = Membership.find(current_user.id)
-    @membership.type = 'leader'
 
     respond_to do |format|
       if @project.save(project_params)
@@ -76,6 +74,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:project_name)
+      params.require(:project).permit(:project_name, :leader_id)
     end
 end

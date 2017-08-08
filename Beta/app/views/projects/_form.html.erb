@@ -17,6 +17,10 @@
     <%= form.text_field :project_name, id: :project_name %>
   </div>
 
+  <div class="field">
+    <%= form.collection_select(:leader_id, User.all, :id, :email, :prompt => true) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
