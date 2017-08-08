@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project =Project.new(project_params)
-    @project.users << User.find(current_user.id)
+    @project.users << User.find([current_user.id, @project.leader_id])
 
     respond_to do |format|
       if @project.save(project_params)
