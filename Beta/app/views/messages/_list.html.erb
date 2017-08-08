@@ -1,8 +1,10 @@
-<div>
+<table class="table table-striped">
+	<tbody>
 	<% @messages.each do |msg| %>
-	<div>
-		<%= msg.created_at %><br/>
-		<%= msg.content %>
-		<% end %>
-	</div>
-</div>
+		<tr>
+			<td><%= msg.created_at %></td>
+			<td><%= msg.content %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

@@ -1,9 +1,9 @@
 <%= form_for([@project, @project.documents.build], html: {multipart: true} ) do |f| %>
-  <p>
+  <p class="form-group">
     <%= f.label :attachment, 'Upload file' %>
-    <%= f.file_field :attachment %>
+    <%= f.file_field :attachment, class: 'form-control' %>
   </p>
-  <p>
-    <%= f.submit "Save" %>
+  <p class="form-group">
+    <%= f.submit "Save", class: 'btn btn-info' %>
   </p>
 <% end %>

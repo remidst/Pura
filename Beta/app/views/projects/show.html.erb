@@ -4,18 +4,26 @@
 </p>
 
 
-<p>Add a message:</p>
-<%= render 'messages/form' %>
+<div>
+	<%= render 'messages/form' %>
+</div>
 
 
-<p>See previous messages</p>
-<%= render 'messages/list' %>
 
-<p>Add a file:</p>
-<%= render 'documents/form' %>
+<div>
+	<%= render 'messages/list' %>
+</div>
 
-<p>See all files:</p>
-<%= render 'documents/list' %>
+
+<div>
+	<%= render 'documents/form' %>
+</div>
+
+
+<div>
+	<%= render 'documents/list' %>
+</div>
+
 
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
