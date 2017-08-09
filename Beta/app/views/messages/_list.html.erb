@@ -2,9 +2,9 @@
 	<tbody>
 	<% @messages.each do |msg| %>
 		<tr>
-			<td><%= msg.created_at %></td>
-			<td><%= msg.user.try(:email) %></td>
 			<td><%= msg.content %></td>
+			<td><%= msg.user.try(:email) %></td>
+			<td><%= msg.created_at.try(:strftime, '%Y-%m-%d') %></td>	
 		</tr>
 	<% end %>
 	</tbody>
