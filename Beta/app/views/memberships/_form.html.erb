@@ -1,0 +1,11 @@
+	<%= form_for([@project, @project.memberships.build]) do |f| %>
+	  <p class="form_group">
+	  	<%= f.label :user_id, 'Add a new project member' %>
+	    <%= f.collection_select(:user_id, User.all, :id, :email, :prompt => true) %>
+	  </p>
+	  <p class="form_group">
+	    <%= f.submit 'Send', class: 'btn btn-info' %>
+	  </p>
+	<% end %>
+
+	

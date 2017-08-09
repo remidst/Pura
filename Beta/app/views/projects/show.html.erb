@@ -3,27 +3,37 @@
   <%= @project.project_name %>
 </p>
 
-
-<div>
-	<%= render 'messages/form' %>
+<div class="well">
+	<div>
+	    <%= render 'memberships/form' %>
+    </div>
+    <div>
+    	Current users:
+    	<%= render 'users' %>
+    </div>
 </div>
 
 
+<div class="well">
+	<div>
+		<%= render 'messages/form' %>
+	</div>
 
-<div>
-	<%= render 'messages/list' %>
+	<div>
+		<%= render 'messages/list' %>
+	</div>	
 </div>
+	
+<div class="well">
+	<div>
+		<%= render 'documents/form' %>
+	</div>
 
-
-<div>
-	<%= render 'documents/form' %>
+	<div>
+		<%= render 'documents/list' %>
+	</div>
 </div>
-
-
-<div>
-	<%= render 'documents/list' %>
-</div>
-
+	
 
 
 <%= link_to 'Edit', edit_project_path(@project) %> |

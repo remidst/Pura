@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
     @project=Project.find(params[:id])
     @messages=@project.messages
     @documents=@project.documents
+    @users=@project.users
   end
 
   # GET /projects/new
