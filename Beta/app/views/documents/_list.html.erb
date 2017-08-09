@@ -8,14 +8,15 @@
   	</tr>
   </thead>
   <tbody>
-  	<% @documents.each do |document| %>
+  	<% if @documents.each do |document| %>
 		<tr>
 			<td><%= document.attachment %></td>
       <td><%= document.user.try(:email) %></td>
 			<td><%= link_to "Download", document.attachment_url %></td>
 			<td><%= button_to "Delete",  [document.project, document], method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete this file?" %></td>
 		</tr> 
-	<% end %>
+	<% end.empty? %>
+  <% end %>
   </tbody>
 </table>
    
