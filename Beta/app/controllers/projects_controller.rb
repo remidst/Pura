@@ -4,7 +4,8 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @user=current_user
+    @projects =@user.projects
   end
 
   # GET /projects/1
