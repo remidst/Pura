@@ -13,8 +13,16 @@
       <tr>
         <td><%= project.project_name %></td>
         <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        	<% if policy(project).edit? %>
+        		<%= link_to 'Edit', edit_project_path(project) %>
+        	<% end %>
+        </td>
+        <td>
+	        <% if policy(project).destroy? %>
+	        	<%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+	        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
