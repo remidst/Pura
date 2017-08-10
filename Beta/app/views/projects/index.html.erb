@@ -1,9 +1,9 @@
-<h1>Projects</h1>
+<h1>案件一覧</h1>
 
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>案件名</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,15 +12,15 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.project_name %></td>
-        <td><%= link_to 'Show', project %></td>
+        <td><%= link_to '詳細', project %></td>
         <td>
         	<% if policy(project).edit? %>
-        		<%= link_to 'Edit', edit_project_path(project) %>
+        		<%= link_to 'エディット', edit_project_path(project) %>
         	<% end %>
         </td>
         <td>
 	        <% if policy(project).destroy? %>
-	        	<%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+	        	<%= link_to '消す', project, method: :delete, data: { confirm: 'この案件は削除されます' } %>
 	        <% end %>
         </td>
       </tr>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<%= link_to '新規案件', new_project_path, class: "btn btn-info" %>

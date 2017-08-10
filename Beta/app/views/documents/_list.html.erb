@@ -1,10 +1,10 @@
 <table class="table table-striped">
   <thead>
   	<tr>
-  		<th>File name</th>
-      <th>User</th>
-  		<th>Download file</th>
-  		<th>Delete file</th>
+  		<th>ファイル名</th>
+      <th>ユーザー</th>
+  		<th>ダウンロード</th>
+  		<th>消す</th>
   	</tr>
   </thead>
   <tbody>
@@ -12,8 +12,8 @@
 		<tr>
 			<td><%= document.attachment %></td>
       <td><%= document.user.try(:email) %></td>
-			<td><%= link_to "Download", document.attachment_url %></td>
-			<td><%= button_to "Delete",  [document.project, document], method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete this file?" %></td>
+			<td><%= link_to "ダウンロード", document.attachment_url %></td>
+			<td><%= button_to "消す",  [document.project, document], method: :delete, class: "btn btn-danger", confirm: "このファイルは削除されます" %></td>
 		</tr> 
 	<% end.empty? %>
   <% end %>

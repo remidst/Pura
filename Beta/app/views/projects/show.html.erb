@@ -1,5 +1,5 @@
 <p>
-  <strong>Name:</strong>
+  <strong>案件名:</strong>
   <%= @project.project_name %>
 </p>
 
@@ -8,7 +8,7 @@
 	    <%= render 'memberships/form' %>
     </div>
     <div>
-    	Current users:
+    	案件のメンバー:
     	<%= render 'users' %>
     </div>
 </div>
@@ -35,5 +35,5 @@
 </div>
 
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'エディット', edit_project_path(@project) %> |
+<%= link_to '案件一覧へ', projects_path %>
