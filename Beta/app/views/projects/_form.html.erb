@@ -18,12 +18,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :leader_id, '案件のオーナー' %>
+    <%= form.label :leader_id, '案件のオーナー:' %>
     <%= form.collection_select(:leader_id, User.all, :id, :email, :prompt => true) %>
   </div>
 
   <div class="actions">
-    <%= form.submit　'作成する' %>
+    <%= form.submit '送る', class: "btn btn-info" %>
   </div>
 <% end %>
 </div>
