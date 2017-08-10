@@ -15,6 +15,9 @@ class ProjectsController < ApplicationController
     @messages=@project.messages
     @documents=@project.documents
     @users=@project.users
+
+    ids_to_exclude = @users.ids
+    @potential_users = User.where.not(id: ids_to_exclude)
   end
 
   # GET /projects/new
