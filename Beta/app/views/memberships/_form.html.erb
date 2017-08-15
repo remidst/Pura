@@ -1,3 +1,4 @@
+<% if policy(@project).edit? %>
 	<%= form_for([@project, @project.memberships.build]) do |f| %>
 	  <p class="form_group">
 	  	<%= f.label :user_id, 'メンバーを追加する' %>
@@ -7,5 +8,6 @@
 	    <%= f.submit '追加する', class: 'btn btn-info' %>
 	  </p>
 	<% end %>
+<% end %>
 
 	
