@@ -15,11 +15,12 @@
 //= require_tree .
 //= require jquery3
 //= require jquery_ujs
-//= require jquery.tokeninput
+//= require rails-jquery-tokeninput
 
 $(document).ready(function(){
-	$("#project_user_tokens").tokenInput(["/users.json"],
+	$("#project_user_tokens").tokenInput("/users.json",
 	{
-		propertyToSearch: "name"
+		queryParam: 'q',
+		propertyToSearch: "username",
 	});
 });

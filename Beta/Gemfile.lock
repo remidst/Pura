@@ -131,6 +131,8 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-jquery-tokeninput (0.2.6)
+      jquery-rails (>= 2)
     railties (5.1.3)
       actionpack (= 5.1.3)
       activesupport (= 5.1.3)
@@ -208,6 +210,7 @@ DEPENDENCIES
   puma (~> 3.7)
   pundit
   rails (~> 5.1.3)
+  rails-jquery-tokeninput
   sass-rails (~> 5.0)
   selenium-webdriver
   turbolinks (~> 5)

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, :controllers => {registrations: 'registrations'}
-  resources :users, only: [:index]
+  get 'users/' => 'users#index'
 
   root 'projects#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
