@@ -1,8 +1,8 @@
 <% if policy(@project).edit? %>
 	<%= form_for([@project, @project.memberships.build]) do |f| %>
 	  <p class="form_group">
-	  	<%= f.label :user_id, 'メンバーを追加する' %>
-	    <%= f.collection_select(:user_id, @potential_users, :id, :email, :prompt => true) %>
+	  	<%= f.label :user_id, '案件のユーザー:' %>
+    	<%= f.text_field :user_id, id: :project_user_tokens %>
 	  </p>
 	  <p class="form_group">
 	    <%= f.submit '追加する', class: 'btn btn-info' %>
