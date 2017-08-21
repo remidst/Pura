@@ -22,6 +22,11 @@
     <%= form.collection_select(:leader_id, User.all, :id, :email, :prompt => true) %>
   </div>
 
+  <div class="field">
+    <%= form.label :user_tokens, '案件のユーザー:' %>
+    <%= form.text_field :user_tokens, id: :project_user_tokens %>
+  </div>
+
   <div class="actions">
     <%= form.submit '登録する', class: "btn btn-info" %>
   </div>

@@ -16,3 +16,10 @@
 //= require jquery3
 //= require jquery_ujs
 //= require jquery.tokeninput
+
+$(document).ready(function(){
+	$("#project_user_tokens").tokenInput(["/users.json"],
+	{
+		propertyToSearch: "name"
+	});
+});

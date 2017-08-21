@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 		@users=User.order(:username)
 		respond_to do |format|
 			format.html
-			format.json { render json: @users.where("username like ?", "%#{params[:q]}%") }
+			format.json { render json: @users.where("name like ?", "%#{params[:q]}%") }
 	end
 
 end
