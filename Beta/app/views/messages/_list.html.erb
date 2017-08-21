@@ -2,7 +2,7 @@
 	<div class="message-block">
 		<div class="message-info">
 			<%= msg.user.try(:username) %>
-		<%= msg.created_at.try(:strftime, '%Y-%m-%d') %>
+		    <%= msg.created_at.try(:strftime, '%Y-%m-%d') %>
 		</div>
 		<div class="message-content">
 			<%= msg.content %>
