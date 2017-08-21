@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .
 //= require jquery3
 //= require jquery_ujs
@@ -21,6 +20,13 @@ $(document).ready(function(){
 	$("#project_user_tokens").tokenInput("/users.json",
 	{
 		queryParam: 'q',
+		minChars: 2,
 		propertyToSearch: "username",
+		hintText: "ユーザー名から検索する",
+		noResultsText: "このユーザーは見つかりませんでした。",
+		searchingText: "検索中...",
+		theme: "facebook",
+		preventDuplicates: true,
+		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
 	});
 });
