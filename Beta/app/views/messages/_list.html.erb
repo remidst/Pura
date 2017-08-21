@@ -1,12 +1,11 @@
-<table class="table table-striped">
-	<tbody>
-	<% if @messages.each do |msg| %>
-		<tr>
-			<td><%= msg.content %></td>
-			<td><%= msg.user.try(:email) %></td>
-			<td><%= msg.created_at.try(:strftime, '%Y-%m-%d') %></td>	
-		</tr>
-	<% end.empty? %>
-	<% end %>
-	</tbody>
-</table>
+<% @messages.each do |msg| %>
+	<div class="message-block">
+		<div class="message-info">
+			<%= msg.user.try(:username) %>
+		<%= msg.created_at.try(:strftime, '%Y-%m-%d') %>
+		</div>
+		<div class="message-content">
+			<%= msg.content %>
+		</div>
+	</div>
+<% end %>

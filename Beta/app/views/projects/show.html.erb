@@ -14,18 +14,18 @@
 </div>
 
 
-<div class="well">
+<div class="well" id="message-well">
+	<div id="message-list">
+		<%= render 'messages/list' %>
+	</div>	
+
 	<div>
 		<%= render 'messages/form' %>
 	</div>
-
-	<div>
-		<%= render 'messages/list' %>
-	</div>	
 </div>
 	
 <div class="well">
-	<div>
+	<div id="document-list">
 		<%= render 'documents/list' %>
 	</div>
 
