@@ -24,7 +24,7 @@
 
   <div class="field">
     <%= form.label :user_tokens, '案件のユーザー:' %>
-    <%= form.text_field :user_tokens, id: :project_user_tokens %>
+    <%= form.text_field :user_tokens, id: :project_user_tokens, data: {load: @project.users } %>
   </div>
 
   <div class="actions">
