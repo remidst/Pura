@@ -11,6 +11,9 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery3
+//= require jquery_ujs
+//= require rails-jquery-tokeninput
 //= require_tree .
 
 

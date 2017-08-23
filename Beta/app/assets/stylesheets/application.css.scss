@@ -12,10 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require token-input-facebook
  */
 
  @import "bootstrap";
-
- .token-input-input-token {
- 	dispay: none;
- }
