@@ -63,6 +63,5 @@ gem 'carrierwave', '~> 1.1.0'
 
 #handle jquery
 gem 'jquery-rails', '~> 4.3.1'
-gem 'rails-jquery-tokeninput', '~>0.2.6'
 
 ruby "2.3.3"
