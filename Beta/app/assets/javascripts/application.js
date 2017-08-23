@@ -16,6 +16,8 @@
 //= require jquery_ujs
 //= require rails-jquery-tokeninput
 
+alert('some-unique-string');
+
 $(document).ready(function(){
 	$("#project_user_tokens").tokenInput("/users.json",
 	{

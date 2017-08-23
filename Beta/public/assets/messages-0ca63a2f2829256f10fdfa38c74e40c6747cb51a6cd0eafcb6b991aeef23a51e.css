@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/* line 5, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.message-block {
+  width: 100%;
+  background-color: #fffcac;
+  border-radius: 2px;
+  -moz-box-shadow: 0 0 2px #ccc;
+  -webkit-box-shadow: 0 0 2px #ccc;
+  box-shadow: 0 0 2px #ccc;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+/* line 16, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.message-info {
+  font-size: 1em;
+}
+
+/* line 20, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.message-content {
+  font-size: 1.2em;
+}
+
+/* line 24, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.form_group {
+  margin-top: 10px;
+}

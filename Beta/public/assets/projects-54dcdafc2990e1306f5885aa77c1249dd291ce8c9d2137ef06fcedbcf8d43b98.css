@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* line 5, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+#message-list {
+  max-height: 500px;
+  overflow: auto;
+}
+
+/* line 10, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+#document-list {
+  max-height: 500px;
+  overflow: auto;
+}
