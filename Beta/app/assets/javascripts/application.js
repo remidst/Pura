@@ -11,12 +11,11 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require_tree .
 //= require jquery3
 //= require jquery_ujs
 //= require rails-jquery-tokeninput
+//= require_tree .
 
-alert('some-unique-string');
 
 $(document).ready(function(){
 	$("#project_user_tokens").tokenInput("/users.json",
