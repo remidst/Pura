@@ -15,6 +15,8 @@ class MembershipsController < ApplicationController
 	def destroy
 	end
 
+	
+
 	private
 	def membership_params
 		params.require(:membership).permit(:user_id)

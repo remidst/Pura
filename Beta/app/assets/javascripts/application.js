@@ -31,3 +31,4 @@ $(document).ready(function(){
 		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
 	});
 });
+

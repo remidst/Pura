@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project=Project.find(params[:id])
-    @messages=@project.messages
+    @messages=@project.messages.order('created_at DESC')
     @documents=@project.documents
     @users=@project.users
 
