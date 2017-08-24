@@ -3,6 +3,7 @@
   	<tr>
   		<th>ファイル名</th>
       <th>ユーザー</th>
+      <th>日付</th>
   		<th>ダウンロード</th>
   		<th>消す</th>
   	</tr>
@@ -11,9 +12,10 @@
   	<% if @documents.each do |document| %>
 		<tr>
 			<td><%= document.attachment %></td>
-      <td><%= document.user.try(:email) %></td>
+      <td><%= document.user.try(:username) %></td>
+      <td><%= document.created_at.try(:strftime, '%Y-%m-%d') %></td>
 			<td><%= link_to "ダウンロード", document.attachment_url %></td>
-			<td><%= button_to "消す",  [document.project, document], method: :delete, class: "btn btn-danger", confirm: "このファイルは削除されます" %></td>
+			<td><%= link_to "消す",  [document.project, document], method: :delete, confirm: "このファイルは削除されます" %></td>
 		</tr> 
 	<% end.empty? %>
   <% end %>

@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   def show
     @project=Project.find(params[:id])
     @messages=@project.messages.order('created_at DESC')
-    @documents=@project.documents
+    @documents=@project.documents.order('created_at DESC')
     @users=@project.users
 
     ids_to_exclude = @users.ids
