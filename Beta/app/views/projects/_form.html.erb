@@ -19,11 +19,11 @@
 
   <div class="field">
     <%= form.label :leader_id, '案件のオーナー:' %>
-    <%= form.collection_select(:leader_id, User.all, :id, :username, :prompt => true) %>
+    <%= form.collection_select(:leader_id, User.all, :id, :username, {:selected => "current_user"}, :prompt => true) %>
   </div>
 
   <div class="field">
-    <%= form.label :user_tokens, '案件のユーザー:' %>
+    <%= form.label :user_tokens, '招待するメンバー:' %>
     <%= form.text_field :user_tokens, id: :project_user_tokens, data: {load: @project.users } %>
   </div>
 
