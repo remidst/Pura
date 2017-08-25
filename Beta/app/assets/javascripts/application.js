@@ -16,19 +16,4 @@
 //= require_tree .
 
 
-$(document).ready(function(){
-	$("#project_user_tokens").tokenInput("/users.json",
-	{
-		queryParam: 'q',
-		minChars: 2,
-		propertyToSearch: "username",
-		hintText: "ユーザー名から検索する",
-		noResultsText: "このユーザーは見つかりませんでした。",
-		searchingText: "検索中...",
-		theme: "facebook",
-		preventDuplicates: true,
-		prePopulate: $('#project_user_tokens').data('load'),
-		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
-	});
-});
 
