@@ -15,9 +15,9 @@ class ProjectsController < ApplicationController
     @messages=@project.messages.order('created_at DESC')
     @documents=@project.documents.order('created_at DESC')
     @users=@project.users
+    @leader=@users.find(@project.leader_id )
 
-    ids_to_exclude = @users.ids
-    @potential_users = User.where.not(id: ids_to_exclude)
+
   end
 
   # GET /projects/new

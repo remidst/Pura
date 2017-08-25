@@ -1,16 +1,15 @@
-<p>
-  <strong>案件名:</strong>
-  <%= @project.project_name %>
-</p>
-
 <div class="well">
+	<h1><%= @project.project_name %></h1>
 	<div>
-	    <%= render 'memberships/form' %>
+	    案件のオーナー：
+	    <%= @leader.username %>
     </div>
     <div>
-    	案件のメンバー:
+    	案件のメンバー：
     	<%= render 'memberships/list' %>
     </div>
+    <br/>
+    <%= link_to 'エディット', edit_project_path(@project), class: "btn btn-info" %> 
 </div>
 
 
@@ -35,5 +34,5 @@
 </div>
 
 
-<%= link_to 'エディット', edit_project_path(@project) %> |
+|
 <%= link_to '案件一覧へ', projects_path %>
