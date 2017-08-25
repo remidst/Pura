@@ -19,7 +19,7 @@
 
   <div class="field">
     <%= form.label :leader_id, '案件のオーナー:' %>
-    <%= form.collection_select(:leader_id, User.all, :id, :username, {:selected => "current_user"}, :prompt => true) %>
+    <%= form.collection_select(:leader_id, User.all, :id, :username, :prompt => true, selected: current_user.id.to_i) %>
   </div>
 
   <div class="field">
