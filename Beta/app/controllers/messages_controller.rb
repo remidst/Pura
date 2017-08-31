@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @message = @project.messages.create(message_params)
     @message.set_user!(current_user)
 
-    redirect_to project_path(@project), notice: "The message has been sent."
+    redirect_to project_path(@project), notice: "メッセージが案件メンバーに共有されました。"
   end
 
   def edit

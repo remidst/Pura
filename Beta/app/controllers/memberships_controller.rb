@@ -6,7 +6,7 @@ class MembershipsController < ApplicationController
 		@membership = @project.memberships.create(membership_params)
 		@membership.set_project!(@project)
 
-		redirect_to project_path(@project), notice: "The user has been invited."
+		redirect_to project_path(@project), notice: "新しいメンバーが招待されました。"
 	end
 
 	def edit

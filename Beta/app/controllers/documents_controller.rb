@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
       @user = current_user
       @document = @project.documents.create(document_params)
       @document.set_user!(current_user)
-      redirect_to project_path(@project), notice: "The document has been uploaded."
+      redirect_to project_path(@project), notice: "ファイルが案件のメンバーに共有されました。"
   end
 
   def destroy
