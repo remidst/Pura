@@ -9,7 +9,9 @@
     	<%= render 'memberships/list' %>
     </div>
     <br/>
-    <%= link_to 'エディット', edit_project_path(@project), class: "btn btn-info" %> 
+	    <% if policy(@project).edit? %>
+	    	<%= link_to 'エディット', edit_project_path(@project), class: "btn btn-info" %> 
+	    <% end %>
 </div>
 
 
@@ -34,5 +36,5 @@
 </div>
 
 
-|
+
 <%= link_to '案件一覧へ', projects_path %>
