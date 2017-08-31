@@ -7,7 +7,12 @@ class DocumentsController < ApplicationController
       redirect_to project_path(@project), notice: "ファイルが案件のメンバーに共有されました。"
   end
 
+  def edit
+    authorize @document
+  end
+
   def destroy
+    authorize @document
   end
 
   private

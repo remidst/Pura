@@ -15,7 +15,7 @@
       <td><%= document.user.try(:username) %></td>
       <td><%= document.created_at.try(:strftime, '%Y-%m-%d') %></td>
 			<td><%= link_to "ダウンロード", document.attachment_url %></td>
-			<td><%= link_to "消す",  [document.project, document], method: :delete, confirm: "このファイルは削除されます" %></td>
+			<td><% if policy(document).edit? %><%= link_to "消す",  [document.project, document], method: :delete, confirm: "このファイルは削除されます" %><% end %></td>
 		</tr> 
 	<% end.empty? %>
   <% end %>
