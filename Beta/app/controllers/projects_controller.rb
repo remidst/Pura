@@ -23,7 +23,8 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
-
+    @list = Project.new
+    @list.users << User.find([current_user.id, @project.leader_id, @project.user_tokens])
   end
 
   # GET /projects/1/edit
@@ -74,6 +75,7 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

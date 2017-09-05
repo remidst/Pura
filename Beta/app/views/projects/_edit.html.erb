@@ -25,7 +25,7 @@
 
   <div class="field">
     <%= form.label :leader_id, '案件のオーナー:' %>
-    <%= form.collection_select(:leader_id, @list.users, :id, :username, :prompt => true, selected: current_user.id.to_i) %>
+    <%= form.collection_select(:leader_id, @project.users, :id, :username, :prompt => true, selected: current_user.id.to_i) %>
   </div>
 
   <div class="actions">
@@ -33,4 +33,3 @@
   </div>
 <% end %>
 </div>
-
