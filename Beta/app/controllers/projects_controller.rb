@@ -38,6 +38,8 @@ class ProjectsController < ApplicationController
     @project =Project.new(project_params)
     @project.users << User.find([current_user.id, @project.leader_id, @project.user_tokens])
 
+    ProjectMailer.new_project(@project).deliver_now
+
     respond_to do |format|
       if @project.save(project_params)
         format.html { redirect_to @project, notice: '新しい案件が登録されました。' }

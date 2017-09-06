@@ -64,4 +64,7 @@ gem 'carrierwave', '~> 1.1.0'
 #handle jquery
 gem 'jquery-rails', '~> 4.3.1'
 
+#environment variables securely stores
+gem 'figaro', '~> 1.1.1'
+
 ruby "2.3.3"
