@@ -5,7 +5,7 @@ class ProjectMailer < ApplicationMailer
   #
   #   en.project_mailer.new_project.subject
   #
-  def new_project(project)
+  def new_project_leader(project)
     @project = project
     @users = @project.users
     @leader = User.find(@project.leader_id)
