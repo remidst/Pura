@@ -5,11 +5,14 @@ class ProjectMailer < ApplicationMailer
   #
   #   en.project_mailer.new_project.subject
   #
-  def new_project_leader(project)
-    @project = project
-    @users = @project.users
-    @leader = User.find(@project.leader_id)
 
-    mail to: @leader.email, subject: "新規案件#{@project.project_name}の登録"
+  def new_project_users(user, project)
+  	@user = user
+  	@project = project
+  	@users = @project.users
+  	@leader = User.find(@project.leader_id)
+
+  	mail to: @user.email, subject: "新しい案件'#{@project.project_name}'が登録されました。" 
   end
+
 end

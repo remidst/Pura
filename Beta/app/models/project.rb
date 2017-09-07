@@ -14,6 +14,5 @@ class Project < ApplicationRecord
   def user_tokens=(ids)
   	self.user_ids = ids.split(",")
   end
-
   
 end

@@ -37,11 +37,17 @@ class ProjectsController < ApplicationController
   def create
     @project =Project.new(project_params)
     @project.users << User.find([current_user.id, @project.leader_id, @project.user_tokens])
+    @users = @project.users
 
-    ProjectMailer.new_project_leader(@project).deliver_now
 
     respond_to do |format|
       if @project.save(project_params)
+
+        #send a notification email to each user
+        @users.each do |user|
+          ProjectMailer.new_project_users(user, @project).deliver_later
+        end
+
         format.html { redirect_to @project, notice: '新しい案件が登録されました。' }
         format.json { render :show, status: :ok, location: @project }
       else
