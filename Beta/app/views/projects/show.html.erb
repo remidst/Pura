@@ -8,6 +8,10 @@
     	案件のメンバー：
     	<%= render 'memberships/list' %>
     </div>
+    <div>
+    	メンバーを招待する：
+    	<%= render 'memberships/form' %>
+    </div>
     <br/>
 	    <% if policy(@project).edit? %>
 	    	<%= link_to 'エディット', edit_project_path(@project), class: "btn btn-info" %> 

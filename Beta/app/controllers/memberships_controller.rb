@@ -3,12 +3,15 @@ class MembershipsController < ApplicationController
 	before_action :set_project
 
 	def create
-		@project = Project.find(params[:project_id])
-		@membership = @project.memberships.create(membership_params)
-		@membership.set_project!(@project)
+		@membership = @project.memberships.new(membership_params)
+		@membership.project = @project
 
-		redirect_to project_path(@project), notice: "新しいメンバーが招待されました。"
-	end
+		if @membership.save
+			redirect_to @project, notice: '新しいメンバーが招待されました。'
+		else
+			redirect_to @project, alert: 'メンバーの招待が失敗しました。'
+	    end
+    end
 
 	def edit
 	end
