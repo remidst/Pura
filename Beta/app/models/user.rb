@@ -8,6 +8,8 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  attribute :email, :string
+
   def project
     self.projects.first
   end

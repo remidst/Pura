@@ -1,11 +1,11 @@
 <% if policy(@project).edit? %>
 	<%= form_for([@project, @project.memberships.build]) do |f| %>
 	  <p class="form_group">
-	  	<%= f.label :user_id, '案件に追加したいメンバー:' %>
-    	<%= f.text_field :user_id, id: :project_user_tokens %>
+	  	<%= f.label :email, 'メールアドレスからメンバーを招待する:' %>
+    	<%= f.text_field :email, required: true %>
 	  </p>
 	  <p class="form_group">
-	    <%= f.submit '追加する', class: 'btn btn-info' %>
+	    <%= f.submit '招待する', class: 'btn btn-info' %>
 	  </p>
 	<% end %>
 <% end %>

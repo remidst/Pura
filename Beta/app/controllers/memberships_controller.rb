@@ -1,5 +1,6 @@
 class MembershipsController < ApplicationController
 
+	before_action :set_project
 
 	def create
 		@project = Project.find(params[:project_id])
@@ -18,7 +19,12 @@ class MembershipsController < ApplicationController
 	
 
 	private
+
+	def set_project
+		@project = current_user.projects.find(params[:project_id])
+	end
+		
 	def membership_params
-		params.require(:membership).permit(:user_id)
+		params.require(:membership).permit(:email)
 	end
 end
