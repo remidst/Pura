@@ -55,6 +55,9 @@ gem 'bootstrap-sass'
 #Creates easy user authentication
 gem 'devise'
 
+#handles invitations wwith Devise
+gem 'devise_invitable'
+
 #Helps manage the various authorizations accross the app
 gem 'pundit'
 

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :projects do
   	resources :messages
   	resources :documents
-  	resources :memberships
+  	resources :memberships, path: :users, module: :projects
   end
 
   devise_for :users, :controllers => {registrations: 'registrations'}
