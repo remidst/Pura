@@ -1,5 +1,4 @@
-<div class="well">
-  <%= form_with(model: project, local: true) do |form| %>
+<%= form_with(model: project, local: true) do |form| %>
   <% if project.errors.any? %>
     <div id="error_explanation">
       <h2> エラーが<%= pluralize(project.errors.count, "error") %>回発生しました:</h2>
@@ -32,4 +31,3 @@
     <%= form.submit '登録する', class: "btn btn-info" %>
   </div>
 <% end %>
-</div>
