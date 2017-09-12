@@ -1,28 +1,28 @@
 en:
   devise:
     failure:
-      invited: "You have a pending invitation, accept it to finish creating your account."
+      invited: "招待状に返事をしてからアカウントの作成を完了してください。"
     invitations:
-      send_instructions: "An invitation email has been sent to %{email}."
-      invitation_token_invalid: "The invitation token provided is not valid!"
-      updated: "Your password was set successfully. You are now signed in."
-      updated_not_active: "Your password was set successfully."
-      no_invitations_remaining: "No invitations remaining"
-      invitation_removed: "Your invitation was removed."
+      send_instructions: "%{email}に招待状のメールが送られました。"
+      invitation_token_invalid: "招待状のIdが見つかりませんでした。"
+      updated: "パスワードが登録されました。サインインが成功しました。"
+      updated_not_active: "パスワードが登録されました。"
+      no_invitations_remaining: "招待状はもう残ってません。"
+      invitation_removed: "招待状が削除されました。"
       new:
-        header: "Send invitation"
-        submit_button: "Send an invitation"
+        header: "招待状を送る。"
+        submit_button: "送る"
       edit:
-        header: "Set your password"
-        submit_button: "Set my password"
+        header: "パスワードを記入してください。"
+        submit_button: "登録する"
     mailer:
       invitation_instructions:
-        subject: "Invitation instructions"
-        hello: "Hello %{email}"
-        someone_invited_you: "Someone has invited you to %{url}, you can accept it through the link below."
-        accept: "Accept invitation"
-        accept_until: "This invitation will be due in %{due_date}."
-        ignore: "If you don't want to accept the invitation, please ignore this email.<br />\nYour account won't be created until you access the link above and set your password."
+        subject: "プラプラへの招待状"
+        hello: "%{email}様"
+        someone_invited_you: "プラプラで作成された案件に招待されました。下記のurl%{url}からアカウントを登録して案件にアクセスしてください"
+        accept: "案件にアクセスする。"
+        accept_until: "この招待状の期限は%{due_date}までです。"
+        ignore: "案件にアクセスしたくない場合はこのメールを無視してください。上記のurlをクリックしてパスワードを設定しない限りアカウントは登録されません。"
   time:
     formats:
       devise:
