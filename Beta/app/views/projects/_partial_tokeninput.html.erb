@@ -17,6 +17,17 @@
     <%= form.text_field :project_name, id: :project_name, :required => 'required' %>
   </div>
 
+
+  <div class="field">
+    <%= form.label :user_tokens, '招待するメンバー:' %>
+    <%= form.text_field :user_tokens, id: :project_user_tokens, data: {load: @project.users } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :leader_id, '案件のオーナー:' %>
+    <%= form.collection_select(:leader_id, @list.users, :id, :username, :prompt => true, selected: current_user.id.to_i) %>
+  </div>
+
   <div class="actions">
     <%= form.submit '登録する', class: "btn btn-info" %>
   </div>
