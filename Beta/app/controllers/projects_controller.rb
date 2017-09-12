@@ -25,8 +25,6 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
-    @list = Project.new
-    @list.users << User.find([current_user.id, @project.leader_id, @project.user_tokens])
   end
 
   # GET /projects/1/edit
@@ -38,8 +36,8 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project =Project.new(project_params)
-    @project.users << User.find([current_user.id, @project.leader_id, @project.user_tokens])
-    @users = @project.users
+    @project.users << current_user
+    @project.leader_id = current_user.id
 
 
     respond_to do |format|
@@ -50,7 +48,7 @@ class ProjectsController < ApplicationController
           ProjectMailer.new_project_users(user, @project).deliver_later
         end
 
-        format.html { redirect_to @project, notice: '新しい案件が登録されました。' }
+        format.html { redirect_to new_project_membership_path(@project), notice: '案件名が登録されました。案件にメンバーを招待してください。' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }

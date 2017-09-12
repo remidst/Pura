@@ -2,6 +2,10 @@ class MembershipsController < ApplicationController
 
 	before_action :set_project
 
+	def new
+		@membership=@project.membership.new
+	end
+
 	def create
 		@membership = @project.memberships.new(membership_params)
 		@membership.project = @project
