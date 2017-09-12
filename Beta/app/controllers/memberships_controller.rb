@@ -3,7 +3,7 @@ class MembershipsController < ApplicationController
 	before_action :set_project
 
 	def new
-		@membership=@project.membership.new
+		@membership=@project.memberships.new
 	end
 
 	def create
@@ -11,11 +11,17 @@ class MembershipsController < ApplicationController
 		@membership.project = @project
 
 		if @membership.save
-			redirect_to @project, notice: '新しいメンバーが招待されました。'
+			redirect_to project_edit_leader_path(@project), notice: '新しいメンバーが招待されました。'
 		else
 			redirect_to @project, alert: 'メンバーの招待が失敗しました。'
 	    end
     end
+
+    def index
+    	@users = @project.users
+		@invited=@users.where("username is null")
+    end
+
 
 	def edit
 	end

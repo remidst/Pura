@@ -1,0 +1,16 @@
+<div class="well">
+  <p>案件のオーナーを設定してください。オーナーは案件のメンバーを招待／削除する権限、それとオーナーを設定する権限を持ってます。</p>
+
+  <%= form_for @project, :url => project_update_leader_path(@project) do |form| %>
+
+  <div class="field">
+    <%= form.label :leader_id, '案件のオーナー:' %>
+    <%= form.collection_select(:leader_id, @users, :id, :username, :prompt => true, selected: @leader.id) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit '登録する', class: "btn btn-info" %>
+  </div>
+<% end %>
+</div>
+

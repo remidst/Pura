@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :edit_leader, :update, :update_leader, :destroy]
 
   # GET /projects
   # GET /projects.json
@@ -11,15 +11,12 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @project=Project.find(params[:id])
-
     @messages=@project.messages.order('created_at DESC')
     @documents=@project.documents.order('created_at DESC')
 
     @users=@project.users
     @leader=@users.find(@project.leader_id)
     @invited=@users.where("username is null")
-
   end
 
   # GET /projects/new
@@ -32,6 +29,24 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 
+  def edit_leader
+    authorize @project
+    @users=@project.users
+    @leader = User.find(@project.leader_id)
+  end
+
+  def update_leader
+    respond_to do |format|
+      if @project.update(leader_params)
+        format.html { redirect_to @project, notice: '案件が登録されました。' }
+        format.json { render :show, status: :ok, location: @project }
+      else
+        format.html { render :edit_leader }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # POST /projects
   # POST /projects.json
   def create
@@ -42,11 +57,6 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save(project_params)
-
-        #send a notification email to each user
-        @users.each do |user|
-          ProjectMailer.new_project_users(user, @project).deliver_later
-        end
 
         format.html { redirect_to new_project_membership_path(@project), notice: '案件名が登録されました。案件にメンバーを招待してください。' }
         format.json { render :show, status: :ok, location: @project }
@@ -94,5 +104,9 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:project_name)
+    end
+
+    def leader_params
+      params.require(:project).permit(:leader_id)
     end
 end

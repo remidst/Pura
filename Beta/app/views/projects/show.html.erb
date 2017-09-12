@@ -16,6 +16,8 @@
     	</div>
     <% end %>
 
+    <%= link_to 'メンバーの管理', project_memberships_path(@project) %>
+
     <br/>
 	    <% if policy(@project).edit? %>
 	    	<%= link_to 'エディット', edit_project_path(@project), class: "btn btn-info" %> 

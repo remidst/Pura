@@ -1,0 +1,9 @@
+<h1><%= @project.project_name %>の案件メンバーを招待する。</h1>
+
+<%= render 'list' %>
+
+<% if @invited.present? %>
+	<%= render 'invited' %>
+<% end %>
+
+<%= render 'form' %>

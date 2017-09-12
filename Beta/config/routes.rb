@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
 
-
-  get 'documents/create'
-
-  get 'documents/destroy'
-
   resources :projects do
   	resources :messages
   	resources :documents
   	resources :memberships
   end
+
+  get 'project/:id/edit_leader' => 'projects#edit_leader', :as => :project_edit_leader
+  patch 'project/:id/edit_leader' => 'projects#update_leader', :as => :project_update_leader
 
   devise_for :users, :controllers => {registrations: 'registrations'}
   get 'users/' => 'users#index'

@@ -10,6 +10,10 @@ class ProjectPolicy < ApplicationPolicy
 		user.id == project.leader_id
 	end
 
+	def edit_leader?
+		user.id == project.leader_id
+	end
+
 	def destroy?
 		user.id == project.leader_id
 	end
