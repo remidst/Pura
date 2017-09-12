@@ -1,17 +1,21 @@
 <div class="well">
 	<h1><%= @project.project_name %></h1>
+
 	<div>
 	    案件のオーナー：
 	    <%= @leader.username %>
     </div>
+
     <div>
-    	案件のメンバー：
     	<%= render 'memberships/list' %>
     </div>
-    <div>
-    	未登録のメンバー：
-    	
-    </div>
+
+    <% if @invited.present? %>
+    	<div>
+    		<%= render 'memberships/invited' %>
+    	</div>
+    <% end %>
+
     <br/>
 	    <% if policy(@project).edit? %>
 	    	<%= link_to 'エディット', edit_project_path(@project), class: "btn btn-info" %> 

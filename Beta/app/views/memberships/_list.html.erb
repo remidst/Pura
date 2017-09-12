@@ -1,3 +1,9 @@
-<% @users.each do |user| %>
-	<%= user.username %><%= "," unless user == @users.last %>
-<% end %>
+<div>
+	案件のメンバー：
+	<% @users.each do |user| %>
+		<%= user.username %><%= "," unless user == @users.last %>
+	<% end %>
+</div>
+
+
+

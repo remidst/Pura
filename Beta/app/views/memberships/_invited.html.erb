@@ -1,0 +1,6 @@
+<div>
+	未登録のメンバー：
+	<% @invited.each do |invited| %>
+		<%= invited.email %><%= "," unless invited == @invited.last %>
+	<% end %>
+</div>

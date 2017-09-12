@@ -12,11 +12,13 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project=Project.find(params[:id])
+
     @messages=@project.messages.order('created_at DESC')
     @documents=@project.documents.order('created_at DESC')
-    @users=@project.users
-    @leader=@users.find(@project.leader_id )
 
+    @users=@project.users
+    @leader=@users.find(@project.leader_id)
+    @invited=@users.where("username is null")
 
   end
 
