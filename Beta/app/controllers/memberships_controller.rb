@@ -3,10 +3,14 @@ class MembershipsController < ApplicationController
 	before_action :set_project
 
 	def new
+		authorize @project
+		
 		@membership=@project.memberships.new
 	end
 
 	def create
+		authorize @project
+
 		@membership = @project.memberships.new(membership_params)
 		@membership.project = @project
 
@@ -18,6 +22,8 @@ class MembershipsController < ApplicationController
     end
 
     def index
+    	authorize @project
+
     	@users = @project.users.where.not("username is null")
 		@invited = @project.users.where("username is null")
     end

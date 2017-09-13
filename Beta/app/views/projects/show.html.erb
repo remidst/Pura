@@ -16,7 +16,9 @@
     	</div>
     <% end %>
 
-    <%= link_to 'メンバーの管理', project_memberships_path(@project) %>
+    <% if policy(@project).edit? %>
+    	<%= link_to 'メンバーの管理', project_memberships_path(@project) %>
+    <% end %>
 
     <br/>
 	    <% if policy(@project).edit? %>
