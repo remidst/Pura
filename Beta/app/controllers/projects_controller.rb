@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
 
   def edit_leader
     authorize @project
-    @users=@project.users
+    @users=@project.users.where.not("username is null")
     @leader = User.find(@project.leader_id)
   end
 
