@@ -18,8 +18,8 @@ class MembershipsController < ApplicationController
     end
 
     def index
-    	@users = @project.users
-		@invited=@users.where("username is null")
+    	@users = @project.users.where.not("username is null")
+		@invited = @project.users.where("username is null")
     end
 
 

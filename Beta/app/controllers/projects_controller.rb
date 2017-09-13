@@ -14,9 +14,9 @@ class ProjectsController < ApplicationController
     @messages=@project.messages.order('created_at DESC')
     @documents=@project.documents.order('created_at DESC')
 
-    @users=@project.users
-    @leader=@users.find(@project.leader_id)
-    @invited=@users.where("username is null")
+    @users=@project.users.where.not("username is null")
+    @leader=@project.users.find(@project.leader_id)
+    @invited=@project.users.where("username is null")
   end
 
   # GET /projects/new
