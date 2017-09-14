@@ -54,10 +54,13 @@ class ProjectsController < ApplicationController
     @project =Project.new(project_params)
     @project.users << current_user
     @project.leader_id = current_user.id
+    @leader = User.find(@project.leader_id)
 
 
     respond_to do |format|
       if @project.save(project_params)
+
+        ProjectMailer.new_project_users(@leader, @project).deliver
 
         format.html { redirect_to new_project_membership_path(@project), notice: '案件名が登録されました。案件にメンバーを招待してください。' }
         format.json { render :show, status: :ok, location: @project }
