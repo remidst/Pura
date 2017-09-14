@@ -1,6 +1,7 @@
 class Membership < ApplicationRecord
 	belongs_to :user
 	belongs_to :project
+	attr_reader :user_tokens
 
 	before_validation :set_user_id, if: :email?
 	

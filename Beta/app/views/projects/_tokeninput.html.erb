@@ -1,0 +1,23 @@
+<%= form_with(model: @project, local: true) do |form| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2> エラーが<%= pluralize(@project.errors.count, "error") %>回発生しました:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_tokens, '名前から追加する:' %>
+    <%= form.text_field :user_tokens, id: :project_user_tokens, data: {load: @project.users } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit '追加する', class: "btn btn-info" %>
+  </div>
+
+<% end %>

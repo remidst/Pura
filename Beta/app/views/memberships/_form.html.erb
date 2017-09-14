@@ -1,15 +1,15 @@
+<%= form_for([@project, @project.memberships.build]) do |f| %>
 
-	<%= form_for([@project, @project.memberships.build]) do |f| %>
-		<p class="form_group">
-		  	<%= f.label :email, 'メールアドレスからメンバーを招待する:' %>
-	    	<%= f.text_field :email, required: true %>
-		</p>
-		<br/>
-		<p class="form_group">
-		    <%= f.submit '招待する', class: 'btn btn-info' %>
-		</p>
-	<% end %>
+	<p class="form_group">
+		<%= f.label :email, 'メールアドレスから招待する' %><br/>
+	    <%= f.text_field :email %>
+	</p>
 
+	<p class="form_group">
+		<%= f.submit '招待する', class: 'btn btn-info' %>
+	</p>
+
+<% end %>
 
 
 

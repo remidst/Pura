@@ -1,9 +1,16 @@
-<h1><%= @project.project_name %>の案件メンバーを招待する。</h1>
+<div class="well">
+	<h1><%= @project.project_name %>の案件メンバーを招待する。</h1>
 
-<%= render 'list' %>
+    <%= render 'list' %>
 
-<% if @invited.present? %>
-	<%= render 'invited' %>
-<% end %>
+    <% if @invited.present? %>
+	    <%= render 'invited' %>
+    <% end %>
+    <br/>
 
-<%= render 'form' %>
+    <%= render 'projects/tokeninput' %>
+
+    <%= render 'form' %>
+
+</div>
+
