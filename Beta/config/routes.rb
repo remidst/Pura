@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   	resources :memberships
   end
 
-  get 'project/:id/edit_leader' => 'projects#edit_leader', :as => :project_edit_leader
-  patch 'project/:id/edit_leader' => 'projects#update_leader', :as => :project_update_leader
+  get 'project/:id/edit_leader' => 'projects#edit_leader', as: :project_edit_leader
+  patch 'project/:id/edit_leader' => 'projects#update_leader', as: :project_update_leader
 
-  devise_for :users, :controllers => {registrations: 'registrations'}
+  devise_for :users, controllers: {registrations: 'registrations', invitations: 'invitations'}
   get 'users/' => 'users#index'
 
   root 'projects#index'
