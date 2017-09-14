@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand_lg navbar-dark blue-grey darken-3">
+<nav class="navbar navbar-custom">
   <div class="container">
     <div class="navbar-header">
       <%= link_to 'Purapura', root_path, class: 'navbar-brand' %>
@@ -6,16 +6,13 @@
     <div id="navbar">
   
     <ul class="nav navbar-nav pull-right">
-      <li><% link_to '案件一覧へ', root_path %></li>
-      <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
-        <li><%= current_user.email %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <li class="nav-item"><%= current_user.email %></li>
+        <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to 'ログイン', new_user_session_path %></li>
-          <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+          <li><%= link_to 'ログイン', new_user_session_path, class: 'nav-item' %></li>
+          <li><%= link_to 'サインアップ', new_user_registration_path, class: 'nav-item' %></li>
         <% end %>
-      </ul>
     </ul>
   </div>
 </nav>
