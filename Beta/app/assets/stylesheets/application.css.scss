@@ -60,6 +60,26 @@
 	background-color: #000000;
 }
 
+.navbar .container #navbar li.nav-item {
+	color:#ffffff;
+	font-size: 1em;
+	vertical-align: center;
+}
+
+.navbar .container #navbar li.nav-item:hover {
+	color:#ffffff;
+	font-size: 1em;
+	vertical-align: center;
+	background-color: #000000;
+}
+
+#navbar-username {
+	font-size: 1em;
+	color:#ffffff;
+	vertical-align: center;
+	height: 100%;
+}
+
 #flash {
 	margin-bottom: 0;
 }
