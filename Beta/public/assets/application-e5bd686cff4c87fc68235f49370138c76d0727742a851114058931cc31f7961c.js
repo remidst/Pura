@@ -12301,12 +12301,7 @@ $.TokenList.Cache = function (options) {
 
 }).call(this);
 (function() {
-  $(document).ready(function() {
-    $('#project_user_tokens').tokenInput('/users.json');
-    return {
-      theme: 'facebook'
-    };
-  });
+
 
 }).call(this);
 (function() {
@@ -12345,5 +12340,7 @@ $(document).ready(function(){
 		prePopulate: $('#project_user_tokens').data('load'),
 		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
 	});
+
+	$("#flash").delay(4000).animate({height: 'toggle', opacity: 'toggle'}, 'slow');
 });
 
