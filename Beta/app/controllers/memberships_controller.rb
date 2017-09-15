@@ -13,7 +13,7 @@ class MembershipsController < ApplicationController
 		if @membership.save
 			redirect_to project_edit_leader_path(@project), notice: '新しいメンバーが招待されました。'
 		else
-			redirect_to @project, alert: 'メンバーの招待が失敗しました。'
+			redirect_to @project, warning: 'メンバーの招待が失敗しました。'
 	    end
     end
 

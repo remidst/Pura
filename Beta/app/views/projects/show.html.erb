@@ -1,4 +1,4 @@
-<div class="well">
+<div class="project-top">
 	<h1><%= @project.project_name %></h1>
 
 	<div>
@@ -22,31 +22,31 @@
 
     <br/>
 	    <% if policy(@project).edit? %>
-	    	<%= link_to 'エディット', edit_project_path(@project), class: "btn btn-info" %> 
+	    	<%= link_to 'エディット', edit_project_path(@project) %> 
 	    <% end %>
 </div>
 
+<div class="container-fluid">
+	<div class="well" id="message-well">
+		<div id="message-list">
+			<%= render 'messages/list' %>
+		</div>	
 
-<div class="well" id="message-well">
-	<div id="message-list">
-		<%= render 'messages/list' %>
-	</div>	
-
-	<div>
-		<%= render 'messages/form' %>
-	</div>
-</div>
+		<div>
+			<%= render 'messages/form' %>
+		</div>
+    </div>
 	
-<div class="well">
-	<div id="document-list">
-		<%= render 'documents/list' %>
+	<div class="well">
+		<div id="document-list">
+			<%= render 'documents/list' %>
+		</div>
+
+		<div>
+			<%= render 'documents/form' %>
+		</div>
 	</div>
 
-	<div>
-		<%= render 'documents/form' %>
-	</div>
+    <%= link_to '案件一覧へ', projects_path %>
 </div>
 
-
-
-<%= link_to '案件一覧へ', projects_path %>

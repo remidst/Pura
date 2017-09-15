@@ -1,8 +1,12 @@
-<h1>案件情報をアップデートする</h1>
+<div class="container-fluid">
+	<h1>案件情報をアップデートする</h1>
 
-<div class="well">
-	<%= render 'edit', project: @project %>
+	<div class="well">
+		<%= render 'edit', project: @project %>
+	</div>
+
+	<%= link_to '詳細', @project %> |
+	<%= link_to '案件一覧へ', projects_path %>
 </div>
 
-<%= link_to '詳細', @project %> |
-<%= link_to '案件一覧へ', projects_path %>
+

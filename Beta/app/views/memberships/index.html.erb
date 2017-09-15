@@ -1,16 +1,20 @@
-<div class="well">
-	<h1><%= @project.project_name %>の案件メンバーを招待する。</h1>
+<div class="container-fluid">
+	<div class="well">
+		<h1><%= @project.project_name %>の案件メンバーを招待する。</h1>
 
-    <%= render 'list' %>
+	    <%= render 'list' %>
 
-    <% if @invited.present? %>
-	    <%= render 'invited' %>
-    <% end %>
-    <br/>
+	    <% if @invited.present? %>
+		    <%= render 'invited' %>
+	    <% end %>
+	    <br/>
 
-    <%= render 'projects/tokeninput' %>
+	    <%= render 'projects/tokeninput' %>
 
-    <%= render 'form' %>
+	    <%= render 'form' %>
 
+	</div>
 </div>
+
+
 

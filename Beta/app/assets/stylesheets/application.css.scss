@@ -17,10 +17,20 @@
 
  @import "bootstrap";
 
+
+.navbar {
+	margin-bottom: 0;
+}
+
 .navbar-custom {
-    background-color:#37474f;
+    background-color:#343d46;
     color:#37474f;
     border-radius:0;
+    padding-bottom: 0;
+}
+
+.container {
+	margin-bottom: 0;
 }
 
 #brand {
@@ -50,3 +60,22 @@
 	background-color: #000000;
 }
 
+#flash {
+	margin-bottom: 0;
+}
+
+.alert-notice {
+	background-color: #00cc00;
+	color: #000000;
+	border-radius: 0;
+	font-size: 1em;
+	margin-bottom: 0;
+}
+
+.alert-alert {
+	background-color: #ffd633;
+	color: #000000;
+	border-radius: 0;
+	font-size: 1em;
+	margin-bottom: 0;
+}
