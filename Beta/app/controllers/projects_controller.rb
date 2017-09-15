@@ -75,8 +75,10 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
+    prjct = project_params 
+    prjct[:user_tokens] << ", #{current_user.id}"
     respond_to do |format|
-      if @project.update(project_params)
+      if @project.update(prjct)
         format.html { redirect_to @project, notice: '案件情報のアップデートが成功しました。' }
         format.json { render :show, status: :ok, location: @project }
       else

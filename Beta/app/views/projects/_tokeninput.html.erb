@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_tokens, '名前から追加する:' %>
-    <%= form.text_field :user_tokens, id: :project_user_tokens, data: {load: @project.users } %>
+    <%= form.label :user_tokens, 'メンバーを追加／削除する:' %>
+    <%= form.text_field :user_tokens, id: :project_user_tokens, data: {load: @tokens } %>
   </div>
 
   <div class="actions">
-    <%= form.submit '追加する', class: "btn btn-info" %>
+    <%= form.submit 'アップデート', class: "btn btn-info" %>
   </div>
 
 <% end %>
