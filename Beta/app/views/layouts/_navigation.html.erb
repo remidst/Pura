@@ -1,13 +1,13 @@
 <nav class="navbar navbar-custom">
   <div class="container">
     <div class="navbar-header">
-      <%= link_to 'Purapura', root_path, class: 'navbar-brand' %>
+      <%= link_to 'Purapura', root_path, id: 'brand' %>
     </div>
+
     <div id="navbar">
-  
     <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
-        <li class="nav-item"><%= current_user.email %></li>
+        <li class="nav-item"><%= current_user.username %></li>
         <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to 'ログイン', new_user_session_path, class: 'nav-item' %></li>

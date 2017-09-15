@@ -17,8 +17,36 @@
 
  @import "bootstrap";
 
- .navbar-custom {
+.navbar-custom {
     background-color:#37474f;
     color:#37474f;
     border-radius:0;
 }
+
+#brand {
+	color:#ffffff;
+	font-size: 2.1em;
+	vertical-align: center;
+}
+
+#brand:hover {
+	color:#ffffff;
+	font-size: 2.1em;
+	vertical-align: center;
+	background-color: #000000;
+	text-decoration: none;
+}
+
+.navbar .container #navbar .nav-item {
+	color:#ffffff;
+	font-size: 1em;
+	vertical-align: center;
+}
+
+.navbar .container #navbar .nav-item:hover {
+	color:#ffffff;
+	font-size: 1em;
+	vertical-align: center;
+	background-color: #000000;
+}
+
