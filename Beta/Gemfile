@@ -70,4 +70,7 @@ gem 'jquery-rails', '~> 4.3.1'
 #environment variables securely stores
 gem 'figaro', '~> 1.1.1'
 
+#serve assets on heroku
+gem 'rails_12factor', group: :production
+
 ruby "2.3.3"
