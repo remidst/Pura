@@ -36,5 +36,19 @@ $(document).ready(function(){
 	$("table > tbody > tr[data-link]").not('thead').click(function(){
 		window.location = this.dataset.link
 	});
+
+	$("#nav-file").click(function(){
+		$(".nav-show").removeClass("nav-selected");
+		$(this).addClass("nav-selected");
+		$(".project-well").removeClass("well-hide");
+		$("#well-msg").addClass("well-hide");
+	});
+
+	$("#nav-msg").click(function(){
+		$(".nav-show").removeClass("nav-selected");
+		$(this).addClass("nav-selected");
+		$(".project-well").removeClass("well-hide");
+		$("#well-document").addClass("well-hide");
+	});
 });
 

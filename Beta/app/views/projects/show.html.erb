@@ -26,8 +26,15 @@
 	    <% end %>
 </div>
 
+<div class="tab-panel">
+		<ul class="nav nav-tabs">
+			<li class="nav-show nav-selected" id="nav-msg">メッセージ</li>
+			<li class="nav-show" id="nav-file">ファイル共有</li>
+		</ul>
+</div>
+
 <div class="container-fluid">
-	<div class="well" id="message-well">
+	<div class="well project-well" id="well-msg">
 		<div id="message-list">
 			<%= render 'messages/list' %>
 		</div>	
@@ -37,7 +44,7 @@
 		</div>
     </div>
 	
-	<div class="well">
+	<div class="well project-well well-hide" id="well-document">
 		<div id="document-list">
 			<%= render 'documents/list' %>
 		</div>
