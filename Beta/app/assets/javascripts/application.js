@@ -31,6 +31,6 @@ $(document).ready(function(){
 		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
 	});
 
-	$("#flash").delay(4000).animate({height: 'toggle', opacity: 'toggle'}, 'slow');
+	$("#flash").delay(4000).animate({height: 'toggle'}, 'slow');
 });
 
