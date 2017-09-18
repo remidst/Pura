@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#project-index-table tr:hover {
+	cursor: pointer;
+	background-color: #cceae7;
+}
+
 .project-top {
 	background-color: #4f5b66;
 	color: #ffffff;

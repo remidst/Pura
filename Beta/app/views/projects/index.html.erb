@@ -7,20 +7,19 @@
     <thead>
       <tr>
         <th>案件名</th>
-        <th colspan="3"></th>
+        <th>メンバー</th>
+        <th colspan="2"></th>
       </tr>
     </thead>
 
-    <tbody>
+    <tbody id="project-index-table">
       <% @projects.each do |project| %>
-        <tr>
+        <tr class="clickable-row" data-link="<%= project_path(project) %>">
           <td><%= project.project_name %></td>
-          <td><%= link_to '詳細', project %></td>
-          <td>
-            <% if policy(project).edit? %>
-              <%= link_to 'エディット', edit_project_path(project) %>
-            <% end %>
+          <td class="project-index-users">
+            <%= project.users.map { |user| user.username }.join(", ") %>
           </td>
+          <td><%= link_to '詳細', project %></td>
           <td>
             <% if policy(project).destroy? %>
               <%= link_to '消す', project, method: :delete, data: { confirm: 'この案件は削除されます' } %>

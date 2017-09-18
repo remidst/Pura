@@ -32,5 +32,9 @@ $(document).ready(function(){
 	});
 
 	$("#flash").delay(4000).animate({height: 'toggle'}, 'slow');
+
+	$("table > tbody > tr[data-link]").not('thead').click(function(){
+		window.location = this.dataset.link
+	});
 });
 
