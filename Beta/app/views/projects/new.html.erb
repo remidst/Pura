@@ -1,8 +1,13 @@
 <div class="container-fluid">
-	<h1>新規案件</h1>
+	
+  <div class="well new-project-well">
+  	<h1>新規案件</h1>
 
-	<%= render 'form', project: @project %>
+	<div class="new-project-box">
+		<%= render 'form', project: @project %>
+	</div>
+  </div>
 
-	<%= link_to '案件一覧へ', projects_path %>
+  <%= link_to '案件一覧へ', projects_path %>
 </div>
 

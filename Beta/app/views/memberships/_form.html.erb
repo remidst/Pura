@@ -1,8 +1,8 @@
 <%= form_for([@project, @project.memberships.build]) do |f| %>
 
 	<p class="form_group">
-		<%= f.label :email, 'メールアドレスから招待する' %><br/>
-	    <%= f.text_field :email %>
+		<%= f.label :email, 'メールアドレスから招待する:' %><br/>
+	    <%= f.text_field :email, class: "form-control" %>
 	</p>
 
 	<p class="form_group">

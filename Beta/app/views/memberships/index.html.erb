@@ -1,6 +1,6 @@
 <div class="container-fluid">
-	<div class="well">
-		<h1><%= @project.project_name %>の案件メンバーを招待する。</h1>
+	<div class="well membership-index-well">
+		<h1><%= @project.project_name %>の案件メンバー</h1>
 
 	    <%= render 'list' %>
 
@@ -11,7 +11,10 @@
 
 	    <%= render 'projects/tokeninput' %>
 
-	    <%= render 'form' %>
+	    <div class="membership-form">
+	    	<%= render 'form' %>
+	    </div>
+	    
 
 	    <%= link_to '案件へ戻る', project_path(@project) %>
 
