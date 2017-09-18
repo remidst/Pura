@@ -7,11 +7,24 @@
 	background-color: #cceae7;
 }
 
+.new-project-well {
+	margin-top: 20px;
+}
+
+.new-project-box {
+	margin-top: 25px;
+	max-width: 350px;
+}
+
+.project-form-box {
+	max-width: 300px;
+}
+
 .project-top {
 	background-color: #4f5b66;
 	color: #ffffff;
 	padding: 30px;
-	padding-top: 10px;
+	padding-left: 45px;
 	margin-left: 0px;
 	margin-right: 0px;
 	width: 100%;
@@ -26,6 +39,7 @@
 	margin-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 20px;
 	font-size: 2em;
 	text-align: center;
 }
@@ -59,7 +73,11 @@
 	display: none;
 }
 
-
+.show-container {
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 #message-list {
 	max-height: 350px;
@@ -70,6 +88,8 @@
 	max-height: 350px;
 	overflow: auto;
 }
+
+
 
 
 

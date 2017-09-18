@@ -1,4 +1,3 @@
-<div class="well">
   <%= form_with(model: project, local: true) do |form| %>
   <% if project.errors.any? %>
     <div id="error_explanation">
@@ -12,14 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form_group">
     <%= form.label :project_name, '案件名:' %>
-    <%= form.text_field :project_name, id: :project_name, :required => 'required' %>
+    <%= form.text_field :project_name, id: :project_name, autofocus: true, :required => 'required', class: "form-control" %>
   </div>
+
+  <br/>
 
   <div class="actions">
     <%= form.submit '登録する', class: "btn btn-info" %>
   </div>
 <% end %>
-</div>
 

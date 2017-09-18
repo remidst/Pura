@@ -1,8 +1,11 @@
 <div class="container-fluid">
-	<h1>案件情報をアップデートする</h1>
 
-	<div class="well">
-		<%= render 'edit', project: @project %>
+	<div class="well well-top-margin">
+	    <h1>案件情報をアップデートする</h1>
+	    <div class="project-form-box">
+	    	<%= render 'edit', project: @project %>
+	    </div>
+		
 	</div>
 
 	<%= link_to '詳細', @project %> |
