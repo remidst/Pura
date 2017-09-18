@@ -99,3 +99,36 @@
 	font-size: 1em;
 	margin-bottom: 0;
 }
+
+.button {
+	border-radius: 1px;
+	margin-top: 10px;
+	font-size: 0.8em;
+}
+
+.button:hover {
+	background-color: none;
+}
+
+.button {
+  font: bold 1em;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #444444;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+
+.button:hover {
+	cursor: pointer;
+	background-color: #EEEEEE;
+}
+
+a:hover {
+	background-color: none;
+	text-decoration: underline;
+	text-color: #333;
+}

@@ -17,13 +17,9 @@
     <% end %>
 
     <% if policy(@project).edit? %>
-    	<%= link_to 'メンバーの管理', project_memberships_path(@project) %>
+    	<div id="member-button"><%= link_to 'メンバーの管理', project_memberships_path(@project), class: "button" %></div>
     <% end %>
 
-    <br/>
-	    <% if policy(@project).edit? %>
-	    	<%= link_to 'エディット', edit_project_path(@project) %> 
-	    <% end %>
 </div>
 
 <div class="tab-panel">
@@ -54,6 +50,9 @@
 		</div>
 	</div>
 
-    <%= link_to '案件一覧へ', projects_path %>
+    <%= link_to '案件一覧へ', projects_path %> |
+    <% if policy(@project).edit? %>
+	    	<%= link_to 'エディット', edit_project_path(@project) %> 
+	    <% end %>
 </div>
 
