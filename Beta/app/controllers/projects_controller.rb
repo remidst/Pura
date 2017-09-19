@@ -60,7 +60,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save(project_params)
 
-        ProjectMailer.new_project_users(@leader, @project).deliver
+        ProjectMailer.create_project(current_user, @project).deliver_now
 
         format.html { redirect_to project_memberships_path(@project), notice: '案件名が登録されました。案件にメンバーを招待してください。' }
         format.json { render :show, status: :ok, location: @project }

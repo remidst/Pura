@@ -1,0 +1,16 @@
+<p>
+	<%= @user.username %>様、<%= @leader.username %>から'<%= @project.project_name %>'の案件に招待されました。
+</p>
+
+<p>
+	他のメンバーとメッセージとファイルの共有をしながら、案件に関する仕事がより円滑にできます。
+</p>
+
+<a href="<%= project_url(@project) %>"><%= @project.project_name %>の案件へ</a>
+
+<p>
+	案件のメンバー：<br/>
+	<% @project.users.each do |user| %>
+	<%= user.username %>, <%= user.company %><br/>
+	<% end %>
+</p>

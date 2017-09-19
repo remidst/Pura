@@ -7,6 +7,8 @@ class Membership < ApplicationRecord
 	
 	validates_uniqueness_of :user_id, scope: :project_id
 
+	after_create :invite_email
+
 
 	def set_user_id
 		existing_user = User.find_by(email: email)
@@ -16,5 +18,13 @@ class Membership < ApplicationRecord
 			User.invite!(email: email)
 		end
 	end
+
+	def invite_email
+		if self.user.id != self.project.leader_id && self.user.username.present?
+			ProjectMailer.user_invited(self.user, self.project).deliver_now
+		else
+		end
+	end
+
 
 end

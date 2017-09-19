@@ -1,6 +1,0 @@
-<%= @user.username %>様、<%= @project.project_name %>'の案件が共有されました。案件内に他のメンバーにファイルやメッセージが共有できます。
-
-案件に招待されたメンバー：
-<% @users.each do |usr| %>
-	<%= usr.username %> <%= usr.company %>
-<% end %>

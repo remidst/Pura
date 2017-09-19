@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class ProjectMailerTest < ActionMailer::TestCase
-  test "new_project_users" do
-    mail = ProjectMailer.new_project_users
+  test "create_project" do
+    mail = ProjectMailer.create_project
     assert_equal "New project", mail.subject
     assert_equal ["to@example.org"], mail.to
     assert_equal ["from@example.com"], mail.from
