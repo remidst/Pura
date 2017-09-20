@@ -77,8 +77,33 @@ class ProjectsController < ApplicationController
   def update
     prjct = project_params 
     prjct[:user_tokens] << ", #{current_user.id}"
+
+    #create an array with the user ids that will disapear
+    #prepare the matrix, and make sure to have only integers
+    array_project_users=@project.user_ids
+    array_user_tokens=prjct[:user_tokens].split(',')
+    array_user_tokens.map! {|x| x.to_i }
+
+    #array operation to retrive only the id that will disapear
+    array_delete_ids = (array_project_users - array_user_tokens)
+    
+    #if the array with ids to delete is not empty, transform it into array with user records
+    array_delete_ids.map! { |id| User.find(id) }.join(',') if array_delete_ids.present?
+
     respond_to do |format|
       if @project.update(prjct)
+
+        #send notification email to those who will be deleted from the project
+        puts "envoi des emails :"
+        if array_delete_ids.present?
+          array_delete_ids.each do |user|
+            ProjectMailer.goodbye_registered_user(user, @project).deliver_now
+          end
+          "emails envoyés"
+        else
+        end
+
+
         format.html { redirect_to @project, notice: '案件情報のアップデートが成功しました。' }
         format.json { render :show, status: :ok, location: @project }
       else

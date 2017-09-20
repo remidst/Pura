@@ -21,4 +21,12 @@ class ProjectMailer < ApplicationMailer
     mail to: @user.email, subject: "#{@leader.username}様から'#{@project.project_name}'の案件に招待されました。"
   end
 
+  def goodbye_registered_user(user, project)
+    @user=user
+    @project=project
+    @leader=User.find(@project.leader_id)
+
+    mail to: @user.email, subject: "'#{@project.project_name}'の案件へのアクセスが削除されました"
+  end
+
 end
