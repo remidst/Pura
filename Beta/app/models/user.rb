@@ -10,8 +10,14 @@ class User < ApplicationRecord
 
   attribute :email, :string
 
+  after_create :welcome_email
+
   def project
     self.projects.first
+  end
+
+  def welcome_email
+    UserMailer.welcome(self).deliver_now if self.username.present?
   end
 
 end
