@@ -29,4 +29,20 @@ class ProjectMailer < ApplicationMailer
     mail to: @user.email, subject: "'#{@project.project_name}'の案件へのアクセスが削除されました"
   end
 
+  def old_leader_email(user, project)
+    @old_leader=user
+    @project = project
+    @new_leader = User.find(@project.leader_id)
+
+    mail to: @old_leader.email, subject: "'#{@project.project_name}'の案件のオーナーが変わりました。"
+  end
+
+  def new_leader_email(user, project)
+    @old_leader=user
+    @project=project
+    @new_leader=User.find(@project.leader_id)
+
+    mail to: @new_leader=User.find(@project.leader_id), subject: "'#{@project.project_name}'の案件のオーナーの権限が与えられました。"
+  end
+
 end
