@@ -122,6 +122,7 @@ class ProjectsController < ApplicationController
           array_delete_ids.each do |user|
             ProjectMailer.goodbye_registered_user(user, @project).deliver_now
           end
+          ProjectMailer.goodbye_registered_user_leader_notice(array_delete_ids, @project).deliver_now
         else
         end
 

@@ -29,6 +29,14 @@ class ProjectMailer < ApplicationMailer
     mail to: @user.email, subject: "'#{@project.project_name}'の案件へのアクセスが削除されました"
   end
 
+  def goodbye_registered_user_leader_notice(users, project)
+    @deleted=users
+    @project = project
+    @leader = User.find(@project.leader_id)
+
+    mail to: @leader.email, subject: "'#{@project.project_name}'からユーザーが削除されました。"
+  end
+
   def old_leader_email(user, project)
     @old_leader=user
     @project = project

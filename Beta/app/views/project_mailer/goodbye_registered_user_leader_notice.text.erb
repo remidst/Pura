@@ -1,0 +1,9 @@
+<%= @leader.username %>様
+
+'<%= @project.project_name %>'の案件から次のメンバーが削除されました：
+
+<% @deleted.each do |user| %>
+<%= user.username %>, <%= user.company %>
+<% end %>
+
+<%= link_to '案件を見る', project_url(@project) %>

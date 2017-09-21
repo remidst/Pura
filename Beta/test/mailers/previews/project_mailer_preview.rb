@@ -19,4 +19,10 @@ class ProjectMailerPreview < ActionMailer::Preview
     ProjectMailer.goodbye_registered_user(user, project)
   end
 
+  def goodbye_registered_user_leader_notice
+    users = [User.first, User.second]
+    project = Project.last
+    ProjectMailer.goodbye_registered_user_leader_notice(users, project)
+  end
+
 end

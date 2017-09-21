@@ -1,0 +1,11 @@
+<p><%= @leader.username %>様</p>
+
+<p>'<%= @project.project_name %>'の案件から次のメンバーが削除されました：</p>
+
+<p>
+<% @deleted.each do |user| %>
+<%= user.username %>, <%= user.company %><br/>
+<% end %>
+</p>
+
+<p><%= link_to '案件を見る', project_url(@project) %></p>
