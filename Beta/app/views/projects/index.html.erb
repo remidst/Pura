@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h1>案件一覧</h1><br/>
+  <h1 class="h1-top-margin">案件一覧</h1><br/>
 
   <%= link_to '+新規案件', new_project_path, class: "btn btn-info" %><br/>
 
@@ -17,7 +17,13 @@
         <tr class="clickable-row" data-link="<%= project_path(project) %>">
           <td><%= project.project_name %></td>
           <td class="project-index-users">
-            <%= project.users.map { |user| user.username }.join(", ") %>
+            <% project.users.each do |user| %>
+              <% if user.username.present? %>
+              <%= user.username %><%= ", " unless user==project.users.last %>
+              <% else %>
+              <%= user.email%><%= ", " unless user==project.users.last %>
+              <%end%>
+            <% end %>
           </td>
           <td><%= link_to '詳細', project %></td>
           <td>
