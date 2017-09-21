@@ -42,7 +42,7 @@ class ProjectMailer < ApplicationMailer
     @project=project
     @new_leader=User.find(@project.leader_id)
 
-    mail to: @new_leader=User.find(@project.leader_id), subject: "'#{@project.project_name}'の案件のオーナーの権限が与えられました。"
+    mail to: @new_leader.email, subject: "'#{@project.project_name}'の案件のオーナーの権限が与えられました。"
   end
 
 end
