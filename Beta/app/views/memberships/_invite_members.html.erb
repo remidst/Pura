@@ -1,4 +1,4 @@
-<%= form_for [@project, @project.memberships.build], url: membership_update_members_path(@project) do |f| %>
+<%= form_for @membership, url: membership_update_members_path(@project) do |f| %>
 
 	<p class="form_group">
 		<%= f.label :email, 'メールアドレスから招待する:' %><br/>

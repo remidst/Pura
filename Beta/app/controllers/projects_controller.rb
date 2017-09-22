@@ -38,6 +38,8 @@ class ProjectsController < ApplicationController
 	ids_to_ignore = @invited.ids
 	ids_to_ignore << current_user.id
 	@tokens = @project.users.where.not(id: ids_to_ignore)
+
+	@membership=@project.memberships.build
   end
 
   def update_members

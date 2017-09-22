@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
 
-	before_action :set_project
+	before_action :set_project, only: [:new, :create, :index]
 
 	def new		
 		@membership=@project.memberships.new
@@ -12,7 +12,7 @@ class MembershipsController < ApplicationController
 
 		if @membership.save
 
-			redirect_to project_edit_leader_path(@membership.project), notice: '新しいメンバーが招待されました。'
+			redirect_to project_path(@membership.project), notice: '新しいメンバーが招待されました。'
 		else
 			redirect_to @project, warning: 'メンバーの招待が失敗しました。'
 	    end
@@ -25,6 +25,18 @@ class MembershipsController < ApplicationController
 		ids_to_ignore = @invited.ids
 		ids_to_ignore << current_user.id
 		@tokens = @project.users.where.not(id: ids_to_ignore)
+    end
+
+    def update_members
+    	@project = current_user.projects.find(params[:id])
+    	@membership = @project.memberships.new(membership_params)
+    	@membership.set_user_id!(current_user)
+
+    	if @membership.save
+    		redirect_to project_edit_leader_path(@membership.project), notice: '新しいメンバーが招待されました。'
+    	else
+    		redirect_to @project, warning: 'メンバーの招待が失敗しました。'
+    	end
     end
 
 
