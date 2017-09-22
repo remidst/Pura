@@ -4,7 +4,16 @@ class InvitationsController < Devise::InvitationsController
 
 	#PUT /resource/invitation
 
+	def edit
+		@project = resource.projects.first
+		@leader = User.find(@project.leader_id)
+		
+		super
+	end
+
 	def update
+
+
 		respond_to do |format|
 			format.js do 
 				invitation_token = Devise.token_generator.digest(resource_class, :invitation_token, update_resource_params[:invitation_token])

@@ -13,7 +13,7 @@ en:
         header: "招待状を送る。"
         submit_button: "送る"
       edit:
-        header: "パスワードを記入してください。"
+        header: "アカウント情報を記入してください"
         submit_button: "登録する"
     mailer:
       invitation_instructions:

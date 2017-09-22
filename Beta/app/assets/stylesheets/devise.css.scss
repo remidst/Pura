@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.home {
+	position:relative
+}
+
 .sign-in {
 	max-width :340px;
 	float: left;
@@ -16,6 +20,28 @@
 
 }
 
-.home {
-	position:relative
+.sign-up-invited {
+	max-width :800px;
+	position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+	background-color: #F6F6F6;
+	padding: 25px;
+	border-radius: 2px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
+
+.sign-up-invited-head {
+	text-align: center;
+}
+
+.sign-up-invited-box {
+	max-width: 340px;
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
