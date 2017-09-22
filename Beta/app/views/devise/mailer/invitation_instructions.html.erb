@@ -9,3 +9,9 @@
 <% end %>
 
 <p><%= t("devise.mailer.invitation_instructions.ignore").html_safe %></p>
+
+ <p><%= @resource.email %>様</p>
+
+ <p><%= @resource.invited_by.username %>様からプラプラで作成された案件へ招待されました。</p>
+
+ <%= link_to "登録する", accept_invitation_url(@resource, invitation_token: @token) %>

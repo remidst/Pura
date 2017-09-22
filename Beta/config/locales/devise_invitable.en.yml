@@ -17,7 +17,7 @@ en:
         submit_button: "登録する"
     mailer:
       invitation_instructions:
-        subject: "プラプラの案件へ招待されました。"
+        subject: "%{invited_by}様からプラプラの案件へ招待されました。"
         hello: "%{email}様"
         someone_invited_you: "プラプラで作成された案件に招待されました。下記のurlからアカウントを登録して案件にアクセスしてください"
         accept: "案件にアクセスする"
