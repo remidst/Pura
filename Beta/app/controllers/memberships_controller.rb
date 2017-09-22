@@ -8,9 +8,10 @@ class MembershipsController < ApplicationController
 
 	def create
 		@membership = @project.memberships.new(membership_params)
-		@membership.set_user_id!(current_user)
+	    @membership.set_user_id!(current_user)
 
 		if @membership.save
+
 			redirect_to project_edit_leader_path(@membership.project), notice: '新しいメンバーが招待されました。'
 		else
 			redirect_to @project, warning: 'メンバーの招待が失敗しました。'
