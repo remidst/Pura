@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :edit_leader, :update, :update_leader, :destroy]
+  before_action :set_project, only: [:show, :edit, :invite_members, :update_members, :edit_leader, :update, :update_leader, :destroy]
 
   # GET /projects
   # GET /projects.json
@@ -28,6 +28,35 @@ class ProjectsController < ApplicationController
   def edit
     authorize @project
     @users = @project.users.where.not("username is null")
+  end
+
+  def invite_members
+  	authorize @project
+  	@invited = @project.users.where("username is null")
+  	@users = @project.users.where.not("username is null")
+		
+	ids_to_ignore = @invited.ids
+	ids_to_ignore << current_user.id
+	@tokens = @project.users.where.not(id: ids_to_ignore)
+  end
+
+  def update_members
+  	prjct = members_params
+
+  	#make sure not to delete curent user (leader) from the project
+    prjct[:user_tokens] << ", #{current_user.id}"
+
+    respond_to do |format|
+      if @project.update(prjct)
+
+        format.html { redirect_to project_edit_leader_path(@project), notice: '案件にメンバーが招待されました。案件のオーナーを設定してください' }
+        format.json { render :show, status: :ok, location: @project }
+      else
+        format.html { render :invite_members }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   def edit_leader
@@ -62,7 +91,7 @@ class ProjectsController < ApplicationController
 
         ProjectMailer.create_project(current_user, @project).deliver_now
 
-        format.html { redirect_to project_memberships_path(@project), notice: '案件名が登録されました。案件にメンバーを招待してください。' }
+        format.html { redirect_to project_invite_members_path(@project), notice: '案件名が登録されました。案件にメンバーを招待してください。' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -99,14 +128,11 @@ class ProjectsController < ApplicationController
       else
       end
 
-
-
       #array operation to retrive only the id that will disapear
       array_delete_ids = (array_project_users - array_user_tokens)
 
       #if the array with ids to delete is not empty, transform it into array with user records
       array_delete_ids.map! { |id| User.find(id) }.join(',') if array_delete_ids.present?
-
 
     else
     end
@@ -160,6 +186,10 @@ class ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
+    end
+
+    def members_params
+    	params.require(:project).permit(:user_tokens)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,0 +1,24 @@
+<%= form_for @project, url: project_update_members_path(@project) do |form| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2> エラーが<%= pluralize(@project.errors.count, "error") %>回発生しました:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form_group">
+    <%= form.label :user_tokens, '名前からメンバーを探す:' %>
+    <%= form.text_field :user_tokens, id: :project_user_tokens, data: {load: @tokens } %>
+  </div>
+
+  <div class="actions member-update">
+    <%= form.submit 'アップデート', class: "btn btn-info" %>
+  </div>
+
+<% end %>
+

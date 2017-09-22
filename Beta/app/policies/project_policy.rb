@@ -14,6 +14,10 @@ class ProjectPolicy < ApplicationPolicy
 		user.id == project.leader_id
 	end
 
+	def invite_members?
+		user.id == project.leader_id
+	end
+
 	def destroy?
 		user.id == project.leader_id
 	end
