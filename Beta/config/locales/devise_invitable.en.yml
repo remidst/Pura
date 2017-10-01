@@ -1,13 +1,13 @@
 en:
   devise:
     failure:
-      invited: "招待状に返事をしてからアカウントの作成を完了してください。"
+      invited: "招待状が届いています。招待状からアカウントの作成を完了してください。"
     invitations:
       send_instructions: "%{email}に招待状のメールが送られました。"
-      invitation_token_invalid: "招待状のIdが見つかりませんでした。"
+      invitation_token_invalid: "招待状を送りましたが、送付先のアカウントが見つかりませんでした。"
       updated: "パスワードが登録されました。サインインが成功しました。"
       updated_not_active: "パスワードが登録されました。"
-      no_invitations_remaining: "招待状はもう残ってません。"
+      no_invitations_remaining: "招待状は残ってません。"
       invitation_removed: "招待状が削除されました。"
       new:
         header: "招待状を送る。"

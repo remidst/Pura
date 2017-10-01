@@ -10,7 +10,7 @@ class ProjectMailer < ApplicationMailer
   	@user = user
   	@project = project
 
-  	mail to: @user.email, subject: "新しい案件'#{@project.project_name}'が登録されました。" 
+  	mail to: @user.email, subject: "新しい案件'#{@project.project_name}'が作成されました。"
   end
 
   def user_invited(user, project)
@@ -42,7 +42,7 @@ class ProjectMailer < ApplicationMailer
     @project = project
     @new_leader = User.find(@project.leader_id)
 
-    mail to: @old_leader.email, subject: "'#{@project.project_name}'の案件のオーナーが変わりました。"
+    mail to: @old_leader.email, subject: "'#{@project.project_name}'の案件の担当マネジャーが変わりました。"
   end
 
   def new_leader_email(user, project)
@@ -50,7 +50,7 @@ class ProjectMailer < ApplicationMailer
     @project=project
     @new_leader=User.find(@project.leader_id)
 
-    mail to: @new_leader.email, subject: "'#{@project.project_name}'の案件のオーナーの権限が与えられました。"
+    mail to: @new_leader.email, subject: "'#{@project.project_name}'の案件の担当マネジャーの権限が与えられました。"
   end
 
 end
