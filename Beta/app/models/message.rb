@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-	belongs_to :project
+	belongs_to :conversation
 	belongs_to :user
 
 	def set_user!(user)

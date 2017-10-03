@@ -4,7 +4,7 @@ class Project < ApplicationRecord
 	attr_reader :user_tokens
 
 	has_one :leader, class_name: 'User', foreign_key: 'leader_id'
-	has_many :messages, dependent: :destroy
+	has_many :conversations, dependent: :destroy
 	has_many :documents, dependent: :destroy
 
   def leader
