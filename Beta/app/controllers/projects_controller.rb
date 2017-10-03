@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
     @users=@project.users.where.not("username is null")
     @leader=@project.users.find(@project.leader_id)
     @invited=@project.users.where("username is null")
+
+    @conversations = @project.conversations
   end
 
   # GET /projects/new
@@ -155,6 +157,13 @@ class ProjectsController < ApplicationController
 
       #create the conversations for the added users
       array_added_ids = (array_user_tokens - array_project_users)
+      array_reconducted_ids = (array_user_tokens - array_added_ids)
+      new_conversations_ids = array_added_ids.product(array_reconducted_ids)
+      new_conversations_ids << new_conversations_ids.combination(2).to_a
+
+      #update the group conversation
+      main_conversation = @project.conversation.where(conversation.users.count == array_project_users.count)
+      main_conversation.update(user_ids: prjct[:user_tokens])
       
 
     else

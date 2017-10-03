@@ -4,11 +4,11 @@ class MessagesController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    @user = current_user
-    @message = @project.messages.create(message_params)
+    @conversation = Conversation.find(params[:conversation_id])
+    @message = @conversation.messages.create(message_params)
     @message.set_user!(current_user)
 
-    redirect_to project_path(@project), notice: "メッセージが案件メンバーに共有されました。"
+    redirect_to project_path(@project), notice: "メッセージが共有されました。"
   end
 
   def edit

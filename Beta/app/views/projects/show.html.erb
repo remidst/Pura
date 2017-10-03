@@ -33,19 +33,27 @@
 	<div class="well project-well" id="well-msg">
 		<div id="conversation-nav">
 			<ul>
-			<% @project.conversations.each do |conversation| %>
-				<li><%= conversation.users.username %></li>
+			<% @conversations.each do |conversation| %>
+				<li class="conversation-list" id="<%= conversation.id %>"><%= conversation.users.username %></li>
 			<% end %>
 			</ul>
 		</div>
 
-
 		<div id="message-list">
-			<%= render 'messages/list' %>
+			<% @conversations.each do |conversation| %>
+				<div class="conversation-messages" id="<%= conversation.id %>">
+					<%= render 'messages/list' %>
+				</div>
+			<% end %>
 		</div>	
 
-		<div>
-			<%= render 'messages/form' %>
+		<div id="message-form">
+			<% @conversations.each do |conversation| %>
+				<div class="conversation-form" id="<%= conversation.id %>">
+					<%= render 'messages/form' %>
+				</div>
+			<% end %>
+			
 		</div>
 
     </div>
