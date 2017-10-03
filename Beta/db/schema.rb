@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911153233) do
+ActiveRecord::Schema.define(version: 20171003110602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversation_users", force: :cascade do |t|
+    t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_conversation_users_on_conversation_id"
+    t.index ["user_id"], name: "index_conversation_users_on_user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_conversations_on_project_id"
+  end
 
   create_table "documents", force: :cascade do |t|
     t.string "attachment"
@@ -49,9 +65,9 @@ ActiveRecord::Schema.define(version: 20170911153233) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "project_id"
     t.bigint "user_id"
-    t.index ["project_id"], name: "index_messages_on_project_id"
+    t.bigint "conversation_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -121,7 +137,7 @@ ActiveRecord::Schema.define(version: 20170911153233) do
 
   add_foreign_key "documents", "projects"
   add_foreign_key "documents", "users"
-  add_foreign_key "messages", "projects"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "projects", "users", column: "leader_id"
 end
