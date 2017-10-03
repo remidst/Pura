@@ -48,6 +48,19 @@ class ProjectsController < ApplicationController
   	#make sure not to delete curent user (leader) from the project
     prjct[:user_tokens] << ", #{current_user.id}"
 
+    #create a general conversation with all users
+    @project.conversation.create(user_ids: prjct[:user_tokens])
+
+    #convert user_tokens params to an array, to obtain all combinations of 2 elements -i.e all the 1 to 1 conversations
+    array_user_tokens = prjct[:user_tokens].split(',')
+    conversation_tokens = array_user_tokens.combination(2).to_a
+
+    #iterate over conversation tokens to create each 1 to 1 conversation within the project
+    conversation_tokens.each do |tokens|
+      string_tokens = tokens.join(',').to_s
+      @project.conversation.create(user_ids: string_tokens)
+    end
+
     respond_to do |format|
       if @project.update(prjct)
 
@@ -87,9 +100,13 @@ class ProjectsController < ApplicationController
     @project.leader_id = current_user.id
     @leader = User.find(@project.leader_id)
 
+    conversation = @project.conversation.new
+    conversation.users << current_user
+
 
     respond_to do |format|
       if @project.save(project_params)
+
 
         ProjectMailer.create_project(current_user, @project).deliver_now
 
@@ -110,7 +127,7 @@ class ProjectsController < ApplicationController
 
     if prjct[:user_tokens].present?
 
-      #create an array with the user ids that will disapear prepare the matrix, and make sure to have only integers
+      #create an array with the user ids that will disapear, and make sure to have only integers
       array_project_users=@project.user_ids
       array_user_tokens=prjct[:user_tokens].split(',')
       array_user_tokens.map! {|x| x.to_i }
@@ -135,6 +152,10 @@ class ProjectsController < ApplicationController
 
       #if the array with ids to delete is not empty, transform it into array with user records
       array_delete_ids.map! { |id| User.find(id) }.join(',') if array_delete_ids.present?
+
+      #create the conversations for the added users
+      array_added_ids = (array_user_tokens - array_project_users)
+      
 
     else
     end
