@@ -37,18 +37,20 @@ $(document).ready(function(){
 		window.location = this.dataset.link
 	});
 
+	$("#well-document").hide();
+
 	$("#nav-file").click(function(){
 		$(".nav-show").removeClass("nav-selected");
 		$(this).addClass("nav-selected");
-		$(".project-well").removeClass("well-hide");
-		$("#well-msg").addClass("well-hide");
+		$("#well-document").show();
+		$("#well-msg").hide();
 	});
 
 	$("#nav-msg").click(function(){
 		$(".nav-show").removeClass("nav-selected");
 		$(this).addClass("nav-selected");
-		$(".project-well").removeClass("well-hide");
-		$("#well-document").addClass("well-hide");
+		$("#well-msg").show();
+		$("#well-document").hide();
 	});
 
 	$("conversation-messages").hide();
@@ -65,7 +67,6 @@ $(document).ready(function(){
 		$(".conversation-messages").hide();
 		$(".conversation-form").hide();
 		var id_var=$(this).attr('id');
-		alert(id_var);
 		$(".conversation-messages#messages" + id_var).show();
 		$(".conversation-form#form-" + id_var).show();
 	});

@@ -31,15 +31,25 @@
 
 <div class="container-fluid show-container">
 	<div class="well project-well" id="well-msg">
-		<div class="conversation-block">
+		<div class="conversation-flex">
 			<div id="conversation-nav">
 				<ul id="conversation-nav-list">
 				<% @conversations.each do |conversation| %>
-					<li class="conversation-list" id="<%= conversation.id %>"><% conversation.users.each do |user| %><%= user.username unless user==current_user %><%= ' '%><% end %></li>
+					<li class="conversation-list" id="<%= conversation.id %>">
+						<% if conversation.users.count > 2 %>
+							<%= '全メンバー' %>
+						<% else %>
+							<% conversation.users.each do |user| %>
+								<%= user.username unless user==current_user %>
+							<% end %>
+						<% end %>
+					</li>
 				<% end %>
 				</ul>
 			</div>
+		</div>
 
+		<div class="conversation-flex" id="message-block">
 			<div id="message-list">
 				<%= render 'messages/list' %>
 			</div>	
