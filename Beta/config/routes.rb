@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
   resources :projects do
-  	resources :messages
   	resources :documents
   	resources :memberships
+  end
+
+  resources :conversations do
+    resources :messages
   end
 
   get 'project/:id/invite_members' => 'projects#invite_members', as: :project_invite_members

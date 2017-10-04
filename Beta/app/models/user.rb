@@ -5,6 +5,9 @@ class User < ApplicationRecord
   has_many :projects, through: :memberships
   has_many :documents
   has_many :messages
+  has_many :conversation_users
+  has_many :conversations, through: :conversation_users
+
 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

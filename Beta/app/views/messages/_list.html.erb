@@ -1,11 +1,19 @@
-<% conversation.messages.each do |msg| %>
-	<div class="message-block">
-		<div class="message-info">
-			<%= msg.user.try(:username) %>
-		    <%= msg.created_at.try(:strftime, '%Y-%m-%d') %>
-		</div>
-		<div class="message-content">
-			<%= msg.content %>
-		</div>
+<% @conversations.each do |conversation| %>
+	<div class="conversation-messages" id="<%= conversation.id %>">
+		<% conversation.messages.each do |msg| %>
+			<div class="message-block">
+				<div class="message-info">
+					<%= msg.user.try(:username) %>
+				    <%= msg.created_at.try(:strftime, '%Y-%m-%d') %>
+				</div>
+				<div class="message-content">
+					<%= msg.content %>
+				</div>
+			</div>
+		<% end %>
 	</div>
 <% end %>
+
+
+
+

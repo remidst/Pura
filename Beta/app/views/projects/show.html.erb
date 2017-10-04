@@ -31,31 +31,23 @@
 
 <div class="container-fluid show-container">
 	<div class="well project-well" id="well-msg">
-		<div id="conversation-nav">
-			<ul>
-			<% @conversations.each do |conversation| %>
-				<li class="conversation-list" id="<%= conversation.id %>"><%= conversation.users.username %></li>
-			<% end %>
-			</ul>
+		<div class="conversation-block">
+			<div id="conversation-nav">
+				<ul id="conversation-nav-list">
+				<% @conversations.each do |conversation| %>
+					<li class="conversation-list" id="<%= conversation.id %>"><% conversation.users.each do |user| %><%= user.username %><% end %></li>
+				<% end %>
+				</ul>
+			</div>
+
+			<div id="message-list">
+				<%= render 'messages/list' %>
+			</div>	
+
+			<div id="message-form">
+				<%= render 'messages/form' %>
+			</div>
 		</div>
-
-		<div id="message-list">
-			<% @conversations.each do |conversation| %>
-				<div class="conversation-messages" id="<%= conversation.id %>">
-					<%= render 'messages/list' %>
-				</div>
-			<% end %>
-		</div>	
-
-		<div id="message-form">
-			<% @conversations.each do |conversation| %>
-				<div class="conversation-form" id="<%= conversation.id %>">
-					<%= render 'messages/form' %>
-				</div>
-			<% end %>
-			
-		</div>
-
     </div>
 	
 	<div class="well project-well well-hide" id="well-document">

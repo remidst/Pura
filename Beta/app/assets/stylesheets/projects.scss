@@ -88,6 +88,20 @@
 	overflow: auto;
 }
 
+#conversation-nav {
+	float:left;
+	height:100%;
+	max-width: 150px;
+}
+
+#message-list {
+	max-height: 400px;
+}
+
+#message-form {
+	max-height: 100px;
+}
+
 #document-list {
 	max-height: 350px;
 	overflow: auto;

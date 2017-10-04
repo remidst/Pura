@@ -11,7 +11,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @messages=@project.messages.order('created_at DESC')
     @documents=@project.documents.order('created_at DESC')
 
     @users=@project.users.where.not("username is null")
@@ -48,19 +47,27 @@ class ProjectsController < ApplicationController
   	prjct = members_params
 
   	#make sure not to delete curent user (leader) from the project
-    prjct[:user_tokens] << ", #{current_user.id}"
+    prjct[:user_tokens] << ",#{current_user.id}"
+    puts prjct[:user_tokens]
+
+    #convert user tokens into an array
+    array_user_tokens = prjct[:user_tokens].split(',')
+    puts array_user_tokens
 
     #create a general conversation with all users
-    @project.conversation.create(user_ids: prjct[:user_tokens])
+    conversation = @project.conversations.first
+    conversation.update(user_ids: array_user_tokens)
 
-    #convert user_tokens params to an array, to obtain all combinations of 2 elements -i.e all the 1 to 1 conversations
-    array_user_tokens = prjct[:user_tokens].split(',')
+    #get all combinations of 2 elements -i.e all the 1 to 1 conversations
     conversation_tokens = array_user_tokens.combination(2).to_a
+    conversation_tokens.each do |tokens|
+      puts "first token"
+      puts tokens
+    end
 
     #iterate over conversation tokens to create each 1 to 1 conversation within the project
     conversation_tokens.each do |tokens|
-      string_tokens = tokens.join(',').to_s
-      @project.conversation.create(user_ids: string_tokens)
+      @project.conversations.create(user_ids: tokens)
     end
 
     respond_to do |format|
@@ -100,16 +107,11 @@ class ProjectsController < ApplicationController
     @project =Project.new(project_params)
     @project.users << current_user
     @project.leader_id = current_user.id
-    @leader = User.find(@project.leader_id)
-
-    conversation = @project.conversation.new
-    conversation.users << current_user
-
 
     respond_to do |format|
       if @project.save(project_params)
 
-
+        conversation = @project.conversations.create(user_ids: current_user.id)
         ProjectMailer.create_project(current_user, @project).deliver_now
 
         format.html { redirect_to project_invite_members_path(@project), notice: '案件名が登録されました。案件にメンバーを招待してください。' }
@@ -157,13 +159,32 @@ class ProjectsController < ApplicationController
 
       #create the conversations for the added users
       array_added_ids = (array_user_tokens - array_project_users)
+      puts "array added ids"
+      puts array_added_ids
+
       array_reconducted_ids = (array_user_tokens - array_added_ids)
+      puts "array reconducted"
+      puts array_reconducted_ids
+
       new_conversations_ids = array_added_ids.product(array_reconducted_ids)
+      puts "new conversations id product"
+      puts new_conversations_ids
       new_conversations_ids << new_conversations_ids.combination(2).to_a
+      puts "new conversation ids combination"
+      puts new_conversations_ids
+
+      new_conversations_ids.each do |ids|
+        @project.conversations.create(user_ids: ids)
+      end
+
 
       #update the group conversation
       main_conversation = @project.conversation.where(conversation.users.count == array_project_users.count)
+      puts "main conversation"
+      puts main_conversation
       main_conversation.update(user_ids: prjct[:user_tokens])
+      puts "update on main conversation"
+      puts main_conversation
       
 
     else
