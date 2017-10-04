@@ -1,5 +1,5 @@
 <% @conversations.each do |conversation| %>
-	<div class="conversation-form" id="<%= conversation.id %>">
+	<div class="conversation-form" id="form-<%= conversation.id %>">
 		<%= form_for([conversation, conversation.messages.build]) do |f| %>
 			<p class="form_group">
 			  <%= f.label :content, '新しいメッセージ:' %><br>

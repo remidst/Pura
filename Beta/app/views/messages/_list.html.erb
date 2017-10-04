@@ -1,5 +1,5 @@
 <% @conversations.each do |conversation| %>
-	<div class="conversation-messages" id="<%= conversation.id %>">
+	<div class="conversation-messages" id="messages-<%= conversation.id %>">
 		<% conversation.messages.each do |msg| %>
 			<div class="message-block">
 				<div class="message-info">

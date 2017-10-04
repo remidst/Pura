@@ -50,5 +50,24 @@ $(document).ready(function(){
 		$(".project-well").removeClass("well-hide");
 		$("#well-document").addClass("well-hide");
 	});
+
+	$("conversation-messages").hide();
+	$(".conversation-form").hide();
+
+
+	$("li.conversation-list").first().addClass("conversation-selected");
+	$(".conversation-messages").first().show();
+	$(".conversation-form").first().show();
+
+	$("li.conversation-list").click(function(){
+		$("li.conversation-list").removeClass("conversation-selected");
+		$(this).addClass("conversation-selected");
+		$(".conversation-messages").hide();
+		$(".conversation-form").hide();
+		var id_var=$(this).attr('id');
+		alert(id_var);
+		$(".conversation-messages#messages" + id_var).show();
+		$(".conversation-form#form-" + id_var).show();
+	});
 });
 

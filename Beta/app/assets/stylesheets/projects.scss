@@ -104,9 +104,21 @@ li.conversation-list {
 	border: 1px #cceae7;
 }
 
+li.conversation-list .conversation-selected {
+	background-color: #cceae7;
+}
+
 li.conversation-list:hover {
 	cursor: pointer;
 	background-color: #5bc0de;
+}
+
+.conversation-messages{
+	display: none;
+}
+
+.conversation-form {
+	display: none;
 }
 
 #message-list {
