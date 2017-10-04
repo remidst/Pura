@@ -48,26 +48,23 @@ class ProjectsController < ApplicationController
 
   	#make sure not to delete curent user (leader) from the project
     prjct[:user_tokens] << ",#{current_user.id}"
-    puts prjct[:user_tokens]
 
     #convert user tokens into an array
     array_user_tokens = prjct[:user_tokens].split(',')
-    puts array_user_tokens
 
-    #create a general conversation with all users
+    #update general conversation with all users
     conversation = @project.conversations.first
     conversation.update(user_ids: array_user_tokens)
 
     #get all combinations of 2 elements -i.e all the 1 to 1 conversations
     conversation_tokens = array_user_tokens.combination(2).to_a
-    conversation_tokens.each do |tokens|
-      puts "first token"
-      puts tokens
-    end
 
     #iterate over conversation tokens to create each 1 to 1 conversation within the project
-    conversation_tokens.each do |tokens|
-      @project.conversations.create(user_ids: tokens)
+    if conversation_tokens.count > 1
+      conversation_tokens.each do |tokens|
+        @project.conversations.create(user_ids: tokens)
+      end
+    else
     end
 
     respond_to do |format|
@@ -159,30 +156,40 @@ class ProjectsController < ApplicationController
 
       #create the conversations for the added users
       array_added_ids = (array_user_tokens - array_project_users)
-      puts "array added ids"
-      puts array_added_ids
 
-      array_reconducted_ids = (array_user_tokens - array_added_ids)
-      puts "array reconducted"
-      puts array_reconducted_ids
+      if array_added_ids.present?
 
-      new_conversations_ids = array_added_ids.product(array_reconducted_ids)
-      puts "new conversations id product"
-      puts new_conversations_ids
-      new_conversations_ids << new_conversations_ids.combination(2).to_a
-      puts "new conversation ids combination"
-      puts new_conversations_ids
+        array_reconducted_ids = (array_user_tokens - array_added_ids)
 
-      new_conversations_ids.each do |ids|
-        @project.conversations.create(user_ids: ids)
+        new_conversations_ids = array_added_ids.product(array_reconducted_ids)
+
+        if new_conversations_ids.present?
+          new_conversations_ids.each do |ids|
+            puts "loop is running"
+            @project.conversations.create(user_ids: ids)
+          end
+        end
+
+
+        array_combination = array_added_ids.combination(2).to_a
+        array_combination.compact!
+
+        if array_combination.present?
+          array_combination.each do |ids|
+            puts "array loop"
+            @project.conversations.create(user_ids: ids)
+          end
+        end
+
+      else
       end
 
 
       #update the group conversation
-      main_conversation = @project.conversation.where(conversation.users.count == array_project_users.count)
+      main_conversation = @project.conversations.first
       puts "main conversation"
       puts main_conversation
-      main_conversation.update(user_ids: prjct[:user_tokens])
+      main_conversation.update(user_ids: array_user_tokens)
       puts "update on main conversation"
       puts main_conversation
       
