@@ -35,7 +35,7 @@
 			<div id="conversation-nav">
 				<ul id="conversation-nav-list">
 				<% @conversations.each do |conversation| %>
-					<li class="conversation-list" id="<%= conversation.id %>"><% conversation.users.each do |user| %><%= user.username %><% end %></li>
+					<li class="conversation-list" id="<%= conversation.id %>"><% conversation.users.each do |user| %><%= user.username unless user==current_user %><%= ' '%><% end %></li>
 				<% end %>
 				</ul>
 			</div>

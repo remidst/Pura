@@ -89,9 +89,24 @@
 }
 
 #conversation-nav {
-	float:left;
 	height:100%;
 	max-width: 150px;
+}
+
+ul#conversation-nav-list {
+	padding: 0px;
+	list-style-type: none;
+}
+
+li.conversation-list {
+	list-style-type: none;
+	padding: 0;
+	border: 1px #cceae7;
+}
+
+li.conversation-list:hover {
+	cursor: pointer;
+	background-color: #5bc0de;
 }
 
 #message-list {

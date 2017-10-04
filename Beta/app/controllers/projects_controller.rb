@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     @leader=@project.users.find(@project.leader_id)
     @invited=@project.users.where("username is null")
 
-    @conversations = @project.conversations
+    @conversations = current_user.conversations.where(project_id: @project.id)
   end
 
   # GET /projects/new
