@@ -205,10 +205,21 @@ class ProjectsController < ApplicationController
 
         #send notification email to those who will be deleted from the project
         if prjct[:user_tokens].present? && array_delete_ids.present?
+
+          #send emails to each deleted user
           array_delete_ids.each do |user|
             ProjectMailer.goodbye_registered_user(user, @project).deliver_now
           end
+
+          #send email to leader to confirm deletion
           ProjectMailer.goodbye_registered_user_leader_notice(array_delete_ids, @project).deliver_now
+
+          #delete all the conversations
+          conversations = @project.conversations
+          conversations.each do |conversation|
+            conversation.destroy if (conversation.users & array_delete_ids).present?      
+          end
+
         else
         end
 
