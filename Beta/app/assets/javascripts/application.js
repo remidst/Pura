@@ -53,7 +53,7 @@ $(document).ready(function(){
 		$("#well-document").hide();
 	});
 
-	$("conversation-messages").hide();
+	$(".conversation-messages").hide();
 	$(".conversation-form").hide();
 
 
@@ -67,8 +67,10 @@ $(document).ready(function(){
 		$(".conversation-messages").hide();
 		$(".conversation-form").hide();
 		var id_var=$(this).attr('id');
-		$(".conversation-messages#messages" + id_var).show();
+		$(".conversation-messages#messages-" + id_var).show();
 		$(".conversation-form#form-" + id_var).show();
+
 	});
+
 });
 

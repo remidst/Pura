@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.message-block {
+.messages {
 	width: 100%;
 	background-color: #cceae7;
 	border-radius: 2px;
@@ -10,11 +10,12 @@
     -webkit-box-shadow: 0 0 2px #ccc;
     box-shadow: 0 0 2px #ccc;
     padding: 5px;
-    margin-bottom: 10px;
+    margin: 5px;
+    width: 99%;
 }
 
 .message-info {
-	font-size: 1em;
+	font-size: 0.8em;
 }
 
 .message-content {

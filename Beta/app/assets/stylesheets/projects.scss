@@ -99,7 +99,7 @@
 
 #conversation-nav {
 	height:100%;
-	max-width: 150px;
+	width: 170px;
 	padding-top: 10px;
 }
 
@@ -128,6 +128,19 @@ li.conversation-list:hover {
 	background-color: #cceae7;
 }
 
+.new-message-block {
+	display: flex;
+}
+
+p.send-message-text-area-container {
+	flex-grow: 1;
+}
+
+p.send-message-button-container {
+	width: 70px;
+	padding-left: 10px;
+}
+
 #message-block {
 	flex-grow: 1;
 	padding-top: 15px;
@@ -136,15 +149,9 @@ li.conversation-list:hover {
 	padding-bottom: 10px;
 	display: flex;
 	flex-direction: column;
+	margin:10px;
 }
 
-.conversation-messages{
-	display: none;
-}
-
-.conversation-form {
-	display: none;
-}
 
 #message-list {
 	flex-grow: 1;
