@@ -1,6 +1,6 @@
 <div class="home">
-<%= image_tag 'wallpaper.jpg' %>
-  <div class="sign-in">
+
+<div class="sign-in">
         <h2>ログイン</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -33,4 +33,43 @@
 
         <%= render "devise/shared/links" %>
 </div>
+
+  <div id="top-message-container">
+    <div class="top-message" id="top-message">
+      <p class="top-message-idea" id="top-message-idea">私たちは、チームで介護をする仕組みをお手伝いします</p>
+      <p class="top-message-content" id="top-message-content">多事業所間のケアマネジャーとサービス提供責任者の情報交換を円滑にします。</p>
+    </div>
+    <div class="top-message">
+      <p class="top-message-idea">小さな気付きを共有しやすいサービス</p>
+      <p class="top-message-content">電話するほど大事ではないし、メールするのは億劫。<br/>
+      でも、そんな小さな気付きの蓄積による介護サービスが、利用者様方は一番嬉しいのです。</p>
+    </div>
+    <div class="top-message">
+      <p class="top-message-idea">ペーパーレスへ</p>
+      <p class="top-message-content">貴重な時間を書類整理、送付の時間に使うのはもったいない。<br/>
+      利用者様方との時間を増やしましょう。</p>
+    </div>
+    <div class="top-message">
+      <p class="top-message-idea">必要最小限の機能を驚くほど使いやすく</p>
+      <p class="top-message-content">皆様がご利用しているソフトウェアの100分の1の機能しかないかもしれません。<br/>
+      でも、必要な機能はそれだけのはずです。</p>
+    </div>
+    <div class="top-message">
+      <p class="top-message-idea">他事業所が同じソフトウェアを利用していれば。。。</p>
+      <p class="top-message-content">そんな悩みを解決します！<br/>
+      メールで招待状を送れば、その瞬間から、担当者間で同じソフトウェアを利用できます。</p>
+    </div>
+    <div class="top-message">
+      <p class="top-message-idea">担当者が変更。プラプラへ招待すれば、引継ぐ情報は全てこの中に</p>
+      <p class="top-message-content">もちろん、重要な情報は担当者間でしっかりと会話をし、引継ぎをしてください。<br/>
+      でも、過去のやり取りや、他事業所から共有された情報は、プラプラにお任せください。</p>
+    </div>
+    <div class="top-message">
+      <p class="top-message-idea">安全性を向上</p>
+      <p class="top-message-content">人為的ミスの発生しやすい状況を減らしましょう。世界中の大企業が導入しているサーバーAWSを利用し、安全性には細心の注意を払います。</p>
+    </div>
+    <p class="call-to-action">無料で担当者達と仕事を始めましょう！</p>
+    <p class="what-we-do">高齢先進国である日本の介護。利用者様方のために、全員がより良いサービスを日々提供しようと努めています。しかしながら同時に、高齢先進国の日本が、新しい働き方を界へ発信する義務があると信じています。なぜなら、高齢化は世界の課題となるからです。</p>
+  </div>
 </div>
+
