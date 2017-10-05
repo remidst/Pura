@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<div class="well">
+	<div class="well well-edit-leader">
   	  <p>案件の担当マネジャーを設定してください。担当マネジャーは案件のメンバーを招待／削除する権限、それと担当マネジャーを設定する権限を持ってます。未登録のメンバーは登録しない限り担当マネジャーにはなれません。</p>
 
 	  <%= form_for @project, url: project_update_leader_path(@project) do |form| %>
