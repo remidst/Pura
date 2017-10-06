@@ -1,4 +1,0 @@
-class MembershipMailer < ApplicationMailer
-
-
-end
