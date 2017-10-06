@@ -6,8 +6,8 @@
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>案件名</th>
-        <th>メンバー</th>
+        <th>利用者名</th>
+        <th>案件メンバー</th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -17,13 +17,7 @@
         <tr class="clickable-row" data-link="<%= project_path(project) %>">
           <td><%= project.project_name %></td>
           <td class="project-index-users">
-            <% project.users.each do |user| %>
-              <% if user.username.present? %>
-              <%= user.username %><%= ", " unless user==project.users.last %>
-              <% else %>
-              <%= user.email%><%= ", " unless user==project.users.last %>
-              <%end%>
-            <% end %>
+              <%= project.users.map{ |user| user.username if user != current_user }.compact.join(', ') %>
           </td>
           <td><%= link_to '詳細', project %></td>
           <td>
