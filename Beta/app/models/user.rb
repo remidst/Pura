@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   attribute :email, :string
 
+  validates_uniqueness_of :email
   after_create :welcome_email
 
   def project

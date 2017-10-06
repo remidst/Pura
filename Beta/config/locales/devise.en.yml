@@ -53,13 +53,15 @@ en:
       send_paranoid_instructions: "アカウントが登録されてましたら、ロック状態の解除方法が数分後にメールで送られます。"
       unlocked: "アカウントのロック状態が解除されました。サインインしてください。"
   errors:
+    format: "%{message}"
     messages:
       already_confirmed: "既にアカウントが確認されてます。サインインしてください。"
       confirmation_period_expired: "%{period}の確認期限がすぎてます。また申請してください。"
       expired: "期限が過ぎてます、また申請してください。"
       not_found: "見つかりませんでした。"
       not_locked: "ロックされてません。"
+      taken: "メールアドレスが既に登録されてます。"
       not_saved:
-        one: "次のエラーが%{resource}の登録を失敗させました:"
-        other: "%{resource}の登録を失敗させたエラーが%{count}っつ発生しました："
+        one: "エラーが発生したため %{resource} は保存されませんでした:"
+        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした:"
 
