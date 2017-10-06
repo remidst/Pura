@@ -62,6 +62,7 @@ en:
       not_found: "見つかりませんでした。"
       not_locked: "ロックされてません。"
       taken: "メールアドレスが既に登録されてます。"
+      blank: "下記に示された情報を記入してください。"
       not_saved:
         one: "エラーが発生したため %{resource} は保存されませんでした:"
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした:"
