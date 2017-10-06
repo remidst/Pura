@@ -16,6 +16,7 @@ en:
       timeout: "時間切れでサインアウトされました。またサインインしてください。"
       unauthenticated: "サインイン、またはサインアップしてください。"
       unconfirmed: "メールアドレスを確認して下さい。"
+      deleted_account: "アカウントが削除されてます。別のアカウントで登録、またはログインしてください。"
     mailer:
       confirmation_instructions:
         subject: "メールアドレスの確認方法"
