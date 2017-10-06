@@ -1,11 +1,11 @@
-<%= @user.username %>様、<%= @leader.username %>様から'<%= @project.project_name %>'の案件に招待されました。
+<%= @user.username %>様、<%= @leader.username %>様から<%= @project.project_name %>様の案件に招待されました。
 
 Purapuraで出来ること
 1) 担当者間でメッセージのやり取り
 2) 担当者間でレポート、提供票など、ファイルの共有
 
 
-<%= project_url(@project) %>
+<%= link_to '案件を見る', project_url(@project) %>
 
 
 案件のメンバー：

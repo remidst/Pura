@@ -1,10 +1,13 @@
 <p><%= @leader.username %>様</p>
 
-<p>'<%= @project.project_name %>'の案件から次のメンバーが削除されました：</p>
+<p><%= @project.project_name %>様の案件から次のメンバーが削除されました：</p>
 
 <p>
 <% @deleted.each do |user| %>
-<%= user.username %>, <%= user.company %><br/>
+	<% if user.username.present? %>
+		<%= user.username %>様, <%= user.company %><br/>
+	<% else %>
+	<% end %>
 <% end %>
 </p>
 

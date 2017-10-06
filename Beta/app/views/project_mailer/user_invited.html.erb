@@ -1,5 +1,5 @@
 <p>
-	<%= @user.username %>様、<%= @leader.username %>様から'<%= @project.project_name %>'の案件に招待されました。
+	<%= @user.username %>様、<%= @leader.username %>様から<%= @project.project_name %>様の案件に招待されました。
 </p>
 
 <p>
@@ -8,10 +8,10 @@
  2) 担当者間でレポート、提供票など、ファイルの共有
 </p>
 
-<a href="<%= project_url(@project) %>"><%= @project.project_name %>の案件へ</a>
+<%= link_to '案件を見る', project_url(@project) %>
 
 <p>
-	案件のメンバー：<br/>
+	<%= @project.project_name %>様のサービス提供責任者：<br/>
 	<% @users.each do |user| %>
 	<%= user.username %>様, <%= user.company %><br/>
 	<% end %>

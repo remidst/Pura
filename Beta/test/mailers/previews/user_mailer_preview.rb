@@ -3,7 +3,7 @@ class UserMailerPreview < ActionMailer::Preview
 
 	def welcome
 		user = User.first
-		UserMailer.welcome_email(user)
+		UserMailer.welcome(user)
 	end
 
 end

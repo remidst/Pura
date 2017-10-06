@@ -3,7 +3,10 @@
 '<%= @project.project_name %>'の案件から次のメンバーが削除されました：
 
 <% @deleted.each do |user| %>
-<%= user.username %>, <%= user.company %>
+	<% if user.username.present? %>
+		<%= user.username %>様, <%= user.company %>
+	<% else %>
+	<% end %>
 <% end %>
 
 <%= link_to '案件を見る', project_url(@project) %>

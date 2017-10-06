@@ -1,3 +1,5 @@
 <p>
-	<%= @user.username %>様、<%= @project.project_name %>'の案件が作成されました。案件内に担当者様方を招待し、ファイルとメッセージを共有しましょう。
+	<%= @user.username %>様、<%= @project.project_name %>様の案件が作成されました。案件内にサービス提供責任者様方を招待し、ファイルとメッセージを共有しましょう。
 </p>
+
+<p><%= link_to '案件を見る', project_url(@project)  %></p>

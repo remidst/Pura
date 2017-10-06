@@ -1,7 +1,7 @@
 <%= form_with(model: project, local: true) do |form| %>
   <% if project.errors.any? %>
     <div id="error_explanation">
-      <h2> エラーが<%= pluralize(project.errors.count, "error") %>回発生しました:</h2>
+      <h2> エラーが<%= pluralize(project.errors.count, "error") %>件発生しました:</h2>
 
       <ul>
       <% project.errors.full_messages.each do |message| %>
@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="form_group">
-    <%= form.label :project_name, '案件名:' %>
+    <%= form.label :project_name, '利用者名:' %>
     <%= form.text_field :project_name, id: :project_name, :required => 'required', class: "form-control" %>
   </div>
 

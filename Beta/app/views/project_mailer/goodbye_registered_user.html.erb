@@ -1,3 +1,5 @@
-<p><%= @user.username %>様、<%= @project.project_name %>の案件へアクセスが不可能になりました。</p>
+<p><%= @user.username %>様、<%= @project.project_name %>様の案件へアクセスが不可能になりました。</p>
 
 <p>詳しくは、案件の担当マネジャーの<%= @leader.username %>様にご確認ください。</p>
+
+<%= link_to 'プラプラへ', projects_url  %>
