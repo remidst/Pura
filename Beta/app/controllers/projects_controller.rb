@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     @leader=@project.users.find(@project.leader_id)
     @invited=@project.users.where("username is null")
 
-    @conversations = current_user.conversations.where(project_id: @project.id)
+    @conversations = current_user.conversations.where(project_id: @project.id).order(:id)
   end
 
   # GET /projects/new
@@ -126,7 +126,7 @@ class ProjectsController < ApplicationController
   def update
     prjct = project_params 
 
-    if prjct[:user_tokens].present?
+    unless prjct[:user_tokens].nil?
 
       #create an array with the user ids that will disapear, and make sure to have only integers
       array_project_users=@project.user_ids

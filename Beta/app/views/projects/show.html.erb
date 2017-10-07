@@ -25,7 +25,7 @@
 <div class="tab-panel">
 		<ul class="nav nav-tabs">
 			<li class="nav-show nav-selected" id="nav-msg">メッセージ</li>
-			<li class="nav-show" id="nav-file">ファイル</li>
+			<li class="nav-show" id="nav-file">ファイル共有</li>
 		</ul>
 </div>
 
@@ -36,7 +36,9 @@
 				<ul id="conversation-nav-list">
 				<% @conversations.each do |conversation| %>
 					<li class="conversation-list" id="<%= conversation.id %>">
-						<% if conversation.users.count > 2 %>
+						<% if @project.users.count > 2 && conversation.users.count > 2 %>
+							<%= '全メンバー' %>
+						<% elsif @project.users.count == 2 && conversation == @project.conversations.first %>
 							<%= '全メンバー' %>
 						<% else %>
 							<% conversation.users.each do |user| %>
