@@ -38,6 +38,8 @@ $(document).ready(function(){
 		window.location = this.dataset.link
 	});
 
+	$(".conversation-messages").scrollTop($('.conversation-messages')[0].scrollHeight);
+
 	$("#well-document").hide();
 
 	$("#nav-file").click(function(){

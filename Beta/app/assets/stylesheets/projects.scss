@@ -35,7 +35,7 @@
 .project-top {
 	background-color: #4f5b66;
 	color: #ffffff;
-	padding: 30px;
+	padding: 20px;
 	padding-left: 45px;
 	margin-left: 0px;
 	margin-right: 0px;
@@ -80,7 +80,7 @@
 .project-well {
 	margin-top: 20px;
 	display: flex;
-	height: 300px;
+	height: 340px;
 }
 
 #well-msg {
@@ -160,7 +160,9 @@ p.send-message-button-container {
 #message-list {
 	flex-grow: 1;
 	background-color: white;
-	border-radius: 2px;
+	overflow: none;
+	position: relative;
+	width: 100%;
 	border-color: #eee;
 }
 
