@@ -1,7 +1,25 @@
-<p><%= @user.username %>様</p>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<style type="text/css" media="screen">
+		.email-body { background-image: linear-gradient(140deg, #5bde7a, #5bc0de); padding-top: 30px; padding-bottom: 30px;}
+		.email-content {max-width: 500px; margin: auto; padding:30px; background-color:#fff;}
+		a {text-align: center; display: block, text-decoration: none; color: #fff, background-color: #5bc0de ; border-radius: 2px}
+	</style>
+</head>
+<body>
+	<div class="email-body">
+		<div class="email-content">
+			<p><%= @user.username %>様</p>
 
-<p>ご登録ありがとうございます！プラプラを利用していただくと、他の事業所の担当者達と利用者案件を作り、メッセージやファイル等の共有が極めて容易になります。</p>
+			<p>ご登録ありがとうございます！プラプラを利用していただくと、他の事業所の担当者達と利用者案件を作り、メッセージやファイル等の共有が極めて容易になります。</p>
 
-<p>事業所毎に異なるソフトにより生じる情報共有を難しさを改善し、利用者様と担当者様の時間を最大化できるよう努めます。</p>
+			<p>事業所毎に異なるソフトにより生じる情報共有を難しさを改善し、利用者様と担当者様の時間を最大化できるよう努めます。</p>
 
-<%= link_to 'プラプラへ', projects_url  %>
+			<%= link_to 'プラプラへ', projects_url  %>
+		</div>
+	</div>
+</body>
+</html>
+
