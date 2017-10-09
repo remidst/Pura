@@ -32,6 +32,13 @@ $(document).ready(function(){
 		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
 	});
 
+	$("a.btn.btn-info.scroll-home").click(function(){
+		$('body,html').animate({
+			scrollTop: 0
+		}, 1000);
+		return false;
+	});
+
 	$("#flash").delay(4000).animate({height: 'toggle'}, 'slow');
 
 	$("table > tbody > tr[data-link]").not('thead').click(function(){

@@ -4,15 +4,16 @@
 
 .home {
 	position:relative;
-	background-image:linear-gradient(#ffb3ba, #5bc0de);
+	background-image:linear-gradient(140deg, #fff, #fdeaea);
+	padding-bottom: 50px;
 }
 
 .sign-in {
 	width :340px;
 	float: left;
-	position:fixed;
+	position:absolute;
     right: 45px;
-    top: 80px;
+    top: 60px;
 	background-color: #fff;
 	padding: 15px;
 	border-radius: 2px;
@@ -70,12 +71,18 @@
 	font-weight: bold;
 	font-size: 3em;
 	line-height: 45px;
+	color: #343d46;
 }
 
 #top-message-content {
 	font-size: 2.1em;
 	line-height: 30px;
 	margin-top: 35px;
+	color: #343d46;
+}
+
+a.btn.btn-info.scroll-home {
+	color: #fff;
 }
 
 .top-message {
@@ -91,13 +98,6 @@
 .top-message-content {
 	font-size: 1.6em;
 	line-height: 23px;
-}
-
-.call-to-action {
-	font-weight: bold;
-	font-size: 2em;
-	line-height: 30px;
-	text-align: center;
 }
 
 .what-we-do {
