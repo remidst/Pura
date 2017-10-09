@@ -108,7 +108,6 @@
 #conversation-nav {
 	height:100%;
 	width: 170px;
-	padding-top: 10px;
 }
 
 ul#conversation-nav-list {
@@ -122,13 +121,12 @@ li.conversation-list {
 	padding-top: 5px;
 	padding-right: 10 px;
 	padding-bottom: 5px;
-	margin-bottom: 3px;
 	border-bottom: 1px solid #ddd;
 }
 
 li.conversation-selected {
 	font-weight: bold;
-	border-left: 3px solid #5bc0de;
+	background-color: #ddd;
 }
 
 li.conversation-list:hover {
@@ -138,22 +136,37 @@ li.conversation-list:hover {
 
 .new-message-block {
 	display: flex;
+	height: 60px;
 }
 
-p.send-message-text-area-container {
+div.send-message-text-area {
 	flex-grow: 1;
+	height: 100%;
+	margin: 0;
 }
 
-p.send-message-button-container {
+div.send-message-button-container {
 	width: 70px;
-	padding-left: 10px;
+	background-color: #fff;
+	margin: 0;
+}
+
+.send-message-button {
+	background-image: url(send.png);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-color: #fff;
+	margin: 0 auto;
+	height: 60px;
+	width: 70px;
+	border: none;
+	padding: 0;
 }
 
 #message-block {
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
-	margin:10px;
 }
 
 
@@ -163,12 +176,17 @@ p.send-message-button-container {
 	overflow: none;
 	position: relative;
 	width: 100%;
-	border-color: #eee;
+	border: none;
+	margin-top: 1px;
+	margin-right: 1px;
 }
 
 #message-form {
 	max-height: 150px;
 	width: 100%;
+	border-top: 1px solid #eee;
+	margin-right: 1px;
+	margin-bottom: 1px;
 }
 
 #document-list {

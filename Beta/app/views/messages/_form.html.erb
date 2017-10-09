@@ -2,12 +2,12 @@
 	<div class="conversation-form" id="form-<%= conversation.id %>">
 		<%= form_for([conversation, conversation.messages.build]) do |f| %>
 			<div class="new-message-block">
-				<p class="form_group send-message-text-area-container">
-				  <%= f.text_area :content, class: 'form-control', :required => 'required', placeholder: '新しいメッセージ' %>
-				</p>
-				<p class="form_group send-message-button-container">
-				  <%= f.submit '  送る  ', class: 'btn btn-info' %>
-				</p>
+				<div class="send-message-text-area">
+				  <%= f.text_area :content, :required => 'required', placeholder: '新しいメッセージ' %>
+				</div>
+				<div class="send-message-button-container">
+				  <%= f.submit '', class: 'send-message-button' %>
+				</div>
 			</div>
 
 		<% end %>				

@@ -1,12 +1,14 @@
 <% @conversations.each do |conversation| %>
 	<div class="conversation-messages" id="messages-<%= conversation.id %>">
 		<% conversation.messages.each do |msg| %>
-			<div class="messages">
-				<div class="message-content">
+			<% if conversation.users.count > 2 %>
+				<div class="message-username <%= 'self' if msg.user == current_user %> "><%= msg.user.try(:username) %></div>
+			<% end %>
+			<div class="messages <%= msg.user == current_user ? 'message-sent' : 'message-received'  %>">
+				<div class="message-content <%= msg.user == current_user ? 'sent' : 'received' %>">
 					<%= msg.content %>
 				</div>
-				<div class="message-info">
-					<%= msg.user.try(:username) %>
+				<div class="message-time">
 				    <% if msg.created_at.strftime('%F') == Time.now.strftime('%F') %>
 				       <%= msg.created_at.try(:strftime, '%H:%M') %> 
 				       <% else %>
