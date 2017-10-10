@@ -91,10 +91,12 @@
 	display: none;
 }
 
-.show-container {
+.container-fluid.show-container {
 	max-width: 900px;
 	margin-left: auto;
 	margin-right: auto;
+	padding-left: 60px;
+	padding-right: 60px;
 }
 
 #message-list {
