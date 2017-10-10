@@ -152,7 +152,7 @@ div.send-message-button-container {
 }
 
 .send-message-button {
-	background-image: url(send.png);
+	background-image: image-url('send.png');
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-color: #fff;
@@ -177,16 +177,16 @@ div.send-message-button-container {
 	position: relative;
 	width: 100%;
 	border: none;
-	margin-top: 1px;
-	margin-right: 1px;
+	margin-top: 2px;
+	margin-right: 2px;
 }
 
 #message-form {
 	max-height: 150px;
 	width: 100%;
 	border-top: 1px solid #eee;
-	margin-right: 1px;
-	margin-bottom: 1px;
+	margin-right: 2px;
+	margin-bottom: 2px;
 }
 
 #document-list {
