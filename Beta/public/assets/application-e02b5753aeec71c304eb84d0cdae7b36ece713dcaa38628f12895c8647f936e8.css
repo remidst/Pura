@@ -2,16 +2,26 @@
 /* line 5, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .home {
   position: relative;
-  background-image: linear-gradient(#ffb3ba, #5bc0de);
+  background: url(/assets/seigaiha-e0fe3e76cc71c192635a777a330f3632e5eb157053834bf294a51482217503ab.png);
+  padding-bottom: 50px;
 }
 
-/* line 10, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 11, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+.top-frame {
+  background: url(/assets/wallpaper-dd5afb022bb76043a847522e26b0a9d2b0f30d97268e9756544a6f2b8be3c847.jpg);
+  height: 750px;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 420px;
+}
+
+/* line 19, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .sign-in {
   width: 340px;
   float: left;
-  position: fixed;
+  position: absolute;
   right: 45px;
-  top: 80px;
+  top: 60px;
   background-color: #fff;
   padding: 15px;
   border-radius: 2px;
@@ -19,7 +29,12 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* line 24, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 33, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+.well-devise {
+  margin: 20px;
+}
+
+/* line 37, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .sign-up-invited {
   max-width: 800px;
   position: absolute;
@@ -34,12 +49,12 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* line 38, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 51, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .sign-up-invited-head {
   text-align: center;
 }
 
-/* line 42, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 55, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .sign-up-invited-box {
   max-width: 340px;
   margin-top: 25px;
@@ -47,65 +62,84 @@
   margin-right: auto;
 }
 
-/* line 49, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 62, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+.form-box {
+  max-width: 400px;
+}
+
+/* line 66, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 #top-message-container {
-  margin-right: 420px;
-  margin-left: 40px;
+  padding-right: 60px;
+  padding-left: 60px;
   margin-top: 70 px;
 }
 
-/* line 55, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 72, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 #top-message {
   height: 620px;
   padding-top: 30px;
 }
 
-/* line 60, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 77, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 #top-message-idea {
   padding-top: 130px;
   font-weight: bold;
   font-size: 3em;
   line-height: 45px;
+  color: #000;
 }
 
-/* line 67, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 85, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 #top-message-content {
   font-size: 2.1em;
   line-height: 30px;
   margin-top: 35px;
+  color: #000;
 }
 
-/* line 73, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 92, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+a.btn.btn-info.scroll-home {
+  color: #fff;
+}
+
+/* line 96, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .top-message {
-  height: 300px;
+  height: 400px;
+  padding-top: 90px;
+  border-bottom: 1px solid #343d46;
 }
 
-/* line 77, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 102, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+.top-message.message-left {
+  text-align: left;
+}
+
+/* line 106, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+.top-message.message-right {
+  text-align: right;
+}
+
+/* line 110, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .top-message-idea {
   font-size: 2em;
   line-height: 30px;
   font-weight: bold;
 }
 
-/* line 83, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 116, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .top-message-content {
   font-size: 1.6em;
   line-height: 23px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-/* line 88, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
-.call-to-action {
-  font-weight: bold;
-  font-size: 2em;
-  line-height: 30px;
-  text-align: center;
-}
-
-/* line 95, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 123, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .what-we-do {
   text-align: center;
   font-size: 1.6em;
   line-height: 23px;
+  padding-top: 80px;
   padding-bottom: 70px;
 }
 @charset "UTF-8";
@@ -138,30 +172,122 @@
 @charset "UTF-8";
 /* line 5, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
 .messages {
-  width: 100%;
-  background-color: #cceae7;
-  border-radius: 2px;
-  -moz-box-shadow: 0 0 2px #ccc;
-  -webkit-box-shadow: 0 0 2px #ccc;
-  box-shadow: 0 0 2px #ccc;
-  padding: 5px;
+  position: relative;
+  border-radius: .4em;
   margin: 5px;
-  width: 99%;
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
 
-/* line 17, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
-.message-info {
+/* line 13, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.messages.message-received {
+  display: flex;
+  flex-direction: row;
+}
+
+/* line 18, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.messages.message-sent {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* line 23, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.message-time {
   font-size: 0.8em;
+  color: #bbb;
+  display: table-cell;
+  vertical-align: bottom;
+  order: 2;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
-/* line 21, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+/* line 33, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.message-username {
+  font-size: 0.8em;
+  color: #aaa;
+  text-align: left;
+  margin-left: 5px;
+}
+
+/* line 40, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.message-username.self {
+  text-align: right;
+  margin-right: 5px;
+}
+
+/* line 45, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
 .message-content {
-  font-size: 1.2em;
+  font-size: 1em;
+  display: inline-block;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  position: relative;
+  right: 0;
+  order: 1;
+  max-width: 80%;
 }
 
-/* line 25, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+/* line 58, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.message-content.sent {
+  background-color: #cceae7;
+}
+
+/* line 62, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.message-content.received {
+  background-color: #eee;
+}
+
+/* line 66, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.message-content.sent:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-left-color: #cceae7;
+  border-right: 0;
+  border-top: 0;
+  margin-top: -3px;
+  margin-right: -6px;
+}
+
+/* line 81, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.message-content.received:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-right-color: #eee;
+  border-left: 0;
+  border-top: 0;
+  margin-top: -3px;
+  margin-left: -6px;
+}
+
+/* line 96, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
 .form_group {
   margin-top: 10px;
+}
+
+/* line 100, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/messages.scss */
+.conversation-messages {
+  overflow: auto;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  max-height: 100%;
+  overflow-x: hidden;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: none;
 }
 @charset "UTF-8";
 /* line 5, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
@@ -171,43 +297,53 @@
 }
 
 /* line 10, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+#btn-home {
+  color: #fff;
+}
+
+/* line 14, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .h1-top-margin {
   margin-top: 20px;
 }
 
-/* line 14, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 18, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .new-project-well {
   margin-top: 20px;
 }
 
-/* line 18, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 22, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .new-project-box {
   margin-top: 25px;
   max-width: 350px;
 }
 
-/* line 23, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 27, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .project-form-box {
   max-width: 300px;
 }
 
-/* line 27, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 31, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+.well-edit-leader {
+  margin-top: 20px;
+}
+
+/* line 35, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .project-top {
   background-color: #4f5b66;
   color: #ffffff;
-  padding: 30px;
+  padding: 20px;
   padding-left: 45px;
   margin-left: 0px;
   margin-right: 0px;
   width: 100%;
 }
 
-/* line 37, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 45, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 #member-button {
   margin-top: 10px;
 }
 
-/* line 41, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 49, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .tab-panel {
   width: 265px;
   margin-top: 15px;
@@ -218,12 +354,12 @@
   text-align: center;
 }
 
-/* line 51, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 59, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .nav-tabs {
   list-style: none;
 }
 
-/* line 55, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 63, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .nav-show {
   padding: 9px;
   font-size: 1.6em;
@@ -231,43 +367,45 @@
   font-color: #4f5b66;
 }
 
-/* line 62, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 70, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .nav-show:hover {
   cursor: pointer;
   border-bottom: 4px solid #cceae7;
 }
 
-/* line 67, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 75, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .nav-selected {
   border-bottom: 4px solid #5bc0de;
   font-color: #000;
 }
 
-/* line 72, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 80, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .project-well {
   margin-top: 20px;
   display: flex;
-  height: 300px;
+  height: 340px;
 }
 
-/* line 78, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 86, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 #well-msg {
   padding: 0;
 }
 
-/* line 82, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 90, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .well-hide {
   display: none;
 }
 
-/* line 86, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
-.show-container {
+/* line 94, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+.container-fluid.show-container {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
-/* line 92, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 102, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 #message-list {
   max-height: 350px;
   overflow: auto;
@@ -275,87 +413,108 @@
   border-radius: 2px;
 }
 
-/* line 100, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 110, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 #conversation-nav {
   height: 100%;
   width: 170px;
-  padding-top: 10px;
 }
 
-/* line 106, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 115, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 ul#conversation-nav-list {
   padding: 0px;
   list-style-type: none;
 }
 
-/* line 111, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 120, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 li.conversation-list {
   list-style-type: none;
   padding-left: 10px;
   padding-top: 5px;
   padding-right: 10 px;
   padding-bottom: 5px;
-  margin-bottom: 3px;
   border-bottom: 1px solid #ddd;
 }
 
-/* line 121, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 129, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 li.conversation-selected {
   font-weight: bold;
-  border-left: 3px solid #5bc0de;
+  background-color: #ddd;
 }
 
-/* line 126, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 134, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 li.conversation-list:hover {
   cursor: pointer;
   background-color: #cceae7;
 }
 
-/* line 131, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 139, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .new-message-block {
   display: flex;
-}
-
-/* line 135, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
-p.send-message-text-area-container {
-  flex-grow: 1;
-}
-
-/* line 139, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
-p.send-message-button-container {
-  width: 70px;
-  padding-left: 10px;
+  height: 60px;
 }
 
 /* line 144, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+div.send-message-text-area {
+  flex-grow: 1;
+  height: 100%;
+  margin: 0;
+}
+
+/* line 150, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+div.send-message-button-container {
+  width: 70px;
+  background-color: #fff;
+  margin: 0;
+}
+
+/* line 156, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+.send-message-button {
+  background: url(/assets/send-button-842b6abba617d9d5f314a3ba0a0900e87a54b946d24eeabc47fe7c9c8417b437.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: #fff;
+  margin: 0 auto;
+  height: 60px;
+  width: 70px;
+  border: none;
+  padding: 0;
+}
+
+/* line 168, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 #message-block {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  margin: 10px;
 }
 
-/* line 152, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 175, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 #message-list {
   flex-grow: 1;
   background-color: white;
-  border-radius: 2px;
-  border-color: #eee;
+  overflow: none;
+  position: relative;
+  width: 100%;
+  border: none;
+  margin-top: 2px;
+  margin-right: 2px;
 }
 
-/* line 159, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 186, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 #message-form {
   max-height: 150px;
   width: 100%;
+  border-top: 1px solid #eee;
+  margin-right: 2px;
+  margin-bottom: 2px;
 }
 
-/* line 164, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 194, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 #document-list {
   max-height: 350px;
   overflow: auto;
 }
 
-/* line 169, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 199, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/projects.scss */
 .membership-form {
   max-width: 400px;
 }
@@ -9355,19 +9514,34 @@ h1 {
   margin-bottom: 0;
 }
 
-/* line 112, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
+/* line 111, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
+textarea {
+  resize: none;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  border: none;
+  padding: 5px;
+}
+
+/* line 120, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
+textarea:focus {
+  outline: none;
+}
+
+/* line 124, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
 .button {
   border-radius: 1px;
   margin-top: 10px;
   font-size: 0.8em;
 }
 
-/* line 118, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
+/* line 130, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
 .button:hover {
   background-color: none;
 }
 
-/* line 122, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
+/* line 134, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
 .button {
   font: bold 1em;
   text-decoration: none;
@@ -9380,13 +9554,13 @@ h1 {
   border-left: 1px solid #CCCCCC;
 }
 
-/* line 134, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
+/* line 146, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
 .button:hover {
   cursor: pointer;
   background-color: #EEEEEE;
 }
 
-/* line 139, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
+/* line 151, C:/Users/Rémi/Documents/Pura/Beta/app/assets/stylesheets/application.css.scss */
 a:hover {
   background-color: none;
   text-decoration: underline;
