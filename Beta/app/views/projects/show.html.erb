@@ -22,59 +22,63 @@
 
 </div>
 
-<div class="tab-panel">
-		<ul class="nav nav-tabs">
-			<li class="nav-show nav-selected" id="nav-msg">メッセージ</li>
-			<li class="nav-show" id="nav-file">ファイル共有</li>
-		</ul>
-</div>
-
-<div class="container-fluid show-container">
-	<div class="well project-well" id="well-msg">
-		<div class="conversation-flex">
-			<div id="conversation-nav">
-				<ul id="conversation-nav-list">
-				<% @conversations.each do |conversation| %>
-					<li class="conversation-list" id="<%= conversation.id %>">
-						<% if @project.users.count > 2 && conversation.users.count > 2 %>
-							<%= '全メンバー' %>
-						<% elsif @project.users.count == 2 && conversation == @project.conversations.first %>
-							<%= '全メンバー' %>
-						<% else %>
-							<% conversation.users.each do |user| %>
-								<%= user.username unless user==current_user %>
-							<% end %>
-						<% end %>
-					</li>
-				<% end %>
-				</ul>
-			</div>
-		</div>
-
-		<div class="conversation-flex" id="message-block">
-			<div id="message-list">
-				<%= render 'messages/list' %>
-			</div>	
-
-			<div id="message-form">
-				<%= render 'messages/form' %>
-			</div>
-		</div>
-    </div>
-	
-	<div class="well project-well well-hide" id="well-document">
-		<div id="document-list">
-			<%= render 'documents/list' %>
-		</div>
-
-		<div>
-			<%= render 'documents/form' %>
-		</div>
+<div class="background-pattern">
+		
+	<div class="tab-panel">
+			<ul class="nav nav-tabs">
+				<li class="nav-show nav-selected" id="nav-msg">メッセージ</li>
+				<li class="nav-show" id="nav-file">ファイル共有</li>
+			</ul>
 	</div>
 
-    <%= link_to '利用者一覧へ', projects_path %> 
-    <% if policy(@project).edit? %>
-	    	|　<%= link_to 'エディット', edit_project_path(@project) %> 
-	    <% end %>
+	<div class="container-fluid show-container">
+		<div class="well project-well" id="well-msg">
+			<div class="conversation-flex">
+				<div id="conversation-nav">
+					<ul id="conversation-nav-list">
+					<% @conversations.each do |conversation| %>
+						<li class="conversation-list" id="<%= conversation.id %>">
+							<% if @project.users.count > 2 && conversation.users.count > 2 %>
+								<%= '全メンバー' %>
+							<% elsif @project.users.count == 2 && conversation == @project.conversations.first %>
+								<%= '全メンバー' %>
+							<% else %>
+								<% conversation.users.each do |user| %>
+									<%= user.username unless user==current_user %>
+								<% end %>
+							<% end %>
+						</li>
+					<% end %>
+					</ul>
+				</div>
+			</div>
+
+			<div class="conversation-flex" id="message-block">
+				<div id="message-list">
+					<%= render 'messages/list' %>
+				</div>	
+
+				<div id="message-form">
+					<%= render 'messages/form' %>
+				</div>
+			</div>
+	    </div>
+		
+		<div class="well project-well well-hide" id="well-document">
+			<div id="document-list">
+				<%= render 'documents/list' %>
+			</div>
+
+			<div>
+				<%= render 'documents/form' %>
+			</div>
+		</div>
+
+	    <%= link_to '利用者一覧へ', projects_path %> 
+	    <% if policy(@project).edit? %>
+		    	|　<%= link_to 'エディット', edit_project_path(@project) %> 
+		    <% end %>
+	</div>
+
 </div>
 
