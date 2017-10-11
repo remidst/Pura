@@ -1,18 +1,27 @@
-<p>
-	<%= @user.username %>様、<%= @leader.username %>様から<%= @project.project_name %>様の案件に招待されました。
-</p>
+<div class="email-body" style="background-image: url(https://s3.us-east-2.amazonaws.com/puraimage/swirl_pattern.png); padding-top: 30px; padding-bottom: 30px;">
+	<div class="email-content" style="max-width: 500px; margin: auto; padding:30px; background-color:#fff;">
+		<p>
+			<%= @user.username %>様、<%= @leader.username %>様から<%= @project.project_name %>様の案件に招待されました。
+		</p>
 
-<p>
-	Purapuraで出来ること<br/>
- 1) 担当者間でメッセージのやり取り<br/>
- 2) 担当者間でレポート、提供票など、ファイルの共有
-</p>
+		<p>
+			Purapuraで出来ること<br/>
+		 1) 担当者間でメッセージのやり取り<br/>
+		 2) 担当者間でレポート、提供票など、ファイルの共有
+		</p>
 
-<%= link_to '案件を見る', project_url(@project) %>
+		<%= link_to '案件を見る', project_url(@project) %>
 
-<p>
-	<%= @project.project_name %>様のサービス提供責任者：<br/>
-	<% @users.each do |user| %>
-	<%= user.username %>様, <%= user.company %><br/>
-	<% end %>
-</p>
+		<p>
+			<%= @project.project_name %>様のサービス提供責任者：<br/>
+			<% @users.each do |user| %>
+			<%= user.username %>様, <%= user.company %><br/>
+			<% end %>
+		</p>
+
+		<p>
+         	ご利用ありがとうございます！
+   		</p>
+	</div>
+</div>
+

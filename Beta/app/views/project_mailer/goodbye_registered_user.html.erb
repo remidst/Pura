@@ -1,5 +1,15 @@
-<p><%= @user.username %>様、<%= @project.project_name %>様の案件へアクセスが不可能になりました。</p>
+<div class="email-body" style="background-image: url(https://s3.us-east-2.amazonaws.com/puraimage/swirl_pattern.png); padding-top: 30px; padding-bottom: 30px;">
+    <div class="email-content" style="max-width: 500px; margin: auto; padding:30px; background-color:#fff;">
+  	<p><%= @user.username %>様、<%= @project.project_name %>様の案件へアクセスが不可能になりました。</p>
 
-<p>詳しくは、案件の担当マネジャーの<%= @leader.username %>様にご確認ください。</p>
+	<p>詳しくは、案件の担当マネジャーの<%= @leader.username %>様にご確認ください。</p>
 
-<%= link_to 'プラプラへ', projects_url  %>
+	<p><%= link_to 'プラプラへ', projects_url  %></p>
+
+	<p>
+	    ご利用ありがとうございます！
+	</p>
+  </div>
+	
+</div>
+

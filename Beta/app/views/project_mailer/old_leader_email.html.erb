@@ -1,7 +1,16 @@
-<p><%= @old_leader.username %>様</p>
+<div class="email-body" style="background-image: url(https://s3.us-east-2.amazonaws.com/puraimage/swirl_pattern.png); padding-top: 30px; padding-bottom: 30px;">
+	<div class="email-content" style="max-width: 500px; margin: auto; padding:30px; background-color:#fff;">
+		<p><%= @old_leader.username %>様</p>
 
-<p><%= @project.project_name %>様の案件の担当マネジャーが<%= @new_leader.username %>様になりました。</p>
+		<p><%= @project.project_name %>様の案件の担当マネジャーが<%= @new_leader.username %>様になりました。</p>
 
-<p>全てのユーザーの管理、案件のエディット権限が<%= @new_leader.username %>様に移されました。</p>
+		<p>全てのユーザーの管理、案件のエディット権限が<%= @new_leader.username %>様に移されました。</p>
 
-<%= link_to '案件を見る', project_url(@project) %>
+		<%= link_to '案件を見る', project_url(@project) %>
+
+		<p>
+           ご利用ありがとうございます！
+   		</p>
+	</div>
+</div>
+

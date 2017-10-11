@@ -1,5 +1,14 @@
-<p>
-	<%= @user.username %>様、<%= @project.project_name %>様の案件が作成されました。案件内にサービス提供責任者様方を招待し、ファイルとメッセージを共有しましょう。
-</p>
+<div class="email-body" style="background-image: url(https://s3.us-east-2.amazonaws.com/puraimage/swirl_pattern.png); padding-top: 30px; padding-bottom: 30px;">
+  <div class="email-content" style="max-width: 500px; margin: auto; padding:30px; background-color:#fff;">
+	<p><%= @user.username %>様、</p>
+	<p>
+		<%= @project.project_name %>様の案件が作成されました。案件内にサービス提供責任者様方を招待し、ファイルとメッセージを共有しましょう。
+	</p>
 
-<p><%= link_to '案件を見る', project_url(@project)  %></p>
+	<p><%= link_to '案件を見る', project_url(@project)  %></p>
+
+	<p>
+	    ご利用ありがとうございます！
+	</p>
+  </div>
+</div>

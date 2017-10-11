@@ -1,14 +1,23 @@
-<p><%= @leader.username %>様</p>
+<div class="email-body" style="background-image: url(https://s3.us-east-2.amazonaws.com/puraimage/swirl_pattern.png); padding-top: 30px; padding-bottom: 30px;">
+	 <div class="email-content" style="max-width: 500px; margin: auto; padding:30px; background-color:#fff;">
+		
+		<p><%= @leader.username %>様</p>
 
-<p><%= @project.project_name %>様の案件から次のメンバーが削除されました：</p>
+		<p><%= @project.project_name %>様の案件から次のメンバーが削除されました：</p>
 
-<p>
-<% @deleted.each do |user| %>
-	<% if user.username.present? %>
-		<%= user.username %>様, <%= user.company %><br/>
-	<% else %>
-	<% end %>
-<% end %>
-</p>
+		<p>
+		<% @deleted.each do |user| %>
+			<% if user.username.present? %>
+				<%= user.username %>様, <%= user.company %><br/>
+			<% else %>
+			<% end %>
+		<% end %>
+		</p>
 
-<p><%= link_to '案件を見る', project_url(@project) %></p>
+		<p><%= link_to '案件を見る', project_url(@project) %></p>
+
+		<p>
+         	ご利用ありがとうございます！
+   		</p>
+	</div>
+</div>
