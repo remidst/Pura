@@ -165,7 +165,6 @@ class ProjectsController < ApplicationController
 
         if new_conversations_ids.present?
           new_conversations_ids.each do |ids|
-            puts "loop is running"
             @project.conversations.create(user_ids: ids)
           end
         end
@@ -176,7 +175,6 @@ class ProjectsController < ApplicationController
 
         if array_combination.present?
           array_combination.each do |ids|
-            puts "array loop"
             @project.conversations.create(user_ids: ids)
           end
         end
@@ -187,11 +185,8 @@ class ProjectsController < ApplicationController
 
       #update the group conversation
       main_conversation = @project.conversations.first
-      puts "main conversation"
-      puts main_conversation
       main_conversation.update(user_ids: array_user_tokens)
-      puts "update on main conversation"
-      puts main_conversation
+
       
 
     else
