@@ -36,25 +36,29 @@
 			<div class="conversation-flex">
 				<div id="conversation-nav">
 					<ul id="conversation-nav-list">
-					<% @conversations.each do |conversation| %>
-						<li class="conversation-list" id="<%= conversation.id %>">
-							<% if @project.users.count > 2 && conversation.users.count > 2 %>
-								<%= '全メンバー' %>
-							<% elsif @project.users.count == 2 && conversation == @project.conversations.first %>
-								<%= '全メンバー' %>
-							<% else %>
-								<% conversation.users.each do |user| %>
-									<% if user != current_user %>
-										<% if user.username.present? %>
-											<%= user.username %>
-											<% else %>
-											<%= user.email %>
+					  <% if @conversations.count <3 %>
+					   <li class="conversation-list" id="<%= @conversations.first.id %>"><%= '全メンバー' %></li>
+					  <% else %>
+						<% @conversations.each do |conversation| %>
+							<li class="conversation-list" id="<%= conversation.id %>">
+								<% if @project.users.count > 2 && conversation.users.count > 2 %>
+									<%= '全メンバー' %>
+								<% elsif @project.users.count == 2 && conversation == @project.conversations.first %>
+									<%= '全メンバー' %>
+								<% else %>
+									<% conversation.users.each do |user| %>
+										<% if user != current_user %>
+											<% if user.username.present? %>
+												<%= user.username %>
+												<% else %>
+												<%= user.email %>
+											<% end %>
 										<% end %>
 									<% end %>
 								<% end %>
-							<% end %>
-						</li>
-					<% end %>
+							</li>
+						<% end %>
+					  <% end %>
 					</ul>
 				</div>
 			</div>

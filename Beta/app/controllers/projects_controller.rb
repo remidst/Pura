@@ -60,12 +60,10 @@ class ProjectsController < ApplicationController
     conversation_tokens = array_user_tokens.combination(2).to_a
 
     #iterate over conversation tokens to create each 1 to 1 conversation within the project
-    if conversation_tokens.count > 1
-      conversation_tokens.each do |tokens|
+    conversation_tokens.each do |tokens|
         @project.conversations.create(user_ids: tokens)
-      end
-    else
     end
+
 
     respond_to do |format|
       if @project.update(prjct)
