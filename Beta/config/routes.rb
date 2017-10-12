@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {registrations: 'registrations', invitations: 'invitations'}
   get 'users/' => 'users#index'
+
+  mount ActionCable.server => '/cable'
   
 
   root 'projects#index'

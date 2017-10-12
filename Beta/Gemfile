@@ -73,6 +73,9 @@ gem 'jquery-rails', '~> 4.3.1'
 #environment variables securely stores
 gem 'figaro', '~> 1.1.1'
 
+#redis to support action cable
+gem 'redis', '~> 3.2'
+
 
 
 #serve assets on heroku
