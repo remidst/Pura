@@ -1,5 +1,5 @@
 <% @conversations.each do |conversation| %>
-	<div class="conversation-form" id="form-<%= conversation.id %>">
+	<div class="conversation-form" data-conversation-id="<%= conversation.id %>">
 		<%= form_for([conversation, conversation.messages.build]) do |f| %>
 			<div class="new-message-block">
 				<div class="send-message-text-area">
