@@ -133,16 +133,16 @@ class ProjectsController < ApplicationController
 
       #make sure not to delete curent user (leader) from the project
       array_user_tokens << current_user.id.to_i
-      prjct[:user_tokens] << ", #{current_user.id}"
+      prjct[:user_tokens] << ",#{current_user.id}"
 
-      #unregistered invited users are not shown in user_tokens and should therefore be added
+      #add unregistered users to user tokens
       @unregistered=@project.users.where("username is null")
       if @unregistered.present?
         unregistered_ids = @unregistered.ids
-        unregistered_ids.map! {|x| x.to_i}
-        array_user_tokens << unregistered_ids
+        array_user_tokens << unregistered_ids.join(',')
+        array_user_tokens.map! {|x| x.to_i}
         unregistered_ids_string = unregistered_ids.join(',')
-        prjct[:user_tokens] << ", #{unregistered_ids_string}"
+        prjct[:user_tokens] << ",#{unregistered_ids_string}"
       else
       end
 
@@ -151,41 +151,6 @@ class ProjectsController < ApplicationController
 
       #if the array with ids to delete is not empty, transform it into array with user records
       array_delete_ids.map! { |id| User.find(id) }.join(',') if array_delete_ids.present?
-
-      #create the conversations for the added users
-      array_added_ids = (array_user_tokens - array_project_users)
-
-      if array_added_ids.present?
-
-        array_reconducted_ids = (array_user_tokens - array_added_ids)
-
-        new_conversations_ids = array_added_ids.product(array_reconducted_ids)
-
-        if new_conversations_ids.present?
-          new_conversations_ids.each do |ids|
-            @project.conversations.create(user_ids: ids)
-          end
-        end
-
-
-        array_combination = array_added_ids.combination(2).to_a
-        array_combination.compact!
-
-        if array_combination.present?
-          array_combination.each do |ids|
-            @project.conversations.create(user_ids: ids)
-          end
-        end
-
-      else
-      end
-
-
-      #update the group conversation
-      main_conversation = @project.conversations.first
-      main_conversation.update(user_ids: array_user_tokens)
-
-      
 
     else
     end
@@ -198,6 +163,8 @@ class ProjectsController < ApplicationController
 
         #send notification email to those who will be deleted from the project
         if prjct[:user_tokens].present? && array_delete_ids.present?
+          puts "array_delete_ids"
+          puts array_delete_ids.present?
 
           #send emails to each deleted user
           array_delete_ids.each do |user|
@@ -207,11 +174,14 @@ class ProjectsController < ApplicationController
           #send email to leader to confirm deletion
           ProjectMailer.goodbye_registered_user_leader_notice(array_delete_ids, @project).deliver_now
 
-          #delete all the conversations
-          conversations = @project.conversations
-          conversations.each do |conversation|
-            conversation.destroy if (conversation.users & array_delete_ids).present?      
+          #delete all the conversations related to this user
+          @project.conversations.each do |conversation|
+            unless conversation == @project.conversations.first
+              conversation.delete if (conversation.users & array_delete_ids).present?
+            else
+            end
           end
+
 
         else
         end
@@ -220,6 +190,45 @@ class ProjectsController < ApplicationController
         if prjct[:leader_id].present? && prjct[:leader_id].to_i != old_leader.id.to_i
           ProjectMailer.old_leader_email(old_leader, @project).deliver_now
           ProjectMailer.new_leader_email(old_leader, @project).deliver_now
+        else
+        end
+
+        #update the group conversation
+        puts "update group conversation"
+        main_conversation = @project.conversations.first
+        main_conversation.update(user_ids: array_user_tokens)
+
+        #create the conversations for the added users
+        array_added_ids = (array_user_tokens - array_project_users)
+        puts "array_added_ids"
+        puts array_added_ids
+
+        if array_added_ids.present?
+
+          array_reconducted_ids = (array_user_tokens - array_added_ids)
+          puts "array reconducted"
+          puts array_reconducted_ids
+
+          new_conversations_ids = array_added_ids.product(array_reconducted_ids)
+          puts "new conversations ids"
+          puts new_conversations_ids
+
+          if new_conversations_ids.present?
+            new_conversations_ids.each do |ids|
+              @project.conversations.create(user_ids: ids)
+            end
+          end
+
+
+          array_combination = array_added_ids.combination(2).to_a
+          array_combination.compact!
+
+          if array_combination.present?
+            array_combination.each do |ids|
+              @project.conversations.create(user_ids: ids)
+            end
+          end
+
         else
         end
 
