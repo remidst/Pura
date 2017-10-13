@@ -177,7 +177,7 @@ class ProjectsController < ApplicationController
           #delete all the conversations related to this user
           @project.conversations.each do |conversation|
             unless conversation == @project.conversations.first
-              conversation.delete if (conversation.users & array_delete_ids).present?
+              conversation.destroy if (conversation.users & array_delete_ids).present?
             else
             end
           end
