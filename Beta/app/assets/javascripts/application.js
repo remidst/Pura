@@ -78,7 +78,7 @@ $(document).ready(function(){
 		$(".conversation-form").hide();
 		var id_var=$(this).attr('id');
 		$(".conversation-messages#messages-" + id_var).show();
-		$(".conversation-form#form-" + id_var).show();
+		$(".conversation-form.id-" + id_var).show();
 
 	});
 

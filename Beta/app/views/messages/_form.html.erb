@@ -1,6 +1,6 @@
 <% @conversations.each do |conversation| %>
-	<div class="conversation-form" data-conversation-id="<%= conversation.id %>">
-		<%= form_for([conversation, conversation.messages.build]), url: '#' do |f| %>
+	<div class="conversation-form id-<%= conversation.id %>" data-conversation-id="<%= conversation.id %>">
+		<%= form_for([conversation, conversation.messages.build], url: '#') do |f| %>
 			<div class="new-message-block">
 				<div class="send-message-text-area">
 				  <%= f.text_area :content, :required => 'required', placeholder: '新しいメッセージ' %>
