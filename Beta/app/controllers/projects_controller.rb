@@ -19,8 +19,6 @@ class ProjectsController < ApplicationController
 
     @conversations = current_user.conversations.where(project_id: @project.id).order(:id)
 
-    # instanciate the message variable for action cable
-    @message=Message.new
   end
 
   # GET /projects/new

@@ -4,17 +4,8 @@
 			<% if conversation.users.count > 2 %>
 				<div class="message-username <%= 'self' if msg.user == current_user %> "><%= msg.user.try(:username) %></div>
 			<% end %>
-			<div class="messages <%= msg.user == current_user ? 'message-sent' : 'message-received'  %>">
-				<div class="message-content <%= msg.user == current_user ? 'sent' : 'received' %>">
-					<%= msg.content %>
-				</div>
-				<div class="message-time">
-				    <% if msg.created_at.strftime('%F') == Time.now.strftime('%F') %>
-				       <%= msg.created_at.try(:strftime, '%H:%M') %> 
-				       <% else %>
-				       <%= msg.created_at.try(:strftime, '%F') %>
-				    <% end %>
-				</div>
+			<div class="messages <%= msg.user == current_user ? 'message-sent' : 'message-received'  %>">	
+				<%= render partial: "messages/message", locals: {msg: msg} %>
 			</div>
 		<% end %>
 	</div>

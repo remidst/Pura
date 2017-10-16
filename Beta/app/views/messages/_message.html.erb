@@ -1,0 +1,10 @@
+<div class="message-content <%= msg.user == current_user ? 'sent' : 'received' %>">
+	<%= msg.content %>
+</div>
+<div class="message-time">
+	<% if msg.created_at.strftime('%F') == Time.now.strftime('%F') %>
+		<%= msg.created_at.try(:strftime, '%H:%M') %> 
+    <% else %>
+	    <%= msg.created_at.try(:strftime, '%F') %>
+	<% end %>
+</div>
