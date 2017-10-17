@@ -1,5 +1,5 @@
 <% @conversations.each do |conversation| %>
-	<div class="conversation-messages" id="messages-<%= conversation.id %>">
+	<div class="conversation-messages" id="messages-<%= conversation.id %>" data-conversation-id="<%= conversation.id %>">
 		<% conversation.messages.each do |msg| %>
 			<% if conversation.users.count > 2 %>
 				<div class="message-username <%= 'self' if msg.user == current_user %> "><%= msg.user.try(:username) %></div>
