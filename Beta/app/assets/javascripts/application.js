@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.tokeninput
 //= require bootstrap
+//= require cable
 //= require_tree .
 
 
@@ -45,7 +46,6 @@ $(document).ready(function(){
 		window.location = this.dataset.link
 	});
 
-	$(".conversation-messages").scrollTop($('.conversation-messages')[0].scrollHeight);
 
 	$("#well-document").hide();
 
@@ -78,7 +78,7 @@ $(document).ready(function(){
 		$(".conversation-form").hide();
 		var id_var=$(this).attr('id');
 		$(".conversation-messages#messages-" + id_var).show();
-		$(".conversation-form#form-" + id_var).show();
+		$(".conversation-form.id-" + id_var).show();
 
 	});
 

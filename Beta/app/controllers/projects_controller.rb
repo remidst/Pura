@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
     @invited=@project.users.where("username is null")
 
     @conversations = current_user.conversations.where(project_id: @project.id).order(:id)
+
   end
 
   # GET /projects/new
