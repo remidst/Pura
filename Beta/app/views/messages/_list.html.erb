@@ -1,12 +1,9 @@
 <% @conversations.each do |conversation| %>
 	<div class="conversation-messages" id="messages-<%= conversation.id %>" data-conversation-id="<%= conversation.id %>">
 		<% conversation.messages.each do |msg| %>
-			<% if conversation.users.count > 2 %>
-				<div class="message-username <%= 'self' if msg.user == current_user %> "><%= msg.user.try(:username) %></div>
-			<% end %>
-			<div class="messages <%= msg.user == current_user ? 'message-sent' : 'message-received'  %>">	
-				<%= render partial: "messages/message", locals: {msg: msg} %>
-			</div>
+				
+		<%= render partial: "messages/message", locals: {msg: msg, conversation: conversation, project: conversation.project} %>
+			
 		<% end %>
 	</div>
 <% end %>
