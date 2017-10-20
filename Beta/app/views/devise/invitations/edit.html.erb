@@ -12,20 +12,20 @@
         <%= f.hidden_field :invitation_token %>
 
         <% if f.object.class.require_password_on_accepting %>
-        <div class="form-group"><%= f.label :password %><br />
+        <div class="form-group"><%= f.label :password, '新規パスワード' %><br />
         <%= f.password_field :password, autofocus: true, class: "form-control" %></div>
 
-        <div class="form-group"><%= f.label :password_confirmation %><br />
+        <div class="form-group"><%= f.label :password_confirmation, '新規パスワードのご確認' %><br />
         <%= f.password_field :password_confirmation, class: "form-control" %></div>
         <% end %>
 
-        <div class="form-group"><%= f.label :username %><br/>
+        <div class="form-group"><%= f.label :username, 'ご自身の名前' %><br/>
         <%= f.text_field :username, class: "form-control" %></div>
 
-        <div class="form-group"><%= f.label :company %><br/>
+        <div class="form-group"><%= f.label :company, 'ご自身の事業所名' %><br/>
         <%= f.text_field :company, class: "form-control" %></div>
 
-        <%= f.submit t("devise.invitations.edit.submit_button"), class: "btn btn-info" %>
+        <%= f.submit '登録して利用者の案件へ進む', class: "btn btn-info" %>
       <% end %>
     </div>
   </div>

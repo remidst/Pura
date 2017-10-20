@@ -43,10 +43,12 @@ class MembershipsController < ApplicationController
     end
 
     def index
-		@invited = @project.users.where("username is null")
-		@users = @project.users.where.not("username is null")
+		@unregistered = @project.users.where("username is null")
+		@registered = @project.users.where.not("username is null")
+		@leader = User.find(@project.leader_id)
+		@members = @registered.where.not(id: @leader.id)
 		
-		ids_to_ignore = @invited.ids
+		ids_to_ignore = @unregistered.ids
 		ids_to_ignore << current_user.id
 		@tokens = @project.users.where.not(id: ids_to_ignore)
     end

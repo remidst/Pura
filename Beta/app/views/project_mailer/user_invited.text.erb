@@ -8,7 +8,7 @@ Purapuraで出来ること
 <%= link_to '案件を見る', project_url(@project) %>
 
 
-案件のメンバー：
+案件内のメンバー：
 <% @users.each do |user| %>
 <%= user.username %>様, <%= user.company %>
 <% end %>

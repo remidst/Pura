@@ -13,7 +13,7 @@
 		<%= link_to '案件を見る', project_url(@project) %>
 
 		<p>
-			<%= @project.project_name %>様のサービス提供責任者：<br/>
+			案件内のメンバー：<br/>
 			<% @users.each do |user| %>
 			<%= user.username %>様, <%= user.company %><br/>
 			<% end %>

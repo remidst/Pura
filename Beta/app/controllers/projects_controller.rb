@@ -13,9 +13,10 @@ class ProjectsController < ApplicationController
   def show
     @documents=@project.documents.order('created_at DESC')
 
-    @users=@project.users.where.not("username is null")
     @leader=@project.users.find(@project.leader_id)
-    @invited=@project.users.where("username is null")
+    @registered=@project.users.where.not("username is null")
+    @members = @registered.where.not(id: @leader.id)
+    @unregistered=@project.users.where("username is null")
 
     @conversations = current_user.conversations.where(project_id: @project.id).order(:id)
 

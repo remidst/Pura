@@ -1,6 +1,7 @@
 <div>
+	案件担当ケアマネジャー： <%= @leader.username %><br/>
 	サービス提供責任者：
-	<%= @users.map{|user| user.username unless user.email==current_user.email }.compact.join(',') %>
+	<%= @members.map{|member| member.username }.compact.join(',') %>
 </div>
 
 
