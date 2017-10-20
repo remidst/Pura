@@ -1,9 +1,9 @@
 class DocumentsController < ApplicationController
   def create
-      @project = Project.find(params[:project_id])
-      @document = @project.documents.create(document_params)
-      @document.set_user!(current_user)
-      redirect_to project_path(@project), notice: "ファイルが案件のメンバーに共有されました。"
+      project = Project.find(params[:project_id])
+      document = project.documents.create(document_params)
+      document.set_user!(current_user)
+      redirect_to project_path(project), notice: "ファイルが案件のメンバーに共有されました。"
   end
 
   def edit

@@ -5,8 +5,8 @@
 	  <%= form_for @project, url: project_update_leader_path(@project) do |form| %>
 
 	  <div class="field">
-	    <%= form.label :leader_id, '案件の担当マネジャー:' %>
-	    <%= form.collection_select(:leader_id, @users, :id, :username, :prompt => true, selected: @leader.id) %>
+	    <%= form.label :leader_id, '案件担当ケアマネジャー:' %>
+	    <%= form.collection_select(:leader_id, @registered, :id, :username, :prompt => true, selected: @leader.id) %>
 	  </div>
 
 	  <div class="actions">

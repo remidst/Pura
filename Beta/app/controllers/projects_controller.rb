@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :invite_members, :update_members, :edit_leader, :update, :update_leader, :destroy]
+  before_action :set_leader, only: [:show, :edit_leader]
+  before_action :set_registered, only: [:show, :edit, :invite_members, :edit_leader, :update]
 
   # GET /projects
   # GET /projects.json
@@ -12,14 +14,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @documents=@project.documents.order('created_at DESC')
-
-    @leader=@project.users.find(@project.leader_id)
-    @registered=@project.users.where.not("username is null")
     @members = @registered.where.not(id: @leader.id)
-    @unregistered=@project.users.where("username is null")
-
     @conversations = current_user.conversations.where(project_id: @project.id).order(:id)
-
   end
 
   # GET /projects/new
@@ -30,19 +26,19 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     authorize @project
-    @users = @project.users.where.not("username is null")
   end
 
   def invite_members
   	authorize @project
-  	@invited = @project.users.where("username is null")
-  	@users = @project.users.where.not("username is null")
-		
-	ids_to_ignore = @invited.ids
-	ids_to_ignore << current_user.id
-	@tokens = @project.users.where.not(id: ids_to_ignore)
 
-	@membership=@project.memberships.build
+    @membership=@project.memberships.build
+
+    #possible that all the below is useless
+  	ids_to_ignore = @unregistered.ids
+  	ids_to_ignore << current_user.id
+  	@tokens = @project.users.where.not(id: ids_to_ignore)
+    #possible that all the above is useless
+
   end
 
   def update_members
@@ -82,8 +78,6 @@ class ProjectsController < ApplicationController
 
   def edit_leader
     authorize @project
-    @users=@project.users.where.not("username is null")
-    @leader = User.find(@project.leader_id)
   end
 
   def update_leader
@@ -138,7 +132,6 @@ class ProjectsController < ApplicationController
       prjct[:user_tokens] << ",#{current_user.id}"
 
       #add unregistered users to user tokens
-      @unregistered=@project.users.where("username is null")
       if @unregistered.present?
         unregistered_ids = @unregistered.ids
         array_user_tokens << unregistered_ids.join(',')
@@ -165,8 +158,6 @@ class ProjectsController < ApplicationController
 
         #send notification email to those who will be deleted from the project
         if prjct[:user_tokens].present? && array_delete_ids.present?
-          puts "array_delete_ids"
-          puts array_delete_ids.present?
 
           #send emails to each deleted user
           array_delete_ids.each do |user|
@@ -195,43 +186,35 @@ class ProjectsController < ApplicationController
         else
         end
 
-        #update the group conversation
-        puts "update group conversation"
-        main_conversation = @project.conversations.first
-        main_conversation.update(user_ids: array_user_tokens)
+        #update the group conversation and the individual conversations
+        unless prjct[:user_tokens].nil? 
+          #update the group conversation
+          main_conversation = @project.conversations.first
+          main_conversation.update(user_ids: array_user_tokens)
 
-        #create the conversations for the added users
-        array_added_ids = (array_user_tokens - array_project_users)
-        puts "array_added_ids"
-        puts array_added_ids
+          #create the conversations for the added users
+          array_added_ids = (array_user_tokens - array_project_users)
 
-        if array_added_ids.present?
+          if array_added_ids.present?
 
-          array_reconducted_ids = (array_user_tokens - array_added_ids)
-          puts "array reconducted"
-          puts array_reconducted_ids
+            array_reconducted_ids = (array_user_tokens - array_added_ids)
+            new_conversations_ids = array_added_ids.product(array_reconducted_ids)
 
-          new_conversations_ids = array_added_ids.product(array_reconducted_ids)
-          puts "new conversations ids"
-          puts new_conversations_ids
+            if new_conversations_ids.present?
+              new_conversations_ids.each do |ids|
+                @project.conversations.create(user_ids: ids)
+              end
+            end
 
-          if new_conversations_ids.present?
-            new_conversations_ids.each do |ids|
-              @project.conversations.create(user_ids: ids)
+            array_combination = array_added_ids.combination(2).to_a
+            array_combination.compact!
+
+            if array_combination.present?
+              array_combination.each do |ids|
+                @project.conversations.create(user_ids: ids)
+              end
             end
           end
-
-
-          array_combination = array_added_ids.combination(2).to_a
-          array_combination.compact!
-
-          if array_combination.present?
-            array_combination.each do |ids|
-              @project.conversations.create(user_ids: ids)
-            end
-          end
-
-        else
         end
 
 
@@ -261,6 +244,15 @@ class ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
+    end
+
+    def set_leader
+      @leader = @project.users.find(@project.leader_id)
+    end
+
+    def set_registered
+      @registered=@project.users.where.not("username is null")
+      @unregistered=@project.users.where("username is null")
     end
 
     def members_params

@@ -18,7 +18,7 @@
 
   <div class="form_group">
     <%= form.label :leader_id, '案件の担当マネジャー:' %>
-    <%= form.collection_select(:leader_id, @users, :id, :username, :prompt => true, selected: @project.leader_id.to_i) %>
+    <%= form.collection_select(:leader_id, @registered, :id, :username, :prompt => true, selected: @project.leader_id.to_i) %>
   </div>
 
   <div class="actions">

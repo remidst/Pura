@@ -1,12 +1,12 @@
 class MessagesController < ApplicationController
 
   def create
-    @conversation = Conversation.find(params[:conversation_id])
-    @message = @conversation.messages.create(message_params)
-    @message.set_user!(current_user)
-    project=@conversation.project
+    conversation = Conversation.find(params[:conversation_id])
+    message = conversation.messages.create(message_params)
+    message.set_user!(current_user)
+    project=conversation.project
 
-    redirect_to project_path(project), notice: "メッセージが共有されました。"
+    redirect_to project_path(project)
   end
 
   def self.render_with_signed_in_user(user, *args)
