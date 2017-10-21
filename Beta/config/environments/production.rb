@@ -46,8 +46,6 @@ Rails.application.configure do
    config.action_cable.url = 'wss://purasandbox.herokuapp.com/cable'
    config.action_cable.allowed_request_origins = [ 'https://purasandbox.herokuapp.com', 'http://purasandbox.herokuapp.com' ]
 
-   config.middleware.use ConversationActionCable
-   config.web_socket_server_url = "wss://purasandbox.herokuapp.com"
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
