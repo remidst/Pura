@@ -1,5 +1,5 @@
 <% if conversation == project.conversations.first %>
-	<div class="message-username <%= 'self' if msg.user == current_user %> "><%= msg.user.try(:username) %></div>
+	<div class="message-username <%= 'self' unless msg.user.id != current_user.id %> "><%= msg.user.try(:username) %><%= current_user.username %></div>
 <% end %>
 
 <div class="messages <%= msg.user == current_user ? 'message-sent' : 'message-received'  %>">
