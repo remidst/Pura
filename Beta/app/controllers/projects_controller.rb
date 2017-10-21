@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.update(prjct)
 
-        format.html { redirect_to project_edit_leader_path(@project), notice: '案件にメンバーが招待されました。案件のオーナーを設定してください' }
+        format.html { redirect_to project_edit_leader_path(@project), notice: '案件にメンバーが招待されました。案件の担当ケアマネジャーを設定してください' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :invite_members }
