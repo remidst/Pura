@@ -8,15 +8,14 @@
 	margin: 5px;
 	margin-top: 7px;
 	margin-bottom: 7px;
-}
-
-.messages.message-received {
 	display: flex;
 	flex-direction: row;
 }
 
+.messages.message-received {
+}
+
 .messages.message-sent {
-	display: flex;
 	flex-direction: row-reverse;
 }
 
@@ -53,6 +52,7 @@
 	right: 0;
 	order: 1;
 	max-width: 80%;
+	background-color: #eee;
 }
 
 .message-content.sent {
@@ -60,7 +60,21 @@
 }
 
 .message-content.received {
-	background-color: #eee;
+}
+
+.message-content:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 6px solid transparent;
+	border-right-color: #eee;
+	border-left: 0;
+	border-top: 0;
+	margin-top: -3px;
+	margin-left: -6px;
 }
 
 .message-content.sent:after {
@@ -78,20 +92,11 @@
 	margin-right: -6px;
 }
 
-.message-content.received:before {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 50%;
-	width: 0;
-	height: 0;
-	border: 6px solid transparent;
-	border-right-color: #eee;
-	border-left: 0;
-	border-top: 0;
-	margin-top: -3px;
-	margin-left: -6px;
+.message-content.sent:before{
+	display:none;
 }
+
+
 
 .form_group {
 	margin-top: 10px;

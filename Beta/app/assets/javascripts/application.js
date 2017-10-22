@@ -82,5 +82,22 @@ $(document).ready(function(){
 
 	});
 
+	layout();
+
+
 });
+
+
+function layout(){
+	$(".message-container").each(function() {
+		var $this;
+		$this = $(this);
+		if ($this.data('sender') === current_user_id) {
+		  $this.find(".message-username").addClass("self");
+		  $this.find(".messages").addClass("message-sent");
+		  $this.find(".message-content").addClass("sent");
+		  return true;
+		}
+	});
+};
 

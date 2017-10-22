@@ -1,17 +1,22 @@
-<% if conversation == project.conversations.first %>
-	<div class="message-username <%= 'self' unless msg.user.id != current_user.id %> "><%= msg.user.try(:username) %><%= current_user.username %></div>
-<% end %>
-
-<div class="messages <%= msg.user == current_user ? 'message-sent' : 'message-received'  %>">
-
-	<div class="message-content <%= msg.user == current_user ? 'sent' : 'received' %>">
-		<%= msg.content %>
-	</div>
-	<div class="message-time">
-		<% if msg.created_at.strftime('%F') == Time.now.strftime('%F') %>
-			<%= msg.created_at.try(:strftime, '%H:%M') %> 
-	    <% else %>
-		    <%= msg.created_at.try(:strftime, '%F') %>
+<div class="message-container" data-sender="<%= msg.user.id %>">
+	<div class="message-username">
+		<% if conversation == project.conversations.first %>
+			<%= msg.user.try(:username) %>
 		<% end %>
 	</div>
+
+	<div class="messages">
+
+		<div class="message-content">
+			<%= msg.content %>
+		</div>
+		<div class="message-time">
+			<% if msg.created_at.strftime('%F') == Time.now.strftime('%F') %>
+				<%= msg.created_at.try(:strftime, '%H:%M') %> 
+		    <% else %>
+			    <%= msg.created_at.try(:strftime, '%F') %>
+			<% end %>
+		</div>
+	</div>
 </div>
+

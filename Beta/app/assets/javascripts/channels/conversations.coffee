@@ -2,6 +2,22 @@ $(document).ready ->
   messages = $('#message-list')
   if $('#message-list').length > 0
 
+    messages_to_bottom= -> 
+      $(".conversation-messages").each ->
+        $this = $(this)
+        $this.scrollTop($this.prop("scrollHeight"))
+
+    messages_to_bottom()
+
+    layout: ->
+      $(".message-container").each ->
+        $this = $(this)
+        if $this.data('sender') == current_user_id
+          $this.find(".message-username").addClass("self")
+          $this.find(".messages").addClass("message-sent")
+          $this.find(".message-content").addClass("sent")
+          return true
+
     App.conversation = App.cable.subscriptions.create {
         channel: "ConversationsChannel"
       },
@@ -12,7 +28,9 @@ $(document).ready ->
         # Called when the subscription has been terminated by the server
 
       received: (data) ->
-        $('#messages-' + data['conversation_id']).append data['message']
+        $('#messages-' + data['conversation_id']).append(data['message'])
+        layout()
+        messages_to_bottom()
 
       send_message: (message, conversation_id) ->
         @perform 'send_message', message: message, conversation_id: conversation_id
