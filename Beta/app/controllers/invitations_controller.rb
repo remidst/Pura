@@ -12,8 +12,6 @@ class InvitationsController < Devise::InvitationsController
 	end
 
 	def update
-
-
 		respond_to do |format|
 			format.js do 
 				invitation_token = Devise.token_generator.digest(resource_class, :invitation_token, update_resource_params[:invitation_token])
@@ -23,6 +21,7 @@ class InvitationsController < Devise::InvitationsController
         	end
         	format.html do
         		super
+        		UserMailer.welcome(resource).deliver_later
         	end
         end
 	end
