@@ -1,0 +1,9 @@
+<div id="notification">
+	<div class="close">閉じる</div>
+	<p>
+		新規メッセージ：　<%= message.user.username %>
+	</p>
+	<p>
+		<%= link_to '案件へ', project_path(message.conversation.project) %>
+	</p>
+</div>

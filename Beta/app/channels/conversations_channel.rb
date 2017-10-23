@@ -1,7 +1,7 @@
 class ConversationsChannel < ApplicationCable::Channel
 
 	def subscribed
-		stream_from "conversation"
+		stream_from("conversations_channel")
 	end
 
 	def unsubscribed
@@ -9,7 +9,10 @@ class ConversationsChannel < ApplicationCable::Channel
 	end
 
 	def send_message(data)
-		current_user.messages.create!(content: data['message'], conversation_id: data['conversation_id'])
+		conversation = Conversation.find_by(id: data['conversation_id'])
+		if conversation && conversation.users.include?(current_user)
+		    current_user.messages.create!(content: data['message'], conversation_id: data['conversation_id'])
+		end
 	end
 
 end
