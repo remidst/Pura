@@ -40,4 +40,12 @@ class User < ApplicationRecord
     !deleted_at ? super : :deleted_account
   end
 
+  def online?
+    !Redis.new.get("user_#{self.id}_online").nil?
+  end
+
+  def name_else_email
+    self.username.present? ? self.username : self.email
+  end
+
 end

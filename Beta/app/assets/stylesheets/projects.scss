@@ -200,6 +200,17 @@ div.send-message-button-container {
 	max-width: 400px;
 }
 
+.online_status:after {
+	content: " •";
+	font-size: 1.3em;
+	color: #ffd633;
+	transition: color 1s ease;
+}
+
+.online_status.online:after {
+	color: #56ca4a;
+}
+
 
 
 
