@@ -170,6 +170,9 @@ a:hover {
   padding: 10px;
   border: 1px solid black;
   background-color: #fff;
-  .close {cursor: pointer}
+  .close {
+  	cursor: pointer;
+  	font-size: 1em;
+  }
 }
 
