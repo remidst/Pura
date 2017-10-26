@@ -1,4 +1,4 @@
-$(document).ready ->
+$(document).on 'turbolinks:load', ->
 	App.conversation = App.cable.subscriptions.create {
 		channel: "AppearancesChannel"
 	},

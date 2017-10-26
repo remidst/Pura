@@ -12,13 +12,14 @@
 //
 //= require jquery3
 //= require jquery_ujs
+//= require turbolinks
 //= require jquery.tokeninput
 //= require bootstrap
 //= require cable
 //= require_tree .
 
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
 	$("#project_user_tokens").tokenInput("/users.json",
 	{
 		queryParam: 'q',

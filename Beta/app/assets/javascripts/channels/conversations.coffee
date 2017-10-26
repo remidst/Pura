@@ -1,4 +1,4 @@
-$(document).ready ->
+$(document).on 'turbolinks:load', ->
 
   messages_to_bottom= -> 
     $(".conversation-messages").each ->
