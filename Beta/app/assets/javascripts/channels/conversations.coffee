@@ -1,5 +1,4 @@
 $(document).ready ->
-  messages = $('#message-list')
 
   messages_to_bottom= -> 
     $(".conversation-messages").each ->
@@ -19,6 +18,7 @@ $(document).ready ->
 
   App.conversation = App.cable.subscriptions.create {
       channel: "ConversationsChannel"
+      conversation_id: $('.conversation-messages').data('conversation-id')
     },
     connected: ->
       # Called when the subscription is ready for use on the server
@@ -27,17 +27,9 @@ $(document).ready ->
       # Called when the subscription has been terminated by the server
 
     received: (data) ->
-      if $('.conversation-messages').length
-        $('.conversation-messages').each ->
-          $this = $(this)
-          if $this.data('conversation-id') is data['conversation_id']
-            $('#messages-' + data['conversation_id']).append(data['message'])
-            layout()
-            messages_to_bottom()
-      else 
-        $('body').append(data['notification']) if data['notification']
-
-
+      $('#messages-' + data['conversation_id']).append(data['message'])
+      layout()
+      messages_to_bottom()
 
     send_message: (message, conversation_id) ->
       @perform 'send_message', message: message, conversation_id: conversation_id
