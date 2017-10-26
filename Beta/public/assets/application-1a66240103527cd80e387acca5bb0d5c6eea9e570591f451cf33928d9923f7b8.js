@@ -14660,47 +14660,85 @@ if (typeof jQuery === 'undefined') {
 }).call(this);
 (function() {
   $(document).ready(function() {
-    var messages;
-    messages = $('#message-list');
-    if ($('#message-list').length > 0) {
-      App.conversation = App.cable.subscriptions.create({
-        channel: "ConversationsChannel"
-      }, {
-        connected: function() {},
-        disconnected: function() {},
-        received: function(data) {
-          return $('#messages-' + data['conversation_id']).append(data['message']);
-        },
-        send_message: function(message, conversation_id) {
-          return this.perform('send_message', {
-            message: message,
-            conversation_id: conversation_id
-          });
-        }
-      });
-      window.conversationid = 1;
-      return $('textarea.textarea-id').click(function() {
-        var conversationid, raw_id;
-        raw_id = $(this).attr('id');
-        conversationid = raw_id.replace(/[^0-9]/g, '');
-        return $('#' + conversationid + '_new_message').submit(function(e) {
-          var $this, textarea;
-          $this = $(this);
-          textarea = $this.find('#' + conversationid + '_message_content');
-          if ($.trim(textarea.val()).length > 1) {
-            App.conversation.send_message(textarea.val(), conversationid);
-            textarea.val('');
-          }
-          e.preventDefault();
-          return false;
-        });
-      });
-    }
+    return App.conversation = App.cable.subscriptions.create({
+      channel: "AppearancesChannel"
+    }, {
+      connected: function() {},
+      disconnected: function() {},
+      received: function(data) {
+        var user;
+        user = $(".user-" + data['user_id']);
+        return user.toggleClass('online', data['online']);
+      }
+    });
   });
 
 }).call(this);
 (function() {
+  $(document).ready(function() {
+    var messages_to_bottom;
+    messages_to_bottom = function() {
+      return $(".conversation-messages").each(function() {
+        var $this;
+        $this = $(this);
+        return $this.scrollTop($this.prop("scrollHeight"));
+      });
+    };
+    messages_to_bottom();
+    ({
+      layout: function() {
+        return $(".message-container").each(function() {
+          var $this;
+          $this = $(this);
+          if ($this.data('sender') === current_user_id) {
+            $this.find(".message-username").addClass("self");
+            $this.find(".messages").addClass("message-sent");
+            $this.find(".message-content").addClass("sent");
+            return true;
+          }
+        });
+      }
+    });
+    App.conversation = App.cable.subscriptions.create({
+      channel: "ConversationsChannel",
+      conversation_id: $('.conversation-messages').data('conversation-id')
+    }, {
+      connected: function() {},
+      disconnected: function() {},
+      received: function(data) {
+        $('#messages-' + data['conversation_id']).append(data['message']);
+        layout();
+        return messages_to_bottom();
+      },
+      send_message: function(message, conversation_id) {
+        return this.perform('send_message', {
+          message: message,
+          conversation_id: conversation_id
+        });
+      }
+    });
+    window.conversationid = 1;
+    return $('textarea.textarea-id').click(function() {
+      var conversationid, raw_id;
+      raw_id = $(this).attr('id');
+      conversationid = raw_id.replace(/[^0-9]/g, '');
+      return $('#' + conversationid + '_new_message').submit(function(e) {
+        var $this, textarea;
+        $this = $(this);
+        textarea = $this.find('#' + conversationid + '_message_content');
+        if ($.trim(textarea.val()).length > 1) {
+          App.conversation.send_message(textarea.val(), conversationid);
+          textarea.val('');
+        }
+        e.preventDefault();
+        return false;
+      });
+    });
+  });
 
+  $(document).on('click', '#notification .close', function() {
+    return $(this).parents('#notification').fadeOut(1000);
+  });
 
 }).call(this);
 (function() {
@@ -14811,5 +14849,22 @@ $(document).ready(function(){
 
 	});
 
+	layout();
+
+
 });
+
+
+function layout(){
+	$(".message-container").each(function() {
+		var $this;
+		$this = $(this);
+		if ($this.data('sender') === current_user_id) {
+		  $this.find(".message-username").addClass("self");
+		  $this.find(".messages").addClass("message-sent");
+		  $this.find(".message-content").addClass("sent");
+		  return true;
+		}
+	});
+};
 
