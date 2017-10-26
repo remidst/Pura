@@ -1,17 +1,19 @@
-<% @conversations.each do |conversation| %>
-	<div class="conversation-form id-<%= conversation.id %>" data-conversation-id="<%= conversation.id %>">
-		<%= form_for([conversation, conversation.messages.build], url: '#', namespace: conversation.id) do |f| %>
-			<div class="new-message-block">
-				<div class="send-message-text-area">
-				  <%= f.text_area :content, :required => 'required', class: 'textarea-id', placeholder: '新しいメッセージ' %>
-				</div>
-				<div class="send-message-button-container" id="<%= conversation.id %>">
-				  <%= f.submit '', class: 'send-message-button' %>
-				</div>
+<div class="conversation-form id-<%= @conversation.id %>" data-conversation-id="<%= @conversation.id %>">
+	<%= form_for([@conversation, @conversation.messages.build], url: '#', namespace: @conversation.id) do |f| %>
+		<div class="new-message-block">
+
+			<div class="send-message-text-area">
+				<%= f.text_area :content, :required => 'required', class: 'textarea-id', placeholder: '新しいメッセージ' %>
 			</div>
 
-		<% end %>				
-	</div>
-<% end %>
+			<div class="send-message-button-container" id="<%= @conversation.id %>">
+				<%= f.submit '', class: 'send-message-button' %>
+			</div>
+
+		</div>
+
+	<% end %>				
+</div>
+
 
 

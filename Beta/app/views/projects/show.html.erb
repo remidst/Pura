@@ -24,10 +24,10 @@
 <div class="background-pattern">
 		
 	<div class="tab-panel">
-			<ul class="nav nav-tabs">
-				<li class="nav-show nav-selected" id="nav-msg">メッセージ</li>
-				<li class="nav-show" id="nav-file">ファイル共有</li>
-			</ul>
+		<ul class="nav nav-tabs">
+			<li class="nav-show nav-selected" id="nav-msg">メッセージ</li>
+			<li class="nav-show" id="nav-file">ファイル共有</li>
+		</ul>
 	</div>
 
 	<div class="container-fluid show-container">
@@ -35,30 +35,30 @@
 			<div class="conversation-flex">
 				<div id="conversation-nav">
 					<ul id="conversation-nav-list">
-					  <% if @conversations.count <3 %>
-					   <li class="conversation-list" id="<%= @conversations.first.id %>"><%= '全メンバー' %></li>
-					  <% else %>
-						<% @conversations.each do |conversation| %>
-							<li class="conversation-list" id="<%= conversation.id %>">
-								<% if @project.users.count > 2 && conversation.users.count > 2 %>
-									<%= '全メンバー' %>
-								<% elsif @project.users.count == 2 && conversation == @project.conversations.first %>
-									<%= '全メンバー' %>
-								<% else %>
-									<% conversation.users.each do |user| %>
-										<%= online_status(user) if user != current_user %>
+					    <li class="conversation-list" id="<%= @conversation.id %>">
+					        全メンバー:
+					        <ul id="conversation-member-list">
+					        	<% @conversation.users.each do |user| %>
+					        		<% if user != current_user %>
+										<li class="conversation-user"><%= online_status(user) %></li>
 									<% end %>
 								<% end %>
-							</li>
-						<% end %>
-					  <% end %>
+					        </ul>
+
+					    </li>
 					</ul>
 				</div>
 			</div>
 
 			<div class="conversation-flex" id="message-block">
 				<div id="message-list">
-					<%= render 'messages/list' %>
+					<div class="conversation-messages" id="messages-<%= @conversation.id %>" data-conversation-id="<%= @conversation.id %>">
+						<% @conversation.messages.each do |msg| %>
+								
+							<%= render partial: "messages/message", locals: {msg: msg, conversation: @conversation, project: @conversation.project} %>
+							
+						<% end %>
+					</div>
 				</div>	
 
 				<div id="message-form">

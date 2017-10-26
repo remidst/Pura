@@ -117,23 +117,23 @@ ul#conversation-nav-list {
 	list-style-type: none;
 }
 
+ul#conversation-member-list {
+	padding: 0px;
+	list-style-type: none;
+}
+
 li.conversation-list {
 	list-style-type: none;
 	padding-left: 10px;
 	padding-top: 5px;
 	padding-right: 10 px;
 	padding-bottom: 5px;
-	border-bottom: 1px solid #ddd;
 }
 
 li.conversation-selected {
-	font-weight: bold;
-	background-color: #ddd;
 }
 
 li.conversation-list:hover {
-	cursor: pointer;
-	background-color: #cceae7;
 }
 
 .new-message-block {

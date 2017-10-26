@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+  class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :invite_members, :update_members, :edit_leader, :update, :update_leader, :destroy]
   before_action :set_leader, only: [:show, :edit_leader]
   before_action :set_registered, only: [:show, :edit, :invite_members, :edit_leader, :update]
@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   def show
     @documents=@project.documents.order('created_at DESC')
     @members = @registered.where.not(id: @leader.id)
-    @conversations = current_user.conversations.where(project_id: @project.id).order(:id)
+    @conversation = @project.conversations.first
   end
 
   # GET /projects/new
@@ -44,27 +44,20 @@ class ProjectsController < ApplicationController
   def update_members
   	prjct = members_params
 
-  	#make sure not to delete curent user (leader) from the project
+  	#add current user to the project user tokens
     prjct[:user_tokens] << ",#{current_user.id}"
 
-    #convert user tokens into an array
+    #convert the updated user tokens into an array
     array_user_tokens = prjct[:user_tokens].split(',')
 
-    #update general conversation with all users
-    conversation = @project.conversations.first
-    conversation.update(user_ids: array_user_tokens)
-
-    #get all combinations of 2 elements -i.e all the 1 to 1 conversations
-    conversation_tokens = array_user_tokens.combination(2).to_a
-
-    #iterate over conversation tokens to create each 1 to 1 conversation within the project
-    conversation_tokens.each do |tokens|
-        @project.conversations.create(user_ids: tokens)
-    end
 
 
     respond_to do |format|
       if @project.update(prjct)
+
+        #update general conversation with all users
+        general_conversation = @project.conversations.first
+        general_conversation.update(user_ids: array_user_tokens)
 
         format.html { redirect_to project_edit_leader_path(@project), notice: '案件にメンバーが招待されました。案件の担当ケアマネジャーを設定してください' }
         format.json { render :show, status: :ok, location: @project }
@@ -95,21 +88,24 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project =Project.new(project_params)
-    @project.users << current_user
-    @project.leader_id = current_user.id
+    project =Project.new(project_params)
+    project.users << current_user
+    project.leader_id = current_user.id
 
     respond_to do |format|
-      if @project.save(project_params)
+      if project.save(project_params)
 
-        conversation = @project.conversations.create(user_ids: current_user.id)
-        ProjectMailer.create_project(current_user, @project).deliver_now
+        # create a general conversation with only the creator at this time
+        conversation = project.conversations.create(user_ids: current_user.id)
 
-        format.html { redirect_to project_invite_members_path(@project), notice: '案件名が登録されました。案件にメンバーを招待してください。' }
-        format.json { render :show, status: :ok, location: @project }
+        #send an email that confirms the creation of a project
+        ProjectMailer.create_project(current_user, project).deliver_later
+
+        format.html { redirect_to project_invite_members_path(project), notice: '案件名が登録されました。案件にメンバーを招待してください。' }
+        format.json { render :show, status: :ok, location: project }
       else
         format.html { render :edit }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.json { render json: project.errors, status: :unprocessable_entity }
       end
     end
 
@@ -138,10 +134,9 @@ class ProjectsController < ApplicationController
         array_user_tokens.map! {|x| x.to_i}
         unregistered_ids_string = unregistered_ids.join(',')
         prjct[:user_tokens] << ",#{unregistered_ids_string}"
-      else
       end
 
-      #array operation to retrive only the id that will disapear
+      #array operation to retrive only the ids that will disapear
       array_delete_ids = (array_project_users - array_user_tokens)
 
       #if the array with ids to delete is not empty, transform it into array with user records
@@ -161,17 +156,18 @@ class ProjectsController < ApplicationController
 
           #send emails to each deleted user
           array_delete_ids.each do |user|
-            ProjectMailer.goodbye_registered_user(user, @project).deliver_now
+            ProjectMailer.goodbye_registered_user(user, @project).deliver_later
           end
 
           #send email to leader to confirm deletion
-          ProjectMailer.goodbye_registered_user_leader_notice(array_delete_ids, @project).deliver_now
+          ProjectMailer.goodbye_registered_user_leader_notice(array_delete_ids, @project).deliver_later
 
           #delete all the conversations related to this user
-          @project.conversations.each do |conversation|
-            unless conversation == @project.conversations.first
-              conversation.destroy if (conversation.users & array_delete_ids).present?
-            else
+          if @project.conversations.count > 1 
+            @project.conversations.each do |conversation|
+              unless conversation == @project.conversations.first
+                conversation.destroy if (conversation.users & array_delete_ids).present?
+              end
             end
           end
 
@@ -181,40 +177,16 @@ class ProjectsController < ApplicationController
 
         #send notification email if any change in project owner
         if prjct[:leader_id].present? && prjct[:leader_id].to_i != old_leader.id.to_i
-          ProjectMailer.old_leader_email(old_leader, @project).deliver_now
-          ProjectMailer.new_leader_email(old_leader, @project).deliver_now
+          ProjectMailer.old_leader_email(old_leader, @project).deliver_later
+          ProjectMailer.new_leader_email(old_leader, @project).deliver_later
         else
         end
 
-        #update the group conversation and the individual conversations
+        #update the general conversation
         unless prjct[:user_tokens].nil? 
           #update the group conversation
-          main_conversation = @project.conversations.first
-          main_conversation.update(user_ids: array_user_tokens)
-
-          #create the conversations for the added users
-          array_added_ids = (array_user_tokens - array_project_users)
-
-          if array_added_ids.present?
-
-            array_reconducted_ids = (array_user_tokens - array_added_ids)
-            new_conversations_ids = array_added_ids.product(array_reconducted_ids)
-
-            if new_conversations_ids.present?
-              new_conversations_ids.each do |ids|
-                @project.conversations.create(user_ids: ids)
-              end
-            end
-
-            array_combination = array_added_ids.combination(2).to_a
-            array_combination.compact!
-
-            if array_combination.present?
-              array_combination.each do |ids|
-                @project.conversations.create(user_ids: ids)
-              end
-            end
-          end
+          general_conversation = @project.conversations.first
+          general_conversation.update(user_ids: array_user_tokens)
         end
 
 

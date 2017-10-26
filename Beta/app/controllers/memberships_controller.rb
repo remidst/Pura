@@ -14,27 +14,9 @@ class MembershipsController < ApplicationController
 
 		if @membership.save
 
-			@new_user = User.find_by_email(params[:email])
-
-			array_ids=@project.user_ids
-
-			main_conversation=@project.conversations.first
-			main_conversation.update(user_ids: array_ids)
-
-			ids = @project.user_ids
-			new_user_id = [@new_user.id.to_i]
-
-			old_ids=ids - new_user_id
-
-			new_conversations = old_ids.product(new_user_id)
-
-			if new_conversations.present?
-		        new_conversations.each do |ids|
-		           @project.conversations.create(user_ids: ids)
-		        end
-		    end
-
-
+			#update the general conversation
+			general_conversation=@project.conversations.first
+			general_conversation.update(user_ids: @project.user_ids)
 
 			redirect_to project_path(@membership.project), notice: '新しいメンバーが招待されました。'
 		else
@@ -58,16 +40,13 @@ class MembershipsController < ApplicationController
     	membership = project.memberships.new(membership_params)
     	membership.set_user_id!(current_user)
 
-    	params=membership_params
+    	params = membership_params
 
     	if membership.save
 
-			array_ids=project.user_ids
-
-			main_conversation=project.conversations.first
-			main_conversation.update(user_ids: array_ids)
-
-			new_conversation=project.conversations.create(user_ids: array_ids)
+			# update general conversation
+			general_conversation=project.conversations.first
+			general_conversation.update(user_ids: project.user_ids)
 
     		redirect_to project_edit_leader_path(membership.project), notice: '新しい責任者が招待されました。'
     	else
