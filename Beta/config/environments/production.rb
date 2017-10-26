@@ -43,8 +43,8 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-   config.action_cable.url = ENV['ACTION_CABLE_URL'] 
-   config.action_cable.allowed_request_origins = [ENV['ACTION_CABLE_REQUEST_ORIGINS_HTTPS'], ENV['ACTION_CABLE_REQUEST_ORIGINS_HTTP']]
+   config.action_cable.url = [ENV['ACTION_CABLE_URL'], ENV['ACTION_CABLE_URL_COLIBRI'] ]
+   config.action_cable.allowed_request_origins = [ENV['ACTION_CABLE_REQUEST_ORIGINS_HTTPS'], ENV['ACTION_CABLE_REQUEST_ORIGINS_HTTPS_COLIBRI'], ENV['ACTION_CABLE_REQUEST_ORIGINS_HTTP'], ENV['ACTION_CABLE_REQUEST_ORIGINS_HTTP_COLIBRI']]
 
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
