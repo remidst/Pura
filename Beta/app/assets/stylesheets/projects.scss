@@ -201,7 +201,7 @@ div.send-message-button-container {
 }
 
 .online_status:after {
-	content: " •";
+	content: "";
 	font-size: 1.3em;
 	color: #ffd633;
 	transition: color 1s ease;
