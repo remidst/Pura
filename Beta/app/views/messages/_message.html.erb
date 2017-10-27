@@ -8,7 +8,7 @@
 	<div class="messages">
 
 		<div class="message-content">
-			<%= msg.content %>
+			<%= simple_format(msg.content) %>
 		</div>
 		<div class="message-time">
 			<% if msg.created_at.strftime('%F') == Time.now.strftime('%F') %>
