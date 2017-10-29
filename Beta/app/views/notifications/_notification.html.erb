@@ -1,11 +1,4 @@
-<div id="notification">
-	<div class="close">閉じる</div>
-	<p>
-		新規メッセージ<br/>
-		ユーザー：<%= message.user.username %><br/>
-		案件名：<%= message.conversation.project.project_name %>
-	</p>
-	<p>
-		<%= link_to '案件へ', project_path(message.conversation.project) %>
-	</p>
+<div class="notification">
+	<%= unread.content %>
+	<%= link_to '#{notification.project.project_name}', project_path(notification.project) %>
 </div>

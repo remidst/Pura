@@ -6,6 +6,7 @@ class Project < ApplicationRecord
 	has_one :leader, class_name: 'User', foreign_key: 'leader_id'
 	has_many :conversations, dependent: :destroy
 	has_many :documents, dependent: :destroy
+	has_many :notifications, dependent: :destroy
 
   def leader
     self.memberships.where(type: 'leader').first

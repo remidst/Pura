@@ -1,7 +1,8 @@
   class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :invite_members, :update_members, :edit_leader, :update, :update_leader, :destroy]
+  before_action :set_project, except: [:index, :new, :create]
   before_action :set_leader, only: [:show, :edit_leader]
   before_action :set_registered, only: [:show, :edit, :invite_members, :edit_leader, :update]
+  before_action :set_unread
 
   # GET /projects
   # GET /projects.json
@@ -214,6 +215,11 @@
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def set_unread
+      @unread = current_user.notifications.where(read: false)
+    end
+
     def set_project
       @project = Project.find(params[:id])
     end
