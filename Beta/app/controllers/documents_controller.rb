@@ -7,9 +7,8 @@ class DocumentsController < ApplicationController
       project_users = project.users.where.not(id: current_user.id)
 
       project_users.each do |user|
-        notification = Notification.new(user: user, project: project, read: false)
+        notification = Notification.create(user: user, project: project, read: false)
         notification.new_document!
-        notification.save!
       end
 
       redirect_to project_path(project), notice: "ファイルが案件のメンバーに共有されました。"

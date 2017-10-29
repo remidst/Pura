@@ -1,4 +1,4 @@
-<div class="notification">
-	<%= unread.content %>
-	<%= link_to '#{notification.project.project_name}', project_path(notification.project) %>
+<div class="notifications" data-notification="<%= project_path(notification.project) %>" id="#{notification.id}">
+	<%= notification.content %><br/>
+	案件名：<%= notification.project.project_name %>様
 </div>

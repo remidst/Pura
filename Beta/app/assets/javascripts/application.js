@@ -47,6 +47,21 @@ $(document).on('turbolinks:load', function(){
 		window.location = this.dataset.link
 	});
 
+	$("#notification-button").click(function(){
+		var pos = $(this).position();
+		$("#notification-container").css({
+			position: "absolute",
+			top: pos.bottom + "px",
+			right: pos.left + "px",
+		});
+		$("#notification-container").toggleClass("notification-hidden");
+		$("#notification-button").toggleClass("notification-button-selected")
+	});
+
+	$(".notifications").click(function(){
+		window.location = this.dataset.notification
+	});
+
 
 	$("#well-document").hide();
 

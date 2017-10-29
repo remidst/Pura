@@ -7,14 +7,23 @@
     <div id="navbar">
     <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
+        <li id="notification-menu">
+          <div id="notification-button">通知<% if @unread.present? %><%= @unread.count %><% end %></div>
+          <div id="notification-container" class="notification-hidden">
+            <ul id="notification-list">
+              <% @unread.each do |notification| %>
+                <li class="notification-list-element"><%= render partial: 'notifications/notification', locals: {notification: notification} %></li>
+              <% end %>
+            </ul>
+          </div>
+        </li>
         <li><%= link_to current_user.username, edit_user_registration_path(current_user), class: 'nav-item' %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,  class: 'nav-item' %></li>
         <div id="current-user"></div>
         <% else %>
-          <li><% if @unread.any? %><%= @unread.count %><% end %></li>
           <li><%= link_to 'ログイン', new_user_session_path, class: 'nav-item' %></li>
           <li><%= link_to '新規登録', new_user_registration_path, class: 'nav-item' %></li>
         <% end %>
     </ul>
   </div>
-</nav>)
+</nav>

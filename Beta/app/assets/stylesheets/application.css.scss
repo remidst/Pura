@@ -116,6 +116,10 @@ h1 {
 	margin-bottom: 0;
 }
 
+li {
+	list-style-type: none;
+}
+
 textarea {
 	resize: none;
 	height: 100%;
@@ -163,3 +167,51 @@ a:hover {
 }
 
 
+#notification-button {
+	color: #fff;
+	height: 50px;
+	vertical-align: middle;
+	line-height: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#notification-list {
+	padding-left: 0px;
+}
+
+#notification-button:hover {
+	cursor: pointer;
+	background: #000;
+}
+
+.notification-button-selected {
+	background: #000;
+}
+
+#notification-container {
+	width: 200px;
+	max-height: 350px;
+	overflow-x: hidden;
+	background-color: #eee;
+}
+
+li.notification-list-element {
+	border-bottom: 1px solid #bbb;
+}
+
+.notification-hidden {
+	display:none;
+}
+
+.notifications {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.notifications:hover {
+	cursor: pointer;
+	background: #ddd;
+} 
