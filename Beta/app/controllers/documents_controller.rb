@@ -7,8 +7,7 @@ class DocumentsController < ApplicationController
       project_users = project.users.where.not(id: current_user.id)
 
       project_users.each do |user|
-        notifications = user.notifications.where(read: false, project: project)
-        if notifications.empty?
+        unless notification_document_exists?(current_user, project)
           notification = Notification.create(user: user, project: project, read: false)
           notification.new_document!
         end
@@ -26,6 +25,11 @@ class DocumentsController < ApplicationController
   end
 
   private
+
+  def notification_document_exists?(user, project)
+    user.notifications.where(read: false, project_id: project.id, content: "新しいファイルが共有されました。").present?
+  end
+
   def document_params
   	params.require(:document).permit(:attachment, :user)
   end
