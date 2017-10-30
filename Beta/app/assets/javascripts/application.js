@@ -59,7 +59,10 @@ $(document).on('turbolinks:load', function(){
 	});
 
 	$(".notifications").click(function(){
-		window.location = this.dataset.notification
+		var id_notification = $(this).attr('id');
+		var url = $(this).data('notification');
+
+		window.location = url + "?v=" + id_notification ;
 	});
 
 

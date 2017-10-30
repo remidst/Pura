@@ -17,6 +17,16 @@
     @documents=@project.documents.order('created_at DESC')
     @members = @registered.where.not(id: @leader.id)
     @conversation = @project.conversations.first
+
+    #to compare, id has to be an integer inside an array
+    id = params[:v]
+    notification_id = [id.to_i]
+
+    #verify that the notification id is relevant, if so mark as read
+    if verify_notification?(notification_id, @project, current_user)
+      notification = Notification.find(id)
+      notification.read!
+    end
   end
 
   # GET /projects/new
@@ -215,6 +225,10 @@
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def verify_notification?(id, project, user)
+      (project.notification_ids & id).present? && (user.notification_ids & id).present?
+    end
 
     def set_unread
       @unread = current_user.notifications.where(read: false)

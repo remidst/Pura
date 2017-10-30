@@ -27,4 +27,9 @@ class Notification < ApplicationRecord
   	self.save!
   end
 
+  def read!
+    self.read = true
+    self.save!
+  end
+
 end
