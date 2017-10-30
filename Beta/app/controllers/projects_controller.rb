@@ -96,8 +96,21 @@
   end
 
   def update_leader
+
+    old_leader = User.find(@project.leader_id)
+
     respond_to do |format|
       if @project.update(leader_params)
+
+        new_leader = User.find(@project.leader_id)
+        #send email to new and old leader
+        ProjectMailer.old_leader_email(old_leader, @project).deliver_later
+        ProjectMailer.new_leader_email(old_leader, @project).deliver_later
+
+        #send notification to new leader
+        notification = new_leader.notifications.create(project_id: @project.id, read: false)
+        notification.new_leader!
+
         format.html { redirect_to @project, notice: '案件が登録されました。' }
         format.json { render :show, status: :ok, location: @project }
       else
