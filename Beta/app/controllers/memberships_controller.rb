@@ -56,13 +56,7 @@ class MembershipsController < ApplicationController
 			general_conversation.update(user_ids: project.user_ids)
 
 			#email and notification to the new user
-			puts "project id"
-			puts project.id
-			puts "params email"
-			puts params[:email]
-			puts "added user"
 			added_user = User.find_by(email: params[:email])
-			puts added_user
 			ProjectMailer.user_invited(added_user, project).deliver_later
 			notification = added_user.notifications.create(project_id: project.id, read: false)
 			notification.new_project!

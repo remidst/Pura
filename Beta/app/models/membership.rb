@@ -19,7 +19,7 @@ class Membership < ApplicationRecord
 
 	def invite_email
 		if self.user.id != self.project.leader_id && self.user.username.present?
-			ProjectMailer.user_invited(self.user, self.project).deliver_now
+			ProjectMailer.user_invited(self.user, self.project).deliver_later
 		else
 		end
 	end

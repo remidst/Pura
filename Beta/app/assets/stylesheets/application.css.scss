@@ -190,10 +190,11 @@ a:hover {
 }
 
 #notification-container {
-	width: 200px;
-	max-height: 350px;
+	width: 350px;
+	max-height: 450px;
 	overflow-x: hidden;
-	background-color: #eee;
+	background: white;
+	border: 1px solid #bbb;
 }
 
 li.notification-list-element {
@@ -214,4 +215,9 @@ li.notification-list-element {
 .notifications:hover {
 	cursor: pointer;
 	background: #ddd;
+	border-right: 3px solid #5bc0de;
 } 
+
+.notfication-icon {
+	float:left;
+}
