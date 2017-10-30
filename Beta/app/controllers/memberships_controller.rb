@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
 
-	before_action :set_project, only: [:new, :create, :index]
-	before_action :set_unread
+	before_action :set_project, except: :update_members
+	before_action :set_unread, except: :update_members
 
 	def new		
 		@membership=@project.memberships.new
@@ -18,6 +18,12 @@ class MembershipsController < ApplicationController
 			#update the general conversation
 			general_conversation=@project.conversations.first
 			general_conversation.update(user_ids: @project.user_ids)
+
+			#email and notification to the new user
+			added_user = User.find_by(email: params[:email])
+			ProjectMailer.user_invited(added_user, @project).deliver_later
+			notification = added_user.notifications.create(project_id: @project.id, read: false)
+			notification.new_project!
 
 			redirect_to project_path(@membership.project), notice: '新しいメンバーが招待されました。'
 		else
@@ -48,6 +54,18 @@ class MembershipsController < ApplicationController
 			# update general conversation
 			general_conversation=project.conversations.first
 			general_conversation.update(user_ids: project.user_ids)
+
+			#email and notification to the new user
+			puts "project id"
+			puts project.id
+			puts "params email"
+			puts params[:email]
+			puts "added user"
+			added_user = User.find_by(email: params[:email])
+			puts added_user
+			ProjectMailer.user_invited(added_user, project).deliver_later
+			notification = added_user.notifications.create(project_id: project.id, read: false)
+			notification.new_project!
 
     		redirect_to project_edit_leader_path(membership.project), notice: '新しい責任者が招待されました。'
     	else
