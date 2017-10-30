@@ -23,7 +23,7 @@ class Notification < ApplicationRecord
   end
 
   def new_leader!
-  	self.content = "担当ケアマネジャーが変更されました。"
+  	self.content = "担当ケアマネジャーのアクセス権限が与えられました。"
   	self.save!
   end
 

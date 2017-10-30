@@ -181,16 +181,16 @@
               end
             end
           end
-
-
-        else
         end
 
         #send notification email if any change in project owner
         if prjct[:leader_id].present? && prjct[:leader_id].to_i != old_leader.id.to_i
           ProjectMailer.old_leader_email(old_leader, @project).deliver_later
           ProjectMailer.new_leader_email(old_leader, @project).deliver_later
-        else
+
+          new_leader = User.find(@project.leader_id)
+          notification = new_leader.notifications.create(project_id: @project.id, read: false)
+          notification.new_leader!
         end
 
         #update the general conversation
