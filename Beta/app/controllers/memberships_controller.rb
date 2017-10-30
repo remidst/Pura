@@ -1,6 +1,7 @@
 class MembershipsController < ApplicationController
 
 	before_action :set_project, only: [:new, :create, :index]
+	before_action :set_unread
 
 	def new		
 		@membership=@project.memberships.new
@@ -59,6 +60,10 @@ class MembershipsController < ApplicationController
 
 	def set_project
 		@project = current_user.projects.find(params[:project_id])
+	end
+
+	def set_unread
+		@unread = @project.notifications.where(user: current_user, read: false)
 	end
 		
 	def membership_params

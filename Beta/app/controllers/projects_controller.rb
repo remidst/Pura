@@ -161,6 +161,9 @@
       #array operation to retrive only the ids that will disapear
       array_delete_ids = (array_project_users - array_user_tokens)
 
+      #array operation to retrieve only the ids that were added
+      array_added_ids = (array_user_tokens - array_project_users)
+
       #if the array with ids to delete is not empty, transform it into array with user records
       array_delete_ids.map! { |id| User.find(id) }.join(',') if array_delete_ids.present?
 
@@ -191,6 +194,17 @@
                 conversation.destroy if (conversation.users & array_delete_ids).present?
               end
             end
+          end
+        end
+
+        #send email and notification to those who were added (if any)
+        if prjct[:user_tokens].present? && array_added_ids.present?
+          added_users = array_added_ids.map {|user| User.find(user) }
+
+          added_users.each do |user|
+            ProjectMailer.user_invited(user, @project).deliver_later
+            notification = user.notifications.create(project_id: @project.id, read: false)
+            notification.new_project!
           end
         end
 
