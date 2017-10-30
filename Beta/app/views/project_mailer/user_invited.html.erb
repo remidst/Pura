@@ -15,7 +15,7 @@
 		<p>
 			案件内のメンバー：<br/>
 			<% @users.each do |user| %>
-			<%= user.username %>様, <%= user.company %><br/>
+			<%= user.username.present? ? user.username : user.email %>様, <%= user.try(:company) %><br/>
 			<% end %>
 		</p>
 

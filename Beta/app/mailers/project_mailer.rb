@@ -17,7 +17,7 @@ class ProjectMailer < ApplicationMailer
     @user = user
     @project = project
     @leader = User.find(@project.leader_id)
-    @users = @project.users.where.not("username is null") 
+    @users = @project.users
 
     mail to: @user.email, subject: "#{@leader.username}様から#{@project.project_name}様の案件に招待されました。"
   end

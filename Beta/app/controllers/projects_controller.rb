@@ -55,7 +55,9 @@
   def update_members
   	prjct = members_params
 
-  	#add current user to the project user tokens
+    new_user_tokens = prjct[:user_tokens].split(',')
+
+    #add current user to the project user tokens
     prjct[:user_tokens] << ",#{current_user.id}"
 
     #convert the updated user tokens into an array
@@ -69,6 +71,15 @@
         #update general conversation with all users
         general_conversation = @project.conversations.first
         general_conversation.update(user_ids: array_user_tokens)
+
+        #send email to invited users and create notification
+        users = new_user_tokens.map { |token| User.find(token) }
+        users.each do |user|
+          ProjectMailer.user_invited(user, @project).deliver_later
+          notification = user.notifications.create(project_id: @project.id, read: false)
+          notification.new_project!
+        end
+
 
         format.html { redirect_to project_edit_leader_path(@project), notice: '案件にメンバーが招待されました。案件の担当ケアマネジャーを設定してください' }
         format.json { render :show, status: :ok, location: @project }
