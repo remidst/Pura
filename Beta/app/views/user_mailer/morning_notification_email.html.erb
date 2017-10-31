@@ -1,0 +1,10 @@
+<p><%= @user.username %>様、</p>
+
+<p>新規メッセージが共有されました。</p>
+
+<p>
+	メッセージ：<br/>
+	<% @notifications.each do |notification| %>
+			<%= notification.content %>案件：<%= notification.project.project_name %>様<br/>
+	<% end %>
+</p>

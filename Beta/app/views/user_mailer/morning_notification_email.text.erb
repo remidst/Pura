@@ -1,0 +1,8 @@
+<%= @user.username %>様、
+
+新規メッセージが共有されました。
+
+メッセージ：
+<% @notifications.each do |notification| %>
+		<%= notification.content %>案件：<%= notification.project.project_name %>様
+<% end %>

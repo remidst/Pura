@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'remi.daste@gmail.com'
+  default from: 'info@colibri.jp'
   layout 'mailer'
 end
 
