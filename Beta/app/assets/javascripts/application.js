@@ -47,6 +47,8 @@ $(document).on('turbolinks:load', function(){
 		window.location = this.dataset.link
 	});
 
+	notificationCount();
+
 	$("#notification-button").click(function(){
 		var pos = $(this).position();
 		$("#notification-container").css({
@@ -119,4 +121,14 @@ function layout(){
 		}
 	});
 };
+
+function notificationCount(){
+	var pos = $("#notification-button").position();
+	$("#notification-count-container").css({
+		position: "absolute",
+		top: pos.top + "px",
+		right: pos.left +  "px",
+	})
+}
+
 

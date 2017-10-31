@@ -10,14 +10,18 @@
         <li id="notification-menu">
           <div id="notification-button">
           <%= image_tag('bell-3-24.png') %>
-            <div id="notification-count">
-              <% if @unread.present? %><%= @unread.count %><% end %>
+          <% if @unread.present? %>
+            <div id="notification-count-container">
+              <p id="notification-count"><%= @unread.count %></p>
             </div>
+          <% end %>
           </div>
           <div id="notification-container" class="notification-hidden">
             <ul id="notification-list">
               <% @unread.each do |notification| %>
-                <li class="notification-list-element"><%= render partial: 'notifications/notification', locals: {notification: notification} %></li>
+                <li class="notification-list-element">
+                  <%= render partial: 'notifications/notification', locals: {notification: notification} %>
+                </li>
               <% end %>
             </ul>
           </div>

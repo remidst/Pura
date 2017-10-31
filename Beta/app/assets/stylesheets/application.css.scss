@@ -189,6 +189,20 @@ a:hover {
 	background: #000;
 }
 
+#notification-count-container {
+	background: #d62d20;
+	width: 14px;
+	height: 16px;
+	border-radius: 2px;
+	style: inline;
+	text-align:center;
+}
+
+#noticiation-count {
+	color: #fff;
+	font-size: 0.2em; 
+}
+
 #notification-container {
 	width: 320px;
 	max-height: 150px;
