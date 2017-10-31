@@ -8,7 +8,12 @@
     <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
         <li id="notification-menu">
-          <div id="notification-button">通知<% if @unread.present? %><%= @unread.count %><% end %></div>
+          <div id="notification-button">
+          <%= image_tag('bell-3-24.png') %>
+            <div id="notification-count">
+              <% if @unread.present? %><%= @unread.count %><% end %>
+            </div>
+          </div>
           <div id="notification-container" class="notification-hidden">
             <ul id="notification-list">
               <% @unread.each do |notification| %>

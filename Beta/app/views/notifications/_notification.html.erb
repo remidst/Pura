@@ -1,5 +1,5 @@
 <div class="notifications" data-notification="<%= project_path(notification.project) %>" id="<%= notification.id %>">
-	<%= image_tag('', class: "notification-icon") %>
+	<%= image_tag(notification_icon(notification)) %>
 	<%= notification.content %><br/>
 	案件名：<%= notification.project.project_name %>様
 </div>

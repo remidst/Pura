@@ -1,4 +1,4 @@
-  class ProjectsController < ApplicationController
+    class ProjectsController < ApplicationController
   before_action :set_project, except: [:index, :new, :create]
   before_action :set_leader, only: [:show, :edit_leader]
   before_action :set_registered, only: [:show, :edit, :invite_members, :edit_leader, :update]
@@ -103,13 +103,16 @@
       if @project.update(leader_params)
 
         new_leader = User.find(@project.leader_id)
-        #send email to new and old leader
-        ProjectMailer.old_leader_email(old_leader, @project).deliver_later
-        ProjectMailer.new_leader_email(old_leader, @project).deliver_later
 
-        #send notification to new leader
-        notification = new_leader.notifications.create(project_id: @project.id, read: false)
-        notification.new_leader!
+        if new_leader.id.to_i != old_leader.id.to_i
+          #send email to new and old leader
+          ProjectMailer.old_leader_email(old_leader, @project).deliver_later
+          ProjectMailer.new_leader_email(old_leader, @project).deliver_later
+
+          #send notification to new leader
+          notification = new_leader.notifications.create(project_id: @project.id, read: false)
+          notification.new_leader!
+        end
 
         format.html { redirect_to @project, notice: '案件が登録されました。' }
         format.json { render :show, status: :ok, location: @project }
