@@ -10,6 +10,6 @@ class UserMailer < ApplicationMailer
 		@user = user
 		@notifications = user.notifications.where(read: false)
 
-		mail to: @user.email, subject: "#{@user.username}様、新規メッセージが届いてます。"
+		mail to: @user.email, subject: "#{@user.username}様、新規メッセージが届いております。"
 	end
 end
