@@ -67,7 +67,6 @@ $(document).on('turbolinks:load', function(){
 		window.location = url + "?v=" + id_notification ;
 	});
 
-
 	$("#well-document").hide();
 
 	$("#nav-file").click(function(){

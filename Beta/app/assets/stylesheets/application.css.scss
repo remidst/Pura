@@ -133,6 +133,10 @@ textarea:focus {
 	outline: none;
 }
 
+input:focus {
+	outline: none;
+}
+
 .button {
 	border-radius: 1px;
 	margin-top: 10px;
@@ -185,9 +189,6 @@ a:hover {
 	background: #000;
 }
 
-.notification-button-selected {
-	background: #000;
-}
 
 #notification-count-container {
 	background: #d62d20;
@@ -210,6 +211,7 @@ a:hover {
 	background: white;
 	border: 1px solid #bbb;
 	position: relative;
+	color: #000;
 }
 
 li.notification-list-element {
