@@ -54,8 +54,12 @@ class User < ApplicationRecord
     @users = User.joins(:notifications).where(notifications: {read: false})
 
     if @users.present?
+      ids = Array.new
       @users.each do |user|
-        UserMailer.morning_notification_email(user).deliver_later
+        unless ids.include?(user.id.to_i)
+          ids << user.id.to_i
+          UserMailer.morning_notification_email(user).deliver_now
+        end
       end
     end
   end
