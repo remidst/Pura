@@ -64,4 +64,10 @@ class User < ApplicationRecord
     end
   end
 
+  def self.text_scheduler
+    @user = User.find_by(email: 'remi.daste@keio.jp')
+    puts @user.username
+    UserMailer.morning_notification_email(@user).deliver_now
+  end
+
 end
