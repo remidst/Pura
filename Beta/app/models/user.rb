@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
   def welcome_email
-    UserMailer.welcome(self).deliver_now if self.username.present?
+    UserMailer.welcome(self).deliver_later if self.username.present?
   end
 
   # instead of deleting, indicate the user requested a delete & timestamp it

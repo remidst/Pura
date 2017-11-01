@@ -2,9 +2,9 @@
 	<div class="email-content" style="max-width: 500px; margin: auto; padding:30px; background-color:#fff;">
 		<p><%= @resource.email %>様</p>
 
-		<p><%= @resource.invited_by.company %>の<%= @resource.invited_by.username %>様からプラプラで作成された案件に招待されました。</p>
+		<p><%= @resource.invited_by.company %>の<%= @resource.invited_by.username %>様からコリブリで作成された案件に招待されました。</p>
 
-		<p>プラプラは安全性と使いやすさを重視したクラウド型のプラットフォームを提供し、毎日の仕事場でのやり取りをより円滑にします。</p>
+		<p>コリブリは安全性と使いやすさを重視したクラウド型のプラットフォームを提供し、毎日の仕事場でのやり取りをより円滑にします。</p>
 
 		<%= link_to "登録する", accept_invitation_url(@resource, invitation_token: @token) %>
 
