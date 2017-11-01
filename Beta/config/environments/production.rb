@@ -95,12 +95,12 @@ Rails.application.configure do
   #mailer configuration for production
   config.action_mailer.delivery_method = :smtp
 
-  config.action_mailer.default_url_options = { host: 'purapura.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: ENV["MAILER_DEFAULT_URL_OPTIONS"] }
 
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    domain: 'gmail.com',
+    domain: 'colibri.jp',
     authentication: :plain,
     enable_starttls_auto: true,
     user_name: ENV["GMAIL_USERNAME"],
