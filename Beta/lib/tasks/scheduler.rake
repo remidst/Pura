@@ -17,3 +17,9 @@ task :email_afternoon_notification => :environment do
 	User.morning_notification
 	puts "emails are sent!"
 end
+
+task :test_production => :environment do
+	puts "Sending email notification to remi.daste@keio.jp"
+	User.test_scheduler
+	puts "email sent"
+end
