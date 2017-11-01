@@ -49,7 +49,7 @@ class User < ApplicationRecord
     self.username.present? ? self.username : self.email
   end
 
-  def morning_notification
+  def self.morning_notification
     #so far, only taking all the unread notifications. later on, check by date of creation
     @users = User.joins(:notifications).where(notifications: {read: false})
 

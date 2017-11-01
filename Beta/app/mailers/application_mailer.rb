@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'info@colibri.jp'
+  default from: ENV["MAILER_DEFAULT_ADDRESS"]
   layout 'mailer'
 end
 
