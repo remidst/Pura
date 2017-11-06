@@ -17,6 +17,7 @@
     @documents=@project.documents.order('created_at DESC')
     @members = @registered.where.not(id: @leader.id)
     @conversation = @project.conversations.first
+    @messages = @conversation.messages.order('created_at ASC')
 
     #to compare, id has to be an integer inside an array
     id = params[:v]

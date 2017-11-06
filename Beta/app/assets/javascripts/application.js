@@ -116,6 +116,7 @@ function layout(){
 		  $this.find(".message-username").addClass("self");
 		  $this.find(".messages").addClass("message-sent");
 		  $this.find(".message-content").addClass("sent");
+		  $this.find(".message-info").addClass("self-info");
 		  return true;
 		}
 	});

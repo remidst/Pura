@@ -53,7 +53,7 @@
 			<div class="conversation-flex" id="message-block">
 				<div id="message-list">
 					<div class="conversation-messages" id="messages-<%= @conversation.id %>" data-conversation-id="<%= @conversation.id %>">
-						<% @conversation.messages.each do |msg| %>
+						<% @messages.each do |msg| %>
 								
 							<%= render partial: "messages/message", locals: {msg: msg, conversation: @conversation, project: @conversation.project} %>
 							

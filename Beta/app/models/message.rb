@@ -22,8 +22,5 @@ class Message < ApplicationRecord
 		end
 	end
 
-	def message_read!
-		self.read = true
-		self.save!
-	end
+
 end

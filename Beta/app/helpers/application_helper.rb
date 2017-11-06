@@ -19,4 +19,9 @@ module ApplicationHelper
 		end
 	end
 
+	def readmark_count(message)
+		readmarks = Readmark.where(message_id: message.id, read: true)
+		readmarks.count
+	end
+
 end

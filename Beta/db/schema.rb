@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106045343) do
+ActiveRecord::Schema.define(version: 20171106083357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20171106045343) do
     t.datetime "updated_at", null: false
     t.bigint "project_id"
     t.bigint "user_id"
-    t.index ["created_at"], name: "index_documents_on_created_at"
+    t.index ["id"], name: "index_documents_on_id"
     t.index ["project_id"], name: "index_documents_on_project_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20171106045343) do
     t.bigint "user_id"
     t.bigint "conversation_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
-    t.index ["created_at"], name: "index_messages_on_created_at"
+    t.index ["id"], name: "index_messages_on_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 

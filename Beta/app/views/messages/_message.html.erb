@@ -6,16 +6,20 @@
 	</div>
 
 	<div class="messages">
-
 		<div class="message-content">
 			<%= simple_format(msg.content) %>
 		</div>
-		<div class="message-time">
-			<% if msg.created_at.strftime('%F') == Time.now.strftime('%F') %>
-				<%= msg.created_at.try(:strftime, '%H:%M') %> 
-		    <% else %>
-			    <%= msg.created_at.try(:strftime, '%F') %>
-			<% end %>
+		<div class="message-info">
+			<div class="message-time">
+				<% if msg.created_at.strftime('%F') == Time.now.strftime('%F') %>
+					<%= msg.created_at.try(:strftime, '%H:%M') %> 
+			    <% else %>
+				    <%= msg.created_at.try(:strftime, '%F') %>
+				<% end %>
+			</div>
+			<div class="readmark-count">
+				既読：<%= readmark_count(msg) %>人
+			</div>
 		</div>
 	</div>
 </div>
