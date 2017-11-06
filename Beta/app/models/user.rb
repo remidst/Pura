@@ -57,7 +57,7 @@ class User < ApplicationRecord
     if @users.present?
       ids = Array.new
       @users.each do |user|
-        unless ids.include?(user.id.to_i)
+        unless ids.include?(user.id.to_i) || user.deleted_at.present?
           ids << user.id.to_i
           UserMailer.morning_notification_email(user).deliver_now
         end
