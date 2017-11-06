@@ -19,7 +19,7 @@
 	flex-direction: row-reverse;
 }
 
-.message-time {
+.message-info {
 	font-size: 0.8em;
 	color: #bbb;
 	display: table-cell;
@@ -27,6 +27,10 @@
 	order: 2;
 	margin-right: 5px;
 	margin-left: 5px;
+}
+
+.message-info.self-info {
+	text-align: right;
 }
 
 .message-username {
@@ -112,5 +116,13 @@
 	padding-left: 5px;
 	padding-right: 5px;
 	border: none;
+}
+
+.readmark-count:hover {
+	cursor: pointer;
+}
+
+.readmark-list.hide {
+	display: none;
 }
 

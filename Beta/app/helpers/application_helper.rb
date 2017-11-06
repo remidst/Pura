@@ -19,4 +19,14 @@ module ApplicationHelper
 		end
 	end
 
+	def readmark_count(message)
+		readmarks = Readmark.where(message_id: message.id, read: true)
+		readmarks.count
+	end
+
+	def readmark_list(message)
+		readmarks = Readmark.where(message_id: message.id, read: true)
+		readmarks.map{ |readmark| readmark.user.username }.join(',')
+	end
+
 end

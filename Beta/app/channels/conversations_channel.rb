@@ -23,6 +23,13 @@ class ConversationsChannel < ApplicationCable::Channel
 				    notification.new_message!
 				end
 			end
+
+			#after sending a message, make sure that all the previous messages are marked as read
+			unread_messages = conversation.messages.last(5)
+			unread_messages.each do |msg|
+				readmark = Readmark.where(user_id: current_user.id, read: false, message_id: msg.id)
+        		readmark.message_read! if readmark.present?
+			end
 		end
 	end
 

@@ -17,6 +17,7 @@
     @documents=@project.documents.order('created_at DESC')
     @members = @registered.where.not(id: @leader.id)
     @conversation = @project.conversations.first
+    @messages = @conversation.messages.order('created_at ASC')
 
     #to compare, id has to be an integer inside an array
     id = params[:v]
@@ -27,6 +28,9 @@
       notification = Notification.find(id)
       notification.read!
     end
+
+    #mark all messages as read
+    read_all_messages!(current_user, @conversation)
   end
 
   # GET /projects/new
@@ -286,6 +290,14 @@
     def set_registered
       @registered=@project.users.where.not("username is null")
       @unregistered=@project.users.where("username is null")
+    end
+
+    def read_all_messages!(user, conversation)
+      messages = conversation.messages.last(10)
+      messages.each do |msg|
+        readmark = Readmark.where(user_id: user.id, read: false, message_id: msg.id)
+        readmark.message_read! if readmark.present?
+      end
     end
 
     def members_params

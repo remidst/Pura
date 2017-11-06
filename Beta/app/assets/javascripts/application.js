@@ -67,6 +67,10 @@ $(document).on('turbolinks:load', function(){
 		window.location = url + "?v=" + id_notification ;
 	});
 
+	$(".readmark-count").click(function(){
+		$(this).find(".readmark-list").toggleClass("hide");
+	});
+
 	$("#well-document").hide();
 
 	$("#nav-file").click(function(){
@@ -116,6 +120,7 @@ function layout(){
 		  $this.find(".message-username").addClass("self");
 		  $this.find(".messages").addClass("message-sent");
 		  $this.find(".message-content").addClass("sent");
+		  $this.find(".message-info").addClass("self-info");
 		  return true;
 		}
 	});

@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :conversation_users
   has_many :conversations, through: :conversation_users
   has_many :notifications, dependent: :destroy
+  has_many :readmarks
 
 
   devise :invitable, :database_authenticatable, :registerable,
