@@ -67,6 +67,10 @@ $(document).on('turbolinks:load', function(){
 		window.location = url + "?v=" + id_notification ;
 	});
 
+	$(".readmark-count").click(function(){
+		$(this).find(".readmark-list").toggleClass("hide");
+	});
+
 	$("#well-document").hide();
 
 	$("#nav-file").click(function(){
