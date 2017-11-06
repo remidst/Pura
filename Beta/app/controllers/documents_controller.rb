@@ -21,7 +21,15 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    authorize @document
+    document = Document.find(params[:id])
+    project = Project.find(params[:project_id])
+    authorize document
+
+    document.destroy
+    respond_to do |format|
+      format.html { redirect_to project_path(project), notice: 'ファイルが削除されました。' }
+      format.json { head :no_content }
+    end
   end
 
   private
