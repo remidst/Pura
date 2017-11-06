@@ -5,7 +5,7 @@ class Message < ApplicationRecord
 
 	validates :content, presence: true
 
-	after_create :mark_as_unread
+	after_create :message_unread
 	after_create_commit { MessageBroadcastJob.perform_later(self) }
 
 	def set_user!(user)
@@ -13,12 +13,17 @@ class Message < ApplicationRecord
 		self.save!
 	end
 
-	def mark_as_unread
+	def message_unread
 		conversation = self.conversation
 		conversation.users.each do |user|
 			unless user.id == self.user_id
 				user.readmarks.create(message_id: self.id, read: false)
 			end
 		end
+	end
+
+	def message_read!
+		self.read = true
+		self.save!
 	end
 end
