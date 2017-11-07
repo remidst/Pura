@@ -4,5 +4,5 @@
 
 メッセージ：
 <% @notifications.each do |notification| %>
-		<%= notification.content %>案件：<%= notification.project.project_name %>様。<%= link_to '案件へ', project_url(notification.project) %>
+		<%= notification.content %>案件：<%= notification.project.project_name %>様。<%= link_to '案件へ', project_url(notification.project, user_email: @user.email, user_token: @user.authentication_token) %>
 <% end %>

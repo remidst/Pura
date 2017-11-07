@@ -4,5 +4,5 @@
 
 担当マネジャーは、利用者様のサービス担当責任者の管理と案件情報をアップデートする権限を持っています。
 
-<%= link_to '案件を見る', project_url(@project) %>
+<%= link_to '案件を見る', project_url(@project, user_email: @user.email, user_token: @user.authentication_token) %>
 

@@ -5,7 +5,7 @@
 		<%= @project.project_name %>様の案件が作成されました。案件内にサービス提供責任者様方を招待し、ファイルとメッセージを共有しましょう。
 	</p>
 
-	<p><%= link_to '案件を見る', project_url(@project)  %></p>
+	<p><%= link_to '案件を見る', project_url(@project, user_email: @user.email, user_token: @user.authentication_token)  %></p>
 
 	<p>
 	    ご利用ありがとうございます！

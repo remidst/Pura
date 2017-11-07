@@ -9,4 +9,4 @@
 	<% end %>
 <% end %>
 
-<%= link_to '案件を見る', project_url(@project) %>
+<%= link_to '案件を見る', project_url(@project, user_email: @user.email, user_token: @user.authentication_token) %>
