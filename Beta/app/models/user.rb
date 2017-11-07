@@ -17,7 +17,14 @@ class User < ApplicationRecord
   attribute :email, :string
 
   validates_uniqueness_of :email
+  before_save :ensure_authentication_token
   after_create :welcome_email
+
+  def ensure_authentication_token
+  	if authentication_token.blank?
+  		self.authentication_token = generate_authentication_token
+  	end
+  end
 
   def project
     self.projects.first
@@ -70,5 +77,15 @@ class User < ApplicationRecord
     puts @user.username
     UserMailer.morning_notification_email(@user).deliver_now
   end
+
+  private
+
+  def generate_authentication_token
+  	loop do
+  		token = Devise.friendly_token
+  		break token unless User.where(authentication_token: token).first
+  	end
+  end
+
 
 end
