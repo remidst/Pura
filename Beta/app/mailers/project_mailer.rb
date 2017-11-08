@@ -6,6 +6,7 @@ class ProjectMailer < ApplicationMailer
   #   en.project_mailer.new_project.subject
   #
 
+
   def create_project(user, project)
   	@user = user
   	@project = project
