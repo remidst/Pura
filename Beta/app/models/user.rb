@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :memberships
   has_many :projects, through: :memberships
-  has_many :documents
+  has_many :documentships
+  has_many :documents, through: :documentships
   has_many :messages
   has_many :conversation_users
   has_many :conversations, through: :conversation_users

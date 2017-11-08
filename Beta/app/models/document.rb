@@ -1,6 +1,7 @@
 class Document < ApplicationRecord
 	belongs_to :project
-	belongs_to :user
+	has_many :documentships
+	has_many :users, through: :documentships
 	mount_uploader :attachment, AttachmentUploader #Tells rails to use this uploader for the documents model	
 
 	def set_user!(user)
