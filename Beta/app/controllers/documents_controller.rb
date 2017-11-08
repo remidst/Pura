@@ -2,6 +2,7 @@ class DocumentsController < ApplicationController
   def create
       project = Project.find(params[:project_id])
       document = project.documents.create(document_params)
+      document.set_publisher!(current_user)
 
       project_users = project.users.where.not(id: current_user.id)
 

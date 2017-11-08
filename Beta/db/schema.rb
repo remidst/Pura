@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108044157) do
+ActiveRecord::Schema.define(version: 20171108045353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(version: 20171108044157) do
     t.bigint "project_id"
     t.string "category"
     t.string "name"
+    t.bigint "publisher_id"
     t.index ["id"], name: "index_documents_on_id"
     t.index ["project_id"], name: "index_documents_on_project_id"
+    t.index ["publisher_id"], name: "index_documents_on_publisher_id"
   end
 
   create_table "documentships", force: :cascade do |t|
@@ -181,6 +183,7 @@ ActiveRecord::Schema.define(version: 20171108044157) do
   end
 
   add_foreign_key "documents", "projects"
+  add_foreign_key "documents", "users", column: "publisher_id"
   add_foreign_key "documentships", "documents"
   add_foreign_key "documentships", "users"
   add_foreign_key "messages", "conversations"
