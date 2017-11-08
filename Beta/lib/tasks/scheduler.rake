@@ -23,3 +23,9 @@ task :test_production => :environment do
 	User.test_scheduler
 	puts "email sent"
 end
+
+task :auth_token => :environment do
+	puts "adding authentication token to each user"
+	User.add_token
+	puts "tokens added"
+end

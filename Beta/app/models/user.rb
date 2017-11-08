@@ -26,6 +26,19 @@ class User < ApplicationRecord
   	end
   end
 
+  def self.add_token
+    users = User.all
+
+    users.each do |user|
+      puts user.username
+      puts "token before:"
+      puts user.authentication_token
+      user.update(authentication_token: Devise.friendly_token)  if user.authentication_token.blank?
+      puts "token after:"
+      puts user.authentication_token
+    end
+  end
+
   def project
     self.projects.first
   end
