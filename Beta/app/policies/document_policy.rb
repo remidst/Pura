@@ -11,7 +11,7 @@ class DocumentPolicy < ApplicationPolicy
 	end
 
 	def destroy?
-		user == document.user
+		user == document.publisher
 	end
 
 end
