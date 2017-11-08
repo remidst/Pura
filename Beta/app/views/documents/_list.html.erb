@@ -12,7 +12,7 @@
   	<% if @documents.each do |document| %>
 		<tr>
 			<td><%= document.attachment.file.filename %></td>
-      <td><%= document.user.try(:username) %></td>
+      <td><%= document.users.map{|user| user.try(:username) }.join(',') %></td>
       <td><%= document.created_at.try(:strftime, '%Y-%m-%d') %></td>
 			<td><%= link_to "ダウンロード", document.attachment_url %></td>
 			<td><% if policy(document).destroy? %><%= link_to "消す",  [document.project, document], method: :delete, data: { confirm: 'このファイルは削除されます' } %><% end %></td>
