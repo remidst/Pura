@@ -2,7 +2,8 @@
   <thead>
   	<tr>
   		<th>ファイル名</th>
-      <th>ユーザー</th>
+      <th>タイプ</th>
+      <th>閲覧できる人</th>
       <th>日付</th>
   		<th>ダウンロード</th>
   		<th>消す</th>
@@ -11,7 +12,8 @@
   <tbody>
   	<% if @documents.each do |document| %>
 		<tr>
-			<td><%= document.attachment.file.filename %></td>
+			<td><%= document_name(document) %></td>
+      <td><%= document.category %></td>
       <td><%= document.users.map{|user| user.try(:username) }.join(',') %></td>
       <td><%= document.created_at.try(:strftime, '%Y-%m-%d') %></td>
 			<td><%= link_to "ダウンロード", document.attachment_url %></td>

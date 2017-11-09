@@ -23,3 +23,9 @@ task :test_production => :environment do
 	User.test_scheduler
 	puts "email sent"
 end
+
+task :add_documentships => :environment do
+	puts "adding join record for previous documents"
+	Document.add_user
+	puts "documentships added"
+end

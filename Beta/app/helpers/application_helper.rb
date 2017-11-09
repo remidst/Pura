@@ -29,4 +29,8 @@ module ApplicationHelper
 		readmarks.map{ |readmark| readmark.user.username }.join(',')
 	end
 
+	def document_name(document)
+		document.name.present? ? document.name : document.attachment.file.filename
+	end
+
 end

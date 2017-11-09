@@ -1,5 +1,5 @@
 <div class="modal-content">
-  <div class="well">
+  <div class="well modal-well">
     <span class="close">&times;</span>
     <%= form_for([@project, @project.documents.build], html: {multipart: true} ) do |f| %>
       <p class="form-group">
@@ -8,18 +8,18 @@
       </p>  
 
       <p class="form-group">
-        <%= f.label :category, 'ファイルを選択する' %>
-        <%= f.select :category, [['提供票'], ['月次経過支援記録'], ['メディカル[写真．動画]'], ['住環境[写真.動画]']], class: 'form-control', :required => 'required' %>
-      </p>
-
-      <p class="form-group">
         <%= f.label :name, 'ファイル名を設定する：' %>
         <%= f.text_field :name, class: 'form-control' %>
       </p>
 
       <p class="form-group">
-        <%= f.label :user_ids, 'ファイルにアクセス権限を与える：' %>
-        <%= f.collection_check_boxes(:user_ids, @project.users, :id, :username) %>
+        <%= f.label :category, 'ファイルタイプを選択する' %>
+        <%= f.select :category, [['提供票'], ['月次経過支援記録'], ['メディカル[写真．動画]'], ['住環境[写真.動画]'], ['その他']], class: 'form-control', :required => 'required' %>
+      </p>
+
+      <p class="form-group">
+        <%= f.label :user_ids, 'ファイルを閲覧できる人：' %>
+        <%= f.collection_check_boxes(:user_ids, @users_but_self, :id, :username, item_wrapper_class: 'checkbox-container') %>
       </p>
 
       <p class="form-group">

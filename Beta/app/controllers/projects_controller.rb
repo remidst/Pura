@@ -14,10 +14,11 @@
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @documents=@project.documents.order('created_at DESC')
+    @documents=current_user.documents.where(project_id: @project.id).order('created_at DESC')
     @members = @registered.where.not(id: @leader.id)
     @conversation = @project.conversations.first
     @messages = @conversation.messages.order('created_at ASC')
+    @users_but_self = @project.users.where.not(id: current_user.id)
 
     #to compare, id has to be an integer inside an array
     id = params[:v]

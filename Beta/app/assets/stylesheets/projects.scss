@@ -237,6 +237,11 @@ input.send-message-button {
 	background-color: rgba(0,0,0,0.4); /* black with opacity */
 }
 
+.well.modal-well {
+	margin-bottom: 1px;
+	padding: 20px;
+}
+
 /* Modal Content/Box */
 .modal-content {
 	margin-top: 15%;
@@ -248,6 +253,10 @@ input.send-message-button {
 .close{
 	color: #000;
 	float: right;
+}
+
+.checkbox_container input {
+  display: inline;
 }
 
 
