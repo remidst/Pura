@@ -24,8 +24,15 @@ task :test_production => :environment do
 	puts "email sent"
 end
 
+
 task :auth_token => :environment do
 	puts "adding authentication token to each user"
 	User.add_token
 	puts "tokens added"
+end
+
+task :add_documentships => :environment do
+	puts "adding join record for previous documents"
+	Document.add_user
+	puts "documentships added"
 end

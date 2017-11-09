@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107032030) do
+ActiveRecord::Schema.define(version: 20171108045353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,21 @@ ActiveRecord::Schema.define(version: 20171107032030) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "project_id"
-    t.bigint "user_id"
+    t.string "category"
+    t.string "name"
+    t.bigint "publisher_id"
     t.index ["id"], name: "index_documents_on_id"
     t.index ["project_id"], name: "index_documents_on_project_id"
-    t.index ["user_id"], name: "index_documents_on_user_id"
+    t.index ["publisher_id"], name: "index_documents_on_publisher_id"
+  end
+
+  create_table "documentships", force: :cascade do |t|
+    t.bigint "document_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_id"], name: "index_documentships_on_document_id"
+    t.index ["user_id"], name: "index_documentships_on_user_id"
   end
 
   create_table "invites", force: :cascade do |t|
@@ -172,7 +183,9 @@ ActiveRecord::Schema.define(version: 20171107032030) do
   end
 
   add_foreign_key "documents", "projects"
-  add_foreign_key "documents", "users"
+  add_foreign_key "documents", "users", column: "publisher_id"
+  add_foreign_key "documentships", "documents"
+  add_foreign_key "documentships", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "projects"

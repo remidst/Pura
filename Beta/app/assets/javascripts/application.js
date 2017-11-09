@@ -106,6 +106,19 @@ $(document).on('turbolinks:load', function(){
 
 	});
 
+	$("#file-form").hide();
+	$("#file-button").click(function(){
+		$(this).hide();
+		$("#file-form").show();
+	});
+	$(".close, .modal").click(function(){
+		$("#file-form").hide();
+		$("#file-button").show();
+	});
+	$(".modal-content").click(function(e){
+		e.stopPropagation();
+	});
+
 	layout();
 
 

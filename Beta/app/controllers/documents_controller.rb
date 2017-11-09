@@ -2,7 +2,7 @@ class DocumentsController < ApplicationController
   def create
       project = Project.find(params[:project_id])
       document = project.documents.create(document_params)
-      document.set_user!(current_user)
+      document.set_publisher!(current_user)
 
       project_users = project.users.where.not(id: current_user.id)
 
@@ -39,7 +39,7 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
-  	params.require(:document).permit(:attachment, :user)
+  	params.require(:document).permit(:attachment, :category, :name, :user_ids => [])
   end
 
 end
