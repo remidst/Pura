@@ -14666,19 +14666,7 @@ if (typeof jQuery === 'undefined') {
 
 }).call(this);
 (function() {
-  $(document).on('turbolinks:load', function() {
-    return App.conversation = App.cable.subscriptions.create({
-      channel: "AppearancesChannel"
-    }, {
-      connected: function() {},
-      disconnected: function() {},
-      received: function(data) {
-        var user;
-        user = $(".user-" + data['user_id']);
-        return user.toggleClass('online', data['online']);
-      }
-    });
-  });
+
 
 }).call(this);
 (function() {
@@ -14821,6 +14809,29 @@ $(document).on('turbolinks:load', function(){
 		window.location = this.dataset.link
 	});
 
+	notificationCount();
+
+	$("#notification-button").click(function(){
+		var pos = $(this).position();
+		$("#notification-container").css({
+			position: "absolute",
+			top: pos.bottom + "px",
+			right: pos.left + "px",
+		});
+		$("#notification-container").toggleClass("notification-hidden");
+		$("#notification-button").toggleClass("notification-button-selected")
+	});
+
+	$(".notifications").click(function(){
+		var id_notification = $(this).attr('id');
+		var url = $(this).data('notification');
+
+		window.location = url + "?v=" + id_notification ;
+	});
+
+	$(".readmark-count").click(function(){
+		$(this).find(".readmark-list").toggleClass("hide");
+	});
 
 	$("#well-document").hide();
 
@@ -14857,6 +14868,19 @@ $(document).on('turbolinks:load', function(){
 
 	});
 
+	$("#file-form").hide();
+	$("#file-button").click(function(){
+		$(this).hide();
+		$("#file-form").show();
+	});
+	$(".close, .modal").click(function(){
+		$("#file-form").hide();
+		$("#file-button").show();
+	});
+	$(".modal-content").click(function(e){
+		e.stopPropagation();
+	});
+
 	layout();
 
 
@@ -14871,8 +14895,20 @@ function layout(){
 		  $this.find(".message-username").addClass("self");
 		  $this.find(".messages").addClass("message-sent");
 		  $this.find(".message-content").addClass("sent");
+		  $this.find(".message-info").addClass("self-info");
 		  return true;
 		}
 	});
 };
 
+function notificationCount(){
+	var pos = $("#notification-button").position();
+	$("#notification-count-container").css({
+		position: "absolute",
+		top: pos.top + "px",
+		right: pos.left +  "px",
+	})
+}
+
+
+;
