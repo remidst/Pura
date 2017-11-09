@@ -68,13 +68,17 @@
 	    </div>
 		
 		<div class="well project-well well-hide" id="well-document">
-			<div id="document-list">
+
+		<div class="btn btn-info" id="file-button">ファイルをアップロードする</div>
+
+			<div >
 				<%= render 'documents/list' %>
 			</div>
 
-			<div>
-				<%= render 'documents/form' %>
-			</div>
+		</div>
+
+		<div class="modal"  id="file-form">
+			<%= render 'documents/form' %>
 		</div>
 
 	    <%= link_to '利用者一覧へ', projects_path %> 
