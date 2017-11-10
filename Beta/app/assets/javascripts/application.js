@@ -63,9 +63,16 @@ $(document).on('turbolinks:load', function(){
 	$(".notifications").click(function(){
 		var id_notification = $(this).attr('id');
 		var url = $(this).data('notification');
+		var content = $(this).text();
 
-		window.location = url + "?v=" + id_notification ;
+		if (content.indexOf("ファイル") >= 0) {
+			window.location = url + "?v=" + id_notification + "&to=documents";
+		} else {
+			window.location = url + "?v=" + id_notification ;
+		}
 	});
+
+
 
 	$(".readmark-count").click(function(){
 		$(this).find(".readmark-list").toggleClass("hide");
@@ -105,6 +112,15 @@ $(document).on('turbolinks:load', function(){
 		$(".conversation-form.id-" + id_var).show();
 
 	});
+
+	getUrlVars();
+	var to = getUrlVars()["to"];
+	if (to.indexOf("documents") >= 0) {
+		$("#well-msg").hide();
+		$("#well-document").show();
+		$(".nav-show").removeClass("nav-selected");
+		$("#nav-file").addClass("nav-selected");
+	}
 
 	$("#file-form").hide();
 	$("#file-button").click(function(){
@@ -146,6 +162,19 @@ function notificationCount(){
 		top: pos.top + "px",
 		right: pos.left +  "px",
 	})
+}
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }
 
 

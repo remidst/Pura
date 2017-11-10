@@ -13,7 +13,7 @@ class DocumentsController < ApplicationController
         end
       end
 
-      redirect_to project_path(project), notice: "ファイルが案件のメンバーに共有されました。"
+      redirect_to project_path(project, to: 'documents'), notice: "ファイルが案件のメンバーに共有されました。"
   end
 
   def edit
