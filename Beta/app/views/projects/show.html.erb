@@ -61,6 +61,8 @@
 					</div>
 				</div>	
 
+
+
 				<div id="message-form">
 					<%= render 'messages/form' %>
 				</div>
@@ -85,6 +87,12 @@
 	    <% if policy(@project).edit? %>
 		    	|　<%= link_to 'エディット', edit_project_path(@project) %> 
 		    <% end %>
+	</div>
+
+	<div id="copy-background">
+		<div id="copy">
+			コピー		
+		</div>
 	</div>
 
 </div>

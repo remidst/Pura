@@ -113,14 +113,25 @@ $(document).on('turbolinks:load', function(){
 
 	});
 
-	getUrlVars();
-	var to = getUrlVars()["to"];
-	if (to.indexOf("documents") >= 0) {
-		$("#well-msg").hide();
-		$("#well-document").show();
-		$(".nav-show").removeClass("nav-selected");
-		$("#nav-file").addClass("nav-selected");
-	}
+	$("#copy-background").hide();
+
+	$(".message-content").click(function(e){
+		$this = $(this)
+		$("#copy").css({'top':e.pageY-50, 'left':e.pageX});
+		$("#copy-background").show();
+		$("#copy").click(function(e){
+			e.stopPropagation();
+			var content = $this.text();
+			copyToClipboard($this);
+			$("#copy-background").hide();
+		});
+	});
+
+
+
+	$("#copy-background").click(function(){
+		$(this).hide();
+	});
 
 	$("#file-form").hide();
 	$("#file-button").click(function(){
@@ -137,6 +148,14 @@ $(document).on('turbolinks:load', function(){
 
 	layout();
 
+	getUrlVars();
+	var to = getUrlVars()["to"];
+	if (to.indexOf("documents") >= 0) {
+		$("#well-msg").hide();
+		$("#well-document").show();
+		$(".nav-show").removeClass("nav-selected");
+		$("#nav-file").addClass("nav-selected");
+	}
 
 });
 
@@ -176,5 +195,16 @@ function getUrlVars()
     }
     return vars;
 }
+
+function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($.trim($(element).text())).select();
+    document.execCommand("copy");
+    $temp.remove();
+}
+
+
+
 
 
