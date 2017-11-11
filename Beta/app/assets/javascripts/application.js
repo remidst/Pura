@@ -116,7 +116,7 @@ $(document).on('turbolinks:load', function(){
 	$("#copy-background").hide();
 
 	$(".conversation-messages").on("click", ".message-content", function(e){
-		$this = $(".message-content")
+		$this = $(this)
 		$("#copy").css({'top':e.pageY-30, 'left':e.pageX});
 		$("#copy-background").show();
 		$("#copy").on('click', function(e){
