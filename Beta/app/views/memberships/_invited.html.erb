@@ -1,5 +1,5 @@
 <div>
-	未登録のサービス提供責任者：
+	未登録のメンバー：
 	<% @unregistered.each do |unregistered| %>
 		<%= unregistered.email %><%= "," unless unregistered == @unregistered.last %>
 	<% end %>
