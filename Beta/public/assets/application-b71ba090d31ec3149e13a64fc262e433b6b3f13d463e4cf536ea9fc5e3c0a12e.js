@@ -14785,7 +14785,7 @@ $(document).on('turbolinks:load', function(){
 	$("#project_user_tokens").tokenInput("/users.json",
 	{
 		queryParam: 'q',
-		minChars: 2,
+		minChars: 1,
 		propertyToSearch: "username",
 		hintText: "ユーザー名から検索する",
 		noResultsText: "このユーザーは見つかりませんでした。",
@@ -14825,8 +14825,19 @@ $(document).on('turbolinks:load', function(){
 	$(".notifications").click(function(){
 		var id_notification = $(this).attr('id');
 		var url = $(this).data('notification');
+		var content = $(this).text();
 
-		window.location = url + "?v=" + id_notification ;
+		if (content.indexOf("ファイル") >= 0) {
+			window.location = url + "?v=" + id_notification + "&to=documents";
+		} else {
+			window.location = url + "?v=" + id_notification ;
+		}
+	});
+
+
+
+	$(".readmark-count").click(function(){
+		$(this).find(".readmark-list").toggleClass("hide");
 	});
 
 	$("#well-document").hide();
@@ -14864,8 +14875,47 @@ $(document).on('turbolinks:load', function(){
 
 	});
 
+	$("#copy-background").hide();
+
+	$(".conversation-messages").on("click", ".message-content", function(e){
+		$this = $(this)
+		$("#copy").css({'top':e.pageY-30, 'left':e.pageX});
+		$("#copy-background").show();
+		$("#copy").on('click', function(e){
+			e.stopPropagation();
+			var content = $this.text();
+			copyToClipboard($this);
+			$("#copy-background").hide();
+		});
+	});
+
+	$("#copy-background").on('click', function(){
+		$(this).hide();
+	});
+
+	$("#file-form").hide();
+	$("#file-button").click(function(){
+		$(this).hide();
+		$("#file-form").show();
+	});
+	$(".close, .modal").click(function(){
+		$("#file-form").hide();
+		$("#file-button").show();
+	});
+	$(".modal-content").click(function(e){
+		e.stopPropagation();
+	});
+
 	layout();
 
+	getUrlVars();
+	var to = getUrlVars()["to"];
+	if (to.indexOf("documents") >= 0) {
+		$("#well-msg").hide();
+		$("#well-document").show();
+		$(".nav-show").removeClass("nav-selected");
+		$("#nav-file").addClass("nav-selected");
+	}
 
 });
 
@@ -14878,6 +14928,7 @@ function layout(){
 		  $this.find(".message-username").addClass("self");
 		  $this.find(".messages").addClass("message-sent");
 		  $this.find(".message-content").addClass("sent");
+		  $this.find(".message-info").addClass("self-info");
 		  return true;
 		}
 	});
@@ -14891,6 +14942,30 @@ function notificationCount(){
 		right: pos.left +  "px",
 	})
 }
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($.trim($(element).text())).select();
+    document.execCommand("copy");
+    $temp.remove();
+}
+
+
+
 
 
 ;
