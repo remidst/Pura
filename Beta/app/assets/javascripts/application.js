@@ -23,7 +23,7 @@ $(document).on('turbolinks:load', function(){
 	$("#project_user_tokens").tokenInput("/users.json",
 	{
 		queryParam: 'q',
-		minChars: 2,
+		minChars: 1,
 		propertyToSearch: "username",
 		hintText: "ユーザー名から検索する",
 		noResultsText: "このユーザーは見つかりませんでした。",
@@ -115,11 +115,11 @@ $(document).on('turbolinks:load', function(){
 
 	$("#copy-background").hide();
 
-	$(".message-content").click(function(e){
-		$this = $(this)
-		$("#copy").css({'top':e.pageY-50, 'left':e.pageX});
+	$(".conversation-messages").on("click", ".message-content", function(e){
+		$this = $(".message-content")
+		$("#copy").css({'top':e.pageY-30, 'left':e.pageX});
 		$("#copy-background").show();
-		$("#copy").click(function(e){
+		$("#copy").on('click', function(e){
 			e.stopPropagation();
 			var content = $this.text();
 			copyToClipboard($this);
@@ -127,9 +127,7 @@ $(document).on('turbolinks:load', function(){
 		});
 	});
 
-
-
-	$("#copy-background").click(function(){
+	$("#copy-background").on('click', function(){
 		$(this).hide();
 	});
 
