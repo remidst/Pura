@@ -27,7 +27,7 @@ class DocumentsController < ApplicationController
 
     document.destroy
     respond_to do |format|
-      format.html { redirect_to project_path(project), notice: 'ファイルが削除されました。' }
+      format.html { redirect_to project_path(project, to: 'documents'), notice: 'ファイルが削除されました。' }
       format.json { head :no_content }
     end
   end
