@@ -13,7 +13,7 @@
     <%= render "layouts/navigation" %>
     <div id="flash">
       <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
+        <% if value.length > 0 %><div class="alert alert-<%= key %>"><%= value %></div><% end %>
       <% end %>
     </div>
 
