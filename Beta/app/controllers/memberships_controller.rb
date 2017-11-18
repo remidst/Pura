@@ -74,6 +74,9 @@ class MembershipsController < ApplicationController
     		redirect_to project, warning: '責任者の招待が失敗しました。'
     	end
     end
+
+    def destroy
+    end
 	
 
 	private
