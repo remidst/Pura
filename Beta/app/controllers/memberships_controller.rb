@@ -8,27 +8,35 @@ class MembershipsController < ApplicationController
 	end
 
 	def create
-		@membership = @project.memberships.new(membership_params)
-	    @membership.set_user_id!(current_user)
+
 
 	    params=membership_params
+	    user = User.find_by(email: params[:email])
 
-		if @membership.save
+	    unless user.deleted_at.present?
+	     	@membership = @project.memberships.new(membership_params)
+	        @membership.set_user_id!(current_user)
 
-			#update the general conversation
-			general_conversation=@project.conversations.first
-			general_conversation.update(user_ids: @project.user_ids)
+			if @membership.save
 
-			#email and notification to the new user
-			added_user = User.find_by(email: params[:email])
-			ProjectMailer.user_invited(added_user, @project).deliver_later
-			notification = added_user.notifications.create(project_id: @project.id, read: false)
-			notification.new_project!
+				#update the general conversation
+				general_conversation=@project.conversations.first
+				general_conversation.update(user_ids: @project.user_ids)
 
-			redirect_to project_path(@membership.project), notice: '新しいメンバーが招待されました。'
+				#email and notification to the new user
+				added_user = User.find_by(email: params[:email])
+				ProjectMailer.user_invited(added_user, @project).deliver_later
+				notification = added_user.notifications.create(project_id: @project.id, read: false)
+				notification.new_project!
+
+				redirect_to project_path(@membership.project), notice: '新しいメンバーが招待されました。'
+			else
+				redirect_to @project, warning: 'メンバーの招待が失敗しました。'
+		    end
 		else
-			redirect_to @project, warning: 'メンバーの招待が失敗しました。'
-	    end
+			flash[:alert] = "#{params[:email]}のアカウントは削除されております。"
+			redirect_to @project
+		end
     end
 
     def index

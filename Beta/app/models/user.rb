@@ -27,11 +27,11 @@ class User < ApplicationRecord
   	end
   end
 
-  def deleted
+  def deleted?
     self.deleted_at.present?
   end
 
-  def unregistered
+  def unregistered?
     self.username.blank?
   end
 
