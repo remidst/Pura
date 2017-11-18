@@ -11,7 +11,7 @@ class ProjectMailer < ApplicationMailer
   	@user = user
   	@project = project
 
-  	mail to: @user.email, subject: "#{@project.project_name}様の案件が作成されました。"
+  	mail to: @user.email, subject: "#{@project.project_name}様の案件が作成されました。" unless @user.deleted || @user.unregistered
   end
 
   def user_invited(user, project)
@@ -20,7 +20,7 @@ class ProjectMailer < ApplicationMailer
     @leader = User.find(@project.leader_id)
     @users = @project.users
 
-    mail to: @user.email, subject: "#{@leader.username}様から#{@project.project_name}様の案件に招待されました。"
+    mail to: @user.email, subject: "#{@leader.username}様から#{@project.project_name}様の案件に招待されました。" unless @user.deleted || @user.unregistered
   end
 
   def goodbye_registered_user(user, project)
@@ -28,7 +28,7 @@ class ProjectMailer < ApplicationMailer
     @project=project
     @leader=User.find(@project.leader_id)
 
-    mail to: @user.email, subject: "#{@project.project_name}様の案件へのアクセスが削除されました"
+    mail to: @user.email, subject: "#{@project.project_name}様の案件へのアクセスが削除されました" unless @user.deleted || @user.unregistered
   end
 
   def goodbye_registered_user_leader_notice(users, project)
@@ -54,5 +54,6 @@ class ProjectMailer < ApplicationMailer
 
     mail to: @new_leader.email, subject: "#{@project.project_name}様の案件の担当マネジャーの権限が与えられました。"
   end
+
 
 end

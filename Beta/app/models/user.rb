@@ -27,16 +27,18 @@ class User < ApplicationRecord
   	end
   end
 
+  def deleted
+    self.deleted_at.present?
+  end
+
+  def unregistered
+    self.username.blank?
+  end
+
   def self.add_token
     users = User.all
-
     users.each do |user|
-      puts user.username
-      puts "token before:"
-      puts user.authentication_token
       user.update(authentication_token: Devise.friendly_token)  if user.authentication_token.blank?
-      puts "token after:"
-      puts user.authentication_token
     end
   end
 
@@ -88,7 +90,6 @@ class User < ApplicationRecord
 
   def self.test_scheduler
     @user = User.find_by(email: 'remi.daste@keio.jp')
-    puts @user.username
     UserMailer.morning_notification_email(@user).deliver_now
   end
 
