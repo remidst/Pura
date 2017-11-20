@@ -29,10 +29,18 @@ task :auth_token => :environment do
 	puts "adding authentication token to each user"
 	User.add_token
 	puts "tokens added"
+	puts "should be removed"
 end
 
 task :add_documentships => :environment do
 	puts "adding join record for previous documents"
 	Document.add_user
 	puts "documentships added"
+	puts "should be removed"
+end
+
+task :add_specs => :environment do
+	puts "adding blank specs to previous projects"
+	Project.specs_adder_temp
+	puts "specs added"
 end

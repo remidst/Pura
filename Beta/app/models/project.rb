@@ -16,5 +16,14 @@ class Project < ApplicationRecord
   def user_tokens=(ids)
   	self.user_ids = ids.split(",")
   end
+
+  def self.specs_adder_temp
+  	@projects = Project.all
+  	@projects.each do |project|
+  		if project.leader_id.present?
+	  		spec = Spec.create(project_id: project.id, publisher_id: project.leader_id)
+	  	end
+  	end
+  end
   
 end

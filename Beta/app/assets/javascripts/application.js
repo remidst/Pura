@@ -79,19 +79,30 @@ $(document).on('turbolinks:load', function(){
 	});
 
 	$("#well-document").hide();
+	$("#well-specs").hide();
 
 	$("#nav-file").click(function(){
 		$(".nav-show").removeClass("nav-selected");
 		$(this).addClass("nav-selected");
 		$("#well-document").show();
 		$("#well-msg").hide();
+		$("#well-specs").hide();
 	});
 
 	$("#nav-msg").click(function(){
 		$(".nav-show").removeClass("nav-selected");
 		$(this).addClass("nav-selected");
 		$("#well-msg").show();
+		$("#well-specs").hide();
 		$("#well-document").hide();
+	});
+
+	$("#nav-specs").click(function(){
+		$(".nav-show").removeClass("nav-selected");
+		$(this).addClass("nav-selected");
+		$("#well-document").hide();
+		$("#well-msg").hide();
+		$("#well-specs").show();
 	});
 
 	$(".conversation-messages").hide();
