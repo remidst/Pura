@@ -7,6 +7,7 @@ class Project < ApplicationRecord
 	has_many :conversations, dependent: :destroy
 	has_many :documents, dependent: :destroy
 	has_many :notifications, dependent: :destroy
+	has_one :spec, dependent: :destroy
 
   def leader
     self.memberships.where(type: 'leader').first
