@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :projects do
   	resources :documents
   	resources :memberships
+    resources :specs
   end
 
   resources :conversations do
