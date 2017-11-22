@@ -1,0 +1,219 @@
+<div class="well">
+	<%= form_for([@project, @spec]) do |f| %>
+
+  <p class="form-group">
+    <%= f.label :creation_date, '依頼書作成日' %>
+    <%= f.date_field :creation_date, class: 'form-control' %>
+  </p>   
+
+  <p class="form-group">
+    <%= f.label :insurance_number, '被保険者番号' %>
+    <%= f.text_field :insurance_number, class: 'form-control' %>
+  </p> 
+
+  <p class="form-group">
+    <%= f.label :gender, "性別"  %>
+    <%= f.label :gender, "男", value: true %>
+    <%= f.radio_button :gender, true, value: true, class: 'form-control' %>
+  </p> 
+
+  <p class="form-group">
+    <%= f.label :gender, "女", value: false %>
+    <%= f.radio_button :gender, false, value: true, class: 'form-control' %>
+  </p> 
+
+  <p class="form-group">
+    <%= f.label :birthday, '生年月日：' %>
+    <%= f.date_field :birthday, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :address, '住所' %>
+    <%= f.text_field :address, placeholder: '〒', class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :phone, '電話番号：' %>
+    <%= f.text_field :phone, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :cellphone, '携帯電話:' %>
+    <%= f.text_field :cellphone, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :kaigo_level, '要介護度:' %>
+    <%= f.text_field :kaigo_level, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :kaigo_validity_from, '有効期限（初）:' %>
+    <%= f.date_field :kaigo_validity_from, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :kaigo_validity_from, '有効期限（終）:' %>
+    <%= f.date_field :kaigo_validity_from, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :dependency_physical, '障害高齢者の日常生活自立度:' %>
+    <%= f.text_field :dependency_physical, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :dependency_mental, '認知症高齢者の日常生活自立度:' %>
+    <%= f.text_field :dependency_mental, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :handicap, '障害などの認定:' %>
+    <%= f.text_field :handicap, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.label :home, '本人の住居:' %>
+    <%= f.text_field :home, class: 'form-control' %>
+  </p>
+
+
+  <p class="form-group">
+    <%= f.label :economics, '経済状態:' %>
+    <%= f.text_field :economics, class: 'form-control' %>
+  </p>
+
+  緊急連絡先
+  <p class="form-group">
+    <%= f.label :emergency_contact_name, '氏名:' %>
+    <%= f.text_field :emergency_contact_name, class: 'form-control' %>
+  </p>
+  
+  <p class="form-group">
+    <%= f.label :emergency_contact_address, '続柄:' %>
+    <%= f.text_field :emergency_contact_address, class: 'form-control' %>
+  </p>  
+  
+  <p class="form-group">
+    <%= f.label :emergency_contact_phone, '住所.連絡先:' %>
+    <%= f.text_field :emergency_contact_phone, class: 'form-control' %>
+  </p>  
+  
+  <p class="form-group">
+    <%= f.label :emergency_contact_name_2, '氏名:' %>
+    <%= f.text_field :emergency_contact_name_2, class: 'form-control' %>
+  </p>
+  
+  <p class="form-group">
+    <%= f.label :emergency_contact_address_2, '続柄:' %>
+    <%= f.text_field :emergency_contact_address_2, class: 'form-control' %>
+  </p>  
+  
+  <p class="form-group">
+    <%= f.label :emergency_contact_phone_2, '住所.連絡先::' %>
+    <%= f.text_field :emergency_contact_phone_2, class: 'form-control' %>
+  </p>    
+
+  <p class="form-group">
+    <%= f.label :emergency_contact_name_3, '氏名:' %>
+    <%= f.text_field :emergency_contact_name_3, class: 'form-control' %>
+  </p>
+  
+  <p class="form-group">
+    <%= f.label :emergency_contact_address_3, '続柄:' %>
+    <%= f.text_field :emergency_contact_address_3, class: 'form-control' %>
+  </p>  
+  
+  <p class="form-group">
+    <%= f.label :emergency_contact_phone_3, '住所.連絡先::' %>
+    <%= f.text_field :emergency_contact_phone_3, class: 'form-control' %>
+  </p>  
+
+  <p class="form-group">
+    <%= f.label :genogram, '家族構成:' %>
+    <%= f.text_field :genogram, class: 'form-control' %>
+  </p>  
+
+  主治医
+
+  <p class="form-group">
+    <%= f.label :doctor_name, '医師名:' %>
+    <%= f.text_field :doctor_name, class: 'form-control' %>
+  </p>  
+
+  <p class="form-group">
+    <%= f.label :hospital_name, '医師機関名:' %>
+    <%= f.text_field :hospital_name, class: 'form-control' %>
+  </p>  
+
+  <p class="form-group">
+    <%= f.label :doctor_phone, '電話番号:' %>
+    <%= f.text_field :doctor_phone, class: 'form-control' %>
+  </p>  
+
+  <p class="form-group">
+    <%= f.label :doctor_phone, '所在地:' %>
+    <%= f.text_field :doctor_phone, class: 'form-control' %>
+  </p> 
+
+  現病気
+
+  <p class="form-group">
+    <%= f.label :disease_from, '年月日:' %>
+    <%= f.text_field :disease_from, class: 'form-control' %>
+  </p>  
+
+  <p class="form-group">
+    <%= f.label :disease_name, '病名:' %>
+    <%= f.text_field :disease_name, class: 'form-control' %>
+  </p>  
+
+  <p class="form-group">
+    <%= f.label :disease_doctor, '医療機関.医師名:' %>
+    <%= f.text_field :disease_doctor, class: 'form-control' %>
+  </p>  
+
+  <p class="form-group">
+    <%= f.label :disease_evolution, '経過:' %>
+    <%= f.text_field :disease_evolution, class: 'form-control' %>
+  </p> 
+
+
+  
+
+
+  
+
+
+
+
+
+
+	<% end %>
+</div>
+
+
+
+
+    <%= form_for([@project, @project.documents.build], html: {multipart: true} ) do |f| %>
+ 
+
+      <p class="form-group">
+        <%= f.label :name, 'ファイル名を設定する：' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </p>
+
+      <p class="form-group">
+        <%= f.label :category, 'ファイルタイプを選択する' %>
+        <%= f.select :category, [['提供票'], ['月次経過支援記録'], ['メディカル[写真．動画]'], ['住環境[写真.動画]'], ['その他']], class: 'form-control', :required => 'required' %>
+      </p>
+
+      <p class="form-group">
+        <%= f.label :user_ids, 'ファイルを閲覧できる人：' %>
+        <%= f.collection_check_boxes(:user_ids, @users_but_self, :id, :username, item_wrapper_class: 'checkbox-container') %>
+      </p>
+
+      <p class="form-group">
+        <%= f.submit "アップロード", class: 'btn btn-info' %>
+      </p>
+    <% end %>   

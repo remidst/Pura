@@ -1,41 +1,116 @@
 <div class="spec-show-container">
-	<%= @spec.publisher_id %>
-	<%= @spec.creation_date %>
-	<%= @spec.insurance_number %>
-	<%= @spec.gender %>
-	<%= @spec.birthday %>
-	<%= @spec.address %>
-	<%= @spec.phone %>
-	<%= @spec.fax %>
-	<%= @spec.kaigo_level %>
-	<%= @spec.kaigo_validity_from %>
-	<%= @spec.kaigo_validity_until %>
-	<%= @spec.dependency_physical %>
-	<%= @spec.dependency_mental %>
-	<%= @spec.handicap %>
-	<%= @spec.home %>
-	<%= @spec.economics %>
-	<%= @spec.emergency_contact_name %>
-	<%= @spec.emergency_contact_address %>
-	<%= @spec.emergency_contact_phone %>
-	<%= @spec.emergency_contact_name_2 %>
-	<%= @spec.emergency_contact_address_2 %>
-	<%= @spec.emergency_contact_phone_2 %>
-	<%= @spec.emergency_contact_name_3 %>
-	<%= @spec.emergency_contact_address_3 %>
-	<%= @spec.emergency_contact_phone_3 %>
-	<%= @spec.genogram %>
-	<%= @spec.doctor_name %>
-	<%= @spec.hospital_name %>
-	<%= @spec.doctor_phone %>
-	<%= @spec.doctor_address %>
-	<%= @spec.disease_from %>
-	<%= @spec.disease_name %>
-	<%= @spec.disease_doctor %>
-	<%= @spec.disease_evolution %>
-	<%= @spec.disease_from_2 %>
-	<%= @spec.disease_name_2 %>
-	<%= @spec.disease_doctor_2 %>
-	<%= @spec.disease_evolution_2 %>
-	<%= @spec.other %>
+	<p class="spec-title">利用者基本情報（サービス依頼書）</p>
+	<p class="spec-date"><%= @spec.creation_date %></p>
+    <p class="spec-insurance"><%= @spec.insurance_number %></p>
+    <table>
+		<tr>
+			<th>本人氏名</th>
+			<td><%= @project.project_name %></td>
+			<td><%= @spec.gender %></td> <%-# here insert a helper method to generate 男女 from boolean -%>
+			<td><%= @spec.birthday %></td> <%-# here insert a helper method to generate birthday format -%>
+		</tr>
+		<tr>
+			<th rowspan="2">住所</th>
+			<td rowspan="2">〒<%= @spec.address %></td>
+			<td>電話</td> 
+			<td><%= @spec.phone %></td>
+		</tr>
+		<tr>
+			<td>FAX</td>
+			<td><%= @spec.fax %></td>
+		</tr>
+		<tr>
+			<th rowspan="2">認定情報</th>
+			<td colspan="3"><%= @spec.kaigo_level %> </td> <%-# here insert a helper method to generate all the kaigo levels, and circle the one passed as a parameter -%>
+		</tr>
+		<tr>
+			<td colspan="3">有効期限：<%= @spec.kaigo_validity_from %> ~ <%= @spec.kaigo_validity_until %></td>
+		</tr>
+		<tr>
+			<th rowspan="2">日常生活自立度</th>
+			<td>障碍高齢者の日常生活自立度</td>
+			<td colspan="2"><%= @spec.dependency_physical %></td>
+		</tr>
+		<tr>
+			<td>認知症高齢者の日常生活自立度</td>
+			<td colspan="2"><%= @spec.dependency_mental %></td>
+		</tr>
+		<tr>
+			<th>障害等の認定</th>
+			<td colspan="3"><%= @spec.handicap %></td>　<%-# here insert a helper method to generate all the handicap levels -%>
+		</tr>
+		<tr>
+			<th>本人の住居</th>
+			<td colspan="3"><%= @spec.home %></td><%-# here insert a helper method to generate all the home details -%>
+		</tr>
+		<tr>
+			<th>経済状況</th>
+			<td colspan="3"><%= @spec.economics %></td>
+		</tr>
+		<tr>
+			<th rowspan="4">緊急連絡先</th>
+			<td>氏名</td>
+			<td>続柄</td>
+			<td>住所.連絡先</td>
+			<td rowspan="4"><%= @spec.genogram %></td>
+		</tr>
+		<tr>
+			<td><%= @spec.emergency_contact_name %></td>
+			<td><%= @spec.emergency_contact_address %></td>
+			<td><%= @spec.emergency_contact_phone %></td>
+		</tr>
+		<tr>
+			<td><%= @spec.emergency_contact_name_2 %></td>
+			<td><%= @spec.emergency_contact_address_2 %></td>
+			<td><%= @spec.emergency_contact_phone_2 %></td>
+		</tr>
+		<tr>
+			<td><%= @spec.emergency_contact_name_3 %></td>
+			<td><%= @spec.emergency_contact_address_3 %></td>
+			<td><%= @spec.emergency_contact_phone_3 %></td>
+		</tr>
+	</table>
+
+	<p>主治医連絡先</p>
+	<table>
+		<tr>
+			<th>医療機関名</th>
+			<td><%= @spec.hospital_name %></td>
+			<td>電話番号：</td>
+			<td><%= @spec.doctor_phone %></td>
+		</tr>
+		<tr>
+			<th>医師名</th>
+			<td><%= @spec.doctor_name %></td>
+			<td>所在地</td>
+			<td><%= @spec.doctor_address %></td>
+		</tr>
+	</table>
+
+	<p>現病気.経過</p>
+	<table>
+		<tr>
+			<th>年月日</th>
+			<th>病名</th>
+			<th>医療機関.医師名</th>
+			<th>経過</th>
+		</tr>
+		<tr>
+			<td><%= @spec.disease_from %></td>
+			<td><%= @spec.disease_name %></td>
+			<td><%= @spec.disease_doctor %></td>
+			<td><%= @spec.disease_evolution %></td>
+		</tr>
+		<tr>
+			<td><%= @spec.disease_from_2 %></td>
+			<td><%= @spec.disease_name_2 %></td>
+			<td><%= @spec.disease_doctor_2 %></td>
+			<td><%= @spec.disease_evolution_2 %></td>
+		</tr>
+	</table>
+
+	<p>生活歴.相談内容</p>
+	<table>
+		<td><%= @spec.other %></td>
+	</table>
 </div>
