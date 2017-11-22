@@ -116,6 +116,11 @@
 	border-radius: 2px;
 }
 
+#documents-list{
+	max-height: 280px;
+	overflow: auto;
+}
+
 
 #conversation-nav {
 	height:100%;
