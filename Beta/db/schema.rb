@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121070359) do
+ActiveRecord::Schema.define(version: 20171121071530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,6 +167,12 @@ ActiveRecord::Schema.define(version: 20171121070359) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "publisher_id"
+    t.string "handicap_rehabilitation"
+    t.string "handicap_psychological"
+    t.string "handicap_disease"
+    t.boolean "home_is_house"
+    t.boolean "home_has_room"
+    t.boolean "home_has_stairs"
     t.index ["project_id"], name: "index_specs_on_project_id"
     t.index ["publisher_id"], name: "index_specs_on_publisher_id"
   end
