@@ -1,73 +1,73 @@
 <div class="spec-show-container">
 	<p class="spec-title">利用者基本情報（サービス依頼書）</p>
-	<p class="spec-date"><%= @spec.creation_date %></p>
-    <p class="spec-insurance"><%= @spec.insurance_number %></p>
+	<p class="spec-date"><%= @spec.try(:creation_date) %></p>
+    <p class="spec-insurance"><%= @spec.try(:insurance_number) %></p>
     <table>
 		<tr>
 			<th>本人氏名</th>
-			<td><%= @project.project_name %></td>
-			<td><%= @spec.gender %></td> <%-# here insert a helper method to generate 男女 from boolean -%>
-			<td><%= @spec.birthday %></td> <%-# here insert a helper method to generate birthday format -%>
+			<td><%= @project.try(:project_name) %></td>
+			<td><%= @spec.try(:gender) %></td> <%-# here insert a helper method to generate 男女 from boolean -%>
+			<td><%= @spec.try(:birthday) %></td> <%-# here insert a helper method to generate birthday format -%>
 		</tr>
 		<tr>
 			<th rowspan="2">住所</th>
 			<td rowspan="2">〒<%= @spec.address %></td>
 			<td>電話</td> 
-			<td><%= @spec.phone %></td>
+			<td><%= @spec.try(:phone) %></td>
 		</tr>
 		<tr>
 			<td>FAX</td>
-			<td><%= @spec.fax %></td>
+			<td><%= @spec.try(:cellphone) %></td>
 		</tr>
 		<tr>
 			<th rowspan="2">認定情報</th>
-			<td colspan="3"><%= @spec.kaigo_level %> </td> <%-# here insert a helper method to generate all the kaigo levels, and circle the one passed as a parameter -%>
+			<td colspan="3"><%= @spec.try(:kaigo_level) %> </td> <%-# here insert a helper method to generate all the kaigo levels, and circle the one passed as a parameter -%>
 		</tr>
 		<tr>
-			<td colspan="3">有効期限：<%= @spec.kaigo_validity_from %> ~ <%= @spec.kaigo_validity_until %></td>
+			<td colspan="3">有効期限：<%= @spec.try(:kaigo_validity_from) %> ~ <%= @spec.try(:kaigo_validity_until) %></td>
 		</tr>
 		<tr>
 			<th rowspan="2">日常生活自立度</th>
 			<td>障碍高齢者の日常生活自立度</td>
-			<td colspan="2"><%= @spec.dependency_physical %></td>
+			<td colspan="2"><%= @spec.try(:dependency_physical) %></td>
 		</tr>
 		<tr>
 			<td>認知症高齢者の日常生活自立度</td>
-			<td colspan="2"><%= @spec.dependency_mental %></td>
+			<td colspan="2"><%= @spec.try(:dependency_mental) %></td>
 		</tr>
 		<tr>
 			<th>障害等の認定</th>
-			<td colspan="3"><%= @spec.handicap %></td>　<%-# here insert a helper method to generate all the handicap levels -%>
+			<td colspan="3"><%= @spec.try(:handicap_physical) %> <%= @spec.try(:handicap_rehabilitation) %> <%= @spec.try(:handicap_psychological) %> <%= @spec.try(:handicap_disease) %></td>
 		</tr>
 		<tr>
 			<th>本人の住居</th>
-			<td colspan="3"><%= @spec.home %></td><%-# here insert a helper method to generate all the home details -%>
+			<td colspan="3"><%= @spec.try(:home_is_owner) %> <%= @spec.try(:home_is_house) %> <%= @spec.try(:home_has_room) %> <%= @spec.try(:home_has_stairs) %> %></td>
 		</tr>
 		<tr>
 			<th>経済状況</th>
-			<td colspan="3"><%= @spec.economics %></td>
+			<td colspan="3"><%= @spec.try(:economics) %></td>
 		</tr>
 		<tr>
 			<th rowspan="4">緊急連絡先</th>
 			<td>氏名</td>
 			<td>続柄</td>
 			<td>住所.連絡先</td>
-			<td rowspan="4"><%= @spec.genogram %></td>
+			<td rowspan="4"><%= @spec.try(:genogram) %></td>
 		</tr>
 		<tr>
-			<td><%= @spec.emergency_contact_name %></td>
-			<td><%= @spec.emergency_contact_address %></td>
-			<td><%= @spec.emergency_contact_phone %></td>
+			<td><%= @spec.try(:emergency_contact_name) %></td>
+			<td><%= @spec.try(:emergency_contact_relation) %></td>
+			<td><%= @spec.try(:emergency_contact_address_phone) %></td>
 		</tr>
 		<tr>
-			<td><%= @spec.emergency_contact_name_2 %></td>
-			<td><%= @spec.emergency_contact_address_2 %></td>
-			<td><%= @spec.emergency_contact_phone_2 %></td>
+			<td><%= @spec.try(:emergency_contact_name_2) %></td>
+			<td><%= @spec.try(:emergency_contact_relation_2) %></td>
+			<td><%= @spec.try(:emergency_contact_address_phone_2) %></td>
 		</tr>
 		<tr>
-			<td><%= @spec.emergency_contact_name_3 %></td>
-			<td><%= @spec.emergency_contact_address_3 %></td>
-			<td><%= @spec.emergency_contact_phone_3 %></td>
+			<td><%= @spec.try(:emergency_contact_name_3) %></td>
+			<td><%= @spec.try(:emergency_contact_relation_3) %></td>
+			<td><%= @spec.try(:emergency_contact_address_phone_3) %></td>
 		</tr>
 	</table>
 
@@ -75,15 +75,15 @@
 	<table>
 		<tr>
 			<th>医療機関名</th>
-			<td><%= @spec.hospital_name %></td>
+			<td><%= @spec.try(:hospital_name) %></td>
 			<td>電話番号：</td>
-			<td><%= @spec.doctor_phone %></td>
+			<td><%= @spec.try(:doctor_phone) %></td>
 		</tr>
 		<tr>
 			<th>医師名</th>
-			<td><%= @spec.doctor_name %></td>
+			<td><%= @spec.try(:doctor_name) %></td>
 			<td>所在地</td>
-			<td><%= @spec.doctor_address %></td>
+			<td><%= @spec.try(:doctor_address) %></td>
 		</tr>
 	</table>
 
@@ -96,21 +96,21 @@
 			<th>経過</th>
 		</tr>
 		<tr>
-			<td><%= @spec.disease_from %></td>
-			<td><%= @spec.disease_name %></td>
-			<td><%= @spec.disease_doctor %></td>
-			<td><%= @spec.disease_evolution %></td>
+			<td><%= @spec.try(:disease_from) %></td>
+			<td><%= @spec.try(:disease_name) %></td>
+			<td><%= @spec.try(:disease_doctor) %></td>
+			<td><%= @spec.try(:disease_evolution) %></td>
 		</tr>
 		<tr>
-			<td><%= @spec.disease_from_2 %></td>
-			<td><%= @spec.disease_name_2 %></td>
-			<td><%= @spec.disease_doctor_2 %></td>
-			<td><%= @spec.disease_evolution_2 %></td>
+			<td><%= @spec.try(:disease_from_2) %></td>
+			<td><%= @spec.try(:disease_name_2) %></td>
+			<td><%= @spec.try(:disease_doctor_2) %></td>
+			<td><%= @spec.try(:disease_evolution_2) %></td>
 		</tr>
 	</table>
 
 	<p>生活歴.相談内容</p>
 	<table>
-		<td><%= @spec.other %></td>
+		<td><%= @spec.try(:other) %></td>
 	</table>
 </div>

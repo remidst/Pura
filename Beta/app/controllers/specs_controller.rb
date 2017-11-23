@@ -1,5 +1,10 @@
 class SpecsController < ApplicationController
 
+	def new
+		@project = Project.find(params[:project_id])
+		@spec = Spec.new
+	end
+
 	def create
 		project = Project.find(params[:project_id])
 		specs = project.specs.create(spec_params)
