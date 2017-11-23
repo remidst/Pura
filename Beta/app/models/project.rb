@@ -9,6 +9,8 @@ class Project < ApplicationRecord
 	has_many :notifications, dependent: :destroy
 	has_one :spec, dependent: :destroy
 
+  after_create :create_spec
+
   def leader
     self.memberships.where(type: 'leader').first
   end
@@ -24,6 +26,12 @@ class Project < ApplicationRecord
 	  		spec = Spec.create(project_id: project.id, publisher_id: project.leader_id)
 	  	end
   	end
+  end
+
+  private
+
+  def create_spec
+    spec = Spec.create(project_id: self.id,publisher_id: self.leader_id)
   end
   
 end

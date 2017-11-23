@@ -1,10 +1,5 @@
 class SpecsController < ApplicationController
 
-	def new
-		@project = Project.find(params[:project_id])
-		@spec = Spec.new
-	end
-
 	def create
 		project = Project.find(params[:project_id])
 		specs = project.specs.create(spec_params)
@@ -14,7 +9,23 @@ class SpecsController < ApplicationController
 	end
 
 	def edit
+		@project = Project.find(params[:project_id])
+		@spec = Spec.find(params[:id])
+	end
 
+	def update
+		project = Project.find(params[:project_id])
+		spec = Spec.find(params[:id])
+
+		respond_to do |format|
+			if spec.update(spec_params)
+				format.html {redirect_to project, notice: '基本情報が登録されました。'}
+				format.json { render :show, status: :ok, location: project }
+			else
+				format.html { render :edit, notice: '基本情報の登録が失敗しました。' }
+				format.json { render json: project.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	private

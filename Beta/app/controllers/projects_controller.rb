@@ -19,7 +19,7 @@
     @conversation = @project.conversations.first
     @messages = @conversation.messages.order('created_at ASC')
     @users_but_self = @project.users.where.not(id: current_user.id)
-    @spec = @project.spec if @project.spec.present?
+    @spec = @project.spec
 
     #to compare, id has to be an integer inside an array
     id = params[:v]

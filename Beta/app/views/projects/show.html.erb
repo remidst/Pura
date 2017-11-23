@@ -85,9 +85,11 @@
 		</div>
 
 		<div class="well project-well well-hide" id="well-specs">
+			<%= link_to '基本情報の記入・変更', edit_project_spec_path(@project, @spec), class: "btn btn-info" %> 
 
-
-			<%= render 'specs/show' %>
+			<div id="specs-list">
+				<%= render 'specs/show' %>
+			</div>
 		</div>
 
 	    <%= link_to '利用者一覧へ', projects_path %> 
