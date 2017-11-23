@@ -14,12 +14,12 @@
       <%= f.text_field :insurance_number, class: 'form-control' %>
     </p> 
 
-    <p class="form-group">
-      <%= f.label :gender, "性別"  %>
-      <%= f.label :gender, "男", value: true %>
-      <%= f.radio_button :gender, true, value: true, class: 'form-control' %>
-      <%= f.label :gender, "女", value: false %>
-      <%= f.radio_button :gender, false, value: true, class: 'form-control' %>
+    <p>
+      <%= f.label :gender, '性別：' %>
+      <%= f.label :gender, "男", value: true, class: "radio-inline" %>
+      <%= f.radio_button :gender, true, value: true %>
+      <%= f.label :gender, "女", value: false, class: "radio-inline" %>
+      <%= f.radio_button :gender, false, value: true %>
     </p> 
 
 
@@ -44,8 +44,23 @@
     </p>
 
     <p class="form-group">
-      <%= f.label :kaigo_level, '要介護度:' %>
-      <%= f.text_field :kaigo_level, class: 'form-control' %>
+      <%= f.label :kaigo_level, '要介護度:' %><br/>
+      <%= f.label :kaigo_level, '非核当', class: "radio-inline" %>
+      <%= f.radio_button :kaigo_level, '非核当' %>      
+      <%= f.label :kaigo_level, '要支援1', class: "radio-inline" %>
+      <%= f.radio_button :kaigo_level, '要支援1' %>      
+      <%= f.label :kaigo_level, '要支援2', class: "radio-inline" %>
+      <%= f.radio_button :kaigo_level, '要支援2' %>      
+      <%= f.label :kaigo_level, '要介1', class: "radio-inline" %>
+      <%= f.radio_button :kaigo_level, '要介1' %>      
+      <%= f.label :kaigo_level, '要介2', class: "radio-inline" %>
+      <%= f.radio_button :kaigo_level, '要介2' %>      
+      <%= f.label :kaigo_level, '要介3', class: "radio-inline" %>
+      <%= f.radio_button :kaigo_level, '要介3' %>      
+      <%= f.label :kaigo_level, '要介4', class: "radio-inline" %>
+      <%= f.radio_button :kaigo_level, '要介4' %>      
+      <%= f.label :kaigo_level, '要介5', class: "radio-inline" %>
+      <%= f.radio_button :kaigo_level, '要介5' %>
     </p>
 
     <p class="form-group">
@@ -59,56 +74,88 @@
     </p>
 
     <p class="form-group">
-      <%= f.label :dependency_physical, '障害高齢者の日常生活自立度:' %>
-      <%= f.text_field :dependency_physical, class: 'form-control' %>
-    </p>
-
-    <p class="form-group">
       <%= f.label :dependency_mental, '認知症高齢者の日常生活自立度:' %>
-      <%= f.text_field :dependency_mental, class: 'form-control' %>
+      <%= f.label :dependency_mental, 'I', class: "radio-inline" %>
+      <%= f.radio_button :dependency_mental, 'I' %>
+      <%= f.label :dependency_mental, 'II', class: "radio-inline" %>
+      <%= f.radio_button :dependency_mental, 'II' %>
+      <%= f.label :dependency_mental, 'IIa', class: "radio-inline" %>
+      <%= f.radio_button :dependency_mental, 'IIa' %>
+      <%= f.label :dependency_mental, 'IIb', class: "radio-inline" %>
+      <%= f.radio_button :dependency_mental, 'IIb' %>
+      <%= f.label :dependency_mental, 'IIIa', class: "radio-inline" %>
+      <%= f.radio_button :dependency_mental, 'IIIa' %>
+      <%= f.label :dependency_mental, 'IIIb', class: "radio-inline" %>
+      <%= f.radio_button :dependency_mental, 'IIIb' %>
+      <%= f.label :dependency_mental, 'IV', class: "radio-inline" %>
+      <%= f.radio_button :dependency_mental, 'IV' %>
+      <%= f.label :dependency_mental, 'V', class: "radio-inline" %>
+      <%= f.radio_button :dependency_mental, 'V' %>
     </p>
 
     <p class="form-group">
-      <%= f.label :handicap_physical, '障害などの認定:' %>
-      <%= f.text_field :handicap_physical, class: 'form-control' %>
+      <%= f.label :dependency_physical, '障害高齢者の日常生活自立度:' %>
+      <%= f.label :dependency_physical, 'J1', class: "radio-inline" %>
+      <%= f.radio_button :dependency_physical, 'J1' %>
+      <%= f.label :dependency_physical, 'J2', class: "radio-inline" %>
+      <%= f.radio_button :dependency_physical, 'J2' %>
+      <%= f.label :dependency_physical, 'A1', class: "radio-inline" %>
+      <%= f.radio_button :dependency_physical, 'A1' %>
+      <%= f.label :dependency_physical, 'A2', class: "radio-inline" %>
+      <%= f.radio_button :dependency_physical, 'A2' %>
+      <%= f.label :dependency_physical, 'B1', class: "radio-inline" %>
+      <%= f.radio_button :dependency_physical, 'B1' %>
+      <%= f.label :dependency_physical, 'B2', class: "radio-inline" %>
+      <%= f.radio_button :dependency_physical, 'B2' %>
+      <%= f.label :dependency_physical, 'C1', class: "radio-inline" %>
+      <%= f.radio_button :dependency_physical, 'C1' %>
+      <%= f.label :dependency_physical, 'C2', class: "radio-inline" %>
+      <%= f.radio_button :dependency_physical, 'C2' %>
+    </p>
+
+    障害等の認定：
+    <p class="form-group">
+      <%= f.label :handicap_physical, '身障:' %>
+      <%= f.text_field :handicap_physical, class: 'form-control　tiny-text-field' %>
+      <%= f.label :handicap_rehabilitation, '療育:' %>
+      <%= f.text_field :handicap_rehabilitation, class: 'form-control tiny-text-field' %>
+      <%= f.label :handicap_psychological, '精神:' %>
+      <%= f.text_field :handicap_psychological, class: 'form-control tiny-text-field' %>
+      <%= f.label :handicap_disease, '難病:' %>
+      <%= f.text_field :handicap_disease, class: 'form-control tiny-text-field' %>
     </p>
 
     <p class="form-group">
-      <%= f.label :handicap_rehabilitation, '障害などの認定:' %>
-      <%= f.text_field :handicap_rehabilitation, class: 'form-control' %>
-    </p>
-
-    <p class="form-group">
-      <%= f.label :handicap_psychological, '障害などの認定:' %>
-      <%= f.text_field :handicap_psychological, class: 'form-control' %>
-    </p>
-
-    <p class="form-group">
-      <%= f.label :handicap_disease, '障害などの認定:' %>
-      <%= f.text_field :handicap_disease, class: 'form-control' %>
-    </p>
-
-    <p class="form-group">
-      <%= f.label :home_is_owner, '本人の住居:' %>
-      <%= f.text_field :home_is_owner, class: 'form-control' %>
-    </p>
-    <p class="form-group">
-      <%= f.label :home_is_house, '本人の住居:' %>
-      <%= f.text_field :home_is_house, class: 'form-control' %>
-    </p>
-    <p class="form-group">
-      <%= f.label :home_has_room, '本人の住居:' %>
-      <%= f.text_field :home_has_room, class: 'form-control' %>
-    </p>
-    <p class="form-group">
-      <%= f.label :home_has_stairs, '本人の住居:' %>
-      <%= f.text_field :home_has_stairs, class: 'form-control' %>
+      本人の住居:
+      <%= f.label :home_is_owner, "自宅", value: true, class: "radio-inline" %>
+      <%= f.radio_button :home_is_owner, true, value: true %>
+      <%= f.label :home_is_owner, "借家", value: false, class: "radio-inline" %>
+      <%= f.radio_button :home_is_owner, false, value: true %>
+      <%= f.label :home_is_house, "一戸建て", value: true, class: "radio-inline" %>
+      <%= f.radio_button :home_is_house, true, value: true %>
+      <%= f.label :home_is_house, "集合住宅", value: false, class: "radio-inline" %>
+      <%= f.radio_button :home_is_house, false, value: true %>
+      <%= f.label :home_has_room, "自室有", value: true, class: "radio-inline" %>
+      <%= f.radio_button :home_has_room, true, value: true %>
+      <%= f.label :home_has_room, "自室無", value: false, class: "radio-inline" %>
+      <%= f.radio_button :home_has_room, false, value: true %>
+      <%= f.label :home_has_stairs, "階段有", value: true, class: "radio-inline" %>
+      <%= f.radio_button :home_has_stairs, true, value: true %>
+      <%= f.label :home_has_stairs, "階段無", value: false, class: "radio-inline" %>
+      <%= f.radio_button :home_has_stairs, false, value: true %>
     </p>
 
 
     <p class="form-group">
-      <%= f.label :economics, '経済状態:' %>
-      <%= f.text_field :economics, class: 'form-control' %>
+      経済状態:
+      <%= f.label :economics, '国民年金', class: "radio-inline" %>
+      <%= f.radio_button :economics, '国民年金' %>
+      <%= f.label :economics, '厚生年金', class: "radio-inline" %>
+      <%= f.radio_button :economics, '厚生年金' %>
+      <%= f.label :economics, '障害年金', class: "radio-inline" %>
+      <%= f.radio_button :economics, '障害年金' %>
+      <%= f.label :economics, '生活保護', class: "radio-inline" %>
+      <%= f.radio_button :economics, '生活保護' %>
     </p>
 
     緊急連絡先

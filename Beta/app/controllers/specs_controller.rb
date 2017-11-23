@@ -19,7 +19,7 @@ class SpecsController < ApplicationController
 
 		respond_to do |format|
 			if spec.update(spec_params)
-				format.html {redirect_to project, notice: '基本情報が登録されました。'}
+				format.html {redirect_to project_path(project, to: 'specs'), notice: '基本情報が登録されました。'}
 				format.json { render :show, status: :ok, location: project }
 			else
 				format.html { render :edit, notice: '基本情報の登録が失敗しました。' }

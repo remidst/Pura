@@ -161,9 +161,18 @@ $(document).on('turbolinks:load', function(){
 	var to = getUrlVars()["to"];
 	if (to.indexOf("documents") >= 0) {
 		$("#well-msg").hide();
+		$("well-specs").hide();
 		$("#well-document").show();
 		$(".nav-show").removeClass("nav-selected");
 		$("#nav-file").addClass("nav-selected");
+	}
+
+	else if (to.indexOf("specs") >= 0) {
+		$("#well-msg").hide();
+		$("#well-specs").show();
+		$("#well-document").hide();
+		$(".nav-show").removeClass("nav-selected");
+		$("#nav-specs").addClass("nav-selected");
 	}
 
 });
