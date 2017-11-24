@@ -1,0 +1,56 @@
+// Place all the styles related to the specs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.spec-form-background {
+	background: image-url('absurdidad.png');
+	padding-top: 20px;
+}
+
+#spec-form-container {
+	max-width: 630px;
+	margin: auto;
+}
+
+.spec-form-box {
+	margin:35px;
+	padding: 15px;
+	border: 1px solid black;
+}
+
+.form-short {
+	max-width: 520px;
+}
+
+.form-date {
+	max-width: 180px;
+}
+
+.form-tiny {
+	max-width: 70px;
+	margin: 0px;
+}
+
+#form-handicap {
+	diaply: flex;
+}
+
+.p-label {
+	font-weight: bold;
+}
+
+.p-well-title {
+	font-weight: bold;
+	font-size: 1.2em;
+	text-align: center;
+}
+
+.well-form-specs {
+	padding-top: 10px;
+}
+
+.separator {
+	color: #ccc;
+}
+

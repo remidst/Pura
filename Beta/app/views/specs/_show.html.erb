@@ -1,0 +1,40 @@
+
+<table class="table">
+<tr><th class="table-head-specs">アセスメント日</th><td><%= @spec.try(:creation_date) %></td></tr>
+<tr><th class="table-head-specs">被保険者番号</th><td><%= @spec.try(:insurance_number) %></td></tr>
+<tr><th class="table-head-specs">性別</th><td><%= gender(@spec) %></td></tr>
+<tr><th class="table-head-specs">誕生日</th><td><%= @spec.try(:birthday) %></td></tr>
+<tr><th class="table-head-specs">住所</th><td><%= @spec.try(:address) %></td></tr>
+<tr><th class="table-head-specs">電話番号</th><td><%= @spec.try(:phone) %></td></tr>
+<tr><th class="table-head-specs">携帯電話</th><td><%= @spec.try(:cellphone) %></td></tr>
+<tr><th class="table-head-specs">要介護度</th><td><%= @spec.try(:kaigo_level) %></td></tr>
+<tr><th class="table-head-specs">認定有効期限</th><td><%= @spec.try(:kaigo_validity_from) %>　~ <%= @spec.try(:kaigo_validity_until) %></td></tr>
+<tr><th class="table-head-specs">認知症高齢者の自立度</th><td><%= @spec.try(:dependency_mental) %></td></tr>
+<tr><th class="table-head-specs">障害高齢者の日自立度</th><td><%= @spec.try(:dependency_physical) %></td></tr>
+<tr><th class="table-head-specs">障害などの認定：身障</th><td><%= @spec.try(:handicap_physical) %></td></tr>
+<tr><th class="table-head-specs">療育</th><td><%= @spec.try(:handicap_rehabilitation) %></td></tr>
+<tr><th class="table-head-specs">精神</th><td><%= @spec.try(:handicap_psychological) %></td></tr>
+<tr><th class="table-head-specs">難病</th><td><%= @spec.try(:handicap_disease) %></td></tr>
+<tr><th class="table-head-specs">本人の住居 </th><td><%= home_owner(@spec) %> <%= home_house(@spec) %> <%= has_room(@spec) %> <%= has_stairs(@spec) %></td></tr>
+<tr><th class="table-head-specs">経済状況</th><td><%= @spec.try(:economics) %></td></tr>
+
+<tr><th class="table-head-specs">氏名</th><td><%= @spec.try(:emergency_contact_name) %></td></tr>
+<tr><th class="table-head-specs">続柄</th><td><%= @spec.try(:emergency_contact_relation) %></td></tr>
+<tr><th class="table-head-specs">住所.連絡先</th><td><%= @spec.try(:emergency_contact_address_phone) %></td></tr>
+<tr><th class="table-head-specs">氏名</th><td><%= @spec.try(:emergency_contact_name_2) %></td></tr>
+<tr><th class="table-head-specs">続柄</th><td><%= @spec.try(:emergency_contact_relation_2) %></td></tr>
+<tr><th class="table-head-specs">住所.連絡先</th><td><%= @spec.try(:emergency_contact_address_phone_2) %></td></tr>
+<tr><th class="table-head-specs">氏名</th><td><%= @spec.try(:emergency_contact_name_3) %></td></tr>
+<tr><th class="table-head-specs">続柄</th><td><%= @spec.try(:emergency_contact_relation_3) %></td></tr>
+<tr><th class="table-head-specs">住所.連絡先</th><td><%= @spec.try(:emergency_contact_address_phone_3) %></td></tr>
+
+<tr><th class="table-head-specs">医師名</th><td><%= @spec.try(:doctor_name) %></td></tr>
+<tr><th class="table-head-specs">医療機関名</th><td><%= @spec.try(:hospital_name) %></td></tr>
+<tr><th class="table-head-specs">電話番号</th><td><%= @spec.try(:doctor_phone) %></td></tr>
+<tr><th class="table-head-specs">住所.連絡先</th><td><%= @spec.try(:doctor_address) %></td></tr>
+
+<tr><th class="table-head-specs">年月日</th><td><%= @spec.try(:disease_from) %></td></tr>
+<tr><th class="table-head-specs">病名</th><td><%= @spec.try(:disease_name) %></td></tr>
+<tr><th class="table-head-specs">医療機関.医師名</th><td><%= @spec.try(:disease_doctor) %></td></tr>
+<tr><th class="table-head-specs">経過</th><td><%= @spec.try(:disease_evolution) %></td></tr>
+</table>

@@ -23,10 +23,11 @@
 
 <div class="background-pattern">
 		
-	<div class="tab-panel">
+	<div id="tab-panel">
 		<ul class="nav nav-tabs">
 			<li class="nav-show nav-selected" id="nav-msg">メッセージ</li>
 			<li class="nav-show" id="nav-file">ファイル共有</li>
+			<li class="nav-show" id="nav-specs">基本情報</li>
 		</ul>
 	</div>
 
@@ -71,7 +72,7 @@
 		
 		<div class="well project-well well-hide" id="well-document">
 
-		<div class="btn btn-info" id="file-button">新規アップロード</div>
+			<div class="btn btn-info" id="file-button">新規アップロード</div>
 
 			<div id="documents-list">
 				<%= render 'documents/list' %>
@@ -81,6 +82,14 @@
 
 		<div class="modal" id="file-form">
 			<%= render 'documents/form' %>
+		</div>
+
+		<div class="well project-well well-hide" id="well-specs">
+			<%= link_to '基本情報の記入・変更', edit_project_spec_path(@project, @spec), class: "btn btn-info spec-button" %> 
+
+			<div id="specs-list">
+				<%= render 'specs/show' %>
+			</div>
 		</div>
 
 	    <%= link_to '利用者一覧へ', projects_path %> 

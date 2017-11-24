@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108045353) do
+ActiveRecord::Schema.define(version: 20171121071530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,59 @@ ActiveRecord::Schema.define(version: 20171108045353) do
     t.index ["user_id"], name: "index_readmarks_on_user_id"
   end
 
+  create_table "specs", force: :cascade do |t|
+    t.bigint "project_id"
+    t.date "creation_date"
+    t.integer "insurance_number"
+    t.boolean "gender"
+    t.date "birthday"
+    t.text "address"
+    t.string "phone"
+    t.string "cellphone"
+    t.string "kaigo_level"
+    t.date "kaigo_validity_from"
+    t.date "kaigo_validity_until"
+    t.string "dependency_physical"
+    t.string "dependency_mental"
+    t.string "handicap_physical"
+    t.string "home_is_owner"
+    t.string "economics"
+    t.string "emergency_contact_name"
+    t.text "emergency_contact_relation"
+    t.string "emergency_contact_address_phone"
+    t.string "emergency_contact_name_2"
+    t.text "emergency_contact_relation_2"
+    t.string "emergency_contact_address_phone_2"
+    t.string "emergency_contact_name_3"
+    t.text "emergency_contact_relation_3"
+    t.string "emergency_contact_address_phone_3"
+    t.text "genogram"
+    t.string "doctor_name"
+    t.string "hospital_name"
+    t.string "doctor_phone"
+    t.text "doctor_address"
+    t.string "disease_from"
+    t.string "disease_name"
+    t.string "disease_doctor"
+    t.string "disease_evolution"
+    t.date "disease_from_2"
+    t.string "disease_name_2"
+    t.string "disease_doctor_2"
+    t.string "disease_evolution_2"
+    t.text "other"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "publisher_id"
+    t.string "handicap_rehabilitation"
+    t.string "handicap_psychological"
+    t.string "handicap_disease"
+    t.boolean "home_is_house"
+    t.boolean "home_has_room"
+    t.boolean "home_has_stairs"
+    t.index ["project_id"], name: "index_specs_on_project_id"
+    t.index ["publisher_id"], name: "index_specs_on_publisher_id"
+  end
+
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -193,4 +246,6 @@ ActiveRecord::Schema.define(version: 20171108045353) do
   add_foreign_key "projects", "users", column: "leader_id"
   add_foreign_key "readmarks", "messages"
   add_foreign_key "readmarks", "users"
+  add_foreign_key "specs", "projects"
+  add_foreign_key "specs", "users", column: "publisher_id"
 end
