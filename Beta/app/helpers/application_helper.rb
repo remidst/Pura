@@ -34,38 +34,32 @@ module ApplicationHelper
 	end
 
 	def gender(spec)
-
-		if spec.present?
-			gender = spec.gender
-			gender == true ? '男' : '女'
+		unless spec.nil? || spec.gender.nil?
+			spec.gender == true ? '男' : '女'
 		end
 	end
 
 	def home_owner(spec)
-		if spec.present?
-			ownership = spec.home_is_owner
-			ownership == true ? "自宅" : "借家"
+		unless spec.nil? || spec.home_is_owner.nil?
+			spec.home_is_owner ? "自宅" : "借家"
 		end
 	end
 
 	def home_house(spec)
-		if spec.present?
-			house = spec.home_is_house
-			house == true ? "一戸建て" : "集合住宅"
+		unless spec.nil? || spec.home_is_house.nil?
+			spec.home_is_house ? "一戸建て" : "集合住宅"
 		end
 	end
 
 	def has_room(spec)
-		if spec.present?
-			room = spec.home_has_room
-			room == true ? "自室有" : "自室無"
+		unless spec.nil? || spec.home_has_room.nil?
+			spec.home_has_room ? "自室有" : "自室無"
 		end
 	end
 
 	def has_stairs(spec)
-		if spec.present?
-			stairs = spec.home_has_stairs
-			stairs == true ? "階段あり" : "階段無し"
+		unless spec.nil? || spec.home_has_stairs.nil?
+			spec.home_has_stairs ? "階段あり" : "階段無し"
 		end
 	end
 
