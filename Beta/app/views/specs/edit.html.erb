@@ -72,8 +72,8 @@
 	    </p>
 
 	    <p class="form-group">
-	      <%= f.label :kaigo_validity_from, '有効期限（終）' %>
-	      <%= f.date_field :kaigo_validity_from, class: 'form-control form-date' %>
+	      <%= f.label :kaigo_validity_until, '有効期限（終）' %>
+	      <%= f.date_field :kaigo_validity_until, class: 'form-control form-date' %>
 	    </p>
 
 	    <p class="form-group">
@@ -128,7 +128,8 @@
 	      <%= f.text_field :handicap_disease, class: 'form-tiny' %>
 	    </div>
 
-	    本人の住居:
+	    <br/>
+	    <p class="p-label">本人の住居:</p> 
 	    <p class="form-group">
 	      <%= f.label :home_is_owner, "自宅　　", value: true, class: "radio-inline" %>
 	      <%= f.radio_button :home_is_owner, true, value: true %>
@@ -148,8 +149,8 @@
 	      <%= f.radio_button :home_has_stairs, false, value: true %>
 	    </p>
 
-	    <p class="p-label">経済状態:</p>
 	    <p class="form-group">
+	      <%= f.label :economics, '経済状態:' %>
 	      <%= f.label :economics, '国民年金', class: "radio-inline" %>
 	      <%= f.radio_button :economics, '国民年金' %>
 	      <%= f.label :economics, '厚生年金', class: "radio-inline" %>

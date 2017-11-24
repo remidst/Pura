@@ -11,6 +11,11 @@
 	color: #fff;
 }
 
+.btn.btn-info.spec-button {
+	color: white;
+	margin-bottom: 10px;
+}
+
 .h1-top-margin {
 	margin-top: 20px;
 }
@@ -207,7 +212,7 @@ div.send-message-button-container {
 }
 
 #specs-list {
-	max-height: 350px;
+	max-height: 250px;
 	overflow: auto;
 }
 
@@ -289,6 +294,11 @@ input.send-message-button {
 
 #copy:hover {
 	cursor: pointer;
+}
+
+.table-head-specs {
+	text-align : right;
+	padding-right : 15px;
 }
 
 
