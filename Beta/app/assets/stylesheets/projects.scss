@@ -56,18 +56,18 @@
 	padding-right: 0px;
 }
 
-.tab-panel {
-	width: 500px;
+#tab-panel {
 	padding-top: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 10px;
 	font-size: 2em;
-	text-align: center;
+	display: table;
 }
 
-.nav-tabs {
+ul.nav.nav-tabs {
 	list-style: none;
+	text-align: center;
 }
 
 .nav-show {
