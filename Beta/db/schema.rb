@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125022629) do
+ActiveRecord::Schema.define(version: 20171125023649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,23 @@ ActiveRecord::Schema.define(version: 20171125022629) do
     t.datetime "updated_at", null: false
     t.index ["message_id"], name: "index_readmarks_on_message_id"
     t.index ["user_id"], name: "index_readmarks_on_user_id"
+  end
+
+  create_table "reporting_attachments", force: :cascade do |t|
+    t.bigint "reporting_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reporting_id"], name: "index_reporting_attachments_on_reporting_id"
+  end
+
+  create_table "reportings", force: :cascade do |t|
+    t.string "title"
+    t.text "message"
+    t.bigint "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_reportings_on_contact_id"
   end
 
   create_table "specs", force: :cascade do |t|
@@ -257,6 +274,8 @@ ActiveRecord::Schema.define(version: 20171125022629) do
   add_foreign_key "projects", "users", column: "leader_id"
   add_foreign_key "readmarks", "messages"
   add_foreign_key "readmarks", "users"
+  add_foreign_key "reporting_attachments", "reportings"
+  add_foreign_key "reportings", "contacts"
   add_foreign_key "specs", "projects"
   add_foreign_key "specs", "users", column: "publisher_id"
 end
