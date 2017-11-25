@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'reportings/create'
+
+  get 'reportings/update'
+
+  get 'reportings/delete'
+
   resources :projects do
   	resources :documents
   	resources :memberships

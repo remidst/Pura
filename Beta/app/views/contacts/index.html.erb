@@ -14,7 +14,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @contacts.each do |contact| %>
+			<% @contacts_care_manager.each do |contact| %>
+				<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
+					<th><%= contact.care_manager.company %></th>
+					<th><%= contact.care_manager.username %></th>
+				</tr>
+			<% end %>
+			<% @contacts_service_provider.each do |contact| %>
 				<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
 					<th><%= contact.service_provider.company %></th>
 					<th><%= contact.service_provider.username %></th>
