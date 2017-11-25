@@ -10,6 +10,12 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  resources :contacts do 
+    resources :reportings do 
+      resources :reporting_attachments
+    end
+  end
+
   get 'project/:id/invite_members' => 'projects#invite_members', as: :project_invite_members
   patch 'project/:id/invite_members' => 'projects#update_members', as: :project_update_members
 
