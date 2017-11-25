@@ -28,9 +28,12 @@ class Membership < ApplicationRecord
 	private
 
 	def create_contact
+		puts "create contract executed"
 		unless self.user.id.to_s == self.project.leader_id.to_s 
 			contact = Contact.where(care_manager_id: self.project.leader_id, service_provider_id: self.user.id)
-			Contact.create(care_manager_id: self.project.leader_id, service_provider_id: self.user.id) unless contact
+			unless contact.present?
+				Contact.create!(care_manager_id: self.project.leader_id, service_provider_id: self.user.id)
+			end
 		end
 	end
 
