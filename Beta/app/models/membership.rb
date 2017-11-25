@@ -5,7 +5,7 @@ class Membership < ApplicationRecord
 	
 	validates_uniqueness_of :user_id, scope: :project_id
 
-	after_create :invite_email
+	after_create :invite_email, :create_contact
 
 
 	def set_user_id!(user)
@@ -17,10 +17,20 @@ class Membership < ApplicationRecord
 		end
 	end
 
+
 	def invite_email
 		if self.user.id != self.project.leader_id && self.user.username.present?
 			ProjectMailer.user_invited(self.user, self.project).deliver_later
 		else
+		end
+	end
+
+	private
+
+	def create_contact
+		unless self.user.id.to_s == self.project.leader_id.to_s 
+			contact = Contact.where(care_manager_id: self.project.leader_id, service_provider_id: self.user.id)
+			Contact.create(care_manager_id: self.project.leader_id, service_provider_id: self.user.id) unless contact
 		end
 	end
 
