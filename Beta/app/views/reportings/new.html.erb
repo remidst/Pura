@@ -1,0 +1,19 @@
+<div class="container-fluid">
+	<div id="tab-panel">
+	  <ul class="nav nav-tabs">
+	    <li class="nav-show nav-selected" id="nav-msg"><%= link_to '利用者一覧', root_path %></li>
+	    <li class="nav-show" id="nav-file"><%= link_to '責任者.事業所', contacts_path %></li>
+	  </ul>
+	</div>
+
+	<div class="well">
+		<div id="contact-information-container">
+			<%= contact_company(@contact) %><br/>
+			<%= contact_role(@contact) %><%= contact_name(@contact) %>
+		</div>
+
+		<h1>新しいレポート.請求書類の共有</h1>
+
+		<%= render 'reportings/form' %>
+	</div>
+</div>

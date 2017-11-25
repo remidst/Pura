@@ -8,7 +8,8 @@
 
 	<div class="well">
 		<div id="contact-information-container">
-			
+			<%= contact_company(@contact) %><br/>
+			<%= contact_role(@contact) %><%= contact_name(@contact) %>
 		</div>
 
 		<%= link_to "新しいレポート.請求書の共有", new_contact_reporting_path(@contact) %>
@@ -23,7 +24,7 @@
 						<p class="reporting-message"><%= reporting.message %></p>
 						添付ファイル：
 						<% reporting.reporting_attachments.each do |file| %>
-							<p class="attachment_name"><%= attachment_name(file) %></p>
+							<%= file.name %>
 						<% end %>
 					</div>
 				<% end %>
