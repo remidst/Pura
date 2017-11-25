@@ -1,13 +1,14 @@
 class ReportingsController < ApplicationController
 
   def new
-  	@reporting = Reporting.new
+    @contact = Contact.find(params[:contact_id])
+  	@reporting = @contact.reportings.new
   	@reporting_attachment = @reporting.reporting_attachments.build
   end
 
   def create
-  	@reporting = Reporting.new(reporting_params)
-  	@contact = Contact.find(params[:contact_id])
+    @contact = Contact.find(params[:contact_id])
+  	@reporting = @contact.reportings.new(reporting_params)
 
   	respond_to do |format|
   		if @reporting.save
@@ -30,6 +31,6 @@ class ReportingsController < ApplicationController
   private
 
   def reporting_params
-  	params.require(:reporting).permit(:title, :contact_id, :message, reporting_attachments_attributes: [:name, :reporting_id, :attachment])
+  	params.require(:reporting).permit(:title, :message, reporting_attachments_attributes: [:name, :id, :reporting_id, :attachment])
   end
 end
