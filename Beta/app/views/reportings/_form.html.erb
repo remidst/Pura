@@ -1,0 +1,23 @@
+<%= form_for(@post, html: {multipart: true}) do |f| %>
+	
+	<div class="">
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	</div>
+
+	<div class="">
+		<%= f.label :message %>
+		<%= f.text_area :message %>
+	</div>
+
+	<%= f.fields_for :reporting_attachments do |a| %>
+		<div class="">
+			<%= a.label :name %>
+			<%= a.text_field :name %>
+		</div>
+		<div class="">
+			<%= a.label :attachment %>
+			<%= a.file_field :attachment, multiple: true, name: "reporting_attachments[attachment][]" %>
+		</div>
+	<% end %>
+<% end %>
