@@ -1,0 +1,31 @@
+<div class="container-fluid">
+	<div id="tab-panel">
+	  <ul class="nav nav-tabs">
+	    <li class="nav-show nav-selected" id="nav-msg"><%= link_to '利用者一覧', root_path %></li>
+	    <li class="nav-show" id="nav-file"><%= link_to '責任者.事業所', contacts_path %></li>
+	  </ul>
+	</div>
+
+	<div class="well">
+		<div id="contact-information-container">
+			
+		</div>
+
+		<div id="contact-reporting-container">
+			<h2>レポート.請求書類</h2>
+
+			<div id="contact-reporting-list">
+				<% @reportings.each do |reporting| %>
+					<div class="reporting-block">
+						<p class="reporting-title"><%= reporting.title %></p>
+						<p class="reporting-message"><%= reporting.message %></p>
+						添付ファイル：
+						<% reporting.reporting_attachments.each do |file| %>
+							<p class="attachment_name"><%= attachment_name(file) %></p>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
