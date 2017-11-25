@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  care_manager: one
+  service_provider: one
+
+two:
+  care_manager: two
+  service_provider: two

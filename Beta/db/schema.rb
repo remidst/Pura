@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121071530) do
+ActiveRecord::Schema.define(version: 20171125022629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contacts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "care_manager_id"
+    t.bigint "service_provider_id"
+    t.index ["care_manager_id"], name: "index_contacts_on_care_manager_id"
+    t.index ["service_provider_id"], name: "index_contacts_on_service_provider_id"
+  end
 
   create_table "conversation_users", force: :cascade do |t|
     t.bigint "conversation_id"
@@ -235,6 +244,8 @@ ActiveRecord::Schema.define(version: 20171121071530) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contacts", "users", column: "care_manager_id"
+  add_foreign_key "contacts", "users", column: "service_provider_id"
   add_foreign_key "documents", "projects"
   add_foreign_key "documents", "users", column: "publisher_id"
   add_foreign_key "documentships", "documents"
