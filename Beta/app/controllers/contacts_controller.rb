@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
 
 	def show
 		@contact = Contact.find(params[:id])
-		@reportings = @contact.reportings.order('created_at ASC')
+		@reportings = @contact.reportings.order('created_at DESC')
 	end
 
 

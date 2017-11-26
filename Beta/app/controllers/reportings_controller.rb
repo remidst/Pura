@@ -16,6 +16,10 @@ class ReportingsController < ApplicationController
   			params[:reporting_attachments]['attachment'].each do |a|
   				@reporting_attachment = @reporting.reporting_attachments.create!(attachment: a)
   			end
+
+        #send email to recipient
+        ReportingMailer.received_reporting(@reporting).deliver_later
+        
   			format.html { redirect_to @contact, notice: 'レポート.請求書の共有が成功しました。' }
   		else
   			format.html { render action: 'new' }
