@@ -1,27 +1,23 @@
 <%= form_for([@contact, @reporting], html: {multipart: true}) do |f| %>
 	
-	<div class="">
-		<%= f.label :title %>
-		<%= f.text_field :title %>
+	<div class="form-group">
+		<%= f.label :title, '内容' %>
+		<%= f.text_field :title, class: 'form-control' %>
 	</div>
 
-	<div class="">
-		<%= f.label :message %>
-		<%= f.text_area :message %>
+	<div class="form-group">
+		<%= f.label :message, 'メッセージ' %>
+		<%= f.text_area :message, class: 'form-control' %>
 	</div>
 
 	<%= f.fields_for :reporting_attachments do |a| %>
-		<div class="">
-			<%= a.label :name %>
-			<%= a.text_field :name %>
-		</div>
-		<div class="">
-			<%= a.label :attachment %>
-			<%= a.file_field :attachment, multiple: true, name: "reporting_attachments[attachment][]" %>
+		<div class="form-group">
+			<%= a.label :attachment, '添付ファイル' %>
+			<%= a.file_field :attachment, multiple: true, name: "reporting_attachments[attachment][]", class: 'form-control' %>
 		</div>
 	<% end %>
 
-	<div class="">
-		<%= f.submit %>
+	<div class="form-group">
+		<%= f.submit '送信する', class: "btn btn-info" %>
 	</div>
 <% end %>

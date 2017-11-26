@@ -6,26 +6,30 @@
 	  </ul>
 	</div>
 
-	<div class="well">
+	<div id="contact-show-block">
 		<div id="contact-information-container">
-			<%= contact_company(@contact) %><br/>
+			<h1><%= contact_company(@contact) %></h1>
 			<%= contact_role(@contact) %><%= contact_name(@contact) %>
 		</div>
 
-		<%= link_to "新しいレポート.請求書の共有", new_contact_reporting_path(@contact) %>
 
 		<div id="contact-reporting-container">
-			<h2>レポート.請求書類</h2>
+		<%= link_to "レポート.請求書の共有をまとめて送信", new_contact_reporting_path(@contact), class: "btn btn-info" %><br/>
 
 			<div id="contact-reporting-list">
 				<% @reportings.each do |reporting| %>
-					<div class="reporting-block">
-						<p class="reporting-title"><%= reporting.title %></p>
+					<div class="well reporting-well">
+						<div class="reporting-well-head">
+							<span class="reporting-title"><%= reporting.title %></span>
+						</div>
+						
 						<p class="reporting-message"><%= reporting.message %></p>
-						添付ファイル：
-						<% reporting.reporting_attachments.each do |file| %>
-							<%= file.name %>
-						<% end %>
+						添付ファイル：<br/>
+						<ul>
+							<% reporting.reporting_attachments.each do |a| %>
+								<li><%= a.attachment.file.filename %></li>
+							<% end %>
+						</ul>
 					</div>
 				<% end %>
 			</div>

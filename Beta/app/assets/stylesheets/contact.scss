@@ -1,3 +1,45 @@
 // Place all the styles related to the Contact controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#contact-index-table tr:hover {
+	cursor: pointer;
+	background-color: #cceae7;
+}
+
+#contact-show-block {
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+
+	padding-bottom: 15px;
+	border-radius: 2px;
+	background-color: #eee;
+	margin-bottom: 60px;
+}
+
+#contact-information-container {
+	padding-top: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-bottom: 10px;
+	background-color: #ccc;
+}
+
+#contact-reporting-container {
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-top: 10px;
+}
+
+#contact-reporting-list　{
+	padding-top: 15px;
+}
+
+.reporting-well-head {
+	margin-bottom : 5px;
+}
+
+.reporting-title {
+	font-weight: bold;
+}

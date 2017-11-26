@@ -6,14 +6,17 @@
 	  </ul>
 	</div>
 
-	<div class="well">
+	<div id="contact-show-block">
 		<div id="contact-information-container">
-			<%= contact_company(@contact) %><br/>
+			<h1><%= contact_company(@contact) %></h1>
 			<%= contact_role(@contact) %><%= contact_name(@contact) %>
 		</div>
 
-		<h1>新しいレポート.請求書類の共有</h1>
 
-		<%= render 'reportings/form' %>
+		<div id="contact-reporting-container">
+			<h3>新しいレポート.請求書類の共有</h3>
+			<%= render 'reportings/form' %>			
+		</div>
+
 	</div>
 </div>
