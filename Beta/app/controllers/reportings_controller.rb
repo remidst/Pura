@@ -9,6 +9,7 @@ class ReportingsController < ApplicationController
   def create
     @contact = Contact.find(params[:contact_id])
   	@reporting = @contact.reportings.new(reporting_params)
+    @reporting.set_publisher!(current_user)
 
   	respond_to do |format|
   		if @reporting.save
