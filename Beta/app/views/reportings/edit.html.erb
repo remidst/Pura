@@ -1,0 +1,23 @@
+<div class="container-fluid">
+	<div id="tab-panel">
+	  <ul class="nav nav-tabs">
+	    <li class="nav-show" id="nav-msg"><%= link_to '利用者一覧', root_path %></li>
+	    <li class="nav-show nav-selected" id="nav-file"><%= link_to '責任者.事業所', contacts_path %></li>
+	  </ul>
+	</div>
+
+	<div id="contact-show-block">
+		<div id="contact-information-container">
+			<h1><%= contact_company(@contact) %></h1>
+			<%= contact_role(@contact) %><%= contact_name(@contact) %>
+		</div>
+
+
+		<div id="contact-reporting-container">
+			<h3>送信したレポート.請求書類をエディットする</h3>
+			<%= render 'reportings/edit' %>			
+		</div>
+
+	</div>
+</div>
+

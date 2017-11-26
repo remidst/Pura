@@ -14,20 +14,23 @@
 
 
 		<div id="contact-reporting-container">
-		<%= link_to "レポート.請求書の共有をまとめて送信", new_contact_reporting_path(@contact), class: "btn btn-info" %><br/>
+		<%= link_to "レポート.請求書の共有をまとめて送信", new_contact_reporting_path(@contact), class: "btn btn-info btn-reporting" %><br/>
 
 			<div id="contact-reporting-list">
 				<% @reportings.each do |reporting| %>
 					<div class="well reporting-well">
 						<div class="reporting-well-head">
 							<span class="reporting-title"><%= reporting.title %></span>
+							<% if current_user.id.to_s == reporting.publisher_id.to_s %>
+								<span class="reporting-edit"><%= link_to "エディット", edit_contact_reporting_path(@contact, reporting) %></span>
+							<% end %>
 						</div>
 						
-						<p class="reporting-message"><%= reporting.message %></p>
+						<p class="reporting-message"><%= publisher_name(reporting) %>: <%= reporting.message %></p>
 						添付ファイル：<br/>
 						<ul>
 							<% reporting.reporting_attachments.each do |a| %>
-								<li><%= a.attachment.file.filename %></li>
+								<li><%= link_to "#{a.attachment.file.filename}", a.attachment_url %></li>
 							<% end %>
 						</ul>
 					</div>

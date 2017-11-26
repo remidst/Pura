@@ -22,7 +22,22 @@ class ReportingsController < ApplicationController
   	end
   end
 
+  def edit
+    @contact = Contact.find(params[:contact_id])
+    @reporting = Reporting.find(params[:id])
+  end
+
   def update
+    @contact = Contact.find(params[:contact_id])
+    @reporting = Reporting.find(params[:id])
+
+    respond_to do |format|
+      if @reporting.update(edit_params)
+        format.html {redirect_to @contact, notice: 'エディットが成功しました。' }
+      else
+        format.html { render action: 'edit' }
+      end
+    end
   end
 
   def delete
@@ -32,5 +47,9 @@ class ReportingsController < ApplicationController
 
   def reporting_params
   	params.require(:reporting).permit(:title, :message, reporting_attachments_attributes: [:name, :id, :reporting_id, :attachment])
+  end
+
+  def edit_params
+    params.require(:reporting).permit(:title, :message)
   end
 end

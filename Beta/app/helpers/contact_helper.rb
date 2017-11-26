@@ -22,4 +22,8 @@ module ContactHelper
 			"ケアマネージャー"
 		end
 	end
+
+	def publisher_name(reporting)
+		User.find(reporting.publisher_id).username
+	end
 end
