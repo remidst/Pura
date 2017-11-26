@@ -28,6 +28,26 @@ class Project < ApplicationRecord
   	end
   end
 
+  def self.contacts_adder_temp
+    @projects = Project.all
+
+    @projects.each do |project|
+      if project.leader_id.present?
+        leader = User.find(project.leader_id)
+        members = project.users.where.not(id: leader.id)
+
+        members.each do |member|
+          contact = Contact.where(care_manager_id: leader.id, service_provider_id: member.id)
+          contact_reverse = Contact.where(care_manager_id: member.id, service_provider_id: leader.id)
+
+          unless contact.present? || contact_reverse.present?
+            Contact.create!(care_manager_id: leader.id, service_provider_id: member.id)
+          end
+        end
+      end
+    end
+  end
+
   private
 
   def create_spec

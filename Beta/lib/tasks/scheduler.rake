@@ -44,3 +44,9 @@ task :add_specs => :environment do
 	Project.specs_adder_temp
 	puts "specs added"
 end
+
+task :add_contacts => :environment do
+	puts "adding contacts"
+	Project.contacts_adder_temp
+	puts "contacts added"
+end

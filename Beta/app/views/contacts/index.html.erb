@@ -23,7 +23,7 @@
 			<% @contacts_service_provider.each do |contact| %>
 				<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
 					<td><%= contact.service_provider.company %></td>
-					<td><%= contact.service_provider.username %></td>
+					<td><%= username(contact.service_provider) %></td>
 				</tr>
 			<% end %>
 		</tbody>

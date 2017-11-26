@@ -19,6 +19,10 @@ module ApplicationHelper
 		end
 	end
 
+	def username(user)
+		user.username.present? ? user.username : user.email
+	end
+
 	def readmark_count(message)
 		readmarks = Readmark.where(message_id: message.id, read: true)
 		readmarks.count
