@@ -2,7 +2,7 @@
 	<div id="tab-panel">
 	  <ul class="nav nav-tabs">
 	    <li class="nav-show" id="nav-msg"><%= link_to '利用者一覧', root_path %></li>
-	    <li class="nav-show nav-selected" id="nav-file"><%= link_to '責任者.事業所', contacts_path %></li>
+	    <li class="nav-show nav-selected" id="nav-file"><%= link_to '事業所一覧', contacts_path %></li>
 	  </ul>
 	</div>
 
@@ -14,7 +14,7 @@
 
 
 		<div id="contact-reporting-container">
-		<%= link_to "レポート.請求書の共有をまとめて送信", new_contact_reporting_path(@contact), class: "btn btn-info btn-reporting" %><br/>
+		<%= link_to "書類をまとめて送信", new_contact_reporting_path(@contact), class: "btn btn-info btn-reporting" %><br/>
 
 			<div id="contact-reporting-list">
 				<% @reportings.each do |reporting| %>
