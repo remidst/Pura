@@ -1,4 +1,4 @@
-	class UserMailer < ApplicationMailer
+class UserMailer < ApplicationMailer
 
 
 	def welcome(user)
@@ -13,5 +13,6 @@
 
 		mail to: @user.email, subject: "#{@user.username}様、新規メッセージが届いております。" unless @user.deleted? || @user.unregistered?
 	end
+
 
 end

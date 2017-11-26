@@ -1,0 +1,21 @@
+<%= @receiver.username %>様
+
+<%= @publisher.username %>様が書類を共有致しました。
+
+書類内容：<%= @reporting.title %>
+メッセージ：<%= @reporting.message %>
+
+添付ファイル：
+
+<% @reporting_attachments.each do |a| %>
+	<%= a.attachment.file.filename %>
+<% end %>
+
+
+
+<%= link_to '書類を確認する', contact_url(@contact, user_email: @receiver.email, user_token: @receiver.authentication_token) %>
+
+
+ご利用ありがとうございます！
+
+

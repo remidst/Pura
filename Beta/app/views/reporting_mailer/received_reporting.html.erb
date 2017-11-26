@@ -1,0 +1,25 @@
+<div class="email-body" style="background-image: url(https://s3.us-east-2.amazonaws.com/puraimage/swirl_pattern.png); padding-top: 30px; padding-bottom: 30px;">
+	 <div class="email-content" style="max-width: 500px; margin: auto; padding:30px; background-color:#fff;">
+		
+		<p><%= @receiver.username %>様</p>
+
+		<p><%= @publisher.username %>様が書類を共有致しました。</p>
+
+		<p>書類内容：<%= @reporting.title %></p>
+		<p>メッセージ：<%= @reporting.message %></p>
+		<p>
+			添付ファイル：<br/>
+			<ul>
+				<% @reporting_attachments.each do |a| %>
+					<li><%= a.attachment.file.filename %></li>
+				<% end %>
+			</ul>
+		</p>
+
+		<%= link_to '書類を確認する', contact_url(@contact, user_email: @receiver.email, user_token: @receiver.authentication_token) %>
+
+		<p>
+         	ご利用ありがとうございます！
+   		</p>
+	</div>
+</div>
