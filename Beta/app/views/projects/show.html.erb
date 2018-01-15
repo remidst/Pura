@@ -41,7 +41,7 @@
 					        <ul id="conversation-member-list">
 					        	<% @conversation.users.each do |user| %>
 					        		<% if user != current_user %>
-										<li class="conversation-user"><%= online_status(user) %></li>
+										<li class="conversation-user"></li>
 									<% end %>
 								<% end %>
 					        </ul>

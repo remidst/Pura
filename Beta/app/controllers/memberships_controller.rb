@@ -9,11 +9,14 @@ class MembershipsController < ApplicationController
 
 	def create
 
-
-	    params=membership_params
+	    params = membership_params
 	    user = User.find_by(email: params[:email])
 
-	    unless user.deleted_at.present?
+	    if user.present? && user.deleted_at.present?
+	    	flash[:alert] = "#{params[:email]}のアカウントは削除されております。"
+	    	redirect_to @project
+	    else
+
 	     	@membership = @project.memberships.new(membership_params)
 	        @membership.set_user_id!(current_user)
 
@@ -33,10 +36,8 @@ class MembershipsController < ApplicationController
 			else
 				redirect_to @project, warning: 'メンバーの招待が失敗しました。'
 		    end
-		else
-			flash[:alert] = "#{params[:email]}のアカウントは削除されております。"
-			redirect_to @project
 		end
+
     end
 
     def index

@@ -62,16 +62,6 @@ ActiveRecord::Schema.define(version: 20171126040153) do
     t.index ["user_id"], name: "index_documentships_on_user_id"
   end
 
-  create_table "invites", force: :cascade do |t|
-    t.string "email"
-    t.integer "project_id"
-    t.integer "sender_id"
-    t.integer "recipient_id"
-    t.string "token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "memberships", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "project_id"
@@ -110,17 +100,6 @@ ActiveRecord::Schema.define(version: 20171126040153) do
     t.datetime "updated_at", null: false
     t.bigint "leader_id"
     t.index ["leader_id"], name: "index_projects_on_leader_id"
-  end
-
-  create_table "read_marks", id: :serial, force: :cascade do |t|
-    t.string "readable_type"
-    t.integer "readable_id"
-    t.string "reader_type"
-    t.integer "reader_id"
-    t.datetime "timestamp"
-    t.index ["readable_type", "readable_id"], name: "index_read_marks_on_readable_type_and_readable_id"
-    t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", unique: true
-    t.index ["reader_type", "reader_id"], name: "index_read_marks_on_reader_type_and_reader_id"
   end
 
   create_table "readmarks", force: :cascade do |t|
@@ -204,31 +183,6 @@ ActiveRecord::Schema.define(version: 20171126040153) do
     t.boolean "home_has_stairs"
     t.index ["project_id"], name: "index_specs_on_project_id"
     t.index ["publisher_id"], name: "index_specs_on_publisher_id"
-  end
-
-  create_table "taggings", id: :serial, force: :cascade do |t|
-    t.integer "tag_id"
-    t.string "taggable_type"
-    t.integer "taggable_id"
-    t.string "tagger_type"
-    t.integer "tagger_id"
-    t.string "context", limit: 128
-    t.datetime "created_at"
-    t.index ["context"], name: "index_taggings_on_context"
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
-    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
-    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
-  end
-
-  create_table "tags", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

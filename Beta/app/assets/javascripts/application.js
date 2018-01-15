@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.tokeninput
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require cable
 //= require_tree .
 
