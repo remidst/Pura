@@ -7,8 +7,7 @@
   # GET /projects
   # GET /projects.json
   def index
-    @user=current_user
-    @projects =@user.projects
+    @projects = current_user.projects
   end
 
   # GET /projects/1
