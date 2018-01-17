@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126040153) do
+ActiveRecord::Schema.define(version: 20180117135730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,42 @@ ActiveRecord::Schema.define(version: 20171126040153) do
     t.datetime "updated_at", null: false
     t.bigint "leader_id"
     t.index ["leader_id"], name: "index_projects_on_leader_id"
+  end
+
+  create_table "publication_attachments", force: :cascade do |t|
+    t.bigint "publication_id"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["publication_id"], name: "index_publication_attachments_on_publication_id"
+  end
+
+  create_table "publication_comment_attachments", force: :cascade do |t|
+    t.bigint "publication_comment_id"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["publication_comment_id"], name: "index_publication_comment_attachments_on_publication_comment_id"
+  end
+
+  create_table "publication_comments", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "publication_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "publisher_id"
+    t.index ["publication_id"], name: "index_publication_comments_on_publication_id"
+    t.index ["publisher_id"], name: "index_publication_comments_on_publisher_id"
+  end
+
+  create_table "publications", force: :cascade do |t|
+    t.text "message"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "publisher_id"
+    t.index ["project_id"], name: "index_publications_on_project_id"
+    t.index ["publisher_id"], name: "index_publications_on_publisher_id"
   end
 
   create_table "readmarks", force: :cascade do |t|
@@ -229,6 +265,11 @@ ActiveRecord::Schema.define(version: 20171126040153) do
   add_foreign_key "notifications", "projects"
   add_foreign_key "notifications", "users"
   add_foreign_key "projects", "users", column: "leader_id"
+  add_foreign_key "publication_attachments", "publications"
+  add_foreign_key "publication_comment_attachments", "publication_comments"
+  add_foreign_key "publication_comments", "publications"
+  add_foreign_key "publication_comments", "users", column: "publisher_id"
+  add_foreign_key "publications", "users", column: "publisher_id"
   add_foreign_key "readmarks", "messages"
   add_foreign_key "readmarks", "users"
   add_foreign_key "reporting_attachments", "reportings"
