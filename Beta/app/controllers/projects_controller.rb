@@ -13,12 +13,19 @@
   # GET /projects/1
   # GET /projects/1.json
   def show
+  	#this section is to become obsolete
     @documents=current_user.documents.where(project_id: @project.id).order('created_at DESC')
     @members = @registered.where.not(id: @leader.id)
     @conversation = @project.conversations.first
     @messages = @conversation.messages.order('created_at ASC')
     @users_but_self = @project.users.where.not(id: current_user.id)
     @spec = @project.spec
+    #this section is to become obsolete
+
+    #new project organization with publications
+    @publications = Publication.where(project_id: @project.id)
+    @publication = @project.publications.new
+    @publication_attachment = @publication.publication_attachments.build
 
     #to compare, id has to be an integer inside an array
     id = params[:v]
