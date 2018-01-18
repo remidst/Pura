@@ -13,9 +13,11 @@ class ReportingsController < ApplicationController
 
   	respond_to do |format|
   		if @reporting.save
-  			params[:reporting_attachments]['attachment'].each do |a|
-  				@reporting_attachment = @reporting.reporting_attachments.create!(attachment: a)
-  			end
+        if params[:reporting_attachments].present?
+    			params[:reporting_attachments]['attachment'].each do |a|
+    				@reporting_attachment = @reporting.reporting_attachments.create!(attachment: a)
+    			end
+        end
 
         #send email to recipient
         ReportingMailer.received_reporting(@reporting).deliver_later

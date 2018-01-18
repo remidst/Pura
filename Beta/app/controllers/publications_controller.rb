@@ -7,11 +7,14 @@ class PublicationsController < ApplicationController
 
 		respond_to do |format|
 			if publication.save
-				params[:publication_attachments]['attachment'].each do |a|
-					publication_attachment = publication.publication_attachments.create!(attachment: a)
+
+				#saves all the attachments to publications
+				if params[:publication_attachments].present?
+					params[:publication_attachments]['attachment'].each do |a|
+						publication_attachment = publication.publication_attachments.create!(attachment: a)
+					end
 				end
 
-				#room for other actions or callbacks
 
 				format.html {redirect_to project, notice: 'メッセージが共有されました'}
 			else
