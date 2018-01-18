@@ -39,6 +39,9 @@
 
     #mark all messages as read
     read_all_messages!(current_user, @conversation)
+
+    #mark all publications as read
+    read_all_publications!(current_user, @project)
   end
 
   # GET /projects/new
@@ -306,6 +309,13 @@
         readmark = Readmark.where(user_id: user.id, read: false, message_id: msg.id)
         readmark.message_read! if readmark.present?
       end
+    end
+
+    def read_all_publications!(user, project)
+    	project.publications.each do |publication|
+    		publication_readmark = PublicationReadmark.where(user_id: user.id, read: false, publication_id: publication.id)
+    		publication_readmark.publication_read! if publication_readmark.present?
+    	end
     end
 
     def members_params
