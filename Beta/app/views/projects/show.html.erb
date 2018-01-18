@@ -1,110 +1,78 @@
-<%= javascript_tag do %>
-	window.current_user_id = <%= current_user.id %>
-<% end %>
-
-<div class="project-top">
-	<h1><%= @project.project_name %></h1>
-
-    <div>
-    	<%= render 'memberships/list' %>
-    </div>
-
-    <% if @unregistered.present? %>
-    	<div>
-    		<%= render 'memberships/invited' %>
-    	</div>
-    <% end %>
-
-    <% if policy(@project).edit? %>
-    	<div id="member-button"><%= link_to 'メンバーの変更.招待へ', project_memberships_path(@project), class: "button" %></div>
-    <% end %>
-
+<div>
+	<%-# Navigation menu -%>
+	<%= render 'layouts/app_navigation' %>
 </div>
 
-<div class="background-pattern">
-		
-	<div id="tab-panel">
-		<ul class="nav nav-tabs">
-			<li class="nav-show nav-selected" id="nav-msg">メッセージ</li>
-			<li class="nav-show" id="nav-file">ファイル共有</li>
-			<li class="nav-show" id="nav-specs">基本情報</li>
-		</ul>
-	</div>
+<div class="project-contact-container">
+	<%-# show project -%>
 
-	<div class="container-fluid show-container">
-		<div class="well project-well" id="well-msg">
-			<div class="conversation-flex">
-				<div id="conversation-nav">
-					<ul id="conversation-nav-list">
-					    <li class="conversation-list" id="<%= @conversation.id %>">
-					        全メンバー:
-					        <ul id="conversation-member-list">
-					        	<% @conversation.users.each do |user| %>
-					        		<% if user != current_user %>
-										<li class="conversation-user"></li>
-									<% end %>
-								<% end %>
-					        </ul>
+	<div class="project-contact-header">
 
-					    </li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="conversation-flex" id="message-block">
-				<div id="message-list">
-					<div class="conversation-messages" id="messages-<%= @conversation.id %>" data-conversation-id="<%= @conversation.id %>">
-						<% @messages.each do |msg| %>
-								
-							<%= render partial: "messages/message", locals: {msg: msg, conversation: @conversation, project: @conversation.project} %>
-							
-						<% end %>
-					</div>
-				</div>	
-
-
-
-				<div id="message-form">
-					<%= render 'messages/form' %>
-				</div>
-			</div>
-	    </div>
-		
-		<div class="well project-well well-hide" id="well-document">
-
-			<div class="btn btn-info" id="file-button">新規アップロード</div>
-
-			<div id="documents-list">
-				<%= render 'documents/list' %>
-			</div>
-
+		<%-# Project header / menu -%>
+		<div id="project-name-container">
+			<%= @project.project_name %>
 		</div>
 
-		<div class="modal" id="file-form">
-			<%= render 'documents/form' %>
-		</div>
+		<div id="project-users">
 
-		<div class="well project-well well-hide" id="well-specs">
-			<% if policy(@project).edit? %>
-				<%= link_to '基本情報の記入・変更', edit_project_spec_path(@project, @spec), class: "btn btn-info spec-button" %> 
+			<%= render 'memberships/list' %>
+
+			<% if @unregistered.present? %>
+				<%= render 'memberships/invited' %>
 			<% end %>
 
-			<div id="specs-list">
-				<%= render 'specs/show' %>
-			</div>
-		</div>
+			<%-# Display membership management button to project leader -%>
+			<% if policy(@project).edit? %>
+				<div id="member-button"><%= link_to 'メンバーの変更.招待へ', project_memberships_path(@project), class: "button" %></div>
+			<% end %>
 
-	    <%= link_to '利用者一覧へ', projects_path %> 
-	    <% if policy(@project).edit? %>
-		    	|　<%= link_to 'エディット', edit_project_path(@project) %> 
+		</div>
+	</div>
+
+	<div id="new-publication-form">
+		<%-# New publication form -%>
+		<%= form_for([@project, @publication], html: {multipart: true}) do |f| %>
+			
+			<div class="form-group">
+				<%= f.label :message, 'メッセージ' %>
+				<%= f.text_field :message, class: 'form-control' %>
+			</div>
+
+			<%= f.fields_for :publication_attachments do |a| %>
+				<div class="form-group">
+					<%= a.label :attachment, '添付ファイル' %>
+					<%= a.file_field :attachment, multiple: true, name: "publication_attachments[attachment][]", class: 'form-control' %>
+				</div>
+			<% end %>
+
+			<div class="form-group">
+				<%= f.submit '送信する', class: "btn btn-info" %>
+			</div>
 		<% end %>
 	</div>
 
-	<div id="copy-background">
-		<div id="copy">
-			コピー		
+	<div class="project-contact-feed">
+		<%-# Publication feed -%>
+
+		<% @publications.each do |publication| %>
+		<div class="publication-container">
+			<div class="publication-header">
+				<%= publication.publisher.username %>
+
+				<%-# Need to write the helper method for publication readmarks -%>
+				<%= publication_readmark_count(publication) %>
+			</div>
+
+			<div class="publication-message">
+				 <%= publication.message %>
+
+				 <% publication.publication_attachments.each do |file| %>
+				 	<%= file.attachment %>
+				 <% end %>
+			</div>
+
 		</div>
+
+		<% end %>
 	</div>
-
 </div>
-

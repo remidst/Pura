@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   	resources :documents
   	resources :memberships
     resources :specs
+    resources :publications
   end
 
   resources :conversations do
