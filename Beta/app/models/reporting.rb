@@ -1,6 +1,7 @@
 class Reporting < ApplicationRecord
   belongs_to :contact
-  has_many :reporting_attachments
+  belongs_to :publisher, class_name: "User"
+  has_many :reporting_attachments, dependent: :destroy
   accepts_nested_attributes_for :reporting_attachments
 
   def set_publisher!(user)

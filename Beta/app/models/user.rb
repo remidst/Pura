@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :conversations, through: :conversation_users
   has_many :notifications, dependent: :destroy
   has_many :readmarks
+  has_many :reportings
   has_many :publications
   has_many :publication_readmarks
   has_many :care_manager_contacts, class_name: 'Contacts', foreign_key: 'care_manager_id'

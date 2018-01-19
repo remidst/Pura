@@ -47,7 +47,18 @@ class ReportingsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @contact = Contact.find(params[:contact_id])
+    @reporting = Reporting.find(params[:id])    
+
+    respond_to do |format|
+      if @reporting.destroy
+        format.html { redirect_to @contact, notice: '書類とメッセージが削除されました。' }
+        format.json { head :no_content }
+      else
+        format.html {redirect_to @contact, notice: '書類とメッセージの削除が失敗しました。'}
+      end
+    end
   end
 
   private

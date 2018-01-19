@@ -1,78 +1,80 @@
-<div>
-	<%-# Navigation menu -%>
-	<%= render 'layouts/app_navigation' %>
-</div>
-
-<div class="project-contact-container">
-	<%-# show project -%>
-
-	<div class="project-contact-header">
-
-		<%-# Project header / menu -%>
-		<div id="project-name-container">
-			<%= @project.project_name %>
-		</div>
-
-		<div id="project-users">
-
-			<%= render 'memberships/list' %>
-
-			<% if @unregistered.present? %>
-				<%= render 'memberships/invited' %>
-			<% end %>
-
-			<%-# Display membership management button to project leader -%>
-			<% if policy(@project).edit? %>
-				<div id="member-button"><%= link_to 'メンバーの変更.招待へ', project_memberships_path(@project), class: "button" %></div>
-			<% end %>
-
-		</div>
+<div class="container-fluid">
+	<div>
+		<%-# Navigation menu -%>
+		<%= render 'layouts/app_navigation' %>
 	</div>
 
-	<div id="new-publication-form">
-		<%-# New publication form -%>
-		<%= form_for([@project, @publication], html: {multipart: true}) do |f| %>
-			
-			<div class="form-group">
-				<%= f.label :message, 'メッセージ' %>
-				<%= f.text_field :message, class: 'form-control' %>
+	<div id="project-show-block">
+		<%-# show project -%>
+
+		<div id="project-information-container">
+
+			<%-# Project header / menu -%>
+			<div id="project-name-container">
+				<%= @project.project_name %>
 			</div>
 
-			<%= f.fields_for :publication_attachments do |a| %>
+			<div id="project-users">
+
+				<%= render 'memberships/list' %>
+
+				<% if @unregistered.present? %>
+					<%= render 'memberships/invited' %>
+				<% end %>
+
+				<%-# Display membership management button to project leader -%>
+				<% if policy(@project).edit? %>
+					<div id="member-button"><%= link_to 'メンバーの変更.招待へ', project_memberships_path(@project), class: "button" %></div>
+				<% end %>
+
+			</div>
+		</div>
+
+		<div id="new-publication-form">
+			<%-# New publication form -%>
+			<%= form_for([@project, @publication], html: {multipart: true}) do |f| %>
+				
 				<div class="form-group">
-					<%= a.label :attachment, '添付ファイル' %>
-					<%= a.file_field :attachment, multiple: true, name: "publication_attachments[attachment][]", class: 'form-control' %>
+					<%= f.label :message, 'メッセージ' %>
+					<%= f.text_field :message, class: 'form-control' %>
+				</div>
+
+				<%= f.fields_for :publication_attachments do |a| %>
+					<div class="form-group">
+						<%= a.label :attachment, '添付ファイル' %>
+						<%= a.file_field :attachment, multiple: true, name: "publication_attachments[attachment][]", class: 'form-control' %>
+					</div>
+				<% end %>
+
+				<div class="form-group">
+					<%= f.submit '送信する', class: "btn btn-info" %>
 				</div>
 			<% end %>
-
-			<div class="form-group">
-				<%= f.submit '送信する', class: "btn btn-info" %>
-			</div>
-		<% end %>
-	</div>
-
-	<div class="project-contact-feed">
-		<%-# Publication feed -%>
-
-		<% @publications.each do |publication| %>
-		<div class="publication-container">
-			<div class="publication-header">
-				<%= publication.publisher.username %>
-
-				<%-# Need to write the helper method for publication readmarks -%>
-				<%= publication_readmark_count(publication) %>
-			</div>
-
-			<div class="publication-message">
-				 <%= publication.message %>
-
-				 <% publication.publication_attachments.each do |file| %>
-				 	<%= file.attachment %>
-				 <% end %>
-			</div>
-
 		</div>
 
-		<% end %>
+		<div id="project-publication-container">
+			<%-# Publication feed -%>
+
+			<% @publications.each do |publication| %>
+			<div class="well">
+				<div class="publication-header">
+					<%= publication.publisher.username %>
+
+					<%-# Need to write the helper method for publication readmarks -%>
+					<%= publication_readmark_count(publication) %>
+				</div>
+
+				<div class="publication-message">
+					 <%= publication.message %>
+
+					 <% publication.publication_attachments.each do |file| %>
+					 	<%= file.attachment %>
+					 <% end %>
+				</div>
+
+			</div>
+
+			<% end %>
+		</div>
 	</div>
 </div>
