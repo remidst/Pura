@@ -23,6 +23,8 @@
 							<span class="reporting-title"><%= reporting.title %></span>
 							<% if current_user.id.to_s == reporting.publisher_id.to_s %>
 								<span class="reporting-edit"><%= link_to "エディット", edit_contact_reporting_path(@contact, reporting) %></span>
+								<%= link_to "削除", contact_reporting_path(@contact, reporting), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'} %>
+
 							<% end %>
 						</div>
 						

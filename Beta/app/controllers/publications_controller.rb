@@ -23,6 +23,21 @@ class PublicationsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@project = Project.find(params[:project_id])
+		@publication = Publication.find(params[:id])
+
+		respond_to do |format|
+			if @publication.destroy
+				format.html { redirect_to @project, notice: 'メッセージと添付ファイルが削除されました。'}
+				format.json { head :no_content }
+			else
+				format.html { redirect_to @project, notice: 'メッセージと添付ファイルの削除が失敗しました' }
+			end
+		end
+	end
+
+
 	private
 
 	def publication_params

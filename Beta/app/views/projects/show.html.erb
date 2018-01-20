@@ -65,11 +65,19 @@
 				</div>
 
 				<div class="publication-message">
-					 <%= publication.message %>
+					<% if current_user.id.to_s == publication.publisher_id.to_s %>
+						<div>
+							<span class="publication-edit"><%= link_to "エディット", edit_project_publication_path(@project, publication) %></span>
+						</div>
+						<div>
+							<%= link_to "削除", project_publication_path(@project, publication), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'} %>
+						</div>
+					<% end %>
+					<%= publication.message %>
 
-					 <% publication.publication_attachments.each do |file| %>
+					<% publication.publication_attachments.each do |file| %>
 					 	<%= file.attachment %>
-					 <% end %>
+					<% end %>
 				</div>
 
 			</div>
