@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :publications
   end
 
+  resources :publications do 
+    resources :publication_comments
+  end
+
   resources :conversations do
     resources :messages
   end

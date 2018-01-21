@@ -59,8 +59,6 @@
 			<div class="well">
 				<div class="publication-header">
 					<%= publication.publisher.username %>
-
-					<%-# Need to write the helper method for publication readmarks -%>
 					<%= publication_readmark_count(publication) %>
 				</div>
 
@@ -80,9 +78,53 @@
 					<% end %>
 				</div>
 
+
+				<div class="publication-comments-container">
+					<% publication.publication_comments.each do |publication_comment| %>
+					<div class="publication-comment">
+						<div class="publication-comment-head">
+							<%= publication_comment.publisher.username %>
+							<%= publication_comment.publication_readmarks.count %>
+						</div>
+						<div class="publication-comment-body">
+							<%= publication_comment.comment %>
+							<% publication_comment.publication_comment_attachments.each do |publication_comment_attachment| %>
+									<%= publication_comment_attachment.attachment %>
+							<% end %>
+						</div>
+					</div>
+
+					<% end %>
+				</div>
+
+				<div class="publication-comment-form">
+					<% publication_comment = publication.publication_comments.build %>
+					<%= form_for([publication, publication_comment], html: {multipart: true}) do |f| %>
+
+						<div class="form-group">
+							<%= f.label :comment, 'コメント' %>
+							<%= f.text_field :comment, class: 'form-control' %>
+						</div>
+
+						<% publication_comment_attachment = publication_comment.publication_comment_attachments.build %>
+
+						<%= f.fields_for publication_comment_attachment do |a| %>
+							<div class="form-group">
+								<%= a.label :attachment, '添付ファイル' %>
+								<%= a.file_field :attachment, multiple: true, name: "publication_comment_attachments[attachment][]", class: 'form-control' %>
+							</div>
+						<% end %>
+
+						<div class="form-group">
+							<%= f.submit 'コメントする', class: "btn btn-info" %>
+						</div>
+
+					<% end %>
+				</div>
 			</div>
 
 			<% end %>
+
 		</div>
 	</div>
 </div>
