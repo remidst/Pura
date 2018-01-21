@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117171516) do
+ActiveRecord::Schema.define(version: 20180121112223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,18 @@ ActiveRecord::Schema.define(version: 20180117171516) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["publication_comment_id"], name: "index_publication_comment_attachments_on_publication_comment_id"
+  end
+
+  create_table "publication_comment_readmarks", force: :cascade do |t|
+    t.boolean "read"
+    t.bigint "publication_id"
+    t.bigint "publication_comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["publication_comment_id"], name: "index_publication_comment_readmarks_on_publication_comment_id"
+    t.index ["publication_id"], name: "index_publication_comment_readmarks_on_publication_id"
+    t.index ["user_id"], name: "index_publication_comment_readmarks_on_user_id"
   end
 
   create_table "publication_comments", force: :cascade do |t|

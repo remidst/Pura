@@ -1,0 +1,2 @@
+module PublicationCommentReadmarksHelper
+end

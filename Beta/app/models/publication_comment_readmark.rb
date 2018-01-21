@@ -1,0 +1,2 @@
+class PublicationCommentReadmark < ApplicationRecord
+end
