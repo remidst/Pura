@@ -1,2 +1,0 @@
-class PublicationCommentReadmarksController < ApplicationController
-end

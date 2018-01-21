@@ -12,8 +12,9 @@ class User < ApplicationRecord
   has_many :readmarks
   has_many :reportings
   has_many :publications
-  has_many :publication_comments
   has_many :publication_readmarks
+  has_many :publication_comments
+  has_many :publication_comment_readmarks
   has_many :care_manager_contacts, class_name: 'Contacts', foreign_key: 'care_manager_id', dependent: :destroy
   has_many :service_provider_contacts, class_name: 'Contacts', foreign_key: 'service_provider_id', dependent: :destroy
 
