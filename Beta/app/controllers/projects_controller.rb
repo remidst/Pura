@@ -41,7 +41,8 @@
     read_all_messages!(current_user, @conversation)
 
     #mark all publications as read
-    read_all_publications!(current_user, @project)
+    read_all_publications_and_comments!(current_user, @project)
+
   end
 
   # GET /projects/new
@@ -311,10 +312,15 @@
       end
     end
 
-    def read_all_publications!(user, project)
+    def read_all_publications_and_comments!(user, project)
     	project.publications.each do |publication|
     		publication_readmark = PublicationReadmark.where(user_id: user.id, read: false, publication_id: publication.id)
     		publication_readmark.publication_read! if publication_readmark.present?
+
+        publication.publication_comments.each do |publication_comment|
+          publication_comment_readmark = PublicationCommentReadmark.where(publication_comment_id: publication_comment.id, read: false, user_id: user.id)
+          publication_comment_readmark.publication_comment_read! if publication_comment_readmark.present?
+        end
     	end
     end
 

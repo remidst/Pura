@@ -84,7 +84,7 @@
 					<div class="publication-comment">
 						<div class="publication-comment-head">
 							<%= publication_comment.publisher.username %>
-							<%= publication_comment.publication_comment_readmarks.count %>
+							<%= publication_comment_readmark_count(publication_comment) %>
 						</div>
 						<div class="publication-comment-body">
 							<%= publication_comment.comment %>
