@@ -1,7 +1,7 @@
 class Message < ApplicationRecord
 	belongs_to :conversation
 	belongs_to :user
-	has_many :readmarks
+	has_many :readmarks, dependent: :destroy
 
 	validates :content, presence: true
 
