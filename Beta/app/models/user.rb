@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :readmarks
   has_many :reportings
+  has_many :reporting_readmarks
   has_many :publications
   has_many :publication_readmarks
   has_many :publication_comments

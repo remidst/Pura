@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121212002) do
+ActiveRecord::Schema.define(version: 20180122132019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,6 +177,16 @@ ActiveRecord::Schema.define(version: 20180121212002) do
     t.index ["reporting_id"], name: "index_reporting_attachments_on_reporting_id"
   end
 
+  create_table "reporting_readmarks", force: :cascade do |t|
+    t.boolean "read"
+    t.bigint "reporting_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reporting_id"], name: "index_reporting_readmarks_on_reporting_id"
+    t.index ["user_id"], name: "index_reporting_readmarks_on_user_id"
+  end
+
   create_table "reportings", force: :cascade do |t|
     t.string "title"
     t.text "message"
@@ -295,6 +305,8 @@ ActiveRecord::Schema.define(version: 20180121212002) do
   add_foreign_key "readmarks", "messages"
   add_foreign_key "readmarks", "users"
   add_foreign_key "reporting_attachments", "reportings"
+  add_foreign_key "reporting_readmarks", "reportings"
+  add_foreign_key "reporting_readmarks", "users"
   add_foreign_key "reportings", "contacts"
   add_foreign_key "reportings", "users", column: "publisher_id"
   add_foreign_key "specs", "projects"
