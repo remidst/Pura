@@ -50,3 +50,9 @@ task :add_contacts => :environment do
 	Project.contacts_adder_temp
 	puts "contacts added"
 end
+
+task :create_timelines => :environment do 
+	puts "creating timelines"
+	User.add_timeline
+	puts "timelines added"
+end

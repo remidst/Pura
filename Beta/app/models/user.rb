@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :publication_comment_readmarks
   has_many :care_manager_contacts, class_name: 'Contacts', foreign_key: 'care_manager_id', dependent: :destroy
   has_many :service_provider_contacts, class_name: 'Contacts', foreign_key: 'service_provider_id', dependent: :destroy
+  has_one :timeline
 
 
 
@@ -28,7 +29,7 @@ class User < ApplicationRecord
 
   validates_uniqueness_of :email
   before_save :ensure_authentication_token
-  after_create :welcome_email
+  after_create :welcome_email, :create_timeline
 
   def ensure_authentication_token
   	if authentication_token.blank?
@@ -97,9 +98,13 @@ class User < ApplicationRecord
     end
   end
 
-  def self.test_scheduler
-    @user = User.find_by(email: 'remi.daste@keio.jp')
-    UserMailer.morning_notification_email(@user).deliver_now
+  #temporary function, used to add timelines to users that already exist
+  def self.add_timeline
+    users = User.all
+
+    users.each do |user|
+      Timeline.create!(user_id: user.id) unless user.timeline.present?
+    end
   end
 
   private
@@ -109,6 +114,10 @@ class User < ApplicationRecord
   		token = Devise.friendly_token
   		break token unless User.where(authentication_token: token).first
   	end
+  end
+
+  def create_timeline
+    Timeline.create!(user_id: self.id)
   end
 
 
