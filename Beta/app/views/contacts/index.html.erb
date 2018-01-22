@@ -1,10 +1,7 @@
 <div class="container-fluid">
-	<div id="tab-panel">
-	  <ul class="nav nav-tabs">
-	    <li class="nav-show" id="nav-msg"><%= link_to '利用者一覧', root_path %></li>
-	    <li class="nav-show  nav-selected" id="nav-file"><%= link_to '事業所一覧', contacts_path %></li>
-	  </ul>
-	</div>
+
+	<%= render 'layouts/contacts_app_navigation' %>
+
 
 	<table class="table table-striped table-hover">
 		<thead>

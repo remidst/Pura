@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :timelines
+
   get 'project/:id/invite_members' => 'projects#invite_members', as: :project_invite_members
   patch 'project/:id/invite_members' => 'projects#update_members', as: :project_update_members
 
