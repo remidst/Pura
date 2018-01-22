@@ -35,6 +35,9 @@
 								<li><%= link_to "#{a.attachment.file.filename}", a.attachment_url %></li>
 							<% end %>
 						</ul>
+
+						<p><%= reporting_read(reporting) %></p>
+						
 					</div>
 				<% end %>
 			</div>

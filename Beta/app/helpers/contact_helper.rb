@@ -26,4 +26,9 @@ module ContactHelper
 	def publisher_name(reporting)
 		User.find(reporting.publisher_id).username
 	end
+
+	def reporting_read(reporting)
+		readmarks = reporting.reporting_readmarks.where(read: true)
+		readmarks.count == 2 ? "既読" : "未読"
+	end
 end
