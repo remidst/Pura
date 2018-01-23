@@ -1,0 +1,14 @@
+<div class="container-fluid"> 
+  <%-# Navigation menu -%>
+  <%= render 'layouts/timeline_app_navigation' %>
+
+  <% @publications.each do |publication| %>
+    <%= publication.message %>
+    <%= link_to '案件', project_path(publication.project) %>
+  <% end %>
+
+</div>
+
+
+
+
