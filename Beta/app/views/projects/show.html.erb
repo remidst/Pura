@@ -14,18 +14,40 @@
 				<%= @project.project_name %>
 			</div>
 
-			<div id="project-users">
+			<div id="project-other-information">
+				<div id="member-information">
+					<p>
+						<% unless policy(@project).edit? %>
+							案件担当ケアマネジャー： <%= @leader.username %><br/>
+						<% end %>
+						案件メンバー：<%= @members.map{|member| member.username }.compact.join(',') %>
+					</p>
 
-				<%= render 'memberships/list' %>
+					<% if @unregistered.present? && policy(@project).edit? %>
+						<p>
+							未登録のメンバー：<%= @unregistered.map {|unregistered| unregistered.email }.compact.join(',') %>
+						</p>
+					<% end %>
 
-				<% if @unregistered.present? %>
-					<%= render 'memberships/invited' %>
-				<% end %>
+					<%-# Display membership management button to project leader -%>
+					<% if policy(@project).edit? %>
+						<p id="member-button"><%= link_to 'メンバーの変更.招待へ', project_memberships_path(@project), class: "button" %></p>
+					<% end %>
+				</div>
 
-				<%-# Display membership management button to project leader -%>
-				<% if policy(@project).edit? %>
-					<div id="member-button"><%= link_to 'メンバーの変更.招待へ', project_memberships_path(@project), class: "button" %></div>
-				<% end %>
+
+				<div id="project-specs">
+
+					個人情報： <%= gender(@spec) %> <%= age(@spec) %> <%= @spec.kaigo_level %> 
+					<% if policy(@project).edit? %>
+						<%= link_to '基本情報の記入・変更', edit_project_spec_path(@project, @spec), class: "button" %> 
+					<% else %>
+
+					<% end %>
+					
+
+				</div>
+
 
 			</div>
 		</div>

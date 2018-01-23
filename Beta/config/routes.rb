@@ -39,8 +39,6 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {registrations: 'registrations', invitations: 'invitations'}
   get 'users/' => 'users#index'
-
-
   
 
   root 'projects#index'

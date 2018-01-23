@@ -19,13 +19,13 @@
     @conversation = @project.conversations.first
     @messages = @conversation.messages.order('created_at ASC')
     @users_but_self = @project.users.where.not(id: current_user.id)
-    @spec = @project.spec
     #this section is to become obsolete
 
     #new project organization with publications
     @publications = Publication.where(project_id: @project.id)
     @publication = @project.publications.new
     @publication_attachment = @publication.publication_attachments.build
+    @spec = @project.spec
 
     #to compare, id has to be an integer inside an array
     id = params[:v]

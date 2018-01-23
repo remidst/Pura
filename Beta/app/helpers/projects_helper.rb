@@ -14,4 +14,13 @@ module ProjectsHelper
 		readmarks = PublicationCommentReadmark.where(publication_comment_id: publication_comment.id, read: true)
 		readmarks.count
 	end
+
+	def age(spec)
+	  dob = spec.birthday
+	  
+	  unless dob.nil?
+	  	now = Time.now.utc.to_date
+	  	now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+	  end
+	end
 end

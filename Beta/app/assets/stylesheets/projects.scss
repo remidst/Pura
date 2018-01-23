@@ -288,6 +288,9 @@ input.send-message-button {
 	border-radius: 3px;
 	background-color: #eee;
 	margin-bottom: 60px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border: 1px solid #aaa;
 }
 
 #project-information-container {
@@ -298,7 +301,14 @@ input.send-message-button {
 	padding-right: 15px;
 	padding-bottom: 10px;
 	margin-bottom: 10px;
-	background-color: #D9D9F3;
+	border-bottom: 1px solid #aaa;
+	display: flex;
+}
+
+#project-name-container {
+	margin-right: 20px;
+	font-size: 1.8em;
+	font-weight: bold;
 }
 
 #project-publication-container {
