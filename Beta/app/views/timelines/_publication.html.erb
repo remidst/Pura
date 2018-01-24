@@ -1,0 +1,73 @@
+<div class="well">
+	<div class="publication-header">
+		<div class="publication-publisher">
+			<%= publication.publisher.try(:username) %>			
+		</div>
+		<div class="publication-views">
+			既読：<%= publication_readmark_count(publication) %>	
+			<span class="readmark-list hide"><%= publication_readmark_list(publication) %></span>		
+		</div>
+
+		<% if current_user.id.to_s == publication.publisher_id.to_s %>
+			<div>
+				<span class="publication-edit"><%= link_to image_tag("edit-small.png"), edit_project_publication_path(project, publication), title: 'エディット' %></span>
+			</div>
+			<div>
+				<%= link_to image_tag("delete-bin.png"), project_publication_path(project, publication), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'}, title: '消す' %>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="publication-message">
+
+		<%= publication.message %>
+
+		<ul>
+			<% publication.publication_attachments.each do |file| %>
+			 	<li><%= link_to "#{file.attachment.file.filename}", file.attachment_url %></li>
+			<% end %>		
+		</ul>
+	</div>
+
+
+	<div class="publication-comments-container">
+		<% publication.publication_comments.each do |publication_comment| %>
+		<div class="publication-comment">
+			<div class="publication-comment-head">
+				<%= publication_comment.publisher.username %>
+				<%= publication_comment_readmark_count(publication_comment) %>
+			</div>
+			<div class="publication-comment-body">
+				<%= publication_comment.comment %>
+				<% publication_comment.publication_comment_attachments.each do |publication_comment_attachment| %>
+						<%= publication_comment_attachment.attachment %>
+				<% end %>
+			</div>
+		</div>
+
+		<% end %>
+	</div>
+
+	<div class="publication-comment-form">
+		<% publication_comment = publication.publication_comments.build %>
+		<%= form_for([publication, publication_comment], html: {multipart: true}) do |f| %>
+
+			<div class="form-group">
+				<%= f.text_field :comment, class: 'form-control', placeholder: 'コメント' %>
+			</div>
+
+			<% publication_comment_attachment = publication_comment.publication_comment_attachments.build %>
+
+			<%= f.fields_for publication_comment_attachment do |a| %>
+				<div class="form-group">
+					<%= a.file_field :attachment, multiple: true, name: "publication_comment_attachments[attachment][]" %>
+				</div>
+			<% end %>
+
+			<div class="form-group">
+				<%= f.submit 'コメントする', class: "btn btn-info" %>
+			</div>
+
+		<% end %>
+	</div>
+</div>
