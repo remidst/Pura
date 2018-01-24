@@ -2,9 +2,8 @@
   <%-# Navigation menu -%>
   <%= render 'layouts/timeline_app_navigation' %>
 
-  <% @publications.each do |publication| %>
-    <%= publication.message %>
-    <%= link_to '案件', project_path(publication.project) %>
+  <% @timelines.each do |timeline| %>
+  	<%= render partial: timeline, locals: {reporting: timeline.try(:reporting), contact: timeline.try(:contact), project: timeline.try(:project), publication: timeline.try(:publication)} %>
   <% end %>
 
 </div>

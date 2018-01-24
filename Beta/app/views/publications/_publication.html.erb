@@ -1,7 +1,7 @@
 <div class="well">
 	<div class="publication-header">
 		<div class="publication-publisher">
-			<%= publication.publisher.username %>			
+			<%= publication.publisher.try(:username) %>			
 		</div>
 		<div class="publication-views">
 			既読：<%= publication_readmark_count(publication) %>	
@@ -34,7 +34,7 @@
 		<% publication.publication_comments.each do |publication_comment| %>
 		<div class="publication-comment">
 			<div class="publication-comment-head">
-				<%= publication_comment.publisher.username %>
+				<%= publication_comment.publisher.try(:username) %>
 				<%= publication_comment_readmark_count(publication_comment) %>
 			</div>
 			<div class="publication-comment-body">
