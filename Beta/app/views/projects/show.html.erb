@@ -57,19 +57,18 @@
 			<%= form_for([@project, @publication], html: {multipart: true}) do |f| %>
 				
 				<div class="form-group">
-					<%= f.label :message, 'メッセージ' %>
-					<%= f.text_field :message, class: 'form-control' %>
+					<%= f.label :message, '案件メンバーにメッセージを共有する' %>
+					<%= f.text_area :message, required: 'required', class: 'form-control', placeholder: "#{@project.project_name.gsub(/\s+/, "")}様のご事情について書く" %>
 				</div>
 
 				<%= f.fields_for :publication_attachments do |a| %>
-					<div class="form-group">
-						<%= a.label :attachment, '添付ファイル' %>
-						<%= a.file_field :attachment, multiple: true, name: "publication_attachments[attachment][]", class: 'form-control' %>
+					<div >
+						<%= a.file_field :attachment, multiple: true, name: "publication_attachments[attachment][]" %>
 					</div>
 				<% end %>
 
 				<div class="form-group">
-					<%= f.submit '送信する', class: "btn btn-info" %>
+					<%= f.submit '送信', class: 'btn btn-info' %>
 				</div>
 			<% end %>
 		</div>
@@ -78,72 +77,8 @@
 			<%-# Publication feed -%>
 
 			<% @publications.each do |publication| %>
-			<div class="well">
-				<div class="publication-header">
-					<%= publication.publisher.username %>
-					<%= publication_readmark_count(publication) %>
-				</div>
 
-				<div class="publication-message">
-					<% if current_user.id.to_s == publication.publisher_id.to_s %>
-						<div>
-							<span class="publication-edit"><%= link_to "エディット", edit_project_publication_path(@project, publication) %></span>
-						</div>
-						<div>
-							<%= link_to "削除", project_publication_path(@project, publication), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'} %>
-						</div>
-					<% end %>
-					<%= publication.message %>
-
-					<% publication.publication_attachments.each do |file| %>
-					 	<%= file.attachment %>
-					<% end %>
-				</div>
-
-
-				<div class="publication-comments-container">
-					<% publication.publication_comments.each do |publication_comment| %>
-					<div class="publication-comment">
-						<div class="publication-comment-head">
-							<%= publication_comment.publisher.username %>
-							<%= publication_comment_readmark_count(publication_comment) %>
-						</div>
-						<div class="publication-comment-body">
-							<%= publication_comment.comment %>
-							<% publication_comment.publication_comment_attachments.each do |publication_comment_attachment| %>
-									<%= publication_comment_attachment.attachment %>
-							<% end %>
-						</div>
-					</div>
-
-					<% end %>
-				</div>
-
-				<div class="publication-comment-form">
-					<% publication_comment = publication.publication_comments.build %>
-					<%= form_for([publication, publication_comment], html: {multipart: true}) do |f| %>
-
-						<div class="form-group">
-							<%= f.label :comment, 'コメント' %>
-							<%= f.text_field :comment, class: 'form-control' %>
-						</div>
-
-						<% publication_comment_attachment = publication_comment.publication_comment_attachments.build %>
-
-						<%= f.fields_for publication_comment_attachment do |a| %>
-							<div class="form-group">
-								<%= a.label :attachment, '添付ファイル' %>
-								<%= a.file_field :attachment, multiple: true, name: "publication_comment_attachments[attachment][]", class: 'form-control' %>
-							</div>
-						<% end %>
-
-						<div class="form-group">
-							<%= f.submit 'コメントする', class: "btn btn-info" %>
-						</div>
-
-					<% end %>
-				</div>
-			</div>
+				<%= render partial: 'publications/publication', locals: {publication: publication, project: @project} %>
 
 			<% end %>
 

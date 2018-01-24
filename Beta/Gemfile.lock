@@ -43,6 +43,7 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (7.2.4)
       execjs
+    autosize (2.4.0.0)
     bcrypt (3.1.11-x86-mingw32)
     bindex (0.5.0)
     bootstrap-sass (3.3.7)
@@ -227,6 +228,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  autosize
   bcrypt (~> 3.1.11)
   bootstrap-sass
   byebug

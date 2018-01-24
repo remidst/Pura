@@ -126,34 +126,13 @@ li.conversation-selected {
 li.conversation-list:hover {
 }
 
-.new-message-block {
-	display: flex;
-	height: 60px;
+#new-publication-form {
+	width: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-bottom: 1px solid #aaa;
 }
 
-div.send-message-text-area {
-	flex-grow: 1;
-	height: 100%;
-	margin: 0;
-}
-
-div.send-message-button-container {
-	width: 70px;
-	background-color: #fff;
-	margin: 0;
-}
-
-.send-message-button {
-	background: image-url('send-button.png');
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-color: #fff;
-	margin: 0 auto;
-	height: 60px;
-	width: 70px;
-	border: none;
-	padding: 0;
-}
 
 #message-block {
 	flex-grow: 1;
@@ -315,6 +294,15 @@ input.send-message-button {
 	padding-left: 15px;
 	padding-right: 15px;
 	margin-top: 10px;
+}
+
+.publication-header {
+	border-bottom: 1px solid #ccc;
+	display: flex;
+}
+
+.publication-publisher {
+	flex-grow: 1;
 }
 
 

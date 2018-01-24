@@ -22,7 +22,7 @@
     #this section is to become obsolete
 
     #new project organization with publications
-    @publications = Publication.where(project_id: @project.id)
+    @publications = Publication.where(project_id: @project.id).order('created_at DESC')
     @publication = @project.publications.new
     @publication_attachment = @publication.publication_attachments.build
     @spec = @project.spec

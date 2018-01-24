@@ -12,6 +12,7 @@
 //
 //= require jquery3
 //= require jquery_ujs
+//= require autosize
 //= require turbolinks
 //= require jquery.tokeninput
 //= require bootstrap-sprockets
@@ -71,6 +72,8 @@ $(document).on('turbolinks:load', function(){
 			window.location = url + "?v=" + id_notification ;
 		}
 	});
+
+	autosize($("textarea"));
 
 
 

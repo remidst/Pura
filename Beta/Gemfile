@@ -78,6 +78,9 @@ gem 'figaro', '~> 1.1.1'
 #redis to support action cable
 gem 'redis', '~> 3.2'
 
+#jquery plugin to autosize textareas
+gem 'autosize'
+
 
 
 #serve assets on heroku
