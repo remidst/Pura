@@ -22,11 +22,13 @@
 
 		<%= publication.message %>
 
-		<ul>
-			<% publication.publication_attachments.each do |file| %>
-			 	<li><%= link_to "#{file.attachment.file.filename}", file.attachment_url %></li>
-			<% end %>		
-		</ul>
+		<% if publication.publication_attachments.present? %>
+			<ul>
+				<% publication.publication_attachments.each do |file| %>
+				 	<li><%= link_to "#{file.attachment.file.filename}", file.attachment_url %></li>
+				<% end %>		
+			</ul>
+		<% end %>
 	</div>
 
 
@@ -41,11 +43,14 @@
 				</div>
 				<div class="publication-comment-body">
 					<%= publication_comment.comment %>
-					<ul>
-						<% publication_comment.publication_comment_attachments.each do |publication_comment_attachment| %>
-								<li><%= link_to "#{publication_comment_attachment.attachment.file.filename}", publication_comment_attachment.attachment_url  %></li>
-						<% end %>						
-					</ul>
+
+					<% if publication_comment.publication_comment_attachments.present? %>
+						<ul>
+							<% publication_comment.publication_comment_attachments.each do |publication_comment_attachment| %>
+									<li><%= link_to "#{publication_comment_attachment.attachment.file.filename}", publication_comment_attachment.attachment_url  %></li>
+							<% end %>						
+						</ul>
+					<% end %>
 				</div>
 			</div>
 
@@ -58,7 +63,7 @@
 
 				<div class="form-flex">
 
-					<%= f.text_field :comment, class: 'comment-input', placeholder: 'コメント' %>
+					<%= f.text_field :comment, required: true, class: 'comment-input', placeholder: 'コメント' %>
 
 
 					<% publication_comment_attachment = publication_comment.publication_comment_attachments.build %>

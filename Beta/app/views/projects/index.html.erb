@@ -2,38 +2,39 @@
   <%-# Navigation menu -%>
   <%= render 'layouts/projects_app_navigation' %>
 
-  <%-# Button to create new project -%>
-  <%= link_to '+新規利用者', new_project_path, class: "btn btn-info", id: "btn-home" %><br/>
+  <div class="timeline-container">
+    <%-# Button to create new project -%>
+    <%= link_to '+新規利用者', new_project_path, class: "btn btn-info", id: "btn-home" %><br/>
 
-  <%-# Table that displays all the projects -%>
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th>利用者名</th>
-        <th>案件メンバー</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody id="project-index-table">
-      <% @projects.each do |project| %>
-        <tr class="clickable-row" data-link="<%= project_path(project) %>">
-          <td><%= project.project_name %></td>
-          <td class="project-index-users">
-              <%= project.users.map{ |user| user.username if user != current_user }.compact.join(', ') %>
-          </td>
-          <td><%= link_to '詳細', project %></td>
-          <td>
-            <% if policy(project).destroy? %>
-              <%= link_to '消す', project, method: :delete, data: { confirm: 'この案件は削除されます' } %>
-            <% end %>
-          </td>
+    <%-# Table that displays all the projects -%>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>利用者名</th>
+          <th>案件メンバー</th>
+          <th colspan="2"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <br>
+      <tbody id="project-index-table">
+        <% @projects.each do |project| %>
+          <tr class="clickable-row" data-link="<%= project_path(project) %>">
+            <td><%= project.project_name %></td>
+            <td class="project-index-users">
+                <%= project.users.map{ |user| user.username if user != current_user }.compact.join(', ') %>
+            </td>
+            <td><%= link_to '詳細', project %></td>
+            <td>
+              <% if policy(project).destroy? %>
+                <%= link_to '消す', project, method: :delete, data: { confirm: 'この案件は削除されます' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
 </div>
 
 

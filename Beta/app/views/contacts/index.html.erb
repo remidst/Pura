@@ -2,27 +2,29 @@
 
 	<%= render 'layouts/contacts_app_navigation' %>
 
+	<div class="timeline-container">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>事業所名</th>
+					<th>責任者名</th>
+				</tr>
+			</thead>
+			<tbody id="contact-index-table">
+				<% @contacts_care_manager.each do |contact| %>
+					<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
+						<td><%= contact.care_manager.company %></td>
+						<td><%= contact.care_manager.username %></td>
+					</tr>
+				<% end %>
+				<% @contacts_service_provider.each do |contact| %>
+					<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
+						<td><%= contact.service_provider.company %></td>
+						<td><%= username(contact.service_provider) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 
-	<table class="table table-striped table-hover">
-		<thead>
-			<tr>
-				<th>事業所名</th>
-				<th>責任者名</th>
-			</tr>
-		</thead>
-		<tbody id="contact-index-table">
-			<% @contacts_care_manager.each do |contact| %>
-				<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
-					<td><%= contact.care_manager.company %></td>
-					<td><%= contact.care_manager.username %></td>
-				</tr>
-			<% end %>
-			<% @contacts_service_provider.each do |contact| %>
-				<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
-					<td><%= contact.service_provider.company %></td>
-					<td><%= username(contact.service_provider) %></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
 </div>

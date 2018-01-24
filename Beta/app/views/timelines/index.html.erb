@@ -2,9 +2,11 @@
   <%-# Navigation menu -%>
   <%= render 'layouts/timeline_app_navigation' %>
 
-  <% @timelines.each do |timeline| %>
-  	<%= render partial: timeline, locals: {reporting: timeline.try(:reporting), contact: timeline.try(:contact), project: timeline.try(:project), publication: timeline.try(:publication)} %>
-  <% end %>
+  <div class="timeline-container">
+	  <% @timelines.each do |timeline| %>
+	  	<%= render partial: timeline, locals: {reporting: timeline.try(:reporting), contact: timeline.try(:contact), project: timeline.try(:project), publication: timeline.try(:publication)} %>
+	  <% end %>
+  </div>
 
 </div>
 

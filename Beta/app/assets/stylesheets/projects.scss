@@ -259,17 +259,18 @@ input.send-message-button {
 // all new css is below
 
 #project-show-block {
-	max-width: 900px;
+	max-width: 850px;
 	margin-left: auto;
 	margin-right: auto;
 
 	padding-bottom: 15px;
 	border-radius: 3px;
-	background-color: #eee;
+	background-color: #fff;
 	margin-bottom: 60px;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
-	border: 1px solid #aaa;
+	border: 1px solid #eee;
+	box-shadow: 3px 3px 2px #aaa;
 }
 
 #project-information-container {
@@ -282,11 +283,12 @@ input.send-message-button {
 	margin-bottom: 10px;
 	border-bottom: 1px solid #aaa;
 	display: flex;
+	background-color: #eee;
 }
 
 #project-name-container {
-	margin-right: 20px;
-	font-size: 1.8em;
+	margin-right: 30px;
+	font-size: 2em;
 	font-weight: bold;
 }
 
@@ -297,11 +299,14 @@ input.send-message-button {
 }
 
 .publication-header {
-	border-bottom: 1px solid #ccc;
 	display: flex;
 	padding-top: 10px;
 	padding-left: 20px;
 	padding-right: 20px;
+	padding-bottom: 5px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	background-color: #f8f8fa;
 }
 
 .publication-publisher {
@@ -309,10 +314,13 @@ input.send-message-button {
 }
 
 .publication-message {
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 15px;
+	padding-right: 15px;
 	padding-top: 20px;
 	padding-bottom: 30px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background: #fff;
 }
 
 .publication-comment-section {
@@ -320,21 +328,29 @@ input.send-message-button {
 	padding-right: 60px;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	background: #eee;
+	background: #f8f8fa;
+}
+
+.publication-comments-container {
+	display: table;
 }
 
 .publication-comment-head {
 	font-size: 0.8em;
+	margin-top: 5px;
 }
 
 .publication-comment-body {
-	background-color: #38F399;
-	border-radius: 10px;
+	background-color: #ADF2D1;
+	border-radius: 8px;
 	padding-top: 3px;
 	padding-left: 12px;
 	padding-right: 12px;
+	padding-bottom: 3px;	
 	display: inline-block;
 	margin-bottom: 10px;
+	display: table-cell;
+	vertical-align: middle;
 }
 
 
@@ -342,6 +358,7 @@ input.send-message-button {
 	background-color: #fff;
 	border-radius: 10px;
 	border: 1px solid #eee;
+	margin-top: 5px;
 }
 
 .form-flex {
@@ -366,7 +383,7 @@ input.comment-input {
 }
 
 .well.well-publication {
-	background: #fff;
+	background: #f8f8fa;
 	padding: 0px;
 }
 

@@ -58,7 +58,7 @@
 				
 				<div class="form-group">
 					<%= f.label :message, '案件メンバーにメッセージを共有する' %>
-					<%= f.text_area :message, required: 'required', class: 'form-control', placeholder: "#{@project.project_name.gsub(/\s+/, "")}様のご事情について書く" %>
+					<%= f.text_area :message, required: true, class: 'form-control', placeholder: "#{@project.project_name.gsub(/\s+/, "")}様のご事情について書く" %>
 				</div>
 
 				<%= f.fields_for :publication_attachments do |a| %>
