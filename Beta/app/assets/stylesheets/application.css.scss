@@ -188,17 +188,9 @@ input:focus {
 	outline: none;
 }
 
-.button {
-	border-radius: 1px;
-	margin-top: 10px;
-	font-size: 0.8em;
-}
 
-.button:hover {
-	background-color: none;
-}
 
-.button {
+.project-header-button {
   font: bold 1em;
   text-decoration: none;
   background-color: #EEEEEE;
@@ -210,7 +202,7 @@ input:focus {
   border-left: 1px solid #CCCCCC;
 }
 
-.button:hover {
+.project-header-button:hover {
 	cursor: pointer;
 	background-color: #EEEEEE;
 }
