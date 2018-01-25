@@ -3,14 +3,17 @@
 		<div class="publication-publisher">
 			<%= publication.publisher.try(:username) %> > <%= link_to "#{publication.project.try(:project_name)}", project_path(publication.project) %>		
 		</div>
+		<div class="publication-date">
+			<%= publication_date(publication) %>
+		</div>
 		<div class="publication-views">
 			既読：<%= publication_readmark_count(publication) %>	
-			<span class="readmark-list hide"><%= publication_readmark_list(publication) %></span>		
+			<span class="publication-views-list hide"><%= publication_readmark_list(publication) %></span>		
 		</div>
 
 		<% if current_user.id.to_s == publication.publisher_id.to_s %>
-			<div>
-				<span class="publication-edit"><%= link_to image_tag("edit-small.png"), edit_project_publication_path(project, publication), title: 'エディット' %></span>
+			<div class="publication-edit">
+				<%= link_to image_tag("edit-small.png"), edit_project_publication_path(project, publication), title: 'エディット' %>
 			</div>
 			<div>
 				<%= link_to image_tag("delete-bin.png"), project_publication_path(project, publication), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'}, title: '消す' %>
@@ -39,18 +42,23 @@
 			<div class="publication-comment">
 				<div class="publication-comment-head">
 					<%= publication_comment.publisher.try(:username) %>
-					<%= publication_comment_readmark_count(publication_comment) %>
 				</div>
-				<div class="publication-comment-body">
-					<%= publication_comment.comment %>
+				<div class="publication-comment-line">
+					<div class="publication-comment-body">
+						<%= publication_comment.comment %>
 
-					<% if publication_comment.publication_comment_attachments.present? %>
-						<ul>
-							<% publication_comment.publication_comment_attachments.each do |publication_comment_attachment| %>
-									<li><%= link_to "#{publication_comment_attachment.attachment.file.filename}", publication_comment_attachment.attachment_url  %></li>
-							<% end %>						
-						</ul>
-					<% end %>
+						<% if publication_comment.publication_comment_attachments.present? %>
+							<ul>
+								<% publication_comment.publication_comment_attachments.each do |publication_comment_attachment| %>
+										<li><%= link_to "#{publication_comment_attachment.attachment.file.filename}", publication_comment_attachment.attachment_url  %></li>
+								<% end %>						
+							</ul>
+						<% end %>
+					</div>
+					<div class="publication-comment-information">
+						<div class="publication-comment-date"><%= publication_comment_date(publication_comment) %></div> 
+						<div class="publication-comment-readmarks">既読：<%= publication_comment_readmark_count(publication_comment) %></div>
+					</div>
 				</div>
 			</div>
 

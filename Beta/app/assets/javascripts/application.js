@@ -77,8 +77,8 @@ $(document).on('turbolinks:load', function(){
 
 
 
-	$(".readmark-count").click(function(){
-		$(this).find(".readmark-list").toggleClass("hide");
+	$(".publication-views").click(function(){
+		$(this).find(".publication-views-list").toggleClass("hide");
 	});
 
 	$("#well-document").hide();

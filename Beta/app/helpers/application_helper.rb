@@ -67,4 +67,20 @@ module ApplicationHelper
 		end
 	end
 
+	def publication_date(publication)
+		if publication.created_at.strftime('%F') == Time.now.strftime('%F') 
+			publication.created_at.try(:strftime, '%H:%M') 
+		else
+			publication.created_at.try(:strftime, '%F')
+		end
+	end
+
+	def publication_comment_date(publication_comment)
+		if publication_comment.created_at.strftime('%F') == Time.now.strftime('%F') 
+			publication_comment.created_at.try(:strftime, '%H:%M') 
+		else
+			publication_comment.created_at.try(:strftime, '%F')
+		end
+	end
+
 end

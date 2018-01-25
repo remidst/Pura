@@ -316,6 +316,22 @@ input.send-message-button {
 	flex-grow: 1;
 }
 
+.publication-date {
+	margin-right: 4px;
+}
+
+.publication-views {
+	margin-right: 4px;
+}
+
+.publication-views:hover {
+	cursor: pointer;
+}
+
+.publication-edit {
+	margin-right: 4px;
+}
+
 .publication-message {
 	padding-left: 15px;
 	padding-right: 15px;
@@ -345,6 +361,10 @@ input.send-message-button {
 	margin-top: 5px;
 }
 
+.publication-comment-line {
+	display: flex;
+}
+
 .publication-comment-body {
 	background-color: #ADF2D1;
 	border-radius: 8px;
@@ -357,6 +377,14 @@ input.send-message-button {
 	display: table-cell;
 	vertical-align: middle;
 }
+
+.publication-comment-information {
+	font-size: 0.7em;
+	color: grey;
+	margin-left: 4px;
+}
+
+
 
 
 .publication-comment-form {
