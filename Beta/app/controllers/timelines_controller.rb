@@ -5,6 +5,8 @@ class TimelinesController < ApplicationController
 		publication_readmarks = current_user.publication_readmarks.where(read: false)
 		publication_comment_readmarks = current_user.publication_comment_readmarks.where(read: false)
 
+		@readmarks = reporting_readmarks + publication_readmarks + publication_comment_readmarks
+
 		if reporting_readmarks.present? || publication_readmarks.present? || publication_comment_readmarks.present?
 			# mettre dans l'ordre
 			publications_from_publications = publication_readmarks.map { |readmark| readmark.publication } 

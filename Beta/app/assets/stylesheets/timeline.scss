@@ -1,3 +1,24 @@
 // Place all the styles related to the timeline controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.well.timeline-well {
+	border: none;
+	background: #f8f8fa;
+}
+
+h1.timeline {
+	text-align: center;
+}
+
+p#timeline-unread-message {
+	text-align: center;
+	font-size: 1.3em;
+}
+
+#timeline-unread-count {
+	font-size: 3em;
+	font-weight: bold;
+	text-align: center;
+}

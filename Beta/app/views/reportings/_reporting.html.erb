@@ -1,14 +1,14 @@
 <div class="well reporting-well">
 	<div class="reporting-well-head">
-		<span class="reporting-title"><%= reporting.title %></span>
+		<div class="reporting-title"><%= reporting.publisher.try(:username) %> > <%= reporting.try(:title) %></div>
 		<% if current_user.id.to_s == reporting.publisher_id.to_s %>
-			<span class="reporting-edit"><%= link_to image_tag("edit-small.png"), edit_contact_reporting_path(contact, reporting), title: 'エディット' %></span>
-			<%= link_to image_tag("delete-bin.png"), contact_reporting_path(contact, reporting), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'}, title: '消す' %>
+			<div class="reporting-edit"><%= link_to image_tag("edit-small.png"), edit_contact_reporting_path(contact, reporting), title: 'エディット' %></div>
+			<div><%= link_to image_tag("delete-bin.png"), contact_reporting_path(contact, reporting), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'}, title: '消す' %></div>
 
 		<% end %>
 	</div>
 	
-	<p class="reporting-message"><%= publisher_name(reporting) %>: <%= reporting.message %></p>
+	<p class="reporting-message"><%= reporting.message %></p>
 	添付ファイル：<br/>
 	<ul>
 		<% reporting.reporting_attachments.each do |a| %>

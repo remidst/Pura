@@ -1,7 +1,7 @@
 <div class="well well-publication">
 	<div class="publication-header">
 		<div class="publication-publisher">
-			<%= publication.publisher.try(:username) %>			
+			<%= publication.publisher.try(:username) %> > <%= link_to "#{publication.project.try(:project_name)}", project_path(publication.project) %>		
 		</div>
 		<div class="publication-views">
 			既読：<%= publication_readmark_count(publication) %>	

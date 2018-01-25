@@ -2,7 +2,20 @@
   <%-# Navigation menu -%>
   <%= render 'layouts/timeline_app_navigation' %>
 
+
+
   <div class="timeline-container">
+
+  	<div class="well timeline-well">
+  		<h1 class="timeline">タイムラインへようこそ！</h1>
+  		<p>タイムラインは利用者様の案件と、事業所からの未読のメッセージをまとめる機能を持ってます。仕事をより効率よくこなせるために、コリブリが順番にメッセージを並べてくれます。未読のメッセージがなければ、近頃の案件やメッセージをまとめて見せます。</p>
+  	</div>
+
+  	<div class="well timeline-well">
+  		<p id="timeline-unread-message">未読のメッセージ：</p>
+  		<div id="timeline-unread-count"><%= @readmarks.count %>件</div>
+  	</div>
+
 	  <% @timelines.each do |timeline| %>
 	  	<%= render partial: timeline, locals: {reporting: timeline.try(:reporting), contact: timeline.try(:contact), project: timeline.try(:project), publication: timeline.try(:publication)} %>
 	  <% end %>

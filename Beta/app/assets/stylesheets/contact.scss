@@ -46,8 +46,9 @@
 
 .reporting-well-head {
 	margin-bottom : 5px;
+	display: flex;
 }
 
 .reporting-title {
-	font-weight: bold;
+	flex-grow: 1;
 }
