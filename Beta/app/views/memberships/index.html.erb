@@ -1,24 +1,36 @@
-
 <div class="container-fluid">
-	<div class="well membership-index-well">
-		<h1><%= @project.project_name %>の案件メンバー</h1>
 
-	    <%= render 'list' %>
+	<%= render "layouts/projects_app_navigation" %>
 
-	    <% if @invited.present? %>
-		    <%= render 'invited' %>
-	    <% end %>
-	    <br/>
+	<div class="timeline-container">	
+		<div class="well well-devise">
+			<h1><%= link_to "#{@project.project_name}", project_path(@project), class: "name-url", title: "案件へ" %>の案件メンバー</h1>
 
-	    <%= render 'projects/tokeninput' %>
+			<div id="membership-list">
+				案件メンバー：<br/>
+				<ul id="members">
+					<% @members.each do |member| %>
+						<li><%= member.username %> <%= " " + member.company %></li>
+					<% end %>
+				</ul>
+				
+			</div>
 
-	    <div class="membership-form">
-	    	<%= render 'form' %>
-	    </div>
-	    
+		    <% if @invited.present? %>
+			    <%= render 'invited' %>
+		    <% end %>
+		    <br/>
 
-	    <%= link_to '案件へ戻る', project_path(@project) %>
+		    <%= render 'projects/tokeninput' %>
 
+		    <div class="membership-form">
+		    	<%= render 'form' %>
+		    </div>
+		    
+
+		    <%= link_to '案件へ戻る', project_path(@project), class: "project-header-button" %>
+
+		</div>
 	</div>
 </div>
 

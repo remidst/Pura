@@ -45,6 +45,10 @@ h1 {
 	height: 100%;
 }
 
+a.name-url {
+	text-decoration: underline;
+}
+
 #brand {
 	color:#ffffff;
 	font-size: 2.1em;
@@ -107,6 +111,8 @@ ul.nav.nav-tabs {
 	text-align: center;
 	border-bottom: 0px;
 }
+
+
 
 li a.nav-url {
 	margin-right: 0px;

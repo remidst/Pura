@@ -1,13 +1,16 @@
 <div class="container-fluid">
+
+	<%= render 'layouts/projects_app_navigation' %>
 	
-  <div class="well new-project-well">
-  	<h1>新規利用者</h1>
+	<div class="timeline-container">
+		  <div class="well well-devise">
+		  	<h1>新規利用者</h1>
 
-	<div class="new-project-box">
-		<%= render 'form', project: @project %>
+			<div class="new-project-box">
+				<%= render 'form', project: @project %>
+			</div>
+		  </div>
 	</div>
-  </div>
 
-  <%= link_to '利用者一覧へ戻る', projects_path %>
 </div>
 
