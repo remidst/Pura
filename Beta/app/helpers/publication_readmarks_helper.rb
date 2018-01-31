@@ -1,0 +1,2 @@
+module PublicationReadmarksHelper
+end

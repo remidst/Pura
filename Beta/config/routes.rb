@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   resources :publications do 
     resources :publication_comments
+    member do 
+      patch :toggle_read_publication
+    end
   end
 
   resources :conversations do

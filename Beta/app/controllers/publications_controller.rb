@@ -23,6 +23,13 @@ class PublicationsController < ApplicationController
 		end
 	end
 
+	def toggle_read_publication
+		@publication = Publication.find(params[:id])
+		@readmark = @publication.publication_readmarks.where(user_id: current_user.id).take
+
+		@readmark.toggle!(:read)
+	end
+
 	def destroy
 		@project = Project.find(params[:project_id])
 		@publication = Publication.find(params[:id])
