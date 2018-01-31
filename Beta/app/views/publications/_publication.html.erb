@@ -71,7 +71,7 @@
 
 				<div class="form-flex">
 
-					<%= f.text_field :comment, required: true, class: 'comment-input', placeholder: 'コメント' %>
+					<%= f.text_area :comment, required: true, class: 'comment-input', placeholder: 'コメント' %>
 
 
 					<% publication_comment_attachment = publication_comment.publication_comment_attachments.build %>
