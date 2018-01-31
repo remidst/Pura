@@ -75,6 +75,34 @@ $(document).on('turbolinks:load', function(){
 
 	autosize($("textarea"));
 
+	$realInputField = $('#publication_publication_attachments_attributes_0_attachment');
+
+	$realInputField.change(function(){
+		var names = [];
+		for (var i = 0; i < $(this).get(0).files.length; ++i) {
+			names.push($(this).get(0).files[i].name);
+		}
+		$("#file-display").text(names);
+	});
+
+	$('#upload-btn').click(function(){
+		$realInputField.click();
+	});
+
+	$reportingInput = $("#reporting_reporting_attachments_attributes_0_attachment");
+
+	$reportingInput.change(function(){
+		var names = [];
+		for (var j = 0 ; j < $(this).get(0).files.length; ++j) {
+			names.push($(this).get(0).files[j].name);
+		}
+		$("#reporting-file-display").text(names);
+	});
+
+	$('#reporting-file-upload-btn').click(function(){
+		$reportingInput.click();
+	});
+
 
 
 	$(".publication-views").click(function(){

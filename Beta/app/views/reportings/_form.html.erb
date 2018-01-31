@@ -12,8 +12,11 @@
 
 	<%= f.fields_for :reporting_attachments do |a| %>
 		<div class="form-group">
-			<%= a.label :attachment, '添付ファイル' %>
-			<%= a.file_field :attachment, multiple: true, name: "reporting_attachments[attachment][]", class: 'form-control' %>
+			<%= a.file_field :attachment, multiple: true, name: "reporting_attachments[attachment][]", style: "display:none" %>
+			<div class="input-append">
+				<a id="reporting-file-upload-btn" class="project-header-button"><i class="publication-file-attachment-icon"></i>ファイルを添付する</a>
+				<div id="reporting-file-display"></div>
+			</div>
 		</div>
 	<% end %>
 

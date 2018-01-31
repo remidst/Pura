@@ -13,11 +13,15 @@
 		<div id="contact-reporting-container">
 		<%= link_to "書類をまとめて送信", new_contact_reporting_path(@contact), class: "btn btn-info btn-reporting" %><br/>
 
-			<div id="contact-reporting-list">
-				<% @reportings.each do |reporting| %>
-					<%= render partial: 'reportings/reporting', locals: {reporting: reporting, contact: @contact} %>
-				<% end %>
-			</div>
 		</div>
 	</div>
+
+	<div class="timeline-container">
+		<div id="contact-reporting-list">
+			<% @reportings.each do |reporting| %>
+				<%= render partial: 'reportings/reporting', locals: {reporting: reporting, contact: @contact} %>
+			<% end %>
+		</div>
+	</div>
+
 </div>
