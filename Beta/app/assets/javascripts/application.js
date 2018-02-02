@@ -109,6 +109,10 @@ $(document).on('turbolinks:load', function(){
 		$(this).find(".publication-views-list").toggleClass("hide");
 	});
 
+	$(".publication-comment-readmarks").click(function(){
+		$(this).find(".publication_comment_views_list").toggleClass("hide");
+	});
+
 	$("#well-document").hide();
 	$("#well-specs").hide();
 
