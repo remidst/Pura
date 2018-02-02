@@ -28,6 +28,13 @@ class PublicationsController < ApplicationController
 		@readmark = @publication.publication_readmarks.where(user_id: current_user.id).take
 
 		@readmark.toggle!(:read)
+
+		if @publication.publication_comments.present?
+			@publication.publication_comments.each do |publication_comment|
+				comment_readmark = publication_comment.publication_comment_readmarks.where(user_id: current_user.id)
+				comment_readmark.publication_comment_read!
+			end
+		end
 	end
 
 	def destroy

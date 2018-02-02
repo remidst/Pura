@@ -1,0 +1,3 @@
+<div>	
+	<%= link_to "#{ timeline.read ? 'メッセージを未読に変更' : 'メッセージを読みました' }", toggle_read_publication_publication_path(publication), method: :patch, remote: :true, class: "btn btn-success" %>
+</div>

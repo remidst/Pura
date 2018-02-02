@@ -419,6 +419,10 @@ textarea.comment-input {
 	background: #f8f8fa;
 	padding: 0px;
 	border: none;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	margin-bottom: 0px;
+	margin-top: 20px;
 }
 
 #member-information {
@@ -482,5 +486,14 @@ span.publication-file-attachment-icon {
 
 .publication-comment-readmarks:hover {
 	cursor: pointer;
+}
+
+.publication-read-button {
+	text-align: center;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background: #f8f8fa;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 

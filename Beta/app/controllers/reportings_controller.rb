@@ -61,6 +61,13 @@ class ReportingsController < ApplicationController
     end
   end
 
+  def toggle_read_reporting
+    @reporting = Reporting.find(params[:id])
+    @readmark = @reporting.reporting_readmarks.where(user_id: current_user.id).take
+
+    @readmark.toggle!(:read)
+  end
+
   private
 
   def reporting_params

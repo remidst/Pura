@@ -30,6 +30,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :reportings do 
+    member do 
+      patch :toggle_read_reporting
+    end
+  end
+
   resources :timelines
 
   get 'project/:id/invite_members' => 'projects#invite_members', as: :project_invite_members

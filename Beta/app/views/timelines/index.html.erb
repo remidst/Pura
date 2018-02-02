@@ -18,6 +18,9 @@
 
 	  <% @timelines.each do |timeline| %>
 	  	<%= render partial: timeline, locals: {reporting: timeline.try(:reporting), contact: timeline.try(:contact), project: timeline.try(:project), publication: timeline.try(:publication)} %>
+
+      <%= render partial: "#{timeline.class.to_s.downcase}s/button", locals: {publication: timeline, reporting: timeline} %>
+
 	  <% end %>
   </div>
 
