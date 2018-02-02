@@ -23,18 +23,9 @@ class TimelinesController < ApplicationController
 			@reportings = current_user.reporting_readmarks.last(15).map {|readmark| readmark.reporting }
 			@publications = current_user.publication_readmarks.last(15).map {|readmark| readmark.publication}
 
-			puts 'reportings'
-			puts @reportings
-
-			puts 'publications'
-			puts @publications
-
 			timelines = @reportings + @publications
 
 			@timelines = timelines.sort_by(&:created_at).reverse
-
-			puts 'timelines:'
-			puts @timelines
 
 		end
 
