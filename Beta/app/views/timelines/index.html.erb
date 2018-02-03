@@ -13,13 +13,15 @@
 
   	<div class="well timeline-well">
   		<p id="timeline-unread-message">未読のメッセージ：</p>
-  		<div id="timeline-unread-count"><%= @readmarks.count %>件</div>
+  		<div id="timeline-unread-count"><span id="timeline-unread-count-number"><%= @count %></span>件</div>
   	</div>
 
 	  <% @timelines.each do |timeline| %>
 	  	<%= render partial: timeline, locals: {reporting: timeline.try(:reporting), contact: timeline.try(:contact), project: timeline.try(:project), publication: timeline.try(:publication)} %>
 
-      <%= render partial: "#{timeline.class.to_s.downcase}s/button", locals: {publication: timeline, reporting: timeline} %>
+      <% if @readmarks.count > 0 %>
+        <%= render partial: "#{timeline.class.to_s.downcase}s/button", locals: {publication: timeline, reporting: timeline} %>
+      <% end %>
 
 	  <% end %>
   </div>

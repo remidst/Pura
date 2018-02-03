@@ -294,11 +294,38 @@ body {
 	margin-right: auto;
 }
 
-.btn-toggle-read {
+a.btn-toggle-read {
 	display: inline-block;
 	background: #ffbf00;
 	color: #000;
 	border-radius: 4px;
 	padding: 5px;
+	text-decoration: none !important;
+}
 
+a.btn-toggle-read:hover {
+	text-decoration: none !important;
+	color: #000;
+	background: #F2B500;
+}
+
+a.btn-toggle-read:selected {
+	text-decoration: none !important;
+}
+
+
+a.btn-toggle-read.btn-toggle-read-activated {
+	background: #74d680;
+	color: #106F1C;
+	text-decoration: none !important;
+}
+
+a.btn-toggle-read.btn-toggle-read-activated:hover {
+	background: #57D366;
+	color: #106F1C;
+	text-decoration: none !important;
+}
+
+a.btn-toggle-read.btn-toggle-read-activated:selected {
+	text-decoration: none !important;
 }

@@ -18,6 +18,8 @@ class TimelinesController < ApplicationController
 
 			timelines = @publications + @reportings
 			@timelines = timelines.sort_by(&:created_at).reverse
+
+			@count = @timelines.count
 		else
 			#rien dans le timeline, ou les 20-30 derniers
 			@reportings = current_user.reporting_readmarks.last(15).map {|readmark| readmark.reporting }
@@ -26,6 +28,8 @@ class TimelinesController < ApplicationController
 			timelines = @reportings + @publications
 
 			@timelines = timelines.sort_by(&:created_at).reverse
+
+			@count = 0
 
 		end
 

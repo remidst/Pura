@@ -140,6 +140,12 @@ $(document).on('turbolinks:load', function(){
 		$("#well-specs").show();
 	});
 
+	$(".btn-toggle-read").click(function(){
+		$this = $(this)
+		$this.toggleClass("btn-toggle-read-activated");
+		$this.text(($this.text() == "仕事が完了しました") ? "仕事を続ける" : "仕事が完了しました");
+	});
+
 	$(".conversation-messages").hide();
 	$(".conversation-form").hide();
 
