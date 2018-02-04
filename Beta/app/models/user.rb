@@ -86,19 +86,25 @@ class User < ApplicationRecord
   def self.morning_notification
     #swithching from writing all urls to just sending link to timelines
     reporting_readmarked_users = User.joins(:reporting_readmarks).where(reporting_readmarks: {read: false})
+    puts reporting_readmarked_users
     publication_readmarked_users = User.joins(:publication_readmarks).where(publication_readmarks: {read: false})
+    puts publication_readmarked_users
     publication_comment_readmarked_users = User.joins(:publication_comment_readmarks).where(publication_comment_readmarks: {read: false})
+    puts publication_comment_readmarked_users
 
     users_with_duplicates = reporting_readmarked_users + publication_readmarked_users + publication_comment_readmarked_users
     puts "users with duplicates"
-    puts users_with_duplicates.map {|user| user.username }
+    puts users_with_duplicates.map {|user| user.id }
     users_uniq = users_with_duplicates.uniq
     puts "users after uniq"
-    puts users_uniq.map {|user| user.username }
+    puts users_uniq.map {|user| user.id }
 
     users_uniq.each do |user|
       unless user.deleted_at.present?
-        UserMailer.morning_notification_email(user).deliver_later
+        UserMailer.morning_notification_email(user).deliver_now
+        puts user.class.name
+        puts "email sent to"
+        puts user.id 
       end
     end
 
@@ -109,7 +115,7 @@ class User < ApplicationRecord
     #      ids << user.id.to_i
     #      UserMailer.morning_notification_email(user).deliver_now
     #    end
-    #  end
+    #  end  
     #end
   end
 

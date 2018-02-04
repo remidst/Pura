@@ -15,7 +15,7 @@ class UserMailer < ApplicationMailer
 
 		reportings = @reporting_readmarks.map {|mark| mark.reporting}
 		publication_from_readmarks = @publication_readmarks.map {|mark| mark.publication }
-		publication_from_comments = @publication_comment_readmarks.map {|mark| mark.publication}
+		publication_from_comments = @publication_comment_readmarks.map {|mark| mark.publication_comment.publication}
 		publications = (publication_from_comments + publication_from_readmarks).uniq
 		@timelines = publications + reportings
 

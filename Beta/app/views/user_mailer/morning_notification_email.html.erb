@@ -1,5 +1,5 @@
 <p><%= @user.username %>様、</p>
 
-<p>未読のメッセージが<%= @timelines.count %>件残ってます。</p>
+<p>未読のメッセージが<%= @timelines.count %>件届いております。</p>
 
 <%= link_to 'タイムラインへ', timelines_url(user_email: @user.email, user_token: @user.authentication_token) %>
