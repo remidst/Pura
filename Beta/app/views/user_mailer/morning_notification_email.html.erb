@@ -1,10 +1,5 @@
 <p><%= @user.username %>様、</p>
 
-<p>新規メッセージが共有されました。</p>
+<p>未読のメッセージが<%= @timelines.count %>件残ってます。</p>
 
-<p>
-	メッセージ：<br/>
-	<% @notifications.each do |notification| %>
-			<%= notification.content %>案件：<%= notification.project.project_name %>様。<%= link_to '案件へ', project_url(notification.project, user_email: @user.email, user_token: @user.authentication_token) %><br/>
-	<% end %>
-</p>
+<%= link_to 'タイムラインへ', timelines_url(user_email: @user.email, user_token: @user.authentication_token) %>
