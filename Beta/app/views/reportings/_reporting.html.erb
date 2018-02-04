@@ -1,6 +1,6 @@
 <div class="well reporting-well">
 	<div class="reporting-well-head">
-		<div class="reporting-title"><%= reporting.publisher.try(:username) %> > <%= reporting.try(:title) %></div>
+		<div class="reporting-title"><%= reporting_header(reporting) %></div>
 		<% if current_user.id.to_s == reporting.publisher_id.to_s %>
 			<div class="reporting-edit"><%= link_to image_tag("edit-small.png"), edit_contact_reporting_path(contact, reporting), title: 'エディット' %></div>
 			<div><%= link_to image_tag("delete-bin.png"), contact_reporting_path(contact, reporting), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'}, title: '消す' %></div>
