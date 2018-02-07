@@ -1,0 +1,2 @@
+$('#publication-comments-container-<%= @publication.id %>').append("<%= j render partial: 'publication_comments/publication_comment', locals: { publication_comment: @publication_comment }  %>");
+$('#<%= @publication.id %>_new_publication_comment')[0].reset();

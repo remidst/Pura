@@ -23,7 +23,7 @@
 
 	<div class="publication-message">
 
-		<%= publication.message %>
+		<%= simple_format(publication.message) %>
 
 		<% if publication.publication_attachments.present? %>
 			<ul>
@@ -37,37 +37,17 @@
 
 	<div class="publication-comment-section">
 		
-		<div class="publication-comments-container">
+		<div class="publication-comments-container" id="publication-comments-container-<%= publication.id %>">
 			<% publication.publication_comments.each do |publication_comment| %>
-			<div class="publication-comment">
-				<div class="publication-comment-head">
-					<%= publication_comment.publisher.try(:username) %>
-				</div>
-				<div class="publication-comment-line">
-					<div class="publication-comment-body">
-						<%= publication_comment.comment %>
-
-						<% if publication_comment.publication_comment_attachments.present? %>
-							<ul>
-								<% publication_comment.publication_comment_attachments.each do |publication_comment_attachment| %>
-										<li><%= link_to "#{publication_comment_attachment.attachment.file.filename}", publication_comment_attachment.attachment_url  %></li>
-								<% end %>						
-							</ul>
-						<% end %>
-					</div>
-					<div class="publication-comment-information">
-						<div class="publication-comment-date"><%= publication_comment_date(publication_comment) %></div> 
-						<div class="publication-comment-readmarks">既読：<%= publication_comment_readmark_count(publication_comment) %><span class="publication_comment_views_list hide"><%= publication_comment_readmark_list(publication_comment) %></span></div>
-					</div>
-				</div>
-			</div>
+			
+				<%= render partial: 'publication_comments/publication_comment', locals: {publication_comment: publication_comment} %>
 
 			<% end %>
 		</div>
 
 		<div class="publication-comment-form">
 			<% publication_comment = publication.publication_comments.build %>
-			<%= form_for([publication, publication_comment], html: {multipart: true}, namespace: publication.id) do |f| %>
+			<%= form_for([publication, publication_comment], html: {multipart: true}, namespace: publication.id, remote: true) do |f| %>
 
 				<div class="form-flex">
 
