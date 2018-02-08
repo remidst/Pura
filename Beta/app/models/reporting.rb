@@ -13,6 +13,19 @@ class Reporting < ApplicationRecord
   	self.save!
   end
 
+  def self.add_confirmed
+    reportings = Reporting.all
+
+    reportings.each do |reporting|
+      reporting.update!(confirmed: true)
+    end
+  end
+
+  def self.confirm!
+    self.confirmed = true
+    self.update!
+  end
+
   private
 
   def create_reporting_readmarks

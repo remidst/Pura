@@ -24,7 +24,6 @@ class ContactsController < ApplicationController
 			reporting_readmark = reporting.reporting_readmarks.where(user_id: user.id, read: false)
 			reporting_readmark.reporting_read! if reporting_readmark.present?
 		end
-
 	end
 
 

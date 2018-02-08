@@ -66,6 +66,9 @@ gem 'pundit'
 #Carrierwave handles file upload
 gem 'carrierwave', '~> 1.1.0'
 
+#extension to carrierwave for ajax forms
+gem 'remotipart', '~> 1.2'
+
 #allows carrierwave to store files on S3
 gem 'fog-aws'
 

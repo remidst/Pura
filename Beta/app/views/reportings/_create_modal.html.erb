@@ -1,0 +1,15 @@
+<div id="create-reporting-modal" class="hide">
+	<p>書類を送信する前に、もう一度ご確認ください：</p>
+		
+		<div id="modal-contact-info">
+			送信先：<%= reporting_receiver(reporting) %>
+		</div>
+		<div id="modal-reporting-info">
+			内容：<%= reporting.title %><br/>
+			メッセージ：<%= reporting.message %><br/>
+			ファイル：
+			<%= reporting.reporting_attachments.each do |a| %>
+				<%= link_to "#{a.attachment.file.filename}", a.attachment_url %>
+			<% end %>
+		</div>
+</div>

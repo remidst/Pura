@@ -1,0 +1,28 @@
+<div class="container-fluid">
+
+	<%= render 'layouts/contacts_app_navigation' %>
+
+	<div id="contact-show-block">
+		<div id="contact-information-container">
+			<h1><%= contact_company(@contact) %></h1>
+			<%= contact_role(@contact) %><%= contact_name(@contact) %>
+		</div>
+
+
+		<div class="timeline-container">
+			<div id="contact-reporting-list">
+				<%= render partial: 'reportings/reporting', locals: {reporting: @reporting, contact: @contact} %>
+			</div>
+
+			<div id="confirm-action-container">
+				<%= link_to '共有する', contact_reporting_toggle_confirm_path(@contact, @reporting), method: :patch %><br/>
+				<%= link_to 'エディット', edit_contact_reporting_path(@contact, @reporting) %><br/>
+				<%= link_to '削除', contact_reporting_path(@contact, @reporting), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'} %>
+				
+			</div>
+		</div>
+
+	</div>
+</div>
+
+

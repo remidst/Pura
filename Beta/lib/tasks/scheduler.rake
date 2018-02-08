@@ -56,3 +56,9 @@ task :create_timelines => :environment do
 	User.add_timeline
 	puts "timelines added"
 end
+
+task :add_confirmed_to_reportings => :environment do 
+	puts "creating confirmed status for previous reportings"
+	Reporting.add_confirmed
+	puts "added confirmed"
+end

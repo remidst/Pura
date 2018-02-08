@@ -10,6 +10,7 @@ class ReportingsController < ApplicationController
     @contact = Contact.find(params[:contact_id])
   	@reporting = @contact.reportings.new(reporting_params)
     @reporting.set_publisher!(current_user)
+    @reporting.confirmed = false
 
   	respond_to do |format|
   		if @reporting.save
@@ -18,15 +19,31 @@ class ReportingsController < ApplicationController
     				@reporting_attachment = @reporting.reporting_attachments.create!(attachment: a)
     			end
         end
-
-        #send email to recipient
-        ReportingMailer.received_reporting(@reporting).deliver_later
         
-  			format.html { redirect_to @contact, notice: 'レポート.請求書の共有が成功しました。' }
+  			format.html { redirect_to contact_reporting_confirm_path(@contact, @reporting), notice: 'レポート.請求書がセーブされました。共有するには確認してください。' }
   		else
   			format.html { render action: 'new' }
   		end
   	end
+  end
+
+  def confirm
+    @contact = Contact.find(params[:contact_id])
+    @reporting = Reporting.find(params[:id])
+
+    #verify authorization here
+  end
+
+  def toggle_confirm
+    @contact = Contact.find(params[:contact_id])
+    @reporting = Reporting.find(params[:id])
+
+    @reporting.toggle!(:confirmed)
+
+    respond_to do |format|
+      format.html { redirect_to @contact, notice: "レポート.請求書が共有されました" }
+      format.js
+    end
   end
 
   def edit

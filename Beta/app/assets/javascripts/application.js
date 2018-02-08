@@ -21,6 +21,13 @@
 
 
 $(document).on('turbolinks:load', function(){
+	$.ajaxSetup({
+	  headers: {
+	    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+	  }
+	});
+
+	
 	$("#project_user_tokens").tokenInput("/users.json",
 	{
 		queryParam: 'q',
