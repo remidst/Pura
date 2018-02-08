@@ -13,13 +13,6 @@
   # GET /projects/1
   # GET /projects/1.json
   def show
-  	#this section is to become obsolete
-    @documents=current_user.documents.where(project_id: @project.id).order('created_at DESC')
-    @members = @registered.where.not(id: @leader.id)
-    @conversation = @project.conversations.first
-    @messages = @conversation.messages.order('created_at ASC')
-    @users_but_self = @project.users.where.not(id: current_user.id)
-    #this section is to become obsolete
 
     #new project organization with publications
     @users = @project.users
@@ -28,21 +21,6 @@
     @publication_attachment = @publication.publication_attachments.build
     @spec = @project.spec
 
-    #to compare, id has to be an integer inside an array
-    id = params[:v]
-    notification_id = [id.to_i]
-
-    #verify that the notification id is relevant, if so mark as read
-    if verify_notification?(notification_id, @project, current_user)
-      notification = Notification.find(id)
-      notification.read!
-    end
-
-    #mark all messages as read
-    read_all_messages!(current_user, @conversation)
-
-    #mark all publications as read
-    read_all_publications_and_comments!(current_user, @project)
 
   end
 
@@ -85,16 +63,10 @@
     respond_to do |format|
       if @project.update(prjct)
 
-        #update general conversation with all users
-        general_conversation = @project.conversations.first
-        general_conversation.update(user_ids: array_user_tokens)
-
         #send email to invited users and create notification
         users = new_user_tokens.map { |token| User.find(token) }
         users.each do |user|
           ProjectMailer.user_invited(user, @project).deliver_later
-          notification = user.notifications.create(project_id: @project.id, read: false)
-          notification.new_project!
         end
 
 
@@ -125,10 +97,6 @@
           #send email to new and old leader
           ProjectMailer.old_leader_email(old_leader, @project).deliver_later
           ProjectMailer.new_leader_email(old_leader, @project).deliver_later
-
-          #send notification to new leader
-          notification = new_leader.notifications.create(project_id: @project.id, read: false)
-          notification.new_leader!
         end
 
         format.html { redirect_to @project, notice: '案件が登録されました。' }
@@ -149,9 +117,6 @@
 
     respond_to do |format|
       if project.save(project_params)
-
-        # create a general conversation with only the creator at this time
-        conversation = project.conversations.create(user_ids: current_user.id)
 
         #send an email that confirms the creation of a project
         ProjectMailer.create_project(current_user, project).deliver_later
@@ -219,15 +184,6 @@
 
           #send email to leader to confirm deletion
           ProjectMailer.goodbye_registered_user_leader_notice(array_delete_ids, @project).deliver_later
-
-          #delete all the conversations related to this user
-          if @project.conversations.count > 1 
-            @project.conversations.each do |conversation|
-              unless conversation == @project.conversations.first
-                conversation.destroy if (conversation.users & array_delete_ids).present?
-              end
-            end
-          end
         end
 
         #send email and notification to those who were added (if any)
@@ -236,8 +192,6 @@
 
           added_users.each do |user|
             ProjectMailer.user_invited(user, @project).deliver_later
-            notification = user.notifications.create(project_id: @project.id, read: false)
-            notification.new_project!
           end
         end
 
@@ -245,19 +199,7 @@
         if prjct[:leader_id].present? && prjct[:leader_id].to_i != old_leader.id.to_i
           ProjectMailer.old_leader_email(old_leader, @project).deliver_later
           ProjectMailer.new_leader_email(old_leader, @project).deliver_later
-
-          new_leader = User.find(@project.leader_id)
-          notification = new_leader.notifications.create(project_id: @project.id, read: false)
-          notification.new_leader!
         end
-
-        #update the general conversation
-        unless prjct[:user_tokens].nil? 
-          #update the group conversation
-          general_conversation = @project.conversations.first
-          general_conversation.update(user_ids: array_user_tokens)
-        end
-
 
         format.html { redirect_to @project, notice: '案件情報のアップデートが成功しました。' }
         format.json { render :show, status: :ok, location: @project }

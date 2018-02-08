@@ -7,26 +7,6 @@
     <div id="navbar">
     <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
-        <li id="notification-menu">
-          <div id="notification-button">
-            <%= image_tag('bell-3-16.png') %>
-            <% if @unread.present? %>
-            <div id="notification-count-container">
-              <p id="notification-count"><%= @unread.count %></p>
-            </div>
-            <div id="notification-container" class="notification-hidden">
-              <ul id="notification-list">
-                <% @unread.each do |notification| %>
-                  <li class="notification-list-element">
-                    <%= render partial: 'notifications/notification', locals: {notification: notification} %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-          </div>
-          
-        </li>
         <li><%= link_to 'アカウント', edit_user_registration_path(current_user), class: 'nav-item' %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,  class: 'nav-item' %></li>
         <div id="current-user"></div>
