@@ -8,7 +8,9 @@ class ContactsController < ApplicationController
 
 	def show
 		@contact = Contact.find(params[:id])
-		@reportings = @contact.reportings.order('created_at DESC')
+		@reportings = @contact.reportings.where(confirmed: true).order('created_at DESC')
+
+		@unshared = @contact.reportings.where(confirmed: false).order('created_at DESC')
 
 		#mark reportings as read
 		read_all_reportings!(current_user, @contact)

@@ -1,7 +1,7 @@
 <%= form_for([@contact, @reporting], html: {multipart: true}) do |f| %>
 	
 	<div class="form-group">
-		<%= f.label :title, '書類内容' %>
+		<%= f.label :title, '内容' %>
 		<%= f.text_field :title, class: 'form-control' %>
 	</div>
 
@@ -20,7 +20,11 @@
 		</div>
 	<% end %>
 
-	<div class="form-group">
-		<%= f.submit '送信する', class: "btn btn-info" %>
+	<div class="confirm-action-container">
+		<div class="form-group">
+			<%= f.submit '確認画面へ進む', class: "btn btn-info" %>
+		</div>
 	</div>
+
+
 <% end %>

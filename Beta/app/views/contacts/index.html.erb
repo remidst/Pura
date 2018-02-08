@@ -12,16 +12,20 @@
 			</thead>
 			<tbody id="contact-index-table">
 				<% @contacts_care_manager.each do |contact| %>
-					<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
-						<td><%= contact.care_manager.company %></td>
-						<td><%= contact.care_manager.username %></td>
-					</tr>
+					<% if contact.care_manager.company.present? %>
+						<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
+							<td><%= contact.care_manager.company %></td>
+							<td><%= contact.care_manager.username %></td>
+						</tr>
+					<% end %>
 				<% end %>
 				<% @contacts_service_provider.each do |contact| %>
-					<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
-						<td><%= contact.service_provider.company %></td>
-						<td><%= username(contact.service_provider) %></td>
-					</tr>
+					<% if contact.service_provider.company.present? %>
+						<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
+							<td><%= contact.service_provider.company %></td>
+							<td><%= username(contact.service_provider) %></td>
+						</tr>
+					<% end %>
 				<% end %>
 			</tbody>
 		</table>

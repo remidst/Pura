@@ -1,0 +1,12 @@
+
+
+<div class="publication-read-button">
+	<div id="confirm-button-container">
+		<%= link_to "#{ receiver(reporting).company }に共有する", contact_reporting_toggle_confirm_path(contact, reporting), method: :patch , remote: true, class: "btn btn-info btn-confirm" %>
+	</div>
+
+	<div id="confirm-other-buttons-container">
+		<%= link_to '送る前に書き直す！', edit_contact_reporting_path(contact, reporting) %><br/>
+		<%= link_to '削除する', contact_reporting_path(contact, reporting), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'} %>
+	</div>
+</div>

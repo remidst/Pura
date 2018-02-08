@@ -12,4 +12,12 @@ module ReportingsHelper
 		end
 	end
 
+	def receiver(reporting)
+		if reporting.publisher == reporting.contact.care_manager
+			reporting.contact.service_provider
+		else
+			reporting.contact.care_manager
+		end
+	end
+
 end

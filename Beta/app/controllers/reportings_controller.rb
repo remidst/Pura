@@ -20,7 +20,7 @@ class ReportingsController < ApplicationController
     			end
         end
         
-  			format.html { redirect_to contact_reporting_confirm_path(@contact, @reporting), notice: 'レポート.請求書がセーブされました。共有するには確認してください。' }
+  			format.html { redirect_to contact_reporting_confirm_path(@contact, @reporting), notice: 'レポート.請求書がセーブされました。共有する前に、情報をご確認ください。' }
   		else
   			format.html { render action: 'new' }
   		end
@@ -42,7 +42,7 @@ class ReportingsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @contact, notice: "レポート.請求書が共有されました" }
-      format.js
+      format.js { flash[:notice] = "レポート.請求書が共有されました" }
     end
   end
 
@@ -57,7 +57,11 @@ class ReportingsController < ApplicationController
 
     respond_to do |format|
       if @reporting.update(edit_params)
-        format.html {redirect_to @contact, notice: 'エディットが成功しました。' }
+        if @reporting.confirmed
+          format.html {redirect_to @contact, notice: 'エディットが成功しました。' }
+        else
+          format.html { redirect_to contact_reporting_confirm_path(@contact, @reporting), notice: 'レポート.請求書の変更が登録されました。共有する前に、情報をご確認ください。' }
+        end
       else
         format.html { render action: 'edit' }
       end
