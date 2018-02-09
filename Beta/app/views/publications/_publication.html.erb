@@ -28,7 +28,7 @@
 		<% if publication.publication_attachments.present? %>
 			<ul>
 				<% publication.publication_attachments.each do |file| %>
-					<li><%= image_tag file.attachment_url %></li>
+					<li><%= image_tag file.attachment_url, class: "publication-image" %></li>
 				 	<li><%= link_to "#{file.attachment.file.filename}", file.attachment_url %></li>
 				<% end %>		
 			</ul>
