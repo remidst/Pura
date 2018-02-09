@@ -216,14 +216,6 @@ function layout(){
 	});
 };
 
-function notificationCount(){
-	var pos = $("#notification-button").position();
-	$("#notification-count-container").css({
-		position: "absolute",
-		top: pos.top + "px",
-		right: pos.left +  "px",
-	})
-}
 
 function getUrlVars()
 {

@@ -15027,6 +15027,13 @@ $.TokenList.Cache = function (options) {
 
 
 $(document).on('turbolinks:load', function(){
+	$.ajaxSetup({
+	  headers: {
+	    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+	  }
+	});
+
+	
 	$("#project_user_tokens").tokenInput("/users.json",
 	{
 		queryParam: 'q',
@@ -15054,36 +15061,9 @@ $(document).on('turbolinks:load', function(){
 		window.location = this.dataset.link
 	});
 
-	notificationCount();
-
-	$("#notification-button").click(function(){
-		var pos = $(this).position();
-		$("#notification-container").css({
-			position: "absolute",
-			top: pos.bottom + "px",
-			right: pos.left + "px",
-		});
-		$("#notification-container").toggleClass("notification-hidden");
-		$("#notification-button").toggleClass("notification-button-selected")
-	});
-
-	$(".notifications").click(function(){
-		var id_notification = $(this).attr('id');
-		var url = $(this).data('notification');
-		var content = $(this).text();
-
-		if (content.indexOf("ファイル") >= 0) {
-			window.location = url + "?v=" + id_notification + "&to=documents";
-		} else {
-			window.location = url + "?v=" + id_notification ;
-		}
-	});
-
 	autosize($("textarea"));
 
-	$realInputField = $('#publication_publication_attachments_attributes_0_attachment');
-
-	$realInputField.change(function(){
+	$('#publication_publication_attachments_attributes_0_attachment').change(function(){
 		var names = [];
 		for (var i = 0; i < $(this).get(0).files.length; ++i) {
 			names.push($(this).get(0).files[i].name);
@@ -15092,12 +15072,11 @@ $(document).on('turbolinks:load', function(){
 	});
 
 	$('#upload-btn').click(function(){
-		$realInputField.click();
+		$('#publication_publication_attachments_attributes_0_attachment').click();
 	});
 
-	$reportingInput = $("#reporting_reporting_attachments_attributes_0_attachment");
 
-	$reportingInput.change(function(){
+	$("#reporting_reporting_attachments_attributes_0_attachment").change(function(){
 		var names = [];
 		for (var j = 0 ; j < $(this).get(0).files.length; ++j) {
 			names.push($(this).get(0).files[j].name);
@@ -15105,8 +15084,8 @@ $(document).on('turbolinks:load', function(){
 		$("#reporting-file-display").text(names);
 	});
 
-	$('#reporting-file-upload-btn').click(function(){
-		$reportingInput.click();
+	$('a#reporting-file-upload-btn').click(function(){
+		$("#reporting_reporting_attachments_attributes_0_attachment").click();
 	});
 
 
@@ -15202,6 +15181,10 @@ $(document).on('turbolinks:load', function(){
 		e.stopPropagation();
 	});
 
+	$("a.btn.btn-info.btn-confirm").click(function(){
+		$("a.btn.btn-info.btn-confirm").parent().parent().fadeOut("slow");
+	});
+
 	layout();
 
 	getUrlVars();
@@ -15239,14 +15222,6 @@ function layout(){
 	});
 };
 
-function notificationCount(){
-	var pos = $("#notification-button").position();
-	$("#notification-count-container").css({
-		position: "absolute",
-		top: pos.top + "px",
-		right: pos.left +  "px",
-	})
-}
 
 function getUrlVars()
 {
