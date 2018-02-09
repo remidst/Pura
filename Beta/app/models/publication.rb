@@ -13,10 +13,15 @@ class Publication < ApplicationRecord
 
 	def create_publication_readmarks
 		project = self.project
-		users = project.users
+		publisher = self.publisher
+		users_but_publisher = project.users.where.not(id: publisher.id)
 
-		users.each do |user|
+		#create readmarks as unread for all users except the publisher
+		users_but_publisher.each do |user|
 			publication_readmark = self.publication_readmarks.create!(user_id: user.id, read: false)
 		end
+
+		#create a readmark as read for the publisher
+		self.publication_readmarks.create!(user_id: publisher.id, read: true)
 	end
 end

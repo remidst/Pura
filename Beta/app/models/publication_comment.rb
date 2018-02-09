@@ -13,10 +13,14 @@ class PublicationComment < ApplicationRecord
   def create_publication_comment_readmarks
   	publication = self.publication
   	project = publication.project
-  	users = project.users
+    publisher = self.publisher
+  	users_but_publisher = project.users.where.not(id: publisher.id)
 
-  	users.each do |user|
-  		publication_comment_readmark = self.publication_comment_readmarks.create!(user_id: user.id, read: false)
+  	users_but_publisher.each do |user|
+  		self.publication_comment_readmarks.create!(user_id: user.id, read: false)
   	end
+
+    #create a readmark as read for the publisher
+    self.publication_comment_readmarks.create!(user_id: publisher.id, read: true)
   end
 end

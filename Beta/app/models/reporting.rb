@@ -31,8 +31,12 @@ class Reporting < ApplicationRecord
   def create_reporting_readmarks
   	contact = self.contact
 
-  	care_manager_readmark = self.reporting_readmarks.create!(read: false, user_id: contact.care_manager_id)
-  	service_provider_readmark = self.reporting_readmarks.create!(read: false, user_id: contact.service_provider_id)
+    publisher = self.publisher
+    self.publisher == contact.care_manager ? receiver = contact.service_provider : receiver = contact.care_manager
+
+    #one readmark as read for the publisher, another unread for the receiver
+  	self.reporting_readmarks.create!(read: true, user_id: publisher.id)
+  	self.reporting_readmarks.create!(read: false, user_id: receiver.id)
   end
 
 
