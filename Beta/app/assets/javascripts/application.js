@@ -55,34 +55,6 @@ $(document).on('turbolinks:load', function(){
 		window.location = this.dataset.link
 	});
 
-	/*
-	notificationCount();
-
-	$("#notification-button").click(function(){
-		var pos = $(this).position();
-		$("#notification-container").css({
-			position: "absolute",
-			top: pos.bottom + "px",
-			right: pos.left + "px",
-		});
-		$("#notification-container").toggleClass("notification-hidden");
-		$("#notification-button").toggleClass("notification-button-selected")
-	});
-
-	$(".notifications").click(function(){
-		var id_notification = $(this).attr('id');
-		var url = $(this).data('notification');
-		var content = $(this).text();
-
-		if (content.indexOf("ファイル") >= 0) {
-			window.location = url + "?v=" + id_notification + "&to=documents";
-		} else {
-			window.location = url + "?v=" + id_notification ;
-		}
-	});
-
-	*/
-
 	autosize($("textarea"));
 
 	$('#publication_publication_attachments_attributes_0_attachment').change(function(){
