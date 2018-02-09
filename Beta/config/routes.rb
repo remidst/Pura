@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :conversations do
     resources :messages
   end
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
     member do 
       patch :toggle_read_reporting
     end
+    resources :reporting_attachments, only: :destroy
   end
 
   resources :timelines

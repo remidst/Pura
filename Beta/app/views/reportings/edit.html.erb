@@ -15,7 +15,20 @@
 
 		<div id="contact-reporting-container">
 			<h3>送信したレポート.請求書類をエディットする</h3>
-			<%= render 'reportings/edit' %>			
+			<%= render 'reportings/edit' %>		
+
+			<div id="edit-reporting-attachment">
+				<div id="add-reporting-file">
+					
+				</div>
+				<div id="delete-reporting-file">
+					<%= @reporting.reporting_attachments.each do |a| %>
+					<div id="delete-reporting-attachment-<%= a.id %>" class="delete-reporting-attachment">
+						<%= a.attachment.file.filename %> <%= link_to '消す', reporting_reporting_attachment_path(@reporting, a), method: :delete, data: {confirm: 'ファイルがこのレポートから削除されます'}, remote: true %>
+					</div>
+					<% end %>
+				</div>
+			</div>	
 		</div>
 
 	</div>
