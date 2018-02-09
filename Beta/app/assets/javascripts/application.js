@@ -55,6 +55,7 @@ $(document).on('turbolinks:load', function(){
 		window.location = this.dataset.link
 	});
 
+	/*
 	notificationCount();
 
 	$("#notification-button").click(function(){
@@ -80,11 +81,11 @@ $(document).on('turbolinks:load', function(){
 		}
 	});
 
+	*/
+
 	autosize($("textarea"));
 
-	$realInputField = $('#publication_publication_attachments_attributes_0_attachment');
-
-	$realInputField.change(function(){
+	$('#publication_publication_attachments_attributes_0_attachment').change(function(){
 		var names = [];
 		for (var i = 0; i < $(this).get(0).files.length; ++i) {
 			names.push($(this).get(0).files[i].name);
@@ -93,12 +94,11 @@ $(document).on('turbolinks:load', function(){
 	});
 
 	$('#upload-btn').click(function(){
-		$realInputField.click();
+		$('#publication_publication_attachments_attributes_0_attachment').click();
 	});
 
-	$reportingInput = $("#reporting_reporting_attachments_attributes_0_attachment");
 
-	$reportingInput.change(function(){
+	$("#reporting_reporting_attachments_attributes_0_attachment").change(function(){
 		var names = [];
 		for (var j = 0 ; j < $(this).get(0).files.length; ++j) {
 			names.push($(this).get(0).files[j].name);
@@ -106,8 +106,8 @@ $(document).on('turbolinks:load', function(){
 		$("#reporting-file-display").text(names);
 	});
 
-	$('#reporting-file-upload-btn').click(function(){
-		$reportingInput.click();
+	$('a#reporting-file-upload-btn').click(function(){
+		$("#reporting_reporting_attachments_attributes_0_attachment").click();
 	});
 
 
