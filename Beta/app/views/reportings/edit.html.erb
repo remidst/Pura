@@ -1,10 +1,5 @@
 <div class="container-fluid">
-	<div id="tab-panel">
-	  <ul class="nav nav-tabs">
-	    <li class="nav-show" id="nav-msg"><%= link_to '利用者一覧', root_path %></li>
-	    <li class="nav-show nav-selected" id="nav-file"><%= link_to '事業所一覧', contacts_path %></li>
-	  </ul>
-	</div>
+	<%= render 'layouts/contacts_app_navigation' %>
 
 	<div id="contact-show-block">
 		<div id="contact-information-container">
@@ -15,20 +10,38 @@
 
 		<div id="contact-reporting-container">
 			<h3>送信したレポート.請求書類をエディットする</h3>
-			<%= render 'reportings/edit' %>		
+			<%= form_for([@contact, @reporting], html: {multipart: true}) do |f| %>
+				
+				<div class="form-group">
+					<%= f.label :title, '内容' %>
+					<%= f.text_field :title, class: 'form-control' %>
+				</div>
 
-			<div id="edit-reporting-attachment">
-				<div id="add-reporting-file">
-					
+				<div class="form-group">
+					<%= f.label :message, 'メッセージ' %>
+					<%= f.text_area :message, class: 'form-control' %>
 				</div>
-				<div id="delete-reporting-file">
-					<%= @reporting.reporting_attachments.each do |a| %>
-					<div id="delete-reporting-attachment-<%= a.id %>" class="delete-reporting-attachment">
-						<%= a.attachment.file.filename %> <%= link_to '消す', reporting_reporting_attachment_path(@reporting, a), method: :delete, data: {confirm: 'ファイルがこのレポートから削除されます'}, remote: true %>
+
+
+				<div id="edit-reporting-attachment">
+					<div id="add-reporting-file">
+						
 					</div>
-					<% end %>
+					<div id="delete-reporting-file">
+						<% @reporting.reporting_attachments.each do |a| %>
+						<div id="delete-reporting-attachment-<%= a.id %>" class="delete-reporting-attachment">
+							<%= a.attachment.file.filename %> <%= link_to '消す', reporting_reporting_attachment_path(@reporting, a), method: :delete, data: {confirm: 'ファイルがこのレポートから削除されます'}, remote: true %>
+						</div>
+						<% end %>
+					</div>
+				</div>	
+
+				<div class="form-group">
+					<%= f.submit '送信する', class: "btn btn-info" %>
 				</div>
-			</div>	
+			<% end %>	
+
+
 		</div>
 
 	</div>

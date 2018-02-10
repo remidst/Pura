@@ -446,6 +446,9 @@ textarea.comment-input {
 	style: table;
 	margin-left: 10px;
 	margin-right: 0px;
+	min-width: 125px;
+	display: flex;
+	flex-direction: row-reverse;
 }
 
 #edit-project-button {
@@ -461,9 +464,9 @@ a.project-header-button {
   padding: 4px 7px 4px 7px;
   border-radius: 4px;
   border: 0.5px solid #b8b8ba;
-  style: table-cell;
+  display: table-cell;
+  text-align: center;
   vertical-align: middle;
-  width: 100%;
 }
 
 a.project-header-button:hover {
