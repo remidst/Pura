@@ -1,0 +1,5 @@
+<% if @reporting_attachment.new_record? %>
+	alert("ファイルのアップロードが失敗しました");
+<% else %>
+	$("#delete-reporting-file").append("<%= j render partial: 'reporting_attachments/reporting_attachment', locals: {reporting_attachment: @reporting_attachment, reporting: @reporting} %>");
+<% end %>
