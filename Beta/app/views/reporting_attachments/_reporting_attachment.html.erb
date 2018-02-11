@@ -1,3 +1,4 @@
 <div id="delete-reporting-attachment-<%= reporting_attachment.id %>" class="delete-reporting-attachment">
-	<%= reporting_attachment.attachment.file.filename %> <%= link_to '消す', reporting_reporting_attachment_path(reporting, reporting_attachment), method: :delete, data: {confirm: 'ファイルがこのレポートから削除されます'}, remote: true %>
+	<%= link_to "#{reporting_attachment.attachment.file.filename}", reporting_attachment.attachment_url, target: :_blank  %> <%= link_to image_tag("delete_cross.gif"), reporting_reporting_attachment_path(reporting, reporting_attachment), method: :delete, data: {confirm: 'ファイルがこのレポートから削除されます'}, remote: true, title: '消す' %>
 </div>
+

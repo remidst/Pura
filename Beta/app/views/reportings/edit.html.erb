@@ -9,41 +9,48 @@
 
 
 		<div id="contact-reporting-container">
-			<h3>送信したレポート.請求書類をエディットする</h3>
+			<h2 class="h2-centered">送信したレポート.請求書類をエディットする</h3>
 
-			<div id="edit-reporting-attachment">
-				<div id="delete-reporting-file">
-					添付ファイル：
-						<% @reporting.reporting_attachments.each do |reporting_attachment| %>
-							<%= render partial: 'reporting_attachments/reporting_attachment', locals: {reporting: @reporting, reporting_attachment: reporting_attachment} %>
-						<% end %>
+				<div id="edit-reporting-block">
+					<div id="edit-reporting-attachment">
+						<div id="delete-reporting-file">
+							添付ファイル：
+								<% @reporting.reporting_attachments.each do |reporting_attachment| %>
+									<%= render partial: 'reporting_attachments/reporting_attachment', locals: {reporting: @reporting, reporting_attachment: reporting_attachment} %>
+								<% end %>
+						</div>
+						<div id="add-reporting-file">
+							<%= form_for([@reporting, @reporting.reporting_attachments.build], html: {multipart: true}, remote: true) do |a| %>
+								<%= a.file_field :attachment, multiple: true, name: "reporting_attachments[attachment]", style: "display: none" %>
+								<div id="add-reporting-attachment-section">
+									<a id="reporting-add-file-btn" class="project-header-button"><i class="publication-file-attachment-icon"></i>ファイルを追加する</a>
+									<div id="add-file-display"></div>
+								</div>
+							<% end %>
+						</div>
+
+					</div>	
+
+					<%= form_for([@contact, @reporting], html: {multipart: true}) do |f| %>
+						
+						<div class="form-group">
+							<%= f.label :title, '内容' %>
+							<%= f.text_field :title, class: 'form-control' %>
+						</div>
+
+						<div class="form-group">
+							<%= f.label :message, 'メッセージ' %>
+							<%= f.text_area :message, class: 'form-control' %>
+						</div>
+
+
+						<div class="btn-to-center">
+							<%= f.submit 'セーブする', class: "btn btn-info" %>
+						</div>
+					<% end %>	
 				</div>
-				<div id="add-reporting-file">
-					<%= form_for([@reporting, @reporting.reporting_attachments.build], html: {multipart: true}, remote: true) do |a| %>
-						<%= a.label :attachment, "ファイルを追加する：" %>
-						<%= a.file_field :attachment, multiple: true, name: "reporting_attachments[attachment]" %>
-					<% end %>
-				</div>
 
-			</div>	
-
-			<%= form_for([@contact, @reporting], html: {multipart: true}) do |f| %>
-				
-				<div class="form-group">
-					<%= f.label :title, '内容' %>
-					<%= f.text_field :title, class: 'form-control' %>
-				</div>
-
-				<div class="form-group">
-					<%= f.label :message, 'メッセージ' %>
-					<%= f.text_area :message, class: 'form-control' %>
-				</div>
-
-
-				<div class="btn-to-center">
-					<%= f.submit 'セーブする', class: "btn btn-info" %>
-				</div>
-			<% end %>	
+			
 
 
 		</div>

@@ -83,6 +83,14 @@ $(document).on('turbolinks:load', function(){
 		$("#reporting_reporting_attachments_attributes_0_attachment").click();
 	});
 
+	$("#reporting_attachment_attachment").change(function(){
+		$("#add-file-display").show().text("アップロード中です . . .").css('color', 'black');
+	});
+
+	$("#reporting-add-file-btn").click(function(){
+		$("#reporting_attachment_attachment").click();
+	});
+
 
 
 	$(".publication-views").click(function(){

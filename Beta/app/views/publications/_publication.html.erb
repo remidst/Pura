@@ -29,7 +29,7 @@
 			<ul>
 				<% publication.publication_attachments.each do |file| %>
 					<li><%= image_tag file.attachment_url, class: "publication-image" %></li>
-				 	<li><%= link_to "#{file.attachment.file.filename}", file.attachment_url %></li>
+				 	<li><%= link_to "#{file.attachment.file.filename}", file.attachment_url, target: :_blank %></li>
 				<% end %>		
 			</ul>
 		<% end %>

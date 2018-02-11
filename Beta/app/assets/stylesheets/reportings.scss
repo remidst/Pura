@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#edit-reporting-block {
+	margin-left: 20px;
+	margin-right: 20px;
+}
 
 .edit-reporting {
 	margin-top: 30px;
@@ -19,10 +23,23 @@
 	margin-left: 20px;
 }
 
-#delete-reporting-file　{
+#delete-reporting-file {
 	margin-bottom: 30px;
+	margin-top: 20px;
 }
 
 #add-reporting-file {
 	margin-bottom: 30px;
+}
+
+#reporting-add-file-btn {
+	width: 140px;
+}
+
+#add-reporting-attachment-section {
+	display: flex;
+}
+
+#add-file-display {
+	margin-left : 10px;
 }

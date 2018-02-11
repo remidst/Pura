@@ -2,4 +2,6 @@
 	alert("ファイルのアップロードが失敗しました");
 <% else %>
 	$("#delete-reporting-file").append("<%= j render partial: 'reporting_attachments/reporting_attachment', locals: {reporting_attachment: @reporting_attachment, reporting: @reporting} %>");
+	$("#add-file-display").css('color', 'green').text("アップロードが完了しました！");
+	$("#add-file-display").delay(5000).fadeOut("slow");
 <% end %>
