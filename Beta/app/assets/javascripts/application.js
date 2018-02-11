@@ -12,6 +12,7 @@
 //
 //= require jquery3
 //= require jquery_ujs
+//= require jquery-fileupload/basic
 //= require autosize
 //= require turbolinks
 //= require jquery.tokeninput

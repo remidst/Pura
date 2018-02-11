@@ -13,5 +13,21 @@ class ReportingAttachmentsController < ApplicationController
     end
   end
 
+  def create
+    @reporting = Reporting.find(params[:reporting_id])
+    @reporting_attachment = @reporting.reporting_attachments.new(create_params)
+
+    puts "try to show file name:"
+    puts @reporting_attachment.attachment.file.filename
+
+    @reporting_attachment.save!
+  end
+
+  private
+
+  def create_params
+    params.require(:reporting_attachments).permit(:attachment)
+  end
+
 
 end

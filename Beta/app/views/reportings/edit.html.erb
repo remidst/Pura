@@ -10,6 +10,24 @@
 
 		<div id="contact-reporting-container">
 			<h3>送信したレポート.請求書類をエディットする</h3>
+
+			<div id="edit-reporting-attachment">
+				<div id="delete-reporting-file">
+					<% @reporting.reporting_attachments.each do |a| %>
+					<div id="delete-reporting-attachment-<%= a.id %>" class="delete-reporting-attachment">
+						<%= a.attachment.file.filename %> <%= link_to '消す', reporting_reporting_attachment_path(@reporting, a), method: :delete, data: {confirm: 'ファイルがこのレポートから削除されます'}, remote: true %>
+					</div>
+					<% end %>
+				</div>
+				<div id="add-reporting-file">
+					<%= form_for([@reporting, @reporting.reporting_attachments.build], html: {multipart: true}, remote: true) do |a| %>
+						<%= a.label :attachment, "新しいファイルを選択する：" %>
+						<%= a.file_field :attachment, multiple: true, name: "reporting_attachments[attachment]" %>
+					<% end %>
+				</div>
+
+			</div>	
+			
 			<%= form_for([@contact, @reporting], html: {multipart: true}) do |f| %>
 				
 				<div class="form-group">
@@ -22,19 +40,6 @@
 					<%= f.text_area :message, class: 'form-control' %>
 				</div>
 
-
-				<div id="edit-reporting-attachment">
-					<div id="add-reporting-file">
-						
-					</div>
-					<div id="delete-reporting-file">
-						<% @reporting.reporting_attachments.each do |a| %>
-						<div id="delete-reporting-attachment-<%= a.id %>" class="delete-reporting-attachment">
-							<%= a.attachment.file.filename %> <%= link_to '消す', reporting_reporting_attachment_path(@reporting, a), method: :delete, data: {confirm: 'ファイルがこのレポートから削除されます'}, remote: true %>
-						</div>
-						<% end %>
-					</div>
-				</div>	
 
 				<div class="form-group">
 					<%= f.submit '送信する', class: "btn btn-info" %>

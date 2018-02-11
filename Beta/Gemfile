@@ -87,6 +87,9 @@ gem 'autosize'
 #ruby wrapper for image magick
 gem "mini_magick"
 
+#jquery fileupload to handle ajax
+gem 'jquery-fileupload-rails'
+
 
 
 #serve assets on heroku

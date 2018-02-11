@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     member do 
       patch :toggle_read_reporting
     end
-    resources :reporting_attachments, only: :destroy
+    resources :reporting_attachments
   end
 
   resources :timelines
