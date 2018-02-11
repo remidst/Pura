@@ -136,61 +136,43 @@
   def update
     prjct = project_params 
 
-    unless prjct[:user_tokens].nil?
+    if prjct[:user_tokens].present?
 
-      #create an array with the user ids that will disapear, and make sure to have only integers
-      array_project_users=@project.user_ids
-      array_user_tokens=prjct[:user_tokens].split(',')
-      array_user_tokens.map! {|x| x.to_i }
+      current_project_users = @project.users
 
-      #make sure not to delete curent user (leader) from the project
-      array_user_tokens << current_user.id.to_i
-      prjct[:user_tokens] << ",#{current_user.id}"
+      new_users_tokens = prjct[:user_tokens].split(',')
+      new_users_tokens.map! { |x| x.to_i }
 
-      #add unregistered users to user tokens
-      if @unregistered.present?
-        unregistered_ids = @unregistered.ids
-        array_user_tokens << unregistered_ids.join(',')
-        array_user_tokens.map! {|x| x.to_i}
-        unregistered_ids_string = unregistered_ids.join(',')
-        prjct[:user_tokens] << ",#{unregistered_ids_string}"
-      end
+      new_users = new_users_tokens.map {|token| User.find(token) }
 
-      #array operation to retrive only the ids that will disapear
-      array_delete_ids = (array_project_users - array_user_tokens)
+      @project.users << new_users
 
-      #array operation to retrieve only the ids that were added
-      array_added_ids = (array_user_tokens - array_project_users)
+      @project.save!
 
-      #if the array with ids to delete is not empty, transform it into array with user records
-      array_delete_ids.map! { |id| User.find(id) }.join(',') if array_delete_ids.present?
-
-    else
     end
 
-    #store old leader 
+    if prjct[:project_name].present?
+      @project.project_name = prjct[:project_name]
+      @project.save!
+    end
+
+    #store old leader before update
     old_leader = User.find(@project.leader_id)
 
+    if prjct[:leader_id].present?
+      @project.leader_id = prjct[:leader_id]
+      @project.save!
+    end
+
+
+
     respond_to do |format|
-      if @project.update(prjct)
-
-        #send notification email to those who will be deleted from the project
-        if prjct[:user_tokens].present? && array_delete_ids.present?
-
-          #send emails to each deleted user
-          array_delete_ids.each do |user|
-            ProjectMailer.goodbye_registered_user(user, @project).deliver_later
-          end
-
-          #send email to leader to confirm deletion
-          ProjectMailer.goodbye_registered_user_leader_notice(array_delete_ids, @project).deliver_later
-        end
+      if @project.save
 
         #send email and notification to those who were added (if any)
-        if prjct[:user_tokens].present? && array_added_ids.present?
-          added_users = array_added_ids.map {|user| User.find(user) }
+        if prjct[:user_tokens].present?
 
-          added_users.each do |user|
+          new_users.each do |user|
             ProjectMailer.user_invited(user, @project).deliver_later
           end
         end
@@ -201,10 +183,16 @@
           ProjectMailer.new_leader_email(old_leader, @project).deliver_later
         end
 
-        format.html { redirect_to @project, notice: '案件情報のアップデートが成功しました。' }
-        format.json { render :show, status: :ok, location: @project }
+        if prjct[:user_tokens].present?
+          format.html { redirect_to project_memberships_path(@project), notice: '案件に新しいメンバーが招待されました' }
+          format.js
+        else
+          format.html { redirect_to @project, notice: '案件情報のアップデートが成功しました。' }
+          format.js
+        end
+
       else
-        format.html { render :edit }
+        format.html { redirect_to @project, notice: '案件のアップデートが失敗しました。' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end

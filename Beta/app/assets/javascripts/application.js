@@ -39,7 +39,6 @@ $(document).on('turbolinks:load', function(){
 		searchingText: "検索中...",
 		theme: "facebook",
 		preventDuplicates: true,
-		prePopulate: $('#project_user_tokens').data('load'),
 		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
 	});
 

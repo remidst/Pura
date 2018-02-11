@@ -26,7 +26,7 @@ class MembershipsController < ApplicationController
 				added_user = User.find_by(email: params[:email])
 				ProjectMailer.user_invited(added_user, @project).deliver_later
 
-				redirect_to project_path(@membership.project), notice: '新しいメンバーが招待されました。'
+				redirect_to project_memberships_path(@membership.project), notice: '新しいメンバーが招待されました。'
 			else
 				redirect_to @project, warning: 'メンバーの招待が失敗しました。'
 		    end
@@ -39,9 +39,9 @@ class MembershipsController < ApplicationController
 		@registered = @project.users.where.not("username is null")
 		@leader = User.find(@project.leader_id)
 		@members = @registered.where.not(id: @leader.id)
+		@memberships_but_self = @project.memberships.where.not(user_id: @leader.id)
 		
-		ids_to_ignore = @unregistered.ids
-		ids_to_ignore << current_user.id
+		ids_to_ignore = @project.users.ids
 		@tokens = @project.users.where.not(id: ids_to_ignore)
     end
 
@@ -58,13 +58,23 @@ class MembershipsController < ApplicationController
 			added_user = User.find_by(email: params[:email])
 			ProjectMailer.user_invited(added_user, project).deliver_later
 
-    		redirect_to project_edit_leader_path(membership.project), notice: '新しい責任者が招待されました。'
+    		redirect_to project_edit_leader_path(membership.project), notice: '新しい責任者が招待されました'
     	else
-    		redirect_to project, warning: '責任者の招待が失敗しました。'
+    		redirect_to project, warning: '責任者の招待が失敗しました'
     	end
     end
 
     def destroy
+    	@project = Project.find(params[:project_id])
+    	@membership = Membership.find(params[:id])
+
+    	respond_to do |format|
+    	  if @membership.destroy
+    	    format.js 
+    	  else
+    	    format.html { redirect_to @project, notice: "ユーザーの削除が失敗しました" }
+    	  end
+    	end
     end
 	
 
