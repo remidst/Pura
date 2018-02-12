@@ -1,3 +1,0 @@
-<div id="member-<%= user.id %>" class="member-container">
-	<%= user.username.present? ? user.username : user.email %><%= user.company.present? ? ", #{user.company}" : "" %><%= link_to image_tag("delete_cross.gif"), project_membership_path(project, membership), method: :delete, data: {confirm: 'メンバーがこの案件から削除されます'}, remote: true, title: "案件から抜く", class: "remove-cross"  %>
-</div>

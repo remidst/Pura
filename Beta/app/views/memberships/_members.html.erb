@@ -1,0 +1,5 @@
+<% memberships.each do |membership| %>
+	<div id="member-<%= membership.user.id %>" class="member-container">
+		<%= membership.user.username.present? ? membership.user.username : membership.user.email %><%= membership.user.company.present? ? ", #{membership.user.company}" : "" %><%= link_to image_tag("delete_cross.gif"), project_membership_path(membership.project, membership), method: :delete, data: {confirm: 'メンバーがこの案件から削除されます'}, remote: true, title: "案件から抜く", class: "remove-cross"  %>
+	</div>
+<% end %>

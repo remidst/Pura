@@ -6,50 +6,60 @@
 		<div class="well well-devise well-membership">
 			<h2 class="h2-centered" ><%= @project.project_name %>様の案件メンバー</h1>
 
-			<div id="membership-list">
-				案件メンバー：<br/>
-				<div id="memberships">
-					<% @memberships_but_self.each do |membership| %>
-						<%= render partial: 'memberships/member', locals: {membership: membership, user: membership.user, project: @project} %>
-					<% end %>
-				</div>
-				
+			<div id="membership-management">
+				<%= link_to '案件へ戻る', project_path(@project), class: "project-header-button" %>
+
+					<div id="invite-new-members">
+							<h3 class="h3-membership" >メンバーを招待する</h3>
+
+							<div id="token-input-form">
+								<%= form_with(model: @project, local: true) do |form| %>
+								  <% if @project.errors.any? %>
+								    <div id="error_explanation">
+								      <h2> エラーが<%= pluralize(@project.errors.count, "error") %>回発生しました:</h2>
+
+								      <ul>
+								      <% @project.errors.full_messages.each do |message| %>
+								        <li><%= message %></li>
+								      <% end %>
+								      </ul>
+								    </div>
+								  <% end %>
+
+								  <div class="form_group">
+								    <%= form.label :user_tokens, '名前から探す:' %>
+								    <%= form.text_field :user_tokens, id: :project_user_tokens, data: {load: @tokens } %>
+								  </div>
+
+								  <div class="actions member-update">
+								    <%= form.submit '招待する', class: "btn btn-info" %>
+								  </div>
+
+								<% end %>
+							</div>
+
+
+
+						    <div class="membership-form">
+						    	<%= render 'form' %>
+						    </div>
+					</div>
+
+					<div id="membership-list">
+						<h3 class="h3-membership" >現在のメンバー.削除</h3> 
+						<div id="memberships">
+
+							<%= render partial: 'memberships/members', locals: {memberships: @memberships_but_self } %>
+
+						</div>
+						
+					</div>
+
+				    
+
 			</div>
 
-			<div id="token-input-form">
-				<%= form_with(model: @project, local: true) do |form| %>
-				  <% if @project.errors.any? %>
-				    <div id="error_explanation">
-				      <h2> エラーが<%= pluralize(@project.errors.count, "error") %>回発生しました:</h2>
-
-				      <ul>
-				      <% @project.errors.full_messages.each do |message| %>
-				        <li><%= message %></li>
-				      <% end %>
-				      </ul>
-				    </div>
-				  <% end %>
-
-				  <div class="form_group">
-				    <%= form.label :user_tokens, '名前から探す:' %>
-				    <%= form.text_field :user_tokens, id: :project_user_tokens, data: {load: @tokens } %>
-				  </div>
-
-				  <div class="actions member-update">
-				    <%= form.submit '招待する', class: "btn btn-info" %>
-				  </div>
-
-				<% end %>
-			</div>
-
-
-
-		    <div class="membership-form">
-		    	<%= render 'form' %>
-		    </div>
-		    
-
-		    <%= link_to '案件へ戻る', project_path(@project), class: "project-header-button" %>
+		
 
 		</div>
 	</div>

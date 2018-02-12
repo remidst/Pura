@@ -145,9 +145,13 @@
 
       new_users = new_users_tokens.map {|token| User.find(token) }
 
+
       @project.users << new_users
 
       @project.save!
+
+      #recording new memberships for js rendering
+      @new_memberships = new_users.map {|user| Membership.where(user_id: user.id, project_id: @project.id).first}
 
     end
 
@@ -185,10 +189,8 @@
 
         if prjct[:user_tokens].present?
           format.html { redirect_to project_memberships_path(@project), notice: '案件に新しいメンバーが招待されました' }
-          format.js
         else
           format.html { redirect_to @project, notice: '案件情報のアップデートが成功しました。' }
-          format.js
         end
 
       else
