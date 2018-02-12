@@ -19,7 +19,7 @@
 						<span class="confirm-preview-label">添付ファイル：</span><br/>
 						<ul>
 							<% @reporting.reporting_attachments.each do |a| %>
-								<li><%= link_to "#{a.attachment.file.filename}", a.attachment_url %></li>
+								<li><%= link_to "#{a.attachment.file.filename}", a.attachment_url, target: "_blank" %></li>
 							<% end %>
 						</ul>
 					</div>

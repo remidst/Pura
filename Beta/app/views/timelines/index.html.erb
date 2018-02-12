@@ -19,8 +19,10 @@
 	  <% @timelines.each do |timeline| %>
 	  	<%= render partial: timeline, locals: {reporting: timeline.try(:reporting), contact: timeline.try(:contact), project: timeline.try(:project), publication: timeline.try(:publication)} %>
 
-      <% if @readmarks.count > 0 %>
+      <% if @readmarks.count > 0 && timeline.class.name != "Reporting" %>
         <%= render partial: "#{timeline.class.to_s.downcase}s/button", locals: {publication: timeline, reporting: timeline} %>
+      <% elsif @readmarks.count > 0 && timeline.class.name == "Reporting" %>
+        <%= render partial: "reportings/confirm_button", locals: {reporting: timeline, contact: timeline.contact} %>
       <% end %>
 
 	  <% end %>

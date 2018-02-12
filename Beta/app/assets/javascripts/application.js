@@ -183,10 +183,6 @@ $(document).on('turbolinks:load', function(){
 		e.stopPropagation();
 	});
 
-	$("a.btn.btn-info.btn-confirm").click(function(){
-		$("a.btn.btn-info.btn-confirm").parent().parent().fadeOut("slow");
-	});
-
 	layout();
 
 	getUrlVars();

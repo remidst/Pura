@@ -42,7 +42,7 @@ class ReportingsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @contact, notice: "レポート.請求書が共有されました" }
-      format.js { flash[:notice] = "レポート.請求書が共有されました" }
+      format.js 
     end
   end
 

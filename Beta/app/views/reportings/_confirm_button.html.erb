@@ -1,4 +1,4 @@
-<div class="publication-read-button">
+<div class="publication-read-button" id="confirm-button-<%= reporting.id %>">
 	<div id="confirm-button-container">
 		<%= link_to "#{ receiver(reporting).company }に共有する", contact_reporting_toggle_confirm_path(contact, reporting), method: :patch , remote: true, class: "btn btn-info btn-confirm" %>
 	</div>
