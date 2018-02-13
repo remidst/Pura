@@ -52,6 +52,7 @@ class PublicationsController < ApplicationController
 	end
 
 
+
 	private
 
 	def publication_params

@@ -1,7 +1,9 @@
 class TimelinesController < ApplicationController
 
 	def index
-		reporting_readmarks = current_user.reporting_readmarks.where(read: false)
+		all_reporting_readmarks = current_user.reporting_readmarks.where(user_id: current_user.id, read: false)
+		reporting_readmarks = all_reporting_readmarks.select{|readmark| readmark.reporting.confirmed }
+
 		publication_readmarks = current_user.publication_readmarks.where(read: false)
 		publication_comment_readmarks = current_user.publication_comment_readmarks.where(read: false)
 		unpublished_reportings = Reporting.where(confirmed: false, publisher_id: current_user.id)
@@ -30,6 +32,7 @@ class TimelinesController < ApplicationController
 			#modifier plus tard
 
 			@reportings = current_user.reporting_readmarks.last(15).map {|readmark| readmark.reporting }
+			@reportings.select!{|reporting| reporting.confirmed }
 			@publications = current_user.publication_readmarks.last(15).map {|readmark| readmark.publication}
 
 			timelines = @reportings + @publications
