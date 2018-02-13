@@ -28,7 +28,14 @@ module ContactHelper
 	end
 
 	def reporting_read(reporting)
+		if reporting.publisher == current_user
+			readmarks = reporting.reporting_readmarks.where(read: true)
+			readmarks.count == 2 ? "#{reporting.receiver.username}様がメッセージを確認しました" : "#{reporting.receiver.username}様はまだメッセージを確認してません"
+		end
+	end
+
+	def reporting_read_style(reporting)
 		readmarks = reporting.reporting_readmarks.where(read: true)
-		readmarks.count == 2 ? "既読" : "未読"
+		readmarks.count == 2 ? "read" : "unread"
 	end
 end

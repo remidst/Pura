@@ -4,7 +4,7 @@
 
 #project-index-table tr:hover {
 	cursor: pointer;
-	background-color: #cceae7;
+	background-color: #FDF7F7;
 }
 
 #btn-home {
@@ -282,6 +282,7 @@ input.send-message-button {
 	margin-bottom: 10px;
 	display: flex;
 	background-color: #f8f8fa;
+	border-bottom: 0.5px solid #ddd;
 }
 
 #project-name-container {
@@ -304,12 +305,14 @@ input.send-message-button {
 .publication-header {
 	display: flex;
 	padding-top: 10px;
+	margin-top: 2px;
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-bottom: 5px;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
-	background-color: #f8f8fa;
+	background-color: white;
+	border-bottom: 0.5px solid #ddd;
 }
 
 .publication-publisher {
@@ -347,9 +350,10 @@ input.send-message-button {
 	padding-right: 60px;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	background: #f8f8fa;
+	background: white;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
+	border-top: 0.5px solid #ddd;
 }
 
 .publication-comments-container {
@@ -390,7 +394,7 @@ input.send-message-button {
 .publication-comment-form {
 	background-color: #fff;
 	border-radius: 10px;
-	border: 1px solid #eee;
+	border: 1px solid #ddd;
 	margin-top: 5px;
 }
 
@@ -416,7 +420,7 @@ textarea.comment-input {
 }
 
 .well.well-publication {
-	background: #f8f8fa;
+	background: white;
 	padding: 0px;
 	border: none;
 	border-bottom-left-radius: 0px;
@@ -455,6 +459,10 @@ textarea.comment-input {
 	style: table;
 	margin-left: 10px;
 	margin-right: 0px;
+}
+
+a#upload-btn.project-header-button {
+	width: 130px;
 }
 
 a.project-header-button {

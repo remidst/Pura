@@ -8,6 +8,12 @@ class Reporting < ApplicationRecord
 
   after_create :create_reporting_readmarks
 
+  def receiver
+    contact = self.contact
+    self.publisher == contact.care_manager ? receiver = contact.service_provider : receiver = contact.care_manager
+    return receiver
+  end
+
   def set_publisher!(user)
   	self.publisher_id = user.id
   	self.save!

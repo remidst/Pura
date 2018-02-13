@@ -12,6 +12,10 @@
 	margin-top: 30px;
 }
 
+a#reporting-file-upload-btn.project-header-button {
+	width: 130px;
+}
+
 
 .btn-to-center {
 	text-align: center;
@@ -42,4 +46,12 @@
 
 #add-file-display {
 	margin-left : 10px;
+}
+
+p.reporting-read {
+	color: #106F1C;
+}
+
+p.reporting-unread {
+	color: black;
 }

@@ -4,7 +4,7 @@
 
 	<div class="timeline-container">	
 		<div class="well well-devise well-membership">
-			<h2 class="h2-centered" ><%= @project.project_name %>様の案件メンバー</h1>
+			<h2 class="h2-centered" ><%= @project.project_name.delete("　") %>様の案件メンバー</h1>
 
 			<div id="membership-management">
 				<%= link_to '案件へ戻る', project_path(@project), class: "project-header-button" %>

@@ -11,7 +11,7 @@
 
 			<%-# Project header / menu -%>
 			<div id="project-name-container">
-				<%= @project.project_name %>
+				<%= @project.project_name.delete("　") %>
 			</div>
 
 			<div id="project-other-information">
@@ -38,7 +38,7 @@
 					</div>
 
 					<% if policy(@project).edit? %>
-						<div id="edit-project-button"><%= link_to '基本情報の記入・変更', edit_project_spec_path(@project, @spec), class: "project-header-button" %> </div> 
+						<div id="edit-project-button"><%= link_to '基本情報の変更', edit_project_spec_path(@project, @spec), class: "project-header-button" %> </div> 
 					<% else %>
 
 					<% end %>
@@ -61,8 +61,8 @@
 				<div class="control-group">
 					<div class="attach-set">
 						<%= a.file_field :attachment, multiple: true, name: "publication_attachments[attachment][]", style: "display:none" %>
-						<div class="input-append">
-							<a id="upload-btn" class="project-header-button"><i class="publication-file-attachment-icon"></i>ファイルを添付する</a>
+						<div class="input-append" id="input-append-button">
+							<a id="upload-btn" class="project-header-button"><i class="publication-file-attachment-icon"></i>ファイルを選択</a>
 							<div id="file-display"></div>
 						</div>
 						<% end %>
@@ -71,7 +71,7 @@
 				</div>
 
 				<div class="form-group">
-					<%= f.submit '送信', class: 'btn btn-info' %>
+					<%= f.submit ' 送信 ', class: 'btn btn-info' %>
 				</div>
 			<% end %>
 		</div>

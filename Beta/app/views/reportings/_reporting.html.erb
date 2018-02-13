@@ -16,6 +16,8 @@
 		<% end %>
 	</ul>
 
-	<p><%= reporting_read(reporting) %></p>
+	<p class="reporting-<%= reporting_read_style(reporting) %>">
+		<%= reporting_read(reporting) %>
+	</p>
 	
 </div>

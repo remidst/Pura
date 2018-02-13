@@ -19,7 +19,7 @@
       <tbody id="project-index-table">
         <% @projects.each do |project| %>
           <tr class="clickable-row" data-link="<%= project_path(project) %>">
-            <td><%= project.project_name %></td>
+            <td><%= project.project_name.delete("　") %></td>
             <td class="project-index-users">
                 <%= project.users.map{ |user| user.username if user != current_user }.compact.join(', ') %>
             </td>

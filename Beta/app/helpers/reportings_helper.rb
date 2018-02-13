@@ -6,9 +6,9 @@ module ReportingsHelper
 		publisher == contact.care_manager ? receiver = contact.service_provider : receiver = contact.care_manager
 
 		if publisher == current_user
-			"#{receiver.username}様に送信した書類"
+			"#{receiver.username}様への書類：#{reporting.title}"
 		else
-			"#{receiver.username}様から書類が共有されました"
+			"#{publisher.username}様からの書類：#{reporting.title}"
 		end
 	end
 
