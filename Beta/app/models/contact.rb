@@ -6,8 +6,6 @@ class Contact < ApplicationRecord
 
   validates_uniqueness_of :service_provider_id, scope: :care_manager_id
 
-  validates_format_of :email, with: Devise::email_regexp
-
 
   	def set_service_provider!(user)
 		existing_user = User.find_by(email: email)
