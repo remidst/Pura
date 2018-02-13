@@ -19,8 +19,10 @@
 	<div class="timeline-container">
 		<div id="contact-reporting-list">
 			<% @unshared.each do |reporting| %>
-				<%= render partial: 'reportings/reporting', locals: {reporting: reporting, contact: @contact} %>
-				<%= render partial: 'reportings/confirm_button', locals: {reporting: reporting, contact: @contact} %>
+				<% if current_user == reporting.publisher %>
+					<%= render partial: 'reportings/reporting', locals: {reporting: reporting, contact: @contact} %>
+					<%= render partial: 'reportings/confirm_button', locals: {reporting: reporting, contact: @contact} %>
+				<% end %>
 			<% end %>
 
 			<% @reportings.each do |reporting| %>
