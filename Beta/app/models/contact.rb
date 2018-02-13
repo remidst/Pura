@@ -5,6 +5,7 @@ class Contact < ApplicationRecord
   attr_reader :contact_user_tokens
 
   validates_uniqueness_of :service_provider_id, scope: :care_manager_id
+  validate :not_deleted
 
 
   	def set_service_provider!(user)
@@ -20,5 +21,10 @@ class Contact < ApplicationRecord
 	def contact_user_tokens=(ids)
 		tokens = ids.split(",")
 		self.service_provider_id = tokens.first
+	end
+
+	def not_deleted
+		errors.add(:service_provider_id, "このユーザーのアカウントは削除されてます。") if self.service_provider.deleted_at
+		errors.add(:care_manager_id, "このユーザーのアカウントは削除されてます。") if self.care_manager.deleted_at
 	end
 end

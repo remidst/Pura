@@ -37,16 +37,8 @@ class ContactsController < ApplicationController
 			@contact.set_service_provider!(current_user)
 		elsif cntc[:contact_user_tokens].present?
 			"detect user tokens"
-			puts cntc[:contact_user_tokens]
-			puts "first"
-			puts cntc[:contact_user_tokens].first
 			@contact.service_provider_id = cntc[:contact_user_tokens]
 		end
-
-		puts "passed the invitation. email, cm, sp"
-		puts @contact.email
-		puts @contact.care_manager_id
-		puts @contact.service_provider_id
 
 
 
