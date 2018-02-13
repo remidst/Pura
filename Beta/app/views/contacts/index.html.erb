@@ -15,20 +15,16 @@
 			</thead>
 			<tbody id="contact-index-table">
 				<% @contacts_care_manager.each do |contact| %>
-					<% if contact.care_manager.company.present? %>
-						<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
-							<td><%= contact.care_manager.company %></td>
-							<td><%= contact.care_manager.username %></td>
-						</tr>
-					<% end %>
+					<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
+						<td><%= contact.care_manager.company.present? ? contact.care_manager.company : "(未登録)" %></td>
+						<td><%= contact.care_manager.username.present? ? contact.care_manager.username : contact.care_manager.email %></td>
+					</tr>
 				<% end %>
 				<% @contacts_service_provider.each do |contact| %>
-					<% if contact.service_provider.company.present? %>
-						<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
-							<td><%= contact.service_provider.company %></td>
-							<td><%= username(contact.service_provider) %></td>
-						</tr>
-					<% end %>
+					<tr class="clickable-row" data-link="<%= contact_path(contact) %>">
+						<td><%= contact.service_provider.company.present? ? contact.service_provider.company : "(未登録)" %></td>
+						<td><%= contact.service_provider.username.present? ? contact.service_provider.username : contact.service_provider.email %></td>
+					</tr>
 				<% end %>
 			</tbody>
 		</table>

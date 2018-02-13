@@ -18,7 +18,7 @@
 					<div id="invite-by-email">
 						<p class="form-group">
 							<%= f.label :email, 'メールアドレスから招待する' %>
-							<%= f.text_field :email, class: "form-control" %>
+							<%= f.text_field :email, class: "form-control", pattern: "^.+@.+$" %>
 						</p>
 					</div>
 

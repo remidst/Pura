@@ -4,12 +4,18 @@ class Contact < ApplicationRecord
   has_many :reportings, dependent: :destroy
   attr_reader :contact_user_tokens
 
+  validates_uniqueness_of :service_provider_id, scope: :care_manager_id
+
+  validates_format_of :email, with: Devise::email_regexp
+
+
   	def set_service_provider!(user)
 		existing_user = User.find_by(email: email)
 		self.service_provider_id = if existing_user.present?
 			existing_user.id
 		else
-			User.invite!({email: email}, user)
+			service_provider = User.invite!({email: email}, user)
+			self.service_provider_id = service_provider.id
 		end
 	end
 

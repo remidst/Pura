@@ -28,6 +28,9 @@ class User < ApplicationRecord
   attribute :email, :string
 
   validates_uniqueness_of :email
+
+
+
   before_save :ensure_authentication_token
   after_create :welcome_email, :create_timeline
 

@@ -39,12 +39,18 @@ class ContactsController < ApplicationController
 			service_provider_id = cntc[:contact_user_tokens].first
 		end
 
+		puts "passed the invitation. email, cm, sp"
+		puts @contact.email
+		puts @contact.care_manager_id
+		puts @contact.service_provider_id
+
 
 
 		if @contact.save
 			redirect_to contact_path(@contact), notice: "事業所が招待されました！"
 		else
-			render :new, warning: "事業所の招待が失敗しました。"
+			flash[:alert] = "事業所の招待が失敗しました。"
+			render :new
 		end
 			
 	end
