@@ -16,8 +16,46 @@ class ContactsController < ApplicationController
 		read_all_reportings!(current_user, @contact)
 	end
 
+	
+	def new
+
+	end
+
+	def create
+		cntc = contact_params
+
+		@contact = Contact.new
+		@contact.care_manager_id = current_user.id
+
+		puts "care manager id"
+		puts @contact.care_manager_id
+
+
+
+		if cntc[:email].present?
+			@contact.email = cntc[:email]
+			@contact.set_service_provider!(current_user)
+		elsif cntc[:contact_user_tokens].present?
+			service_provider_id = cntc[:contact_user_tokens].first
+		end
+
+
+
+		if @contact.save
+			redirect_to contact_path(@contact), notice: "事業所が招待されました！"
+		else
+			render :new, warning: "事業所の招待が失敗しました。"
+		end
+			
+	end
+
+
 
 	private
+
+	def contact_params
+		params.require(:contact).permit(:contact_user_tokens, :email)
+	end
 
 	def read_all_reportings!(user, contact)
 		reportings = contact.reportings

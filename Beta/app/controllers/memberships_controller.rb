@@ -13,7 +13,7 @@ class MembershipsController < ApplicationController
 	    user = User.find_by(email: params[:email])
 
 	    if user.present? && user.deleted_at.present?
-	    	flash[:alert] = "#{params[:email]}のアカウントは削除されております。"
+	    	flash[:alert] = "#{params[:email]}のアカウントは削除されてます。"
 	    	redirect_to @project
 	    else
 

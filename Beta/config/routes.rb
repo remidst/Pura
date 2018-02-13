@@ -59,6 +59,8 @@ Rails.application.routes.draw do
 
   get 'contact/:contact_id/reporting/:id/confirm' => 'reportings#confirm', as: :contact_reporting_confirm
   patch 'contact/:contact_id/reporting/:id/toggle_confirm' => 'reportings#toggle_confirm', as: :contact_reporting_toggle_confirm
+
+  get 'users/company_lookup' => 'users#company_lookup'
   
 
   root 'timelines#index'

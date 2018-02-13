@@ -42,6 +42,20 @@ $(document).on('turbolinks:load', function(){
 		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
 	});
 
+	$("#contact_user_token").tokenInput("/users/company_lookup.json",
+	{
+		queryParam: 'q',
+		minChars: 1,
+		propertyToSearch: "username",
+		hintText: "ユーザー名から検索する",
+		noResultsText: "このユーザーは見つかりませんでした。",
+		searchingText: "検索中...",
+		theme: "facebook",
+		tokenLimit: 1,
+		preventDuplicates: true,
+		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
+	});
+
 	$("a.btn.btn-info.scroll-home").click(function(){
 		$('body,html').animate({
 			scrollTop: 0

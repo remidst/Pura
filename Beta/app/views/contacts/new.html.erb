@@ -1,0 +1,37 @@
+<div class="container-fluid">
+
+	<%= render 'layouts/contacts_app_navigation' %>
+
+	<div class="timeline-container">
+		<div class="well well-devise well-membership">
+			<h2 class="h2-centered">事業所を招待する</h2>
+
+			<div id="membership-management">
+
+				<%= form_for(Contact.new) do |f| %>
+
+					<div id="invite-by-name">
+						<%= f.label :contact_user_tokens, '事業所名で探す' %>
+						<%= f.text_field :contact_user_tokens, id: :contact_user_token %>
+					</div>
+
+					<div id="invite-by-email">
+						<p class="form-group">
+							<%= f.label :email, 'メールアドレスから招待する' %>
+							<%= f.text_field :email, class: "form-control" %>
+						</p>
+					</div>
+
+					<div id="submit">
+						<p class="form_group">
+							<%= f.submit '招待する', class: 'btn btn-info' %>
+						</p>
+					</div>
+
+				<% end %>
+			</div>
+		</div>
+
+	</div>
+
+</div>
