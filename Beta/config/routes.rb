@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     member do 
       patch :toggle_read_publication
     end
+    resources :publication_attachments
   end
 
 

@@ -1,0 +1,7 @@
+<% if @publication_attachment.new_record? %>
+	alert("ファイルのアップロードが失敗しました");
+<% else %>
+	$("#delete-reporting-file").append("<%= j render partial: 'publication_attachments/publication_attachment', locals: {publication_attachment: @publication_attachment, publication: @publication} %>");
+	$("#add-attachment-display").css('color', 'green').text("アップロードが完了しました！");
+	$("#add-attachment-display").delay(5000).fadeOut("slow");
+<% end %>

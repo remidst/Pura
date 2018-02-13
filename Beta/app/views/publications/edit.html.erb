@@ -1,0 +1,54 @@
+<div class="container-fluid">
+	<%= render 'layouts/projects_app_navigation' %>
+
+	<div id="contact-show-block">
+		<div id="contact-information-container">
+			<h1><%= @project.project_name %></h1>
+		</div>
+
+
+		<div id="contact-reporting-container">
+			<h2 class="h2-centered">送信したメッセージ.ファイルをエディットする</h3>
+
+				<div id="edit-reporting-block">
+					<div id="edit-reporting-attachment">
+						<div id="delete-reporting-file">
+							添付ファイル：
+								<% @publication.publication_attachments.each do |publication_attachment| %>
+									<%= render partial: 'publication_attachments/publication_attachment', locals: {publication: @publication, publication_attachment: publication_attachment} %>
+								<% end %>
+						</div>
+						<div id="add-reporting-file">
+							<%= form_for([@publication, @publication.publication_attachments.build], html: {multipart: true}, remote: true) do |a| %>
+								<%= a.file_field :attachment, multiple: true, name: "publication_attachments[attachment]", style: "display: none" %>
+								<div id="add-reporting-attachment-section">
+									<a id="publication-add-file-btn" class="project-header-button"><i class="publication-file-attachment-icon"></i>ファイルを追加する</a>
+									<div id="add-attachment-display"></div>
+								</div>
+							<% end %>
+						</div>
+
+					</div>	
+
+					<%= form_for([@project, @publication], html: {multipart: true}) do |f| %>
+
+						<div class="form-group">
+							<%= f.label :message, 'メッセージ' %>
+							<%= f.text_area :message, class: 'form-control' %>
+						</div>
+
+
+						<div class="btn-to-center">
+							<%= f.submit 'セーブする', class: "btn btn-info" %>
+						</div>
+					<% end %>	
+				</div>
+
+			
+
+
+		</div>
+
+	</div>
+</div>
+

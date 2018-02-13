@@ -51,11 +51,35 @@ class PublicationsController < ApplicationController
 		end
 	end
 
+	def edit
+		@project = Project.find(params[:project_id])
+		@publication = Publication.find(params[:id])
+
+		#will need authorization
+	end
+
+	def update
+		@project = Project.find(params[:project_id])
+		@publication = Publication.find(params[:id])
+
+		respond_to do |format|
+			if @publication.update(update_params)
+				format.html { redirect_to @project, notice: 'メッセージと添付ファイルがアップデートされました。'}
+			else
+				format.html { redirect_to @project, notice: 'メッセージと添付ファイルのアップデートが失敗しました' }
+			end
+		end
+	end
+
 
 
 	private
 
 	def publication_params
 		params.require(:publication).permit(:message, publication_attachments_attributes: [:id, :publication_id, :attachment])
+	end
+
+	def update_params
+		params.require(:publication).permit(:message)
 	end
 end

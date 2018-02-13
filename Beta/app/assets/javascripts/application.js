@@ -104,6 +104,14 @@ $(document).on('turbolinks:load', function(){
 		$("#reporting_attachment_attachment").click();
 	});
 
+	$("#publication_attachment_attachment").change(function(){
+		$("#add-attachment-display").show().text("アップロード中です . . .").css('color', 'black');
+	});
+
+	$("#publication-add-file-btn").click(function(){
+		$("#publication_attachment_attachment").click();
+	});
+
 
 
 	$(".publication-views").click(function(){
