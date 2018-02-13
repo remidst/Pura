@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-jQuery ->
+$(document).on 'turbolinks:load', ->
 	$('#new_publication_attachment').fileupload()

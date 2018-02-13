@@ -149,9 +149,9 @@ $(document).on('turbolinks:load', function(){
 		$("#well-specs").show();
 	});
 
-	$(".btn-toggle-read").click(function(){
+	$(".btn-tgl").click(function(){
 		$this = $(this)
-		$this.toggleClass("btn-toggle-read-activated");
+		$this.toggleClass("btn-info");
 		$this.text(($this.text() == "仕事が完了しました") ? "仕事を続ける" : "仕事が完了しました");
 	});
 
