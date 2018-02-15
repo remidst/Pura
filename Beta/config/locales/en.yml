@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  errors:
+    messages:
+      max_size_error: "ファイルは10Mb以内でお願いします！"

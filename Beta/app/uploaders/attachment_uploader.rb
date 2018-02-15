@@ -22,6 +22,10 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
+  def size_range
+    1..10.megabytes
+  end
+
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
@@ -45,5 +49,19 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  private
+
+  def check_size!(new_file)
+    size = new_file.size
+    expected_size_range = size_range
+    if expected_size_range.is_a?(::Range)
+      if size < expected_size_range.min
+        raise CarrierWave::IntegrityError, I18n.translate(:"errors.messages.min_size_error", :min_size => ApplicationController.helpers.number_to_human_size(expected_size_range.min))
+      elsif size > expected_size_range.max
+        raise CarrierWave::IntegrityError, I18n.translate(:"errors.messages.max_size_error", :max_size => ApplicationController.helpers.number_to_human_size(expected_size_range.max))
+      end
+    end
+  end
 
 end
