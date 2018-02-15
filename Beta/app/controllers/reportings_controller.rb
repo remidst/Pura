@@ -2,12 +2,16 @@ class ReportingsController < ApplicationController
 
   def new
     @contact = Contact.find(params[:contact_id])
+    authorize @contact, :is_member?
+
   	@reporting = @contact.reportings.new
   	@reporting_attachment = @reporting.reporting_attachments.build
   end
 
   def create
     @contact = Contact.find(params[:contact_id])
+    authorize @contact, :is_member?
+
   	@reporting = @contact.reportings.new(reporting_params)
     @reporting.set_publisher!(current_user)
     @reporting.confirmed = false
@@ -31,12 +35,15 @@ class ReportingsController < ApplicationController
     @contact = Contact.find(params[:contact_id])
     @reporting = Reporting.find(params[:id])
 
-    #verify authorization here
+    authorize @reporting, :is_publisher?
+
   end
 
   def toggle_confirm
     @contact = Contact.find(params[:contact_id])
     @reporting = Reporting.find(params[:id])
+
+    authorize @reporting, :is_publisher?
 
     @reporting.toggle!(:confirmed)
 
@@ -49,11 +56,15 @@ class ReportingsController < ApplicationController
   def edit
     @contact = Contact.find(params[:contact_id])
     @reporting = Reporting.find(params[:id])
+
+    authorize @reporting, :is_publisher?
   end
 
   def update
     @contact = Contact.find(params[:contact_id])
     @reporting = Reporting.find(params[:id])
+
+    authorize @reporting, :is_publisher?
 
     respond_to do |format|
       if @reporting.update(edit_params)

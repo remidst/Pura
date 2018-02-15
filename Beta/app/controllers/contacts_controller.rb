@@ -8,6 +8,9 @@ class ContactsController < ApplicationController
 
 	def show
 		@contact = Contact.find(params[:id])
+		authorize @contact, :is_member?
+
+		puts authorize @contact
 		@reportings = @contact.reportings.where(confirmed: true).order('created_at DESC')
 
 		@unshared = @contact.reportings.where(confirmed: false).order('created_at DESC')
@@ -26,9 +29,6 @@ class ContactsController < ApplicationController
 
 		@contact = Contact.new
 		@contact.care_manager_id = current_user.id
-
-		puts "care manager id"
-		puts @contact.care_manager_id
 
 
 

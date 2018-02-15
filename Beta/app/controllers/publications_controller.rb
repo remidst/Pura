@@ -5,6 +5,8 @@ class PublicationsController < ApplicationController
 		publication = project.publications.new(publication_params)
 		publication.publisher_id = current_user.id
 
+		authorize @project, :is_member?
+
 		respond_to do |format|
 			if publication.save
 
@@ -27,6 +29,8 @@ class PublicationsController < ApplicationController
 		@publication = Publication.find(params[:id])
 		@readmark = @publication.publication_readmarks.where(user_id: current_user.id).take
 
+		authorize @readmark, :is_reader?
+
 		@readmark.toggle!(:read)
 
 		if @publication.publication_comments.present?
@@ -40,6 +44,8 @@ class PublicationsController < ApplicationController
 	def destroy
 		@project = Project.find(params[:project_id])
 		@publication = Publication.find(params[:id])
+
+		authorize @publication, :is_publisher?
 
 		respond_to do |format|
 			if @publication.destroy
@@ -55,12 +61,16 @@ class PublicationsController < ApplicationController
 		@project = Project.find(params[:project_id])
 		@publication = Publication.find(params[:id])
 
+		authorize @publication, :is_publisher?
+
 		#will need authorization
 	end
 
 	def update
 		@project = Project.find(params[:project_id])
 		@publication = Publication.find(params[:id])
+
+		authorize @publication, :is_publisher?
 
 		respond_to do |format|
 			if @publication.update(update_params)

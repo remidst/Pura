@@ -2,6 +2,7 @@ class PublicationAttachmentsController < ApplicationController
 
   def destroy
     @publication = Publication.find(params[:publication_id])
+    authorize @publication, :is_publisher?
     @publication_attachment = PublicationAttachment.find(params[:id])
 
     respond_to do |format|
@@ -15,6 +16,8 @@ class PublicationAttachmentsController < ApplicationController
 
   def create
     @publication = Publication.find(params[:publication_id])
+    authorize @publication, :is_publisher?
+    
     @publication_attachment = @publication.publication_attachments.new(create_params)
 
     @publication_attachment.save!

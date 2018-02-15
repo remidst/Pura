@@ -9,6 +9,8 @@ class MembershipsController < ApplicationController
 
 	def create
 
+		authorize @project, :is_leader?
+
 	    params = membership_params
 	    user = User.find_by(email: params[:email])
 
@@ -35,6 +37,8 @@ class MembershipsController < ApplicationController
     end
 
     def index
+    	authorize @project, :is_leader?
+
 		@unregistered = @project.users.where("username is null")
 		@registered = @project.users.where.not("username is null")
 		@leader = User.find(@project.leader_id)
@@ -46,6 +50,8 @@ class MembershipsController < ApplicationController
     end
 
     def update_members
+    	authorize @project, :is_leader?
+
     	project = current_user.projects.find(params[:id])
     	membership = project.memberships.new(membership_params)
     	membership.set_user_id!(current_user)
@@ -65,6 +71,8 @@ class MembershipsController < ApplicationController
     end
 
     def destroy
+    	authorize @project, :is_leader?
+    	
     	@project = Project.find(params[:project_id])
     	@membership = Membership.find(params[:id])
 

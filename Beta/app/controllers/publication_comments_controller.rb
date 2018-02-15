@@ -2,6 +2,8 @@ class PublicationCommentsController < ApplicationController
 
 	def create
 		@publication = Publication.find(params[:publication_id])
+		authorize @publication.project, :is_member?
+		
 		@publication_comment = @publication.publication_comments.new(publication_comment_params)
 		@publication_comment.publisher_id = current_user.id 
 

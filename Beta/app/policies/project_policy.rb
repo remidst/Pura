@@ -1,25 +1,11 @@
 class ProjectPolicy < ApplicationPolicy
-	attr_reader :user, :project
 
-	def initialize(user, project)
-		@user=user
-		@project=project
+	def is_leader?
+		user.id == record.leader_id
 	end
 
-	def edit?
-		user.id == project.leader_id
-	end
-
-	def edit_leader?
-		user.id == project.leader_id
-	end
-
-	def invite_members?
-		user.id == project.leader_id
-	end
-
-	def destroy?
-		user.id == project.leader_id
+	def is_member?
+		record.users.include? user
 	end
 
 end

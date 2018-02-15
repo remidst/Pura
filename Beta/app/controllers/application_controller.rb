@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user_from_token!
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+
   include Pundit
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -19,7 +20,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def user_not_authorized
-	    flash[:alert] = "この機能を使うアクセス権限がありません。"
+	    flash[:alert] = "このページはアクセスできません。"
 	    redirect_to(request.referrer || root_path)
 	end
 

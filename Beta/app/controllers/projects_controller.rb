@@ -14,6 +14,7 @@
   # GET /projects/1.json
   def show
 
+    authorize @project, :is_member?
     #new project organization with publications
     @users = @project.users
     @publications = Publication.where(project_id: @project.id).order('created_at DESC')
@@ -31,11 +32,11 @@
 
   # GET /projects/1/edit
   def edit
-    authorize @project
+    authorize @project, :is_leader?
   end
 
   def invite_members
-  	authorize @project
+  	authorize @project, :is_leader?
 
     @membership=@project.memberships.build
 
@@ -48,6 +49,8 @@
   end
 
   def update_members
+    authorize @project, :is_leader?
+
   	prjct = members_params
 
     new_user_tokens = prjct[:user_tokens].split(',')
@@ -81,10 +84,12 @@
   end
 
   def edit_leader
-    authorize @project
+    authorize @project, :is_leader?
   end
 
   def update_leader
+
+    authorize @project, :is_leader?
 
     old_leader = User.find(@project.leader_id)
 
@@ -134,6 +139,8 @@
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
+    authorize @project, :is_leader?
+    
     prjct = project_params 
 
     if prjct[:user_tokens].present?
@@ -203,7 +210,7 @@
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    authorize @project
+    authorize @project, :is_leader?
     
     @project.destroy
     respond_to do |format|

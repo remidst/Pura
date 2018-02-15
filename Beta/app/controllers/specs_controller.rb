@@ -2,6 +2,8 @@ class SpecsController < ApplicationController
 
 	def create
 		project = Project.find(params[:project_id])
+		authorize project, :is_leader?
+
 		specs = project.specs.create(spec_params)
 		specs.set_publisher!(current_user)
 
@@ -10,11 +12,15 @@ class SpecsController < ApplicationController
 
 	def edit
 		@project = Project.find(params[:project_id])
+		authorize project, :is_leader?
+
 		@spec = Spec.find(params[:id])
 	end
 
 	def update
 		project = Project.find(params[:project_id])
+		authorize project, :is_leader?
+		
 		spec = Spec.find(params[:id])
 
 		respond_to do |format|

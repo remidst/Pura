@@ -2,6 +2,8 @@ class ReportingAttachmentsController < ApplicationController
 
   def destroy
     @reporting = Reporting.find(params[:reporting_id])
+    authorize @reporting, :is_publisher?
+    
     @reporting_attachment = ReportingAttachment.find(params[:id])
 
     respond_to do |format|
