@@ -9,11 +9,12 @@
 }
 
 .top-frame {
-	background: image-url('wallpaper.jpg');
-	height: 750px;
+	background: image-url('crossword.png');
+	height: 550px;
 	padding-top: 40px;
 	padding-left: 40px;
 	padding-right: 420px;
+	display: flex;
 }
 
 .sign-in {
@@ -66,10 +67,12 @@
 	margin-right:auto;
 }
 
+
 #top-message-container {
 	padding-right: 60px;
 	padding-left: 60px;
 	margin-top: 70 px;
+
 }
 
 #top-message {
@@ -77,10 +80,16 @@
 	padding-top: 30px;
 }
 
-#top-message-idea {
+#top-message-brand {
 	padding-top: 130px;
 	font-weight: bold;
 	font-size: 3em;
+	line-height: 45px;
+	color: #000;
+}
+
+#top-message-idea {
+	font-size: 2.3em;
 	line-height: 45px;
 	color: #000;
 }
@@ -131,3 +140,49 @@ a.btn.btn-info.scroll-home {
 	padding-bottom: 70px;
 }
 
+#they-trust-us {
+	height: 150px;
+	background: image-url('knitting250px.png');
+}
+
+.what-you-can-do {
+	height: 400px;
+}
+
+#what-you-can-do-1 {
+	background: image-url('pink_rice.png');
+}
+
+#what-you-can-do-2 {
+	background: image-url('seigaiha.png');
+}
+
+#what-you-can-do-3 {
+	background: image-url("cloudy-day.png");
+}
+
+#merits {
+	height: 400px;
+}
+
+.text-container {
+	max-width: 900px;
+	padding-left: 60px;
+	padding-right: 60px;
+	height: 100%
+}
+
+#connect {
+	width: 33%;
+	float: left;
+}
+
+#time {
+	width: 33%;
+	float: left;
+}
+
+#security {
+	width: 33%;
+	float: left;
+}

@@ -29,6 +29,8 @@ class User < ApplicationRecord
 
   validates_uniqueness_of :email
 
+  validates_format_of :email, with: Devise::email_regexp
+
 
 
   before_save :ensure_authentication_token
