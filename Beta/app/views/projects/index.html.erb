@@ -25,7 +25,7 @@
             </td>
             <td><%= link_to '詳細', project %></td>
             <td>
-              <% if policy(project).destroy? %>
+              <% if policy(project).is_leader? %>
                 <%= link_to '消す', project, method: :delete, data: { confirm: 'この案件は削除されます' } %>
               <% end %>
             </td>

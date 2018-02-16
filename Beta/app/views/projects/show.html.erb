@@ -16,7 +16,7 @@
 
 			<div id="project-other-information">
 				<div id="member-information">
-					<% unless policy(@project).edit? %>
+					<% unless policy(@project).is_leader? %>
 						案件担当ケアマネジャー： <%= @leader.username %><br/>
 					<% end %>
 
@@ -25,7 +25,7 @@
 					</div>
 
 					<%-# Display membership management button to project leader -%>
-					<% if policy(@project).edit? %>
+					<% if policy(@project).is_leader? %>
 						<div id="member-button"><%= link_to 'メンバーの変更.招待へ', project_memberships_path(@project), class: "project-header-button" %></div>
 					<% end %>
 				</div>
@@ -37,7 +37,7 @@
 						基本情報： <%= gender(@spec) %> <%= age(@spec) %> <%= @spec.kaigo_level %> 						
 					</div>
 
-					<% if policy(@project).edit? %>
+					<% if policy(@project).is_leader? %>
 						<div id="edit-project-button"><%= link_to '基本情報の変更', edit_project_spec_path(@project, @spec), class: "project-header-button" %> </div> 
 					<% else %>
 
