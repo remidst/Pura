@@ -22,5 +22,24 @@ class Message < ApplicationRecord
 		end
 	end
 
+	def self.switch_to_publication
+		messages = Message.all
+
+		puts "beginning of loop"
+
+		messages.each do |msg|
+			puts "message loop for:"
+			puts msg.content
+
+			publication = Publication.create(created_at: msg.created_at, publisher_id: msg.user_id, message: msg.content, project_id: msg.conversation.project_id)
+			puts "publication created"
+
+			publication.mark_publication_as_read!
+			puts "marked all as read"
+		end
+
+		puts "end of loop"
+	end
+
 
 end

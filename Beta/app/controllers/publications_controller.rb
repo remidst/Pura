@@ -5,7 +5,7 @@ class PublicationsController < ApplicationController
 		publication = project.publications.new(publication_params)
 		publication.publisher_id = current_user.id
 
-		authorize @project, :is_member?
+		authorize project, :is_member?
 
 		respond_to do |format|
 			if publication.save

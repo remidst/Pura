@@ -62,3 +62,11 @@ task :add_confirmed_to_reportings => :environment do
 	Reporting.add_confirmed
 	puts "added confirmed"
 end
+
+task :messages_to_publications => :environment do
+	puts "migrating message to publications"
+	Message.switch_to_publication
+	puts "finished job"
+end
+
+

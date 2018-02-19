@@ -9,6 +9,13 @@ class Publication < ApplicationRecord
 
 	after_create :create_publication_readmarks
 
+	def mark_publication_as_read!
+		self.publication_readmarks.each do |readmark|
+			readmark.update(read: true)
+		end
+	end
+
+
 	private
 
 	def create_publication_readmarks
