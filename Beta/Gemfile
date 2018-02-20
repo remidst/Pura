@@ -90,6 +90,15 @@ gem "mini_magick"
 #jquery fileupload to handle ajax
 gem 'jquery-fileupload-rails'
 
+#allows to generate pdf from ruby
+gem 'pdfkit'
+
+#allows to use the render command from outside the controllers
+gem 'render_anywhere'
+
+#ruby  module for webkit html to pdf
+gem 'wkhtmltopdf-binary'
+
 
 
 #serve assets on heroku

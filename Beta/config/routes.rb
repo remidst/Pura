@@ -39,7 +39,11 @@ Rails.application.routes.draw do
     resources :reporting_attachments
   end
 
+
   resources :timelines
+
+  #custom route to download spec
+  get 'spec/:id/download' => 'download#show', as: :spec_download
 
   #custom routes for projects
 

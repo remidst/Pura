@@ -12,7 +12,14 @@ class SpecsController < ApplicationController
 
 	def edit
 		@project = Project.find(params[:project_id])
-		authorize project, :is_leader?
+		authorize @project, :is_leader?
+
+		@spec = Spec.find(params[:id])
+	end
+
+	def show
+		@project = Project.find(params[:project_id])
+		authorize @project, :is_member?
 
 		@spec = Spec.find(params[:id])
 	end
@@ -25,7 +32,7 @@ class SpecsController < ApplicationController
 
 		respond_to do |format|
 			if spec.update(spec_params)
-				format.html {redirect_to project_path(project, to: 'specs'), notice: '基本情報が登録されました。'}
+				format.html {redirect_to project_path(project), notice: '基本情報が登録されました。'}
 				format.json { render :show, status: :ok, location: project }
 			else
 				format.html { render :edit, notice: '基本情報の登録が失敗しました。' }
