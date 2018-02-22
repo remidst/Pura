@@ -9,12 +9,12 @@
 
 
 	  	<div class="well well-form-specs">
-	  	<%= link_to "案件へ戻る", project_path(@project), class: "project-header-button" %>
+	  	<%= link_to "基本情報へ戻る", project_spec_path(@project, @spec), class: "project-header-button" %>
 
-	  	<h1 id="project-spec-title"><%= @project.project_name %>様</h1><br/>
+	  	<h1 id="project-spec-title"><%= @project.project_name.delete('　') %>様</h1><br/>
 
 		    <p class="form-group">
-		      <%= f.label :creation_date, 'アセスメント票の作成日' %>
+		      <%= f.label :creation_date, '相談日' %>
 		      <%= f.date_field :creation_date, class: 'form-control form-date' %>
 		    </p>   
 
@@ -166,85 +166,73 @@
 		      <%= f.label :economics, '生活保護', class: "radio-inline" %>
 		      <%= f.radio_button :economics, '生活保護' %>
 		    </p>
-	  		
+
+		    <p class="separator">...........................................................................................</p>
+	  		    	<p class="p-well-title">緊急連絡先</p>
+	  			    緊急連絡先1 <br/>
+	  			    <p class="form-group">
+	  			      <%= f.label :emergency_contact_name, '氏名' %>
+	  			      <%= f.text_field :emergency_contact_name, class: 'form-control form-short' %>
+	  			    </p>
+	  			    
+	  			    <p class="form-group">
+	  			      <%= f.label :emergency_contact_relation, '続柄' %>
+	  			      <%= f.text_field :emergency_contact_relation, class: 'form-control form-short' %>
+	  			    </p>  
+	  			    
+	  			    <p class="form-group">
+	  			      <%= f.label :emergency_contact_phone, '住所.連絡先' %>
+	  			      <%= f.text_area :emergency_contact_address_phone, class: 'form-control form-short' %>
+	  			    </p> 
+
+	  			    緊急連絡先2 <br/>
+	  			    <p class="form-group">
+	  			      <%= f.label :emergency_contact_name_2, '氏名' %>
+	  			      <%= f.text_field :emergency_contact_name_2, class: 'form-control form-short' %>
+	  			    </p>
+	  			    
+	  			    <p class="form-group">
+	  			      <%= f.label :emergency_contact_relation_2, '続柄' %>
+	  			      <%= f.text_field :emergency_contact_relation_2, class: 'form-control form-short' %>
+	  			    </p>  
+	  			    
+	  			    <p class="form-group">
+	  			      <%= f.label :emergency_contact_address_phone_2, '住所.連絡先' %>
+	  			      <%= f.text_area :emergency_contact_address_phone_2, class: 'form-control form-short' %>
+	  			    </p> 
+
+	  		<p class="separator">...........................................................................................</p>
+
+	  		    	<p class="p-well-title">主治医</p>
+	  			    <p class="form-group">
+	  			      <%= f.label :doctor_name, '医師名' %>
+	  			      <%= f.text_field :doctor_name, class: 'form-control form-short' %>
+	  			    </p>  
+	  			
+	  			    <p class="form-group">
+	  			      <%= f.label :hospital_name, '医師機関名' %>
+	  			      <%= f.text_field :hospital_name, class: 'form-control form-short' %>
+	  			    </p>  
+	  			
+	  			    <p class="form-group">
+	  			      <%= f.label :doctor_phone, '電話番号' %>
+	  			      <%= f.text_field :doctor_phone, class: 'form-control form-short' %>
+	  			    </p>  
+	  			
+	  			    <p class="form-group">
+	  			      <%= f.label :doctor_phone, '所在地' %>
+	  			      <%= f.text_field :doctor_phone, class: 'form-control form-short' %>
+	  			    </p> 
+
+	  			    <p class="actions">
+	  			      <%= f.submit '基本情報を登録する', class: "btn btn-info" %>
+	  			    </p>
+	  	<% end %>
 	  	</div>
 
 
 	    
-	    <div class="well">
-	    	<p class="p-well-title">緊急連絡先</p>
-		    緊急連絡先1 <br/>
-		    <p class="form-group">
-		      <%= f.label :emergency_contact_name, '氏名' %>
-		      <%= f.text_field :emergency_contact_name, class: 'form-control form-short' %>
-		    </p>
-		    
-		    <p class="form-group">
-		      <%= f.label :emergency_contact_relation, '続柄' %>
-		      <%= f.text_field :emergency_contact_relation, class: 'form-control form-short' %>
-		    </p>  
-		    
-		    <p class="form-group">
-		      <%= f.label :emergency_contact_phone, '住所.連絡先' %>
-		      <%= f.text_area :emergency_contact_address_phone, class: 'form-control form-short' %>
-		    </p> 
-
-		    <p class="separator">...........................................................................................</p>
-
-		    緊急連絡先2 <br/>
-		    <p class="form-group">
-		      <%= f.label :emergency_contact_name_2, '氏名' %>
-		      <%= f.text_field :emergency_contact_name_2, class: 'form-control form-short' %>
-		    </p>
-		    
-		    <p class="form-group">
-		      <%= f.label :emergency_contact_relation_2, '続柄' %>
-		      <%= f.text_field :emergency_contact_relation_2, class: 'form-control form-short' %>
-		    </p>  
-		    
-		    <p class="form-group">
-		      <%= f.label :emergency_contact_address_phone_2, '住所.連絡先' %>
-		      <%= f.text_area :emergency_contact_address_phone_2, class: 'form-control form-short' %>
-		    </p>    
-	    	
-	    </div>
-
-	    
-	    <div class="well">
-	    	<p class="p-well-title">主治医</p>
-		    <p class="form-group">
-		      <%= f.label :doctor_name, '医師名' %>
-		      <%= f.text_field :doctor_name, class: 'form-control form-short' %>
-		    </p>  
-		
-		    <p class="form-group">
-		      <%= f.label :hospital_name, '医師機関名' %>
-		      <%= f.text_field :hospital_name, class: 'form-control form-short' %>
-		    </p>  
-		
-		    <p class="form-group">
-		      <%= f.label :doctor_phone, '電話番号' %>
-		      <%= f.text_field :doctor_phone, class: 'form-control form-short' %>
-		    </p>  
-		
-		    <p class="form-group">
-		      <%= f.label :doctor_phone, '所在地' %>
-		      <%= f.text_field :doctor_phone, class: 'form-control form-short' %>
-		    </p> 
-	    	
-	    </div>
-
-
-	    <p class="actions">
-	      <%= f.submit '基本情報を登録する', class: "btn btn-info" %>
-	    </p>
-	  	<% end %>
-
-	  	<br/>
-	  	<br/>
-	  	<br/>
-	  	<br/>
-	  	<br/>
+	   
 
 	  </div>
 	</div>

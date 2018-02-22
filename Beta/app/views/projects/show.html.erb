@@ -37,9 +37,10 @@
 						基本情報： <%= gender(@spec) %> <%= age(@spec) %> <%= @spec.kaigo_level %> 						
 					</div>
 
-					<% if policy(@project).is_leader? %>
-						<div id="edit-project-button"><%= link_to '基本情報の変更', edit_project_spec_path(@project, @spec), class: "project-header-button" %> </div> 
-					<% else %>
+
+					<div id="edit-project-button">
+						<%= link_to '基本情報へ', project_spec_path(@project, @spec), class: "project-header-button" %> 
+					</div> 
 
 					<% end %>
 				</div>

@@ -21,7 +21,10 @@ class SpecsController < ApplicationController
 		@project = Project.find(params[:project_id])
 		authorize @project, :is_member?
 
+
 		@spec = Spec.find(params[:id])
+		@publisher = User.find(@spec.publisher_id)
+
 	end
 
 	def update
