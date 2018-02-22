@@ -9,13 +9,13 @@ class SpecPdf
 
 	def to_pdf
 		puts "to_pdf method called"
-		kit = PDFKit.new(as_html, page_size: 'A4')
+		kit = PDFKit.new(as_html)
 		kit.to_file("#{Rails.root}/public/spec.pdf")
 		#don't save the files in the public folder
 	end
 
 	def filename
-		"spec#{@spec.id}.pdf"
+		"spec#{spec.id}.pdf"
 	end
 
 	private
@@ -24,6 +24,6 @@ class SpecPdf
 
 	def as_html
 		puts "as html method called"
-		render template: "specs/pdf", layout: "spec_pdf", locals: {spec: spec}
+		ActionController::Base.render_to_string(template: "specs/pdf", layout: "spec_pdf", locals: {spec: spec})
 	end
 end

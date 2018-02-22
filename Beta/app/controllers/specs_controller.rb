@@ -41,6 +41,7 @@ class SpecsController < ApplicationController
 		end
 	end
 
+
 	private
 
 	def spec_params

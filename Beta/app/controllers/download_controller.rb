@@ -13,8 +13,8 @@ class DownloadController < ApplicationController
 	end
 	
 	def send_spec_pdf
-		puts "send spec pdf called"
-	  send_file spec_pdf.to_pdf,
+	  puts "send spec pdf called"
+	  send_data	 spec_pdf.to_pdf,
 	    filename: spec_pdf.filename,
 	    type: "application/pdf",
 	    disposition: "inline"

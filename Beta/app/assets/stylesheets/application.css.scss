@@ -337,3 +337,17 @@ a.btn-toggle-read.btn-toggle-read-activated:selected {
 .remove-cross {
 	margin-left: 10px;
 }
+
+@media print {
+	.linkAnnotation{
+		display: none;
+	}
+
+	#url-block-print {
+		display: none;
+	}
+
+	#navigation-print {
+		display: none;
+	}
+}

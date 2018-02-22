@@ -1,17 +1,25 @@
+<div id="navigation-print">
+	<%= render 'layouts/projects_app_navigation' %>
+</div>
 
-
-<%= render 'layouts/projects_app_navigation' %>
 
 <div class="timeline-container">
 
 	  <div id="spec-form-container">
 
 	  	<div class="well well-form-specs">
-	  	<%= link_to "案件へ戻る", project_path(@project), class: "project-header-button" %>
+	  		<div id="url-block-print">
+	  			<%= link_to "案件へ戻る", project_path(@project), class: "project-header-button" %><br/>
 
-	  	<%= link_to "ダウンロード", project_spec_path(@project, @spec, format: "pdf"), target: "_blank", class: "download" %>
+	  			<% if policy(@project).is_leader? %>
+	  				<%= link_to "基本情報を変更する", edit_project_spec_path(@project, @spec), class: "project-header-button" %><br/>
+	  			<% end %>
 
-	  	<h1 id="project-spec-title"><%= @project.project_name %>様</h1><br/>
+	  			<%= link_to "Pdf化する", project_spec_path(@project, @spec, format: "pdf"), target: "_blank", class: "btn btn-info" %>
+	  		</div>
+
+
+	  	<h1 id="project-spec-title"><%= @project.project_name.delete("　") %>様</h1><br/>
 
 		    
 		<table class="table">
@@ -39,19 +47,12 @@
 		    <tr><th class="table-head-specs col-xs-4">氏名</th><td><%= @spec.try(:emergency_contact_name_2) %></td></tr>
 		    <tr><th class="table-head-specs col-xs-4">続柄</th><td><%= @spec.try(:emergency_contact_relation_2) %></td></tr>
 		    <tr><th class="table-head-specs col-xs-4">住所.連絡先</th><td><%= @spec.try(:emergency_contact_address_phone_2) %></td></tr>
-		    <tr><th class="table-head-specs col-xs-4">氏名</th><td><%= @spec.try(:emergency_contact_name_3) %></td></tr>
-		    <tr><th class="table-head-specs col-xs-4">続柄</th><td><%= @spec.try(:emergency_contact_relation_3) %></td></tr>
-		    <tr><th class="table-head-specs col-xs-4">住所.連絡先</th><td><%= @spec.try(:emergency_contact_address_phone_3) %></td></tr>
 
 		    <tr><th class="table-head-specs col-xs-4">医師名</th><td><%= @spec.try(:doctor_name) %></td></tr>
 		    <tr><th class="table-head-specs col-xs-4">医療機関名</th><td><%= @spec.try(:hospital_name) %></td></tr>
 		    <tr><th class="table-head-specs col-xs-4">電話番号</th><td><%= @spec.try(:doctor_phone) %></td></tr>
 		    <tr><th class="table-head-specs col-xs-4">住所.連絡先</th><td><%= @spec.try(:doctor_address) %></td></tr>
 
-		    <tr><th class="table-head-specs col-xs-4">年月日</th><td><%= @spec.try(:disease_from) %></td></tr>
-		    <tr><th class="table-head-specs col-xs-4">病名</th><td><%= @spec.try(:disease_name) %></td></tr>
-		    <tr><th class="table-head-specs col-xs-4">医療機関.医師名</th><td><%= @spec.try(:disease_doctor) %></td></tr>
-		    <tr><th class="table-head-specs col-xs-4">経過</th><td><%= @spec.try(:disease_evolution) %></td></tr>
 		</table>
 
 	  </div>
