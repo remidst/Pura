@@ -2,7 +2,7 @@
 /* line 5, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 #contact-index-table tr:hover {
   cursor: pointer;
-  background-color: #cceae7;
+  background-color: #FDF7F7;
 }
 
 /* line 10, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
@@ -26,42 +26,44 @@
   padding-bottom: 10px;
   margin-bottom: 10px;
   background-color: #f8f8fa;
+  border-bottom: 0.5px solid #ddd;
 }
 
-/* line 32, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 33, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 .btn.btn-info.btn-reporting {
   color: white;
   margin-bottom: 15px;
 }
 
-/* line 37, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 38, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 #contact-reporting-container {
   padding-left: 15px;
   padding-right: 15px;
   margin-top: 10px;
 }
 
-/* line 43, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 44, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 #contact-reporting-list　 {
   padding-top: 15px;
   margin-left: 15px;
   margin-right: 15px;
 }
 
-/* line 49, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 50, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 .reporting-well-head {
   margin-bottom: 5px;
   display: flex;
+  border-bottom: 0.5px solid #ddd;
 }
 
-/* line 54, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 56, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 .reporting-title {
   flex-grow: 1;
 }
 
-/* line 58, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 60, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 .well.reporting-well {
-  background: #f8f8fa;
+  background: white;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   border: none;
@@ -69,7 +71,7 @@
   margin-bottom: 0px;
 }
 
-/* line 68, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 70, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 #reporting-preview {
   background: #f8f8fa;
   padding: 8px;
@@ -80,27 +82,27 @@
   margin-right: 15px;
 }
 
-/* line 78, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 80, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 #preview-title {
   border-bottom: 1px solid #eee;
 }
 
-/* line 82, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 84, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 #preview-attachment {
   border-top: 1px solid #eee;
 }
 
-/* line 86, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 88, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 #confirm-action-container {
   text-align: center;
 }
 
-/* line 90, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 92, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 #confirm-other-buttons-container {
   margin-top: 20px;
 }
 
-/* line 94, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
+/* line 96, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/contact.scss */
 span.confirm-preview-label {
   color: #4f5b66;
 }
@@ -113,14 +115,15 @@ span.confirm-preview-label {
 
 /* line 11, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .top-frame {
-  background: url(/assets/wallpaper-dd5afb022bb76043a847522e26b0a9d2b0f30d97268e9756544a6f2b8be3c847.jpg);
-  height: 750px;
+  background: url(/assets/crossword-2f23f323330dd47e39b3af4892097e56ef0cabf5980e4c2ed794f58d4f629437.png);
+  height: 550px;
   padding-top: 40px;
   padding-left: 40px;
   padding-right: 420px;
+  display: flex;
 }
 
-/* line 19, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 20, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .sign-in {
   width: 340px;
   float: left;
@@ -134,13 +137,13 @@ span.confirm-preview-label {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* line 33, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 34, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .well-devise {
   margin: 20px;
   background: #f8f8fa;
 }
 
-/* line 38, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 39, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .sign-up-invited {
   max-width: 800px;
   position: absolute;
@@ -155,12 +158,12 @@ span.confirm-preview-label {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* line 52, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 53, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .sign-up-invited-head {
   text-align: center;
 }
 
-/* line 56, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 57, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .sign-up-invited-box {
   max-width: 340px;
   margin-top: 25px;
@@ -168,28 +171,28 @@ span.confirm-preview-label {
   margin-right: auto;
 }
 
-/* line 63, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 64, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .form-box {
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 69, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 71, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 #top-message-container {
   padding-right: 60px;
   padding-left: 60px;
   margin-top: 70 px;
 }
 
-/* line 75, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 78, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 #top-message {
   height: 620px;
   padding-top: 30px;
 }
 
-/* line 80, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
-#top-message-idea {
+/* line 83, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+#top-message-brand {
   padding-top: 130px;
   font-weight: bold;
   font-size: 3em;
@@ -197,7 +200,14 @@ span.confirm-preview-label {
   color: #000;
 }
 
-/* line 88, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 91, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+#top-message-idea {
+  font-size: 2.3em;
+  line-height: 45px;
+  color: #000;
+}
+
+/* line 97, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 #top-message-content {
   font-size: 2.1em;
   line-height: 30px;
@@ -205,36 +215,36 @@ span.confirm-preview-label {
   color: #000;
 }
 
-/* line 95, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 104, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 a.btn.btn-info.scroll-home {
   color: #fff;
 }
 
-/* line 99, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 108, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .top-message {
   height: 400px;
   padding-top: 90px;
   border-bottom: 1px solid #343d46;
 }
 
-/* line 105, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 114, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .top-message.message-left {
   text-align: left;
 }
 
-/* line 109, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 118, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .top-message.message-right {
   text-align: right;
 }
 
-/* line 113, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 122, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .top-message-idea {
   font-size: 2em;
   line-height: 30px;
   font-weight: bold;
 }
 
-/* line 119, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 128, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .top-message-content {
   font-size: 1.6em;
   line-height: 23px;
@@ -242,13 +252,70 @@ a.btn.btn-info.scroll-home {
   margin-bottom: 10px;
 }
 
-/* line 126, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+/* line 135, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
 .what-we-do {
   text-align: center;
   font-size: 1.6em;
   line-height: 23px;
   padding-top: 80px;
   padding-bottom: 70px;
+}
+
+/* line 143, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+#they-trust-us {
+  height: 150px;
+  background: url(/assets/knitting250px-a9b09c43d9d30c002b9f4e30e7e0a6c89fad9401ae981bad5e8ab8c2ce25096a.png);
+}
+
+/* line 148, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+.what-you-can-do {
+  height: 400px;
+}
+
+/* line 152, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+#what-you-can-do-1 {
+  background: url(/assets/pink_rice-80258daa75e8966c512aff7273a5cdb43b611ddac19e681cf55beeffdb467830.png);
+}
+
+/* line 156, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+#what-you-can-do-2 {
+  background: url(/assets/seigaiha-e0fe3e76cc71c192635a777a330f3632e5eb157053834bf294a51482217503ab.png);
+}
+
+/* line 160, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+#what-you-can-do-3 {
+  background: url(/assets/cloudy-day-33c1af2f484df8557aff6e27aa22fb01266ee51a8b1b8d3bb51793f54951c529.png);
+}
+
+/* line 164, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+#merits {
+  height: 400px;
+}
+
+/* line 168, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+.text-container {
+  max-width: 900px;
+  padding-left: 60px;
+  padding-right: 60px;
+  height: 100%;
+}
+
+/* line 175, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+#connect {
+  width: 33%;
+  float: left;
+}
+
+/* line 180, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+#time {
+  width: 33%;
+  float: left;
+}
+
+/* line 185, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/devise.css.scss */
+#security {
+  width: 33%;
+  float: left;
 }
 /* line 5, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/memberships.scss */
 .membership-new-well {
@@ -292,6 +359,26 @@ a.btn.btn-info.scroll-home {
 .well.well-devise.well-membership {
   background-color: #f8f8fa;
   border: none;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+}
+
+/* line 44, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/memberships.scss */
+#membership-management {
+  background-color: white;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  border-top: 0.5px solid #ddd;
+}
+
+/* line 53, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/memberships.scss */
+h3.h3-membership {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
 }
 /* line 5, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/messages.scss */
 .messages {
@@ -426,7 +513,7 @@ a.btn.btn-info.scroll-home {
 /* line 5, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 #project-index-table tr:hover {
   cursor: pointer;
-  background-color: #cceae7;
+  background-color: #FDF7F7;
 }
 
 /* line 10, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
@@ -733,66 +820,69 @@ input.send-message-button {
   margin-bottom: 10px;
   display: flex;
   background-color: #f8f8fa;
+  border-bottom: 0.5px solid #ddd;
 }
 
-/* line 287, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 288, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 #project-name-container {
   margin-right: 30px;
   font-size: 2.6em;
   font-weight: bold;
 }
 
-/* line 293, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 294, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 #project-other-information {
   flex-grow: 1;
   font-size: 0.85em;
 }
 
-/* line 298, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 299, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 #project-publication-container {
   padding-left: 15px;
   padding-right: 15px;
   margin-top: 10px;
 }
 
-/* line 304, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 305, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-header {
   display: flex;
   padding-top: 10px;
+  margin-top: 2px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 5px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: #f8f8fa;
+  background-color: white;
+  border-bottom: 0.5px solid #ddd;
 }
 
-/* line 315, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 318, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-publisher {
   flex-grow: 1;
 }
 
-/* line 319, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 322, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-date {
   margin-right: 4px;
 }
 
-/* line 323, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 326, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-views {
   margin-right: 4px;
 }
 
-/* line 327, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 330, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-views:hover {
   cursor: pointer;
 }
 
-/* line 331, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 334, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-edit {
   margin-right: 4px;
 }
 
-/* line 335, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 338, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-message {
   padding-left: 15px;
   padding-right: 15px;
@@ -803,34 +893,35 @@ input.send-message-button {
   background: #fff;
 }
 
-/* line 345, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 348, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-comment-section {
   padding-left: 60px;
   padding-right: 60px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background: #f8f8fa;
+  background: white;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  border-top: 0.5px solid #ddd;
 }
 
-/* line 355, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 359, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-comments-container {
   display: table;
 }
 
-/* line 359, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 363, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-comment-head {
   font-size: 0.85em;
   margin-top: 5px;
 }
 
-/* line 364, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 368, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-comment-line {
   display: flex;
 }
 
-/* line 368, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 372, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-comment-body {
   background-color: #ADF2D1;
   border-radius: 8px;
@@ -844,28 +935,28 @@ input.send-message-button {
   vertical-align: middle;
 }
 
-/* line 381, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 385, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-comment-information {
   font-size: 0.7em;
   color: grey;
   margin-left: 4px;
 }
 
-/* line 390, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 394, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-comment-form {
   background-color: #fff;
   border-radius: 10px;
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
   margin-top: 5px;
 }
 
-/* line 397, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 401, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .form-flex {
   display: flex;
   width: 100%;
 }
 
-/* line 402, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 406, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .submit-comment {
   cursor: pointer;
   background: url("send-32.png");
@@ -874,7 +965,7 @@ input.send-message-button {
   border: none;
 }
 
-/* line 410, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 414, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 textarea.comment-input {
   flex-grow: 1;
   border: none;
@@ -883,9 +974,9 @@ textarea.comment-input {
   padding-left: 5px;
 }
 
-/* line 418, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 422, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .well.well-publication {
-  background: #f8f8fa;
+  background: white;
   padding: 0px;
   border: none;
   border-bottom-left-radius: 0px;
@@ -894,28 +985,28 @@ textarea.comment-input {
   margin-top: 20px;
 }
 
-/* line 428, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 432, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 #member-information {
   display: flex;
 }
 
-/* line 432, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 436, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 #project-specs {
   display: flex;
   margin-top: 7px;
 }
 
-/* line 437, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 441, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 #spec-list {
   flex-grow: 1;
 }
 
-/* line 441, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 445, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 #member-list {
   flex-grow: 1;
 }
 
-/* line 445, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 449, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 #member-button {
   style: table;
   margin-left: 10px;
@@ -925,14 +1016,19 @@ textarea.comment-input {
   flex-direction: row-reverse;
 }
 
-/* line 454, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 458, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 #edit-project-button {
   style: table;
   margin-left: 10px;
   margin-right: 0px;
 }
 
-/* line 460, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 464, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+a#upload-btn.project-header-button {
+  width: 130px;
+}
+
+/* line 468, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 a.project-header-button {
   font-size: 0.85em;
   text-decoration: none;
@@ -945,39 +1041,39 @@ a.project-header-button {
   vertical-align: middle;
 }
 
-/* line 472, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 480, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 a.project-header-button:hover {
   cursor: pointer;
   background-color: #E7E7E7;
   text-decoration: none;
 }
 
-/* line 478, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 486, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 span.publication-file-attachment-icon {
   background-image: url(file-attachment-icon.png);
 }
 
-/* line 482, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 490, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 #file-display {
   margin-bottom: 10px;
 }
 
-/* line 486, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 494, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-comment-readmarks {
   margin-left: 5px;
 }
 
-/* line 490, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 498, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-comment-readmarks:hover {
   cursor: pointer;
 }
 
-/* line 494, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
+/* line 502, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/projects.scss */
 .publication-read-button {
   text-align: center;
   padding-bottom: 5px;
   padding-top: 5px;
-  background: #f8f8fa;
+  background: white;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -997,42 +1093,57 @@ span.publication-file-attachment-icon {
   margin-top: 30px;
 }
 
-/* line 16, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
+/* line 15, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
+a#reporting-file-upload-btn.project-header-button {
+  width: 130px;
+}
+
+/* line 20, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
 .btn-to-center {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-/* line 22, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
+/* line 26, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
 .delete-reporting-attachment {
   margin-left: 20px;
 }
 
-/* line 26, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
+/* line 30, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
 #delete-reporting-file {
   margin-bottom: 30px;
   margin-top: 20px;
 }
 
-/* line 31, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
+/* line 35, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
 #add-reporting-file {
   margin-bottom: 30px;
 }
 
-/* line 35, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
+/* line 39, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
 #reporting-add-file-btn {
   width: 140px;
 }
 
-/* line 39, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
+/* line 43, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
 #add-reporting-attachment-section {
   display: flex;
 }
 
-/* line 43, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
+/* line 47, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
 #add-file-display {
   margin-left: 10px;
+}
+
+/* line 51, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
+p.reporting-read {
+  color: #106F1C;
+}
+
+/* line 55, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/reportings.scss */
+p.reporting-unread {
+  color: black;
 }
 /* line 1, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/scaffolds.scss */
 body {
@@ -1182,7 +1293,7 @@ label {
 /* line 6, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/timeline.scss */
 .well.timeline-well {
   border: none;
-  background: #f8f8fa;
+  background: white;
 }
 
 /* line 11, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/timeline.scss */
@@ -10021,8 +10132,8 @@ h2.h2-centered {
 
 /* line 37, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
 .navbar-custom {
-  background-color: #343d46;
-  color: #37474f;
+  background-color: #4f5b66;
+  color: white;
   border-radius: 0;
   padding-bottom: 0;
 }
@@ -10045,54 +10156,54 @@ a.name-url {
 
 /* line 57, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
 #brand {
-  color: #ffffff;
+  color: white;
   font-size: 2.1em;
   vertical-align: center;
 }
 
 /* line 63, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
 #brand:hover {
-  color: #ffffff;
+  color: white;
   font-size: 2.1em;
   vertical-align: center;
-  background-color: #000000;
+  background-color: #464E56;
   text-decoration: none;
 }
 
 /* line 71, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
 .navbar .container #navbar .nav-item {
-  color: #ffffff;
+  color: white;
   font-size: 1em;
   vertical-align: center;
 }
 
 /* line 77, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
 .navbar .container #navbar .nav-item:hover {
-  color: #ffffff;
+  color: white;
   font-size: 1em;
   vertical-align: center;
-  background-color: #000000;
+  background-color: #464E56;
 }
 
 /* line 84, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
 .navbar .container #navbar li.nav-item {
-  color: #ffffff;
+  color: white;
   font-size: 1em;
   vertical-align: center;
 }
 
 /* line 90, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
 .navbar .container #navbar li.nav-item:hover {
-  color: #ffffff;
+  color: white;
   font-size: 1em;
   vertical-align: center;
-  background-color: #000000;
+  background-color: #464E56;
 }
 
 /* line 97, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
 #navbar-username {
   font-size: 1em;
-  color: #ffffff;
+  color: black;
   vertical-align: center;
   height: 100%;
 }
@@ -10301,7 +10412,7 @@ li.notification-list-element {
 
 /* line 290, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
 body {
-  background: url("giftly.png");
+  background: url("debut_light.png");
   background-position: fixed;
   background-repeat: repeat;
 }
@@ -10357,6 +10468,23 @@ a.btn-toggle-read.btn-toggle-read-activated:selected {
 /* line 338, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
 .remove-cross {
   margin-left: 10px;
+}
+
+@media print {
+  /* line 343, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
+  .linkAnnotation {
+    display: none;
+  }
+
+  /* line 347, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
+  #url-block-print {
+    display: none;
+  }
+
+  /* line 351, C:/Users/remid/Documents/GitHub/Pura/Beta/app/assets/stylesheets/application.css.scss */
+  #navigation-print {
+    display: none;
+  }
 }
 /* Example tokeninput style #2: Facebook style */
 
