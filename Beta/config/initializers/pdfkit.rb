@@ -3,7 +3,12 @@
 
 
 PDFKit.configure do |config|
-  config.wkhtmltopdf = 'C:\wkhtmltopdf\bin\wkhtmltopdf.exe'
+  if ["development"].include?(Rails.env)
+  	config.wkhtmltopdf = 'C:\wkhtmltopdf\bin\wkhtmltopdf.exe'
+  else
+  	config.wkhtmltopdf = Rails.root.join('bin', 'wkhtmltox-0.12.4_linux-generic-amd64.tar.xz')
+  end
+  
   config.default_options = {
     :page_size => 'Legal',
     :print_media_type => true,
