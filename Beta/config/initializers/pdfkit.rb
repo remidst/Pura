@@ -3,8 +3,10 @@
 
 
 PDFKit.configure do |config|
-  
-  config.wkhtmltopdf = 'C:\wkhtmltopdf\bin\wkhtmltopdf.exe'
+  if ["development"].include?(Rails.env)
+  	config.wkhtmltopdf = 'C:\wkhtmltopdf\bin\wkhtmltopdf.exe'
+  else
+  end
 
   config.default_options = {
     :page_size => 'Legal',
