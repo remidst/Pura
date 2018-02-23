@@ -99,6 +99,11 @@ gem 'render_anywhere'
 #ruby  module for webkit html to pdf
 gem 'wkhtmltopdf-binary'
 
+group :production do
+	#binary for heroku
+	gem 'wkhtmltopdf-heroku'
+end
+
 
 
 #serve assets on heroku
