@@ -24,6 +24,8 @@ class SpecsController < ApplicationController
 
 		@spec = Spec.find(params[:id])
 		@publisher = User.find(@spec.publisher_id)
+		@updated_at = @spec.updated_at 
+
 
 	end
 

@@ -22,16 +22,16 @@
 	  	<h2 class="h2-centered"><%= @project.project_name.delete("　") %>様</h1><br/>
 
 	  	作成者氏名：<%= @publisher.username.delete('　') %><br/>
-	  	最新アップデート：<%= @spec.updated_at.strftime("%Y年%m月%d日") %><br/>
+	  	最新アップデート：<%= @spec.updated_at.strftime("平成#{@updated_at.year - 1988}年%m月%d日") %><br/>
 
 		    
 		<table class="table table-bordered">
-		    <tr><th class="table-head-specs">相談日</th><td colspan="2"><%= @spec.try(:creation_date) %></td><th class="table-head-specs">被保険者番号</th><td colspan="2"><%= @spec.try(:insurance_number) %></td></tr>
+		    <tr><th class="table-head-specs">相談日</th><td colspan="2"><%= spec_creation_date(@spec) %></td><th class="table-head-specs">被保険者番号</th><td colspan="2"><%= @spec.try(:insurance_number) %></td></tr>
 		    <tr><th class="table-head-specs">性別</th><td colspan="2"><%= gender(@spec) %></td><th class="table-head-specs">誕生日</th><td colspan="2"><%= @spec.try(:birthday) %></td></tr>
 		    <tr><th class="table-head-specs">住所</th><td colspan="5"><%= @spec.try(:address) %></td></tr>
 		    <tr><th class="table-head-specs">電話番号</th><td colspan="2"><%= @spec.try(:phone) %></td><th class="table-head-specs">携帯電話</th><td colspan="2"><%= @spec.try(:cellphone) %></td></tr>
-		    <tr><th class="table-head-specs">要介護度</th><td><%= @spec.try(:kaigo_level) %></td><th class="table-head-specs">認定日</th><td colspan="3"><%= @spec.try(:evaluation_date) %></td></tr>
-		    <tr><th class="table-head-specs">認定有効期限</th><td colspan="5"><%= @spec.try(:kaigo_validity_from) %>　~ <%= @spec.try(:kaigo_validity_until) %></td></tr>
+		    <tr><th class="table-head-specs">要介護度</th><td><%= @spec.try(:kaigo_level) %></td><th class="table-head-specs">認定日</th><td colspan="3"><%= spec_evaluation_date(@spec) %></td></tr>
+		    <tr><th class="table-head-specs">認定有効期限</th><td colspan="5"><%= spec_kaigo_validity_from(@spec) %>　~ <%= spec_kaigo_validity_until(@spec) %></td></tr>
 		    <tr><th class="table-head-specs" rowspan="2">日常生活<br/>自立度</th><td colspan="2">認知症高齢者の自立度</td><td colspan="3"><%= @spec.try(:dependency_mental) %></td></tr>
 		    <tr><td colspan="2">障害高齢者の日自立度</th><td colspan="3"><%= @spec.try(:dependency_physical) %></td></tr>
 		    <tr><th class="table-head-specs">障害などの認定</th><td colspan="5"><%= handicaps(@spec) %></td></tr>
