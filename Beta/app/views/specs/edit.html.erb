@@ -73,7 +73,7 @@
 		    </p>
 
 		    <p class="form-group">
-		      <%= f.label :kaigo_validity_from, '有効期限（初）' %>
+		      <%= f.label :kaigo_validity_from, '有効期限（始）' %>
 		      <%= f.date_field :kaigo_validity_from, class: 'form-control form-date' %>
 		    </p>
 
@@ -224,13 +224,15 @@
 	  			    </p>  
 	  			
 	  			    <p class="form-group">
-	  			      <%= f.label :doctor_phone, '所在地' %>
-	  			      <%= f.text_field :doctor_phone, class: 'form-control form-short' %>
+	  			      <%= f.label :doctor_address, '所在地' %>
+	  			      <%= f.text_field :doctor_address, class: 'form-control form-short' %>
 	  			    </p> 
 
 	  			    <p class="actions">
 	  			      <%= f.submit '基本情報を登録する', class: "btn btn-info" %>
 	  			    </p>
+
+	  			    
 	  	<% end %>
 	  	</div>
 
