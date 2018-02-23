@@ -30,12 +30,13 @@
 		    <tr><th class="table-head-specs">性別</th><td colspan="2"><%= gender(@spec) %></td><th class="table-head-specs">誕生日</th><td colspan="2"><%= @spec.try(:birthday) %></td></tr>
 		    <tr><th class="table-head-specs">住所</th><td colspan="5"><%= @spec.try(:address) %></td></tr>
 		    <tr><th class="table-head-specs">電話番号</th><td colspan="2"><%= @spec.try(:phone) %></td><th class="table-head-specs">携帯電話</th><td colspan="2"><%= @spec.try(:cellphone) %></td></tr>
-		    <tr><th class="table-head-specs">要介護度</th><td><%= @spec.try(:kaigo_level) %></td><th class="table-head-specs">認定有効期限</th><td colspan="3"><%= @spec.try(:kaigo_validity_from) %>　~ <%= @spec.try(:kaigo_validity_until) %></td></tr>
+		    <tr><th class="table-head-specs">要介護度</th><td><%= @spec.try(:kaigo_level) %></td><th class="table-head-specs">認定日</th><td colspan="3"><%= @spec.try(:evaluation_date) %></td></tr>
+		    <tr><th class="table-head-specs">認定有効期限</th><td colspan="5"><%= @spec.try(:kaigo_validity_from) %>　~ <%= @spec.try(:kaigo_validity_until) %></td></tr>
 		    <tr><th class="table-head-specs" rowspan="2">日常生活<br/>自立度</th><td colspan="2">認知症高齢者の自立度</td><td colspan="3"><%= @spec.try(:dependency_mental) %></td></tr>
 		    <tr><td colspan="2">障害高齢者の日自立度</th><td colspan="3"><%= @spec.try(:dependency_physical) %></td></tr>
 		    <tr><th class="table-head-specs">障害などの認定</th><td colspan="5"><%= handicaps(@spec) %></td></tr>
-		    <tr><th class="table-head-specs">本人の住居 </th><td colspan="5"><%= home_owner(@spec) %> <%= home_house(@spec) %> <%= has_room(@spec) %> <%= has_stairs(@spec) %></td></tr> 
-		    <tr><th class="table-head-specs">経済状況</th><td colspan="5"><%= @spec.try(:economics) %></td></tr>
+		    <tr><th class="table-head-specs">本人の住居 </th><td colspan="2"><%= home_owner(@spec) %> <%= home_house(@spec) %> <%= has_room(@spec) %> <%= has_stairs(@spec) %></td><th class="table-head-specs" rowspan="2">家族構成</th><td colspan="2" rowspan="2"><%= @spec.try(:genogram) %></td></tr> 
+		    <tr><th class="table-head-specs">経済状況</th><td colspan="2"><%= @spec.try(:economics) %></td></tr>
 
 		    <tr><th class="table-head-specs" rowspan="2">緊急連絡先1</th><td>氏名</td><td colspan="2"><%= @spec.try(:emergency_contact_name) %></td><td>続柄</td><td><%= @spec.try(:emergency_contact_relation) %></td></tr>
 		    <tr><td >住所.連絡先</td><td colspan="4"><%= @spec.try(:emergency_contact_address_phone) %></td></tr>
@@ -46,6 +47,8 @@
 		    <tr><th class="table-head-specs" rowspan="3">主治医</th><td>医師名</td><td colspan="2"><%= @spec.try(:doctor_name) %></td><td>電話番号</td><td><%= @spec.try(:doctor_phone) %></td></tr>
 		    <tr><td>医療機関名</td><td colspan="4"><%= @spec.try(:hospital_name) %></td></tr>
 		    <tr><td>住所.連絡先</td><td colspan="4"><%= @spec.try(:doctor_address) %></td></tr>
+		    <tr><th class="table-head-specs" rowspan="2">備考</th><td rowspan="2" colspan="5"><%= @spec.try(:other) %></td></tr>
+		    <tr></tr>
 
 		</table>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212191541) do
+ActiveRecord::Schema.define(version: 20180223141914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -249,6 +249,7 @@ ActiveRecord::Schema.define(version: 20180212191541) do
     t.boolean "home_is_house"
     t.boolean "home_has_room"
     t.boolean "home_has_stairs"
+    t.date "evaluation_date"
     t.index ["project_id"], name: "index_specs_on_project_id"
     t.index ["publisher_id"], name: "index_specs_on_publisher_id"
   end
