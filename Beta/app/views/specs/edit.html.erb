@@ -84,6 +84,8 @@
 
 		    <p class="form-group">
 		      <%= f.label :dependency_mental, '認知症高齢者の日常生活自立度' %><br/>
+		      <%= f.label :dependency_mental, '自立', class: "radio-inline" %>
+		      <%= f.radio_button :dependency_mental, '自立' %>
 		      <%= f.label :dependency_mental, 'I', class: "radio-inline" %>
 		      <%= f.radio_button :dependency_mental, 'I' %>
 		      <%= f.label :dependency_mental, 'II', class: "radio-inline" %>
@@ -104,6 +106,8 @@
 
 		    <p class="form-group">
 		      <%= f.label :dependency_physical, '障害高齢者の日常生活自立度' %><br/>
+		      <%= f.label :dependency_physical, '自立', class: "radio-inline" %>
+		      <%= f.radio_button :dependency_physical, '自立' %>
 		      <%= f.label :dependency_physical, 'J1', class: "radio-inline" %>
 		      <%= f.radio_button :dependency_physical, 'J1' %>
 		      <%= f.label :dependency_physical, 'J2', class: "radio-inline" %>
