@@ -22,8 +22,8 @@
 	  	<h2 class="h2-centered"><%= @project.project_name.delete("　") %>様</h1><br/>
 
 	  	作成者氏名：<%= @publisher.company %> <%= @publisher.username.delete('　') %><br/>
-	  	相談日：<%= spec_creation_date(@spec) %>
-	  	最新アップデート：<%= @spec.updated_at.strftime("平成#{@updated_at.year - 1988}年%m月%d日") %><br/>
+	  	相談日：<%= spec_creation_date(@spec) %><br/>
+	  	最新アップデート：<%= @spec.updated_at.strftime("平成#{@updated_at.year - 1988}年%m月%d日") %>
 
 		    
 		<table class="table table-bordered" id="table-specs">
