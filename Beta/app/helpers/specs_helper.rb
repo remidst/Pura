@@ -6,7 +6,7 @@ module SpecsHelper
 
 	def spec_creation_date(spec)
 		if spec.creation_date.present?
-			"平成#{spec.creation_date.year - 1988}年#{spec.creation_date.month}月#{spec.creation_date.day}日"
+			spec.creation_date.to_era("%O%E年%m月%d日")
 		else
 			""
 		end
@@ -14,7 +14,7 @@ module SpecsHelper
 
 	def spec_evaluation_date(spec)
 		if spec.evaluation_date.present?
-			"平成#{spec.evaluation_date.year - 1988}年#{spec.evaluation_date.month}月#{spec.evaluation_date.day}日"
+			spec.evaluation_date.to_era("%O%E年%m月%d日")
 		else
 			""
 		end
@@ -22,7 +22,7 @@ module SpecsHelper
 
 	def spec_kaigo_validity_from(spec)
 		if spec.kaigo_validity_from.present?
-			"平成#{spec.kaigo_validity_from.year - 1988}年#{spec.kaigo_validity_from.month}月#{spec.kaigo_validity_from.day}日"
+			spec.kaigo_validity_from.to_era("%O%E年%m月%d日")
 		else
 			""
 		end
@@ -30,7 +30,23 @@ module SpecsHelper
 
 	def spec_kaigo_validity_until(spec)
 		if spec.kaigo_validity_until.present?
-			"平成#{spec.kaigo_validity_until.year - 1988}年#{spec.kaigo_validity_until.month}月#{spec.kaigo_validity_until.day}日"
+			spec.kaigo_validity_until.to_era("%O%E年%m月%d日")
+		else
+			""
+		end
+	end
+
+	def payment_ratio(spec)
+		if spec.payment_ratio.present?
+			"#{spec.payment_ratio}割"
+		else
+			""
+		end
+	end
+
+	def spec_birthday(spec)
+		if spec.birthday.present?
+			spec.birthday.to_era("%O%E年%m月%d日")
 		else
 			""
 		end

@@ -15,7 +15,6 @@
 #spec-form-container {
 	max-width: 820px;
 	margin: auto;
-	background: #f8f8fa;
 }
 
 .spec-form-box {
@@ -51,11 +50,21 @@
 	text-align: center;
 }
 
-.well-form-specs {
+.well.well-form-specs {
 	padding-top: 10px;
+	background-color: white;
 }
 
 .separator {
 	color: #ccc;
 }
 
+tr.tr-other {
+	line-height: 120px;
+	min-height: 120px;
+	height: 120px;
+}
+
+table#table-specs.table.table-bordered > tbody thead > tr > th > td {
+	border: 1px solid black !important;
+}

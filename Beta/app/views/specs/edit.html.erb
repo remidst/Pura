@@ -177,8 +177,18 @@
 		    </p>
 
 		    <p class="form-group">
+		    	<%= f.label :payment_ratio, '負担割合' %>
+		    	<%= f.label :payment_ratio, '１割', class: "radio-inline" %>
+		    	<%= f.radio_button :payment_ratio, 1 %>		    	
+		    	<%= f.label :payment_ratio, '2割', class: "radio-inline" %>
+		    	<%= f.radio_button :payment_ratio, 2 %>
+		    	<%= f.label :payment_ratio, '3割', class: "radio-inline" %>
+		    	<%= f.radio_button :payment_ratio, 3 %>
+		    </p>
+
+		    <p class="form-group">
 		    	<%= f.label :genogram, '家族構成' %>
-		    	<%= f.text_area :genogram, , class: 'form-control form-short' %>
+		    	<%= f.text_area :genogram, class: 'form-control form-short' %>
 		    </p>
 
 		    <p class="separator">...........................................................................................</p>

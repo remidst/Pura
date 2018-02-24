@@ -354,4 +354,15 @@ a.btn-toggle-read.btn-toggle-read-activated:selected {
 	.well.well-form-specs {
 		border: none;
 	}
+
+	th.table-head-specs {
+		text-align : right;
+		padding-right : 15px;
+		font-weight: normal !important;
+		background: #f8f8fa !important;
+	}
+
+	table#table-specs.table.table-bordered > tbody thead > tr > th > td {
+		border: 1px solid black !important;
+	}
 }

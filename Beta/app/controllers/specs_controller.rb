@@ -26,7 +26,6 @@ class SpecsController < ApplicationController
 		@publisher = User.find(@spec.publisher_id)
 		@updated_at = @spec.updated_at 
 
-
 	end
 
 	def update
@@ -50,7 +49,7 @@ class SpecsController < ApplicationController
 	private
 
 	def spec_params
-		params.require(:spec).permit(:creation_date, :insurance_number, :gender, :birthday, :address, :phone, :cellphone, :kaigo_level, :evaluation_date, :kaigo_validity_from, :kaigo_validity_until, :dependency_physical, :dependency_mental, :handicap_physical, :handicap_rehabilitation, :handicap_psychological, :handicap_disease, :home_is_owner, :home_is_house, :home_has_room, :home_has_stairs, :economics, :emergency_contact_name, :emergency_contact_relation, :emergency_contact_address_phone, :emergency_contact_name_2, :emergency_contact_relation_2, :emergency_contact_address_phone_2, :emergency_contact_name_3, :emergency_contact_relation_3, :emergency_contact_address_phone_3, :genogram, :doctor_name, :hospital_name, :doctor_phone, :doctor_address, :disease_from, :disease_name, :disease_doctor, :disease_evolution, :disease_from_2, :disease_name_2, :disease_doctor_2, :disease_evolution_2, :other)
+		params.require(:spec).permit(:creation_date, :insurance_number, :gender, :birthday, :address, :phone, :cellphone, :kaigo_level, :evaluation_date, :kaigo_validity_from, :kaigo_validity_until, :dependency_physical, :dependency_mental, :handicap_physical, :handicap_rehabilitation, :handicap_psychological, :handicap_disease, :home_is_owner, :home_is_house, :home_has_room, :home_has_stairs, :economics, :payment_ratio, :emergency_contact_name, :emergency_contact_relation, :emergency_contact_address_phone, :emergency_contact_name_2, :emergency_contact_relation_2, :emergency_contact_address_phone_2, :emergency_contact_name_3, :emergency_contact_relation_3, :emergency_contact_address_phone_3, :genogram, :doctor_name, :hospital_name, :doctor_phone, :doctor_address, :disease_from, :disease_name, :disease_doctor, :disease_evolution, :disease_from_2, :disease_name_2, :disease_doctor_2, :disease_evolution_2, :other)
 	end
 
 end

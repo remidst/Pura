@@ -99,6 +99,9 @@ gem 'render_anywhere'
 #ruby  module for webkit html to pdf
 gem 'wkhtmltopdf-binary'
 
+#calculate era japan
+gem 'era_ja'
+
 group :production do
 	#binary for heroku
 	gem 'wkhtmltopdf-heroku'
