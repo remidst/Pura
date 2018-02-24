@@ -23,6 +23,12 @@
 		      <%= f.text_field :insurance_number, class: 'form-control form-short' %>
 		    </p> 
 
+
+		    <p class="form-group">
+		      <%= f.label :insurance_issuer, '保険者番号(6桁)' %>
+		      <%= f.text_field :insurance_issuer, class: 'form-control form-short' %>
+		    </p> 
+
 		    <p>
 		      <%= f.label :gender, '性別：' %>
 		      <%= f.label :gender, "男", value: true, class: "radio-inline" %>
@@ -178,6 +184,8 @@
 
 		    <p class="form-group">
 		    	<%= f.label :payment_ratio, '負担割合' %>
+		    	<%= f.label :payment_ratio, '負担なし', class: "radio-inline" %>
+		    	<%= f.radio_button :payment_ratio, 0 %>	
 		    	<%= f.label :payment_ratio, '１割', class: "radio-inline" %>
 		    	<%= f.radio_button :payment_ratio, 1 %>		    	
 		    	<%= f.label :payment_ratio, '2割', class: "radio-inline" %>

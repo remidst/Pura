@@ -38,7 +38,11 @@ module SpecsHelper
 
 	def payment_ratio(spec)
 		if spec.payment_ratio.present?
-			"#{spec.payment_ratio}割"
+			if  spec.payment_ratio == 0
+				"負担なし"
+			else
+				"#{spec.payment_ratio}割"
+			end
 		else
 			""
 		end
