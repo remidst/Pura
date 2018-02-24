@@ -5,8 +5,8 @@ class InvitationsController < Devise::InvitationsController
 	#PUT /resource/invitation
 
 	def edit
-		@project = resource.projects.first
-		@leader = User.find(@project.leader_id)
+		@contact = Contact.where(service_provider_id: resource.id).first
+		@invitor = User.find(@contact.care_manager_id)
 		
 		super
 	end

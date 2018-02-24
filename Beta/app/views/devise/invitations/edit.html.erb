@@ -1,9 +1,8 @@
-<div class="home">
-<%= image_tag 'wallpaper.jpg' %>
+<div>
   <div class="sign-up-invited">
     <div class="sign-up-invited-head">
       <h2><%= resource.email %>様、ようこそ!</h2>
-      <p><%= @leader.company %>の<%= @leader.username %>様から'<%= @project.project_name %>'の案件へ招待されました。案件にアクセスし、他のメンバーとメッセージやファイルを共有するにはアカウントを登録してください。</p>
+      <p><%= @invitor.username %>様からコリブリへ招待されました。コリブリのアカウントを作成して、他のメンバーとメッセージやファイルを共有しましょう！</p>
     </div>
     
     <div class="sign-up-invited-box">
@@ -25,7 +24,7 @@
         <div class="form-group"><%= f.label :company, 'ご自身の事業所名' %><br/>
         <%= f.text_field :company, class: "form-control" %></div>
 
-        <%= f.submit '登録して利用者の案件へ進む', class: "btn btn-info" %>
+        <%= f.submit 'アカウントを作成する', class: "btn btn-info" %>
       <% end %>
     </div>
   </div>
