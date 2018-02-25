@@ -50,9 +50,9 @@ class MembershipsController < ApplicationController
     end
 
     def update_members
-    	authorize @project, :is_leader?
+    	project = Project.find(params[:id])
+    	authorize project, :is_leader?
 
-    	project = current_user.projects.find(params[:id])
     	membership = project.memberships.new(membership_params)
     	membership.set_user_id!(current_user)
 
