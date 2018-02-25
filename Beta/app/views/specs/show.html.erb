@@ -49,6 +49,7 @@
 		    <tr><th class="table-head-specs" rowspan="3">主治医</th><th class="table-head-specs">医師名</th><td colspan="2"><%= @spec.try(:doctor_name) %></td><th class="table-head-specs">TEL</th><td><%= @spec.try(:doctor_phone) %></td></tr>
 		    <tr><th class="table-head-specs">医療<br/>機関名</th><td colspan="4"><%= @spec.try(:hospital_name) %></td></tr>
 		    <tr><th class="table-head-specs">住所.<br/>連絡先</th><td colspan="4"><%= @spec.try(:doctor_address) %></td></tr>
+		    <tr class="tr-other"><th class="table-head-specs">病歴</th><td colspan="5"><%= @spec.try(:disease_evolution) %></td></tr>
 		    <tr class="tr-other"><th class="table-head-specs">備考</th><td  colspan="5"><%= @spec.try(:other) %></td></tr>
 
 		</table>

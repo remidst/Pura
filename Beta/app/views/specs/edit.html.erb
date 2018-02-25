@@ -199,7 +199,7 @@
 		    	<%= f.text_area :genogram, class: 'form-control form-short' %>
 		    </p>
 
-		    <p class="separator">...........................................................................................</p>
+		    <p class="separator">...........................................................................................</p><br/>
 	  		    	<p class="p-well-title">緊急連絡先</p>
 	  			    緊急連絡先1 <br/>
 	  			    <p class="form-group">
@@ -233,9 +233,9 @@
 	  			      <%= f.text_area :emergency_contact_address_phone_2, class: 'form-control form-short' %>
 	  			    </p> 
 
-	  		<p class="separator">...........................................................................................</p>
+	  		<p class="separator">...........................................................................................</p><br/>
 
-	  		    	<p class="p-well-title">主治医</p>
+	  		    	<p class="p-well-title">主治医.病歴</p>
 	  			    <p class="form-group">
 	  			      <%= f.label :doctor_name, '医師名' %>
 	  			      <%= f.text_field :doctor_name, class: 'form-control form-short' %>
@@ -256,9 +256,14 @@
 	  			      <%= f.text_field :doctor_address, class: 'form-control form-short' %>
 	  			    </p> 
 
+	  			    <p class="form-group">
+	  			      <%= f.label :disease_evolution, '病歴' %>
+	  			      <%= f.text_area :disease_evolution, class: 'form-control form-short' %>
+	  			    </p> 
 
 
-	  			<p class="separator">...........................................................................................</p>
+
+	  			<p class="separator">...........................................................................................</p><br/>
 
 	  			<p class="form-group">
 	  				<%= f.label :other, "備考" %>
