@@ -70,3 +70,10 @@ task :messages_to_publications => :environment do
 end
 
 
+task :documents_to_publications => :environment do
+	puts "migrating documents to publications"
+	Document.move_to_publication
+	puts "finished job"
+end
+
+

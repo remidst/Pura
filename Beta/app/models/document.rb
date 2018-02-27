@@ -30,4 +30,23 @@ class Document < ApplicationRecord
 		end
 	end
 
+	def self.move_to_publication
+		documents = Document.all
+
+		puts "beginning of loop"
+
+		documents.each do |document|
+			puts "document loop for:"
+			puts document.attachment
+
+			publication = Publication.create(created_at: document.created_at, publisher_id: document.publisher_id, message: document.attachment, project_id: document.project_id)
+			puts "publication created"
+
+			publication.mark_publication_as_read!
+			puts "marked all as read"
+		end
+
+		puts "end of loop"
+	end
+
 end
