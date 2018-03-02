@@ -151,8 +151,8 @@ $(document).on('turbolinks:load', function(){
 
 	$(".btn-tgl").click(function(){
 		$this = $(this)
+		$this.parent().fadeOut("slow")
 		$this.toggleClass("btn-info");
-		$this.text(($this.text() == "仕事が完了しました") ? "仕事を続ける" : "仕事が完了しました");
 	});
 
 	$(".conversation-messages").hide();
