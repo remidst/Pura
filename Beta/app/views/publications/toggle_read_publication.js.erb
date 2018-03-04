@@ -1,2 +1,4 @@
 var $count = parseInt($("#timeline-unread-count-number").text());
 $("#timeline-unread-count-number").text($count - 1);
+$("#publication-read-button-<%= j @publication.id.to_s %>").fadeOut("slow");
+$("#publication-<%= j @publication.id.to_s %>").fadeOut("slow");

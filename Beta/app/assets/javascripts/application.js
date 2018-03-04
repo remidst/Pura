@@ -149,11 +149,7 @@ $(document).on('turbolinks:load', function(){
 		$("#well-specs").show();
 	});
 
-	$(".btn-tgl").click(function(){
-		$this = $(this)
-		$this.parent().fadeOut("slow")
-		$this.toggleClass("btn-info");
-	});
+
 
 	$(".conversation-messages").hide();
 	$(".conversation-form").hide();

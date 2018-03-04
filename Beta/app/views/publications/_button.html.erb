@@ -1,3 +1,3 @@
-<div class="publication-read-button">	
-	<%= link_to "仕事が完了しました", toggle_read_publication_publication_path(publication), method: :patch, remote: :true, class: "btn btn-info btn-tgl" %>
+<div class="publication-read-button" id="publication-read-button-<%= publication.id %>">	
+	<%= link_to "既読にする", toggle_read_publication_publication_path(publication), method: :patch, remote: :true, class: "btn btn-info btn-tgl" %>
 </div>

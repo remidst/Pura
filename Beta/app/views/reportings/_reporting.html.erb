@@ -1,4 +1,4 @@
-<div class="well reporting-well">
+<div class="well reporting-well" id="reporting-<%= reporting.id %>">
 	<div class="reporting-well-head">
 		<div class="reporting-title"><%= reporting_header(reporting) %></div>
 		<% if current_user.id.to_s == reporting.publisher_id.to_s %>
