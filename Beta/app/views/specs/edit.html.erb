@@ -39,8 +39,11 @@
 
 
 		    <p class="form-group">
-		      <%= f.label :birthday, '生年月日' %>
-		      <%= f.date_field :birthday, class: 'form-control form-date' %>
+		      <%= f.label :birthday_era, '生年月日' %><br/>
+		      <%= f.select(:birthday_era, options_for_select([['明治',1], ['大正',2], ['昭和', 3], ['平成', 4]], 3), class: "select-specs") %>
+		      <%= f.text_field :birthday_year, class: "form-xxs"%>年
+		      <%= f.text_field :birthday_month, class: "form-xxs" %>月
+		      <%= f.text_field :birthday_day, class: "form-xxs" %>日
 		    </p>
 
 		    <p class="form-group">

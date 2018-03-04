@@ -27,7 +27,7 @@
 
 		    
 		<table class="table table-bordered" id="table-specs">
-		    <tr><th class="table-head-specs col-md-2" rowspan="3" >個人情報</th><th class="table-head-specs col-md-1">性別</th><td class="col-md-2"><%= gender(@spec) %></td><th class="table-head-specs">誕生日</th><td colspan="2"><%= spec_birthday(@spec) %></td></tr>
+		    <tr><th class="table-head-specs col-md-2" rowspan="3" >個人情報</th><th class="table-head-specs col-md-1">性別</th><td class="col-md-2"><%= gender(@spec) %></td><th class="table-head-specs">誕生日</th><td colspan="2"><%= bday_era(@spec) %><%= spec_birthday(@spec) %></td></tr>
 		    <tr><th class="table-head-specs">住所</th><td colspan="4"><%= @spec.try(:address) %></td></tr>
 		    <tr><th class="table-head-specs">TEL</th><td colspan="1"><%= @spec.try(:phone) %></td><th class="table-head-specs">携帯電話</th><td colspan="2"><%= @spec.try(:cellphone) %></td></tr>
 		    <tr><th class="table-head-specs" rowspan="3">介護認定</th><th class="table-head-specs col-md-1">介護度</th><td class="col-md-1"><%= @spec.try(:kaigo_level) %></td><th class="table-head-specs col-md-1">認定日</th><td colspan="2"><%= spec_evaluation_date(@spec) %></td></tr>

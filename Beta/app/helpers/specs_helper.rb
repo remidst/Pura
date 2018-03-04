@@ -49,10 +49,23 @@ module SpecsHelper
 	end
 
 	def spec_birthday(spec)
-		if spec.birthday.present?
-			spec.birthday.to_era("%O%E年%m月%d日")
+		"#{spec.birthday_year.present? ? spec.birthday_year : '　'}年#{spec.birthday_month.present? ? spec.birthday_month : '　　'}月#{spec.birthday_day.present? ? spec.birthday_day : '　　'}日"
+	end
+
+	def bday_era(spec)
+		if spec.birthday_era.present?
+			if spec.birthday_era == 1
+				'明治'
+			elsif spec.birthday_era == 2
+				'大正'
+			elsif spec.birthday_era == 3
+				'昭和'
+			elsif spec.birthday_era == 4
+				'平成'
+			else
+			end
 		else
-			""
+			'M T S　'	
 		end
 	end
 
