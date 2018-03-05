@@ -97,7 +97,7 @@ class ReportingsController < ApplicationController
     @reporting = Reporting.find(params[:id])
     @readmark = @reporting.reporting_readmarks.where(user_id: current_user.id).take
 
-    @readmark.toggle!(:read)
+    @readmark.update!(read: true)
   end
 
   private

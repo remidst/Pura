@@ -31,7 +31,7 @@ class PublicationsController < ApplicationController
 
 		authorize @readmark, :is_reader?
 
-		@readmark.toggle!(:read)
+		@readmark.update!(read: true)
 
 		if @publication.publication_comments.present?
 			@publication.publication_comments.each do |publication_comment|
