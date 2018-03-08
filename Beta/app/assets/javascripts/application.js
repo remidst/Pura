@@ -63,7 +63,7 @@ $(document).on('turbolinks:load', function(){
 		return false;
 	});
 
-	$("#flash").delay(4000).animate({height: 'toggle'}, 'slow');
+	$("#flash").delay(8000).animate({opacity: 0}, 400);
 
 	$("table > tbody > tr[data-link]").not('thead').click(function(){
 		window.location = this.dataset.link
