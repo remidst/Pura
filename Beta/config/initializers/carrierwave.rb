@@ -1,4 +1,7 @@
+require 'carrierwave/orm/activerecord'
+
 CarrierWave.configure do |config|
+  config.ignore_processing_errors = true
   config.fog_provider = 'fog/aws'
   config.fog_credentials = {
       provider:              'AWS',
@@ -7,4 +10,10 @@ CarrierWave.configure do |config|
       region:                ENV['S3_REGION'],
   }
   config.fog_directory  = ENV['S3_BUCKET']
+end
+
+begin
+  # attaching code
+rescue CarrierWave::ProcessingError => error
+  raise error.cause
 end

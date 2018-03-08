@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+
 	private
 
 	def authenticate_user_from_token!
@@ -27,7 +28,7 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.permit(:sign_in, keys: [:username, :company, :password])
+		devise_parameter_sanitizer.permit(:sign_in, keys: [:username, :company, :password, :password_confirmation, :avatar, :avatar_cache, :remove_avatar])
 	end
 
 end

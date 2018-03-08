@@ -25,11 +25,16 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  mount_uploader :avatar, AvatarUploader
+
   attribute :email, :string
 
   validates_uniqueness_of :email
 
   validates_format_of :email, with: Devise::email_regexp
+
+  validates_integrity_of  :avatar
+  validates_processing_of :avatar
 
 
 
@@ -130,6 +135,10 @@ class User < ApplicationRecord
   		token = Devise.friendly_token
   		break token unless User.where(authentication_token: token).first
   	end
+  end
+
+  def avatar_size_validation
+    errors[:avatar] << "500KB以下のファイルを選択してください" if avatar.size > 0.5.megabytes
   end
 
   def create_timeline
