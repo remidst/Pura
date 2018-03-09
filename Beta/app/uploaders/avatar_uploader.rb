@@ -30,9 +30,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  #version :thumb do
-   # process resize_to_fit: [50, 50]
-  #end
+  version :thumb do
+    process resize_to_fit: [50, 50]
+  end
 
   #version :medium do 
   #  process resize_to_fill: [100, 100]
@@ -51,7 +51,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   def default_url(*args)
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "teruterubouzu.png"].compact.join('_'))
+    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "teruterubouzu-thumb.png"].compact.join('_'))
   end
 
 end
