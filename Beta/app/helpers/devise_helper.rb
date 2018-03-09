@@ -14,4 +14,8 @@ module DeviseHelper
 
 		html.html_safe
 	end
+
+	def profile_picture(user)
+		user.avatar.present? ? image_tag(user.avatar.url(:medium)) : image_tag(user.avatar.url)
+	end
 end

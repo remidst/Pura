@@ -16,6 +16,17 @@
             <%= devise_error_messages! %>
 
             <div class="form-group">
+              <% if current_user.avatar.url.present? %>
+                <%= profile_picture(current_user) %><br/>
+                <%= f.label :remove_avatar do %>
+                  <%= f.check_box :remove_avatar %>プロファイル写真を削除する
+                <% end %>
+              <% end %>
+              <%= f.file_field :avatar %>
+              <%= f.hidden_field :avatar_cache %>
+            </div>
+
+            <div class="form-group">
               <%= f.label :username, 'ご自身のユーザー名' %><br />
               <%= f.text_field :username, autofocus: true, class: "form-control" %>
             </div>
@@ -26,8 +37,8 @@
             </div>
 
             <div class="form-group">
-              <%= f.label :email, 'ご自身のメールアドレス' %><br />
-              <%= f.email_field :email, class: "form-control" %>
+              ご自身のメールアドレス'(変更は不可能です)
+              <%= current_user.email %>
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -47,15 +58,6 @@
               <%= f.label :password_confirmation, 'パスワードの確認' %><br />
               <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
             </div>
-
-            <% if current_user.avatar.url.present? %>
-              <%= image_tag(current_user.avatar.url(:thumb)) %>
-              <%= f.label :remove_avatar do %>
-                <%= f.check_box :remove_avatar %>
-              <% end %>
-            <% end %>
-            <%= f.file_field :avatar %>
-            <%= f.hidden_field :avatar_cache %>
             
 
             <div class="form-group">
