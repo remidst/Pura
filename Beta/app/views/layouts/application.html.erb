@@ -10,15 +10,28 @@
   </head>
 
  <body>
-    <%= render "layouts/navigation" %>
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <% if value.length > 0 %><div class="alert alert-<%= key %>"><%= value %></div><% end %>
-      <% end %>
-    </div>
+ 	<div id="container">
+	 	<div id="header">
+	    	<%= render "layouts/navigation" %>
+	 	</div>
 
-    <div>
-      <%= yield %>
-    </div>
+	 	<div id="body">
+		    <div id="flash">
+		      <% flash.each do |key, value| %>
+		        <% if value.length > 0 %><div class="alert alert-<%= key %>"><%= value %></div><% end %>
+		      <% end %>
+		    </div>
+
+		    <div>
+		      <%= yield %>
+		    </div>
+			
+	 	</div>
+
+	 	<div id="footer">
+		    <%= render "layouts/footer" %>	
+	 	</div> 		
+ 	</div>
+
   </body>
 </html>

@@ -348,6 +348,41 @@ a.btn-toggle-read.btn-toggle-read-activated:selected {
 	margin-left: 10px;
 }
 
+
+
+#body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+#container {
+	min-height: 100%;
+	position: relative;
+}
+
+#body {
+	padding-bottom: 230px;
+	min-height: calc(100% + 230px;);
+	margin-bottom: -230px;
+}
+
+#body:after {
+  display: block;
+  content: "";
+  height: 230px;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 170px;
+	background: #4f5b66;
+	color: white;
+}
+
+
 @media print {
 	.linkAnnotation{
 		display: none;
