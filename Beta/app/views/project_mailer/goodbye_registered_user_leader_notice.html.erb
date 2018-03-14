@@ -14,7 +14,7 @@
 		<% end %>
 		</p>
 
-		<p><%= link_to '案件を見る', project_url(@project, user_email: @user.email, user_token: @user.authentication_token) %></p>
+		<p><%= link_to '案件を見る', project_url(subdomain: 'www', @project, user_email: @user.email, user_token: @user.authentication_token) %></p>
 
 		<p>
          	ご利用ありがとうございます！

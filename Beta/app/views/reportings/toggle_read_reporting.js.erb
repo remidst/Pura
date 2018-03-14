@@ -2,3 +2,7 @@ var $count = parseInt($("#timeline-unread-count-number").text());
 $("#timeline-unread-count-number").text($count - 1);
 $("#reporting-read-button-<%= j @reporting.id.to_s %>").fadeOut("slow");
 $("#reporting-<%= j @reporting.id.to_s %>").fadeOut("slow");
+
+if ($count - 1 == 0) {
+	$("#timeline-all-read").show()
+}

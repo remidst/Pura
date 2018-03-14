@@ -50,8 +50,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-  def default_url(*args)
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "teruterubouzu-thumb.png"].compact.join('_'))
-  end
+
 
 end

@@ -14,7 +14,16 @@
   	<div class="well timeline-well">
   		<p id="timeline-unread-message">未読のメッセージ：</p>
   		<div id="timeline-unread-count"><span id="timeline-unread-count-number"><%= @count %></span>件</div>
+
+      <div id="timeline-all-read">
+        <h2 class="h2-centered">お疲れ様です！<%= image_tag("small-emoji-muscle.png") %></h2>
+        <div class="btn-centered">
+          <%= link_to "過去のメッセージを見る", root_path, class: "btn btn-info" %>
+        </div>
+      </div>
   	</div>
+
+
 
 	  <% @timelines.each do |timeline| %>
 	  	<%= render partial: timeline, locals: {reporting: timeline.try(:reporting), contact: timeline.try(:contact), project: timeline.try(:project), publication: timeline.try(:publication)} %>

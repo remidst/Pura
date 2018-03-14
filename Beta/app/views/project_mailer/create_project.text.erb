@@ -1,3 +1,3 @@
 <%= @user.username %>様、<%= @project.project_name %>'の案件が作成されました。案件内にサービス提供責任者様方を招待し、ファイルとメッセージを共有しましょう。
 
-<%= link_to '案件を見る', project_url(@project, user_email: @user.email, user_token: @user.authentication_token)  %>
+<%= link_to '案件を見る', project_url(subdomain: 'www', @project, user_email: @user.email, user_token: @user.authentication_token)  %>

@@ -4,7 +4,7 @@
 
 	<p>詳しくは、案件の担当マネジャーの<%= @leader.username %>様にご確認ください。</p>
 
-	<p><%= link_to 'コリブリへ', projects_url(user_email: @user.email, user_token: @user.authentication_token)  %></p>
+	<p><%= link_to 'コリブリへ', projects_url(subdomain: 'www', user_email: @user.email, user_token: @user.authentication_token)  %></p>
 
 	<p>
 	    ご利用ありがとうございます！

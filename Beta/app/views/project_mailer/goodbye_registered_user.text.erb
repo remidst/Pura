@@ -2,4 +2,4 @@
 
 詳しくは、案件の担当マネジャーの<%= @leader.username %>様にご確認ください。
 
-<%= link_to 'コリブリへ', projects_url(user_email: @user.email, user_token: @user.authentication_token) %>
+<%= link_to 'コリブリへ', projects_url(subdomain: 'www', user_email: @user.email, user_token: @user.authentication_token) %>

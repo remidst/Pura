@@ -28,6 +28,10 @@ $(document).on('turbolinks:load', function(){
 	  }
 	});
 
+	$(".btn.btn-info.btn-tgl").click(function(){
+		$(this).hide();
+	});
+
 	
 	$("#project_user_tokens").tokenInput("/users.json",
 	{
@@ -55,6 +59,8 @@ $(document).on('turbolinks:load', function(){
 		preventDuplicates: true,
 		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
 	});
+
+	$("#timeline-all-read").hide();
 
 	$("a.btn.btn-info.scroll-home").click(function(){
 		$('body,html').animate({
