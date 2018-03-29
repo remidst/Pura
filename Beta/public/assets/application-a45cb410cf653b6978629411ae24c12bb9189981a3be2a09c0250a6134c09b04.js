@@ -17310,6 +17310,10 @@ $(document).on('turbolinks:load', function(){
 	  }
 	});
 
+	$(".btn.btn-info.btn-tgl").click(function(){
+		$(this).hide();
+	});
+
 	
 	$("#project_user_tokens").tokenInput("/users.json",
 	{
@@ -17338,6 +17342,8 @@ $(document).on('turbolinks:load', function(){
 		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
 	});
 
+	$("#timeline-all-read").hide();
+
 	$("a.btn.btn-info.scroll-home").click(function(){
 		$('body,html').animate({
 			scrollTop: 0
@@ -17345,7 +17351,7 @@ $(document).on('turbolinks:load', function(){
 		return false;
 	});
 
-	$("#flash").delay(4000).animate({height: 'toggle'}, 'slow');
+	$("#flash").delay(8000).animate({opacity: 0}, 400);
 
 	$("table > tbody > tr[data-link]").not('thead').click(function(){
 		window.location = this.dataset.link
@@ -17431,11 +17437,7 @@ $(document).on('turbolinks:load', function(){
 		$("#well-specs").show();
 	});
 
-	$(".btn-tgl").click(function(){
-		$this = $(this)
-		$this.toggleClass("btn-info");
-		$this.text(($this.text() == "仕事が完了しました") ? "仕事を続ける" : "仕事が完了しました");
-	});
+
 
 	$(".conversation-messages").hide();
 	$(".conversation-form").hide();
@@ -17474,18 +17476,25 @@ $(document).on('turbolinks:load', function(){
 		$(this).hide();
 	});
 
-	$("#file-form").hide();
-	$("#file-button").click(function(){
-		$(this).hide();
-		$("#file-form").show();
+	$("#form-invite-by-name").hide();
+	$("#form-invite-by-email").hide();
+	$("#submit").hide();
+	$("#back").hide();
+
+	$("#invite-by-mail").click(function(){
+		$("#form-invite-by-email").show();
+		$("#submit").show();
+		$("#back").show();
+		$("#invite-by-mail-or-name").hide();
 	});
-	$(".close, .modal").click(function(){
-		$("#file-form").hide();
-		$("#file-button").show();
+
+	$("#invite-by-name").click(function(){
+		$("#form-invite-by-name").show();
+		$("#submit").show();
+		$("#back").show();
+		$("#invite-by-mail-or-name").hide();
 	});
-	$(".modal-content").click(function(e){
-		e.stopPropagation();
-	});
+
 
 	layout();
 

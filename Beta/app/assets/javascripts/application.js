@@ -194,18 +194,25 @@ $(document).on('turbolinks:load', function(){
 		$(this).hide();
 	});
 
-	$("#file-form").hide();
-	$("#file-button").click(function(){
-		$(this).hide();
-		$("#file-form").show();
+	$("#form-invite-by-name").hide();
+	$("#form-invite-by-email").hide();
+	$("#submit").hide();
+	$("#back").hide();
+
+	$("#invite-by-mail").click(function(){
+		$("#form-invite-by-email").show();
+		$("#submit").show();
+		$("#back").show();
+		$("#invite-by-mail-or-name").hide();
 	});
-	$(".close, .modal").click(function(){
-		$("#file-form").hide();
-		$("#file-button").show();
+
+	$("#invite-by-name").click(function(){
+		$("#form-invite-by-name").show();
+		$("#submit").show();
+		$("#back").show();
+		$("#invite-by-mail-or-name").hide();
 	});
-	$(".modal-content").click(function(e){
-		e.stopPropagation();
-	});
+
 
 	layout();
 

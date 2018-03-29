@@ -93,7 +93,44 @@
 	margin-top: 20px;
 }
 
+#invite-by-mail-or-name-text {
+	text-align: center;
+}
+
 span.confirm-preview-label {
 	color: #4f5b66;
+}
+
+#invite-box {
+	margin-top: 40px;
+	display: flex;
+	justify-content: space-around;
+}
+
+#invite-by-name {
+	text-align: center;
+	font-weight: bold;
+}
+
+#invite-by-name:hover {
+	cursor:pointer
+}
+
+#invite-by-mail {
+	text-align: center;
+	font-weight: bold;
+}
+
+#invite-by-mail:hover {
+	cursor:pointer;
+}
+
+#back　{
+	color: blue;
+	text-decoration: underline;
+}
+
+#back:hover {
+	cursor: pointer;
 }
 

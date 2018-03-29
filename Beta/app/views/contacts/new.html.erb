@@ -8,14 +8,35 @@
 
 			<div id="membership-management">
 
+				<div id="invite-by-mail-or-name">
+					<div id="invite-by-mail-or-name-text">
+						招待する方法を選択してください
+					</div>
+					<div id="invite-box">
+						<div id="invite-by-mail">
+							<div id="invite-by-mail-text">
+								メールアドレス
+							</div>
+							<%= image_tag("email_icon.png") %>
+						</div>
+						<div id="invite-by-name">
+							<div id="invite-by-name-text">
+								事業所名
+							</div>
+							<%= image_tag("contacts_icon.png") %>
+						</div>
+					</div>
+
+				</div>
+
 				<%= form_for(Contact.new) do |f| %>
 
-					<div id="invite-by-name">
+					<div id="form-invite-by-name">
 						<%= f.label :contact_user_tokens, '事業所名で探す' %>
 						<%= f.text_field :contact_user_tokens, id: :contact_user_token %>
 					</div>
 
-					<div id="invite-by-email">
+					<div id="form-invite-by-email">
 						<p class="form-group">
 							<%= f.label :email, 'メールアドレスから招待する' %>
 							<%= f.text_field :email, class: "form-control", pattern: "^.+@.+$" %>
@@ -29,6 +50,10 @@
 					</div>
 
 				<% end %>
+
+				<div id="back">
+					<%= link_to "戻る", new_contact_path %>
+				</div>
 			</div>
 		</div>
 
