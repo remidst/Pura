@@ -186,3 +186,50 @@ a.btn.btn-info.scroll-home {
 	width: 33%;
 	float: left;
 }
+
+#edit-profile-menu {
+	float: left;
+	height: auto;
+	min-height: 100% !important;
+	width: 140px;
+	background: white;
+	border-right: 0.5px solid #ddd;
+	border-left: 0.5px solid #ddd;
+
+}
+
+.edit-profile-menu-items {
+	width: 100%;
+	background: white;
+	padding: 10px;
+	border-bottom: 0.5px solid #ddd;
+}
+
+#account-information-management {
+	background-color: white;
+	border-top: 0.5px solid #ddd;
+	height: 800px;
+	border-bottom: 0.5px solid #ddd;
+	border-right: 0.5px solid #ddd;
+}
+
+.profile-selected {
+	background: #f8f8fa;
+	font-weight: bold;
+}
+
+.profile-selected:hover {
+	cursor:pointer;
+}
+
+#change-account-info {
+	margin-top: 20px;
+}
+
+.span-bold {
+	font-weight: bold;
+}
+
+#show-password-edit {
+	margin-bottom: 10px;
+}

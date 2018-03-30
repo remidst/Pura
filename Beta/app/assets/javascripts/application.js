@@ -155,6 +155,30 @@ $(document).on('turbolinks:load', function(){
 		$("#well-specs").show();
 	});
 
+	$("#password-edit").hide();
+
+	$("#show-password-edit").click(function(){
+		$("#password-edit").show();
+		$(this).hide();
+	});
+
+	$("#delete-account").hide();
+
+	$("#delete-profile").click(function(){
+		$(this).addClass("profile-selected");
+		$("#update-profile").removeClass("profile-selected");
+		$("#change-account-info").hide();
+		$("#delete-account").show();
+	});
+
+	$("#update-profile").click(function(){
+		$(this).addClass("profile-selected");
+		$("#delete-profile").removeClass("profile-selected");
+		$("#delete-account").hide();
+		$("#change-account-info").show();
+		$("#password-edit").hide();
+	});
+
 
 
 	$(".conversation-messages").hide();
