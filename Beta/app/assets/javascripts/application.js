@@ -177,6 +177,7 @@ $(document).on('turbolinks:load', function(){
 		$("#delete-account").hide();
 		$("#change-account-info").show();
 		$("#password-edit").hide();
+		$("#show-password-edit").show();
 	});
 
 

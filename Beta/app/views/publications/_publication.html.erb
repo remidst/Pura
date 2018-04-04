@@ -1,6 +1,9 @@
 <div class="well well-publication" id="publication-<%= publication.id %>">
 	<div class="publication-header">
 		<div class="publication-publisher">
+			<% if publication.publisher.avatar.present? %>
+				<%= image_tag publication.publisher.avatar.url(:thumb), class: 'img-circle' %>
+			<% end %>
 			<%= publication_header(publication) %>	
 		</div>
 		<div class="publication-date">

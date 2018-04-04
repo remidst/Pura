@@ -29,6 +29,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  process :auto_orient
+
+  def auto_orient
+    manipulate! do |image|
+      image.tap(&:auto_orient)
+    end
+  end
+
   # Create different versions of your uploaded files:
   version :medium do
     process resize_to_fill: [100, 100]

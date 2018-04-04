@@ -205,6 +205,11 @@ a.btn.btn-info.scroll-home {
 	border-bottom: 0.5px solid #ddd;
 }
 
+.edit-profile-menu-items:hover {
+	cursor: pointer;
+	background: #f8f8fa;
+}
+
 #account-information-management {
 	background-color: white;
 	border-top: 0.5px solid #ddd;
@@ -218,9 +223,6 @@ a.btn.btn-info.scroll-home {
 	font-weight: bold;
 }
 
-.profile-selected:hover {
-	cursor:pointer;
-}
 
 #change-account-info {
 	margin-top: 20px;
@@ -232,4 +234,5 @@ a.btn.btn-info.scroll-home {
 
 #show-password-edit {
 	margin-bottom: 10px;
+	display: inline-block;
 }
