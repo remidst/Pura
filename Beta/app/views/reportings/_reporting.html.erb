@@ -1,23 +1,45 @@
 <div class="well reporting-well" id="reporting-<%= reporting.id %>">
 	<div class="reporting-well-head">
-		<div class="reporting-title"><%= reporting_header(reporting) %></div>
-		<% if current_user.id.to_s == reporting.publisher_id.to_s %>
-			<div class="reporting-edit"><%= link_to image_tag("edit-small.png"), edit_contact_reporting_path(contact, reporting), title: 'エディット' %></div>
-			<div><%= link_to image_tag("delete-bin.png"), contact_reporting_path(contact, reporting), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'}, title: '消す' %></div>
+		<div class="reporting-header-left">
+			<div class="reporting-publisher-avatar">
+				<% if reporting.publisher.avatar.present? %>
+					<div class="image-avatar">
+						<%= image_tag reporting.publisher.avatar.url(:thumb), class: "img-circle" %>					
+					</div>
+				<% else %>
+					<div class="color-avatar" style="background-color: <%= reporting.publisher.avatar_color if reporting.publisher.avatar_color %>">
+						<%= reporting.publisher.username.chars.first %>
+					</div>
+				<% end %>
+			</div>
+			<div class="reporting-title"><%= reporting_header(reporting) %></div>
+		</div>
 
-		<% end %>
+		<div class="reporting-header-right">
+			<% if current_user.id.to_s == reporting.publisher_id.to_s %>
+				<div class="reporting-edit"><%= link_to image_tag("edit-small.png"), edit_contact_reporting_path(contact, reporting), title: 'エディット' %></div>
+				<div><%= link_to image_tag("delete-bin.png"), contact_reporting_path(contact, reporting), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'}, title: '消す' %></div>
+
+			<% end %>
+		</div>
+
 	</div>
 	
-	<p class="reporting-message"><%= reporting.message %></p>
-	添付ファイル：<br/>
-	<ul>
-		<% reporting.reporting_attachments.each do |a| %>
-			<li><%= link_to "#{a.attachment.file.filename}", a.attachment_url, target: :_blank %></li>
-		<% end %>
-	</ul>
+	<div class="reporting-message">
+		<%= reporting.message %>
+		<p>添付ファイル：</p>
+		
 
-	<p class="reporting-<%= reporting_read_style(reporting) %>">
-		<%= reporting_read(reporting) %>
-	</p>
+		<ul>
+			<% reporting.reporting_attachments.each do |a| %>
+				<li><%= link_to "#{a.attachment.file.filename}", a.attachment_url, target: :_blank %></li>
+			<% end %>
+		</ul>
+
+		<p class="reporting-<%= reporting_read_style(reporting) %>">
+			<%= reporting_read(reporting) %>
+		</p>
+	</div>
+
 	
 </div>

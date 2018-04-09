@@ -55,3 +55,18 @@ p.reporting-read {
 p.reporting-unread {
 	color: black;
 }
+
+.reporting-header-left {
+	display: table-row;
+}
+
+.reporting-publisher-avatar {
+	display: table-cell;
+}
+
+.reporting-message {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+	padding-bottom: 30px;
+}

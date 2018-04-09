@@ -51,10 +51,16 @@
 	margin-bottom : 5px;
 	display: flex;
 	border-bottom: 0.5px solid #ddd;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	pdding-right: 20px;
 }
 
 .reporting-title {
 	flex-grow: 1;
+	display: table-cell;
+	paddingg-left: 8px;
 }
 
 .well.reporting-well {
@@ -64,6 +70,7 @@
 	border: none;
 	margin-top: 20px;
 	margin-bottom: 0px;
+	padding: 0;
 }
 
 
