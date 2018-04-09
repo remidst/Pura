@@ -2,9 +2,17 @@
 	<div class="publication-header">
 		<div class="publication-publisher">
 			<% if publication.publisher.avatar.present? %>
-				<%= image_tag publication.publisher.avatar.url(:thumb), class: 'img-circle' %>
+				<div class="image-avatar">
+					<%= image_tag publication.publisher.avatar.url(:thumb), class: 'img-circle img-circle-cell' %>					
+				</div>
+			<% else %>
+				<div class="color-avatar" style="background-color: <%= publication.publisher.avatar_color if publication.publisher.avatar_color %>">
+					<%= publication.publisher.username.chars.first %>
+				</div>
 			<% end %>
-			<%= publication_header(publication) %>	
+			<div class="publication-publisher-text">
+				<%= publication_header(publication) %>	
+			</div>
 		</div>
 		<div class="publication-date">
 			<%= publication_date(publication) %>

@@ -319,6 +319,18 @@ input.send-message-button {
 
 .publication-publisher {
 	flex-grow: 1;
+	display: table-row;
+}
+
+.publication-publisher-text {
+	display: table-cell;
+	height: 40px;
+	vertical-align: middle;
+	padding-left: 8px;
+}
+
+.image-avatar {
+	display: table-cell;
 }
 
 .publication-date {

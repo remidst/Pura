@@ -76,4 +76,10 @@ task :documents_to_publications => :environment do
 	puts "finished job"
 end
 
+task :add_avatar_color_to_users => :environment do
+	puts "adding random colors to existing users"
+	User.avatar_color_generation
+	puts "finished job"
+end
+
 
