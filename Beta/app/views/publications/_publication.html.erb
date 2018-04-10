@@ -1,14 +1,30 @@
 <div class="well well-publication" id="publication-<%= publication.id %>">
 	<div class="publication-header">
 		<div class="publication-publisher">
-			<% if publication.publisher.avatar.present? %>
-				<div class="image-avatar">
-					<%= image_tag publication.publisher.avatar.url(:thumb), class: 'img-circle img-circle-cell' %>					
-				</div>
+			<% if publication.publication_comments.present? %>
+				<% last_comment = publication.publication_comments.last %>
+				<% if last_comment.publisher.avatar.url.present? %>
+					<div class="image-avatar">
+						<%= image_tag last_comment.publisher.avatar.url(:thumb), class: 'img-circle img-circle-cell' %>
+					</div>
+				<% else %>
+					<div class="color-avatar avatar-thumb" style="background-color: <%= last_comment.publisher.avatar_color if last_comment.publisher.avatar_color %>">
+						<%= last_comment.publisher.username.chars.first %>
+					</div>
+				<% end %>
+
 			<% else %>
-				<div class="color-avatar avatar-thumb" style="background-color: <%= publication.publisher.avatar_color if publication.publisher.avatar_color %>">
-					<%= publication.publisher.username.chars.first %>
-				</div>
+
+				<% if publication.publisher.avatar.present? %>
+					<div class="image-avatar">
+						<%= image_tag publication.publisher.avatar.url(:thumb), class: 'img-circle img-circle-cell' %>					
+					</div>
+				<% else %>
+					<div class="color-avatar avatar-thumb" style="background-color: <%= publication.publisher.avatar_color if publication.publisher.avatar_color %>">
+						<%= publication.publisher.username.chars.first %>
+					</div>
+				<% end %>
+
 			<% end %>
 			<div class="publication-publisher-text">
 				<%= publication_header(publication) %>	
@@ -37,7 +53,16 @@
 
 	<div class="publication-message">
 
-		<%= simple_format(publication.message) %>
+		<% if publication.publication_comments.present? %>
+			<div class="publication-header-with-comments">
+				<%= publication_second_header(publication) %>
+			</div>
+		<% end %>
+
+		<div class="publication-message-text">
+			<%= simple_format(publication.message) %>
+		</div>
+
 
 		<% if publication.publication_attachments.present? %>
 			<ul>
