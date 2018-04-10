@@ -10,7 +10,7 @@
 		 2) 担当者間でレポート、提供票など、ファイルの共有
 		</p>
 
-		<%= link_to '案件を見る', project_url(subdomain: 'www', @project, user_email: @user.email, user_token: @user.authentication_token) %>
+		<%= link_to '案件を見る', project_url(@project, user_email: @user.email, user_token: @user.authentication_token) %>
 
 		<p>
 			案件内のメンバー：<br/>

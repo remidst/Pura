@@ -2,4 +2,4 @@
 
 未読のメッセージが<%= @timelines.count %>件届いております。
 
-<%= link_to 'タイムラインへ', timelines_url(subdomain: 'www', user_email: @user.email, user_token: @user.authentication_token) %>
+<%= link_to 'タイムラインへ', timelines_url(user_email: @user.email, user_token: @user.authentication_token) %>
