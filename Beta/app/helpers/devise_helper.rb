@@ -15,7 +15,4 @@ module DeviseHelper
 		html.html_safe
 	end
 
-	def profile_picture(user)
-		user.avatar.present? ? image_tag(user.avatar.url(:medium), class: "bordered-image") : image_tag(user.avatar.url)
-	end
 end

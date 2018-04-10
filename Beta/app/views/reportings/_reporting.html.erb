@@ -7,7 +7,7 @@
 						<%= image_tag reporting.publisher.avatar.url(:thumb), class: "img-circle" %>					
 					</div>
 				<% else %>
-					<div class="color-avatar" style="background-color: <%= reporting.publisher.avatar_color if reporting.publisher.avatar_color %>">
+					<div class="color-avatar avatar-thumb" style="background-color: <%= reporting.publisher.avatar_color if reporting.publisher.avatar_color %>">
 						<%= reporting.publisher.username.chars.first %>
 					</div>
 				<% end %>
@@ -18,7 +18,7 @@
 		<div class="reporting-header-right">
 			<% if current_user.id.to_s == reporting.publisher_id.to_s %>
 				<div class="reporting-edit"><%= link_to image_tag("edit-small.png"), edit_contact_reporting_path(contact, reporting), title: 'エディット' %></div>
-				<div><%= link_to image_tag("delete-bin.png"), contact_reporting_path(contact, reporting), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'}, title: '消す' %></div>
+				<div class="reporting-delete"><%= link_to image_tag("delete-bin.png"), contact_reporting_path(contact, reporting), method: :delete, data: {confirm: 'このメッセージと添付のファイルは削除されます。'}, title: '消す' %></div>
 
 			<% end %>
 		</div>

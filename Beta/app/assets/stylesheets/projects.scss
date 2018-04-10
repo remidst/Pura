@@ -333,12 +333,22 @@ input.send-message-button {
 	display: table-cell;
 }
 
+.publication-header-right {
+	display: table-row;
+}
+
 .publication-date {
-	margin-right: 4px;
+	padding-right: 6px;
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
 }
 
 .publication-views {
-	margin-right: 4px;
+	padding-right: 6px;
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
 }
 
 .publication-views:hover {
@@ -346,7 +356,16 @@ input.send-message-button {
 }
 
 .publication-edit {
-	margin-right: 4px;
+	padding-right: 6px;
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.publication-delete {
+	display: table-cell;
+	height: 40px;
+	vertical-align: middle;
 }
 
 .publication-message {
