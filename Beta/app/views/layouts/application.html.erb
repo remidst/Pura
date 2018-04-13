@@ -15,7 +15,7 @@
 	    	<%= render "layouts/navigation" %>
 	 	</div>
 
-	 	<div id="body">
+	 	<div id="<%= "body" unless @login_signup %>">
 		    <div id="flash">
 		      <% flash.each do |key, value| %>
 		        <% if value.length > 0 %><div class="alert alert-<%= key %>"><%= value %></div><% end %>
@@ -28,9 +28,7 @@
 			
 	 	</div>
 
-	 	<div id="footer">
-		    <%= render "layouts/footer" %>	
-	 	</div> 		
+		<%= render "layouts/footer" unless @login_signup %>	
  	</div>
 
   </body>

@@ -21,7 +21,7 @@
           <%= link_to 'アカウント', edit_user_registration_path(current_user), class: 'nav-item nav-item-cell' %>  
         </li>
         <li>
-          <%= link_to 'ホームページ', "https://www.home.colibri.jp", target: "_blank", class: 'nav-item'  %>
+          <%= link_to 'ホームページ', "https://www.home.colibri.jp", target: "_blank", class: 'nav-item', id: "link-to-home"  %>
         </li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,  class: 'nav-item' %></li>
         <div id="current-user"></div>

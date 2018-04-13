@@ -21,6 +21,8 @@
 	 height: 100%;
  }
 
+
+
 h1 {
 	margin-top : 0;
 }
@@ -43,6 +45,14 @@ h2.h2-centered {
 	text-align: center;
 }
 
+input:focus, select:focus, textarea:focus {
+    outline: none !important;
+}
+
+.form-control:focus {
+	outline: none;
+}
+
 .navbar {
 	margin-bottom: 0;
 }
@@ -59,10 +69,6 @@ h2.h2-centered {
 	margin-bottom: 0;
 }
 
-.background-pattern{
-	background: image-url('asanoha.png');
-	height: 100%;
-}
 
 a.name-url {
 	text-decoration: underline;
@@ -106,6 +112,13 @@ a.name-url {
 	font-size: 1em;
 	vertical-align: center;
 	background-color: #464E56;
+}
+
+.navbar .container #navbar li.nav-item:selected {
+	color:white;
+	font-size: 1em;
+	vertical-align: center;
+	background-color: #4f5b66;
 }
 
 #navbar-username {

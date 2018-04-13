@@ -238,6 +238,10 @@ $(document).on('turbolinks:load', function(){
 		$("#invite-by-mail-or-name").hide();
 	});
 
+	$("#link-to-home").click(function(){
+		$(this).css('background-color', '#4f5b66');
+	});
+
 
 	layout();
 

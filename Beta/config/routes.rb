@@ -57,7 +57,7 @@ Rails.application.routes.draw do
 
   #custom routes for devise, user lookup
 
-  devise_for :users, controllers: {registrations: 'registrations', invitations: 'invitations'}
+  devise_for :users, controllers: {registrations: 'registrations', invitations: 'invitations', sessions: 'sessions'}
   get 'users/' => 'users#index'
 
   #custom routes for contact reportings, for double-step confirmation
