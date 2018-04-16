@@ -6,23 +6,28 @@
       <%= devise_error_messages! %>
 
       <div class="form-group">
-        <%= f.text_field :username, autofocus: true, placeholder: "ご自身のユーザー名", class: "form-control" %>
+        <%= f.label :username, "ご自身のユーザー名", class: "colibri-form-label" %><span class="required-true">*</span>
+        <%= f.text_field :username, autofocus: true, required: true, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.text_field :company, placeholder: "ご自身の事業所名", class: "form-control" %>
+        <%= f.label :company, "ご自身の事業所名", class: "colibri-form-label" %><span class="required-true">*</span>
+        <%= f.text_field :company, required: true, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.email_field :email, placeholder: "ご自身のメールアドレス", class: "form-control" %>
+        <%= f.label :email, "ご自身のメールアドレス", class: "colibri-form-label" %><span class="required-true">*</span>
+        <%= f.email_field :email, required: true, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード(6桁以上)", class: "form-control" %>
+        <%= f.label :password, "パスワード(6桁以上)", class: "colibri-form-label" %><span class="required-true">*</span>
+        <%= f.password_field :password, autocomplete: "off", required: true, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワードの確認", class: "form-control" %>
+        <%= f.label :password, "パスワードの確認", class: "colibri-form-label" %><span class="required-true">*</span>
+        <%= f.password_field :password_confirmation, required: true, autocomplete: "off", class: "form-control" %>
       </div>
 
       <div class="action">

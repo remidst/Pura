@@ -17310,6 +17310,10 @@ $(document).on('turbolinks:load', function(){
 	  }
 	});
 
+	$(".btn.btn-info.btn-tgl").click(function(){
+		$(this).hide();
+	});
+
 	
 	$("#project_user_tokens").tokenInput("/users.json",
 	{
@@ -17337,6 +17341,8 @@ $(document).on('turbolinks:load', function(){
 		preventDuplicates: true,
 		resultsFormatter: function(item){ return "<li>" + item.username + " " + item.company + "</li>" },
 	});
+
+	$("#timeline-all-read").hide();
 
 	$("a.btn.btn-info.scroll-home").click(function(){
 		$('body,html').animate({
@@ -17431,6 +17437,31 @@ $(document).on('turbolinks:load', function(){
 		$("#well-specs").show();
 	});
 
+	$("#password-edit").hide();
+
+	$("#show-password-edit").click(function(){
+		$("#password-edit").show();
+		$(this).hide();
+	});
+
+	$("#delete-account").hide();
+
+	$("#delete-profile").click(function(){
+		$(this).addClass("profile-selected");
+		$("#update-profile").removeClass("profile-selected");
+		$("#change-account-info").hide();
+		$("#delete-account").show();
+	});
+
+	$("#update-profile").click(function(){
+		$(this).addClass("profile-selected");
+		$("#delete-profile").removeClass("profile-selected");
+		$("#delete-account").hide();
+		$("#change-account-info").show();
+		$("#password-edit").hide();
+		$("#show-password-edit").show();
+	});
+
 
 
 	$(".conversation-messages").hide();
@@ -17470,18 +17501,29 @@ $(document).on('turbolinks:load', function(){
 		$(this).hide();
 	});
 
-	$("#file-form").hide();
-	$("#file-button").click(function(){
-		$(this).hide();
-		$("#file-form").show();
+	$("#form-invite-by-name").hide();
+	$("#form-invite-by-email").hide();
+	$("#submit").hide();
+	$("#back").hide();
+
+	$("#invite-by-mail").click(function(){
+		$("#form-invite-by-email").show();
+		$("#submit").show();
+		$("#back").show();
+		$("#invite-by-mail-or-name").hide();
 	});
-	$(".close, .modal").click(function(){
-		$("#file-form").hide();
-		$("#file-button").show();
+
+	$("#invite-by-name").click(function(){
+		$("#form-invite-by-name").show();
+		$("#submit").show();
+		$("#back").show();
+		$("#invite-by-mail-or-name").hide();
 	});
-	$(".modal-content").click(function(e){
-		e.stopPropagation();
+
+	$("#link-to-home").click(function(){
+		$(this).css('background-color', '#4f5b66');
 	});
+
 
 	layout();
 

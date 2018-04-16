@@ -45,9 +45,7 @@ h2.h2-centered {
 	text-align: center;
 }
 
-input:focus, select:focus, textarea:focus {
-    outline: none !important;
-}
+
 
 .form-control:focus {
 	outline: none;
@@ -313,10 +311,9 @@ li.notification-list-element {
 	background: url(trash.png);
 }
 
+
 body {
-	background: url('debut_light.png');
-	background-position: fixed;
-	background-repeat: repeat;
+	background-color: #F7F9FE;
 }
 
 .timeline-container {
