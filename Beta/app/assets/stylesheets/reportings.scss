@@ -79,6 +79,8 @@ p.reporting-unread {
 .reporting-well-head {
 	margin-bottom : 5px;
 	display: flex;
+	outline: none;
+	box-shadow: none;
 	border-bottom: 0.5px solid #ddd;
 	padding-top: 10px;
 	padding-bottom: 5px;
