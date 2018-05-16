@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :care_manager_contacts, class_name: 'Contacts', foreign_key: 'care_manager_id', dependent: :destroy
   has_many :service_provider_contacts, class_name: 'Contacts', foreign_key: 'service_provider_id', dependent: :destroy
   has_one :timeline
-  belongs_to :corporation
+  belongs_to :corporation, optional: true
 
 
 
@@ -41,12 +41,21 @@ class User < ApplicationRecord
 
   before_save :ensure_authentication_token
   after_create :welcome_email, :create_timeline, :generate_color
+  after_save :ensure_presence_of_corporation
 
   def ensure_authentication_token
   	if authentication_token.blank?
   		self.authentication_token = generate_authentication_token
   	end
   end
+
+  def ensure_presence_of_corporation
+    puts "validation passing"
+    if corporation_id.blank?
+      self.corporation_id = 1
+    end
+  end
+
 
   def deleted?
     self.deleted_at.present?
@@ -128,6 +137,7 @@ class User < ApplicationRecord
   		break token unless User.where(authentication_token: token).first
   	end
   end
+
 
   def generate_color
     palette = ['#C67D28', '#3D9BF3', '#4AF34B', '#EE59A6', '#34F0E0', '#B19C9B', '#F07891', '#EDB3F5', '#ED655F', '#59EF9B', '#2BFE46', '#A3D4F5', '#69B8B0', '#A587F6', '#BBE5CE', '#4DA419', '#B3F665', '#EA5D25', '#E19B73', '#8E8CBC', '#DF788C', '#F9AE1B', '#F475E1', '#4BBF92', '#BCEF8E', '#3BC359', '#DEC6DC', '#4491BB', '#ECCCB3', '#BC79BD', '#ECB155', '#ABBDC5', '#EADA6E', '#F19DBF', '#3EC8EA', '#3BE4F8', '#DBA7A6', '#FBC32D', '#71C47A', '#C57346', '#50AFBB', '#67E7EE', '#F04885', '#E495F1', '#B487FB', '#ECC23A', '#58F4C7', '#BA9DEF', '#CE73A5', '#F4B2A3', '#F2A649', '#F17D59', '#53A042', '#6BBEA6', '#C5A1D2', '#C6CBF5', '#EE7513', '#E47774', '#8BAADC', '#E95F7D', '#57B2E6', '#ED8C4C', '#90CED4', '#ECD19E', '#22D042', '#54EE81', '#8C91F0', '#97F17D', '#6ABD8E', '#E274BD', '#85E7BF', '#F14D63', '#F1D935', '#7BCC69', '#E56C9B', '#F05B48', '#BB73D2', '#F0A364', '#74DF32', '#5FC32E', '#7BA0EC', '#8EDCCA', '#F08C70', '#8797F3', '#2ACD7D', '#49BEB7', '#B9E5F3', '#E36B37', '#E9C0ED', '#3E96DC', '#6A8CBE', '#A183CD', '#73AB20', '#65B543', '#258EB7', '#45A2C5', '#CAA8AE', '#EC9CAB', '#E8C25B', '#EA89D2', '#919AD9', '#7FEEA3', '#E0B2C6', '#7CD45C', '#E79B87', '#7AB992', '#35A633', '#46A35A', '#96BED5', '#D26B3C', '#A698B9', '#278DDE', '#5F8CE5', '#5DAACB', '#0EA827', '#9DE0A6', '#EB9ED0', '#6DE8D8', '#8DC957', '#D07C76', '#8E7DD6', '#13EDAE', '#EA666F', '#DF705F', '#CE7236', '#EB8C5E', '#EBCA7D', '#E99B99', '#D6D6EE', '#F6C823', '#3DA27B', '#3AB097', '#D78D45', '#E19ADC', '#DC4DA7', '#E9A140', '#82DD89', '#51BF81', '#AEB1DE', '#ECAE2F', '#E9BCB4', '#45DEAC', '#76D3EE', '#DA6949']
