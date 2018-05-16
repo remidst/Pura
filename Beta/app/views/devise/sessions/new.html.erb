@@ -5,11 +5,7 @@
 
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-group">
-              <%= f.text_field :username, autofocus: true, placeholder: "ユーザー名", class: "form-control" %>
-            </div>
-
-            <div class="form-group">
-              <%= f.text_field :company, placeholder: "事業所名", class: "form-control" %>
+              <%= f.text_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control" %>
             </div>
 
             <div class="form-group">
