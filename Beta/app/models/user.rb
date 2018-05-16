@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :care_manager_contacts, class_name: 'Contacts', foreign_key: 'care_manager_id', dependent: :destroy
   has_many :service_provider_contacts, class_name: 'Contacts', foreign_key: 'service_provider_id', dependent: :destroy
   has_one :timeline
+  belongs_to :corporation
 
 
 
