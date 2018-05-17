@@ -20,6 +20,9 @@ class User < ApplicationRecord
   has_many :service_provider_contacts, class_name: 'Contacts', foreign_key: 'service_provider_id', dependent: :destroy
   has_one :timeline
   belongs_to :corporation, optional: true
+  has_many :patients 
+  has_many :user_schedules
+  has_many :schedules, through: :user_schedules
 
 
 
