@@ -7,23 +7,17 @@ Rails.application.routes.draw do
   get 'reportings/delete'
 
   resources :projects do
-  	resources :documents
-  	resources :memberships
-    resources :specs
-    resources :publications
+  	resources :memberships, only: [:new, :create, :index, :destroy]
+    resources :specs, only: [:create, :show, :edit, :update]
+    resources :publications, only: [:create, :edit, :update, :destroy]
   end
 
   resources :publications do 
-    resources :publication_comments
+    resources :publication_comments, only: [:create]
     member do 
       patch :toggle_read_publication
     end
-    resources :publication_attachments
-  end
-
-
-  resources :conversations do
-    resources :messages
+    resources :publication_attachments, only: [:create, :destroy]
   end
 
   resources :contacts do 
@@ -36,11 +30,11 @@ Rails.application.routes.draw do
     member do 
       patch :toggle_read_reporting
     end
-    resources :reporting_attachments
+    resources :reporting_attachments, only: [:create, :destroy]
   end
 
 
-  resources :timelines
+  resources :timelines, only: [:index]
 
   #custom route to download spec
   get 'spec/:id/download' => 'download#show', as: :spec_download
