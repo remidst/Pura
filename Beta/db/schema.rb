@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516133459) do
+ActiveRecord::Schema.define(version: 20180523144331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,25 @@ ActiveRecord::Schema.define(version: 20180516133459) do
     t.index ["user_id"], name: "index_documentships_on_user_id"
   end
 
+  create_table "helper_schedules", force: :cascade do |t|
+    t.bigint "helper_id"
+    t.bigint "schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["helper_id"], name: "index_helper_schedules_on_helper_id"
+    t.index ["schedule_id"], name: "index_helper_schedules_on_schedule_id"
+  end
+
+  create_table "helpers", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "address"
+    t.bigint "corporation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["corporation_id"], name: "index_helpers_on_corporation_id"
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "project_id"
@@ -101,6 +120,23 @@ ActiveRecord::Schema.define(version: 20180516133459) do
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_notifications_on_project_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "patient_schedules", force: :cascade do |t|
+    t.bigint "patient_id"
+    t.bigint "schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_patient_schedules_on_patient_id"
+    t.index ["schedule_id"], name: "index_patient_schedules_on_schedule_id"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "saseki_id"
+    t.index ["saseki_id"], name: "index_patients_on_saseki_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -208,6 +244,16 @@ ActiveRecord::Schema.define(version: 20180516133459) do
     t.index ["publisher_id"], name: "index_reportings_on_publisher_id"
   end
 
+  create_table "schedules", force: :cascade do |t|
+    t.string "year"
+    t.string "month"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "owner_id"
+    t.index ["owner_id"], name: "index_schedules_on_owner_id"
+  end
+
   create_table "specs", force: :cascade do |t|
     t.bigint "project_id"
     t.date "creation_date"
@@ -275,6 +321,27 @@ ActiveRecord::Schema.define(version: 20180516133459) do
     t.index ["user_id"], name: "index_timelines_on_user_id"
   end
 
+  create_table "unavailabilities", force: :cascade do |t|
+    t.bigint "helper_id"
+    t.string "weekday"
+    t.date "starts_at"
+    t.date "ends_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "publisher_id"
+    t.index ["helper_id"], name: "index_unavailabilities_on_helper_id"
+    t.index ["publisher_id"], name: "index_unavailabilities_on_publisher_id"
+  end
+
+  create_table "user_schedules", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "schedule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_user_schedules_on_schedule_id"
+    t.index ["user_id"], name: "index_user_schedules_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -323,6 +390,7 @@ ActiveRecord::Schema.define(version: 20180516133459) do
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "projects"
   add_foreign_key "notifications", "users"
+  add_foreign_key "patients", "users", column: "saseki_id"
   add_foreign_key "projects", "users", column: "leader_id"
   add_foreign_key "publication_attachments", "publications"
   add_foreign_key "publication_comment_attachments", "publication_comments"
@@ -338,8 +406,10 @@ ActiveRecord::Schema.define(version: 20180516133459) do
   add_foreign_key "reporting_readmarks", "users"
   add_foreign_key "reportings", "contacts"
   add_foreign_key "reportings", "users", column: "publisher_id"
+  add_foreign_key "schedules", "users", column: "owner_id"
   add_foreign_key "specs", "projects"
   add_foreign_key "specs", "users", column: "publisher_id"
   add_foreign_key "timelines", "users"
+  add_foreign_key "unavailabilities", "users", column: "publisher_id"
   add_foreign_key "users", "corporations"
 end
