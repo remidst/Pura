@@ -1,5 +1,6 @@
 class Schedule < ApplicationRecord
   belongs_to :owner, class_name: "User"
+  belongs_to :corporation
   has_many :user_schedules
   has_many :users, through: :user_schedules
   has_many :helper_schedules

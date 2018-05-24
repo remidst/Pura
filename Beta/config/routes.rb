@@ -6,6 +6,11 @@ Rails.application.routes.draw do
 
   get 'reportings/delete'
 
+  #schedule routes
+  constraints subdomain: 'schedule' do
+    resources :schedules, only: [:new, :show, :create, :index, :edit, :destroy]
+  end
+
   resources :projects do
   	resources :memberships, only: [:new, :create, :index, :destroy]
     resources :specs, only: [:create, :show, :edit, :update]

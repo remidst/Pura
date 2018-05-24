@@ -1,0 +1,39 @@
+<div class="container-fluid"> 
+  <%-# Navigation menu -%>
+  <%= render 'layouts/projects_app_navigation' %>
+
+  <div class="timeline-container">
+    <%-# Button to create new project -%>
+    <%= link_to '+新規スケジュール', new_schedule_path, class: "btn btn-info", id: "btn-home" %><br/>
+
+    <%-# Table that displays all the schedules -%>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>スケジュール名</th>
+          <th>年</th>
+          <th>月</th>
+          <th>オーナー</th>
+        </tr>
+      </thead>
+
+      <tbody id="project-index-table">
+        <% @schedules.each do |schedule| %>
+          <tr class="clickable-row" data-link="<%= schedule_path(schedule) %>">
+            <td><%= schedule.name %></td>
+            <td>
+                <%= schedule.year %>
+            </td>
+            <td><%= schedule.month %></td>
+            <td>
+              <%= schedule.owner.username %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+   
+  </div>
+
+</div>
+

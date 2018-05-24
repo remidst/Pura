@@ -1,0 +1,49 @@
+<div class="container-fluid">
+
+	<%= render 'layouts/projects_app_navigation' %>
+	
+	<div class="timeline-container">
+		  <div class="well well-devise">
+		  	<h1>新規スケジュール</h1>
+
+			<div class="new-project-box">
+				  <%= form_with(model: @schedule, local: true) do |form| %>
+				  <% if @schedule.errors.any? %>
+				    <div id="error_explanation">
+				      <h2> エラーが<%= pluralize(project.errors.count, "error") %>回発生しました:</h2>
+
+				      <ul>
+				      <% @schedule.errors.full_messages.each do |message| %>
+				        <li><%= message %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
+
+				  <div class="form_group">
+				    <%= form.label :name, 'タイトル:' %>
+				    <%= form.text_field :name, autofocus: true, :required => 'required', class: "form-control" %>
+				  </div>				  
+
+				  <div class="form_group">
+				    <%= form.label :year, '年：' %>
+				    <%= form.text_field :year, autofocus: true, :required => 'required', class: "form-control" %>
+				  </div>
+
+				  <div class="form_group">
+				    <%= form.label :month, '月：' %>
+				    <%= form.text_field :month, autofocus: true, :required => 'required', class: "form-control" %>
+				  </div>
+
+				  <div class="actions">
+				    <%= form.submit '登録する', class: "btn btn-info" %>
+				  </div>
+				<% end %>
+
+
+			</div>
+		  </div>
+	</div>
+
+</div>
+
